@@ -181,7 +181,7 @@ def main():
             locations=df["abreviatura"],
             z=df["log"],
             locationmode="USA-states",
-            colorscale="hot",
+            colorscale="speed_r",
             marker_line_color="#FFFFFF",
             showscale=True,
             showlegend=False,
@@ -239,16 +239,16 @@ def main():
                 y=1.08,
                 xanchor="center",
                 yanchor="top",
-                text="Remesas per cápita por estado de EE. UU. hacia México durante el primer trimestre del 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
+                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante la primera mitad del 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
                 font_size=120
             ),
             dict(
                 x=0.02,
-                y=0.16,
+                y=0.105,
                 textangle=270,
                 xanchor="left",
                 yanchor="middle",
-                text="Dólares estadounidenses`per cápita (escala logarítmica)",
+                text="Dólares estadounidenses`por cada mexicano (escala logarítmica)",
                 font_size=90
             ),
             dict(
@@ -256,7 +256,7 @@ def main():
                 y=-0.08,
                 xanchor="left",
                 yanchor="bottom",
-                text="Fuente: Banxico (julio 2023)",
+                text="Fuente: Banxico (agosto 2023)",
                 font_size=100
             ),
             dict(
@@ -264,7 +264,7 @@ def main():
                 y=-0.08,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Nacional: ${total_capita:,.0f} dólares per cápita",
+                text=f"Nacional: ${total_capita:,.0f} dólares por cada mexicano en EE. UU.",
                 font_size=100
             ),
             dict(
@@ -272,7 +272,7 @@ def main():
                 y=-0.08,
                 xanchor="right",
                 yanchor="bottom",
-                text="🧁 @lapankecita",
+                text="🧁 @lapanquecita",
                 font_size=100
             ),
             dict(
@@ -280,7 +280,7 @@ def main():
                 y=0.3,
                 xanchor="right",
                 yanchor="top",
-                text=f"Remesas totales durante el primer<br>trimestre del 2023: <b>${total_remesas:,.0f}</b> dólares<br>Población estimada de mexicanos<br>en EE. UU. (2021): <b>{total_poblacion:,.0f}</b>",
+                text=f"Remesas totales durante la primera<br>mitad del 2023: <b>${total_remesas:,.0f}</b> dólares<br>Población estimada de mexicanos<br>en EE. UU. (2021): <b>{total_poblacion:,.0f}</b>",
                 font_size=70,
                 align="left",
                 bordercolor="#FFFFFF",

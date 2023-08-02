@@ -288,7 +288,7 @@ def plot_top():
     fig.update_xaxes(
         exponentformat="SI",
         type="log",
-        range=[4, np.log10(15000000000)],
+        range=[4, np.log10(30000000000)],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -324,7 +324,7 @@ def plot_top():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante el primer trimestre del 2023",
+        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante la primera mitad del 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -356,7 +356,7 @@ def plot_top():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (julio 2023)"
+                text="Fuente: Banxico (agosto 2023)"
             ),
             dict(
                 x=0.55,
@@ -469,7 +469,7 @@ def plot_bottom():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante el primer trimestre del 2023",
+        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante la primera mitad del 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -501,7 +501,7 @@ def plot_bottom():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (julio 2023)"
+                text="Fuente: Banxico (agosto 2023)"
             ),
             dict(
                 x=0.5,
@@ -619,7 +619,7 @@ def plot_map():
                 y=1.045,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos totales por remesas hacia México por país de origen durante el primer trimestre del 2023",
+                text="Ingresos totales por remesas hacia México por país de origen durante la primera mitad del 2023",
                 font_size=140
             ),
             dict(
@@ -636,7 +636,7 @@ def plot_map():
                 y=-0.065,
                 xanchor="left",
                 yanchor="bottom",
-                text="Fuente: Banxico (julio 2023)",
+                text="Fuente: Banxico (agosto 2023)",
                 font_size=120
             ),
             dict(
@@ -664,5 +664,5 @@ def plot_map():
 if __name__ == "__main__":
 
     plot_top()
-    plot_bottom()
-    plot_map()
+    # plot_bottom()
+    # plot_map()

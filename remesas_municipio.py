@@ -54,6 +54,9 @@ def plot_capita():
     # Quitamos los decimales de las cifras.
     df["total"] = df.sum(axis=1) * 1000000
 
+    # Calculamos las remesas per cápita para toda la polación.
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
+
     # Asignamos la población a cada municipio.
     df["pop"] = df.index.map(pop)
 
@@ -128,7 +131,7 @@ def plot_capita():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante el primer trimestre del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante la primera mitad del 2023",
         paper_bgcolor="#16213E",
         annotations=[
             dict(
@@ -136,14 +139,14 @@ def plot_capita():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (julio 2023)"
+                text="Fuente: Banxico (agosto 2023)"
             ),
             dict(
                 x=0.5,
                 y=0.015,
                 xanchor="center",
                 yanchor="top",
-                text="Nacional: 110.86 dólares per cápita"
+                text=subtitulo
             ),
             dict(
                 x=1.01,
@@ -201,6 +204,9 @@ def plot_absolutos():
 
     # Quitamos los decimales de las cifras.
     df["total"] = df.sum(axis=1) * 1000000
+
+    # Calculamos el total para el subtítulo.
+    subtitulo = f"Nacional: {df['total'].sum():,.0f} dólares"
 
     # Asignamos la población a cada municipio.
     df["pop"] = df.index.map(pop)
@@ -276,7 +282,7 @@ def plot_absolutos():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante el primer trimestre del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante la primera mitad del 2023",
         paper_bgcolor="#1e453e",
         annotations=[
             dict(
@@ -284,14 +290,14 @@ def plot_absolutos():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (julio 2023)"
+                text="Fuente: Banxico (agosto 2023)"
             ),
             dict(
                 x=0.5,
                 y=0.015,
                 xanchor="center",
                 yanchor="top",
-                text="Nacional: 13,970,353,200 dólares"
+                text=subtitulo,
             ),
             dict(
                 x=1.01,
@@ -549,7 +555,7 @@ def plot_tendencias():
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text="Fuente: Banxico (julio 2023)"
+        text="Fuente: Banxico (agosto 2023)"
     )
 
     fig.add_annotation(
@@ -588,6 +594,6 @@ def plot_tendencias():
 
 if __name__ == "__main__":
 
-    # plot_capita()
-    # plot_absolutos()
+    plot_capita()
+    plot_absolutos()
     plot_tendencias()
