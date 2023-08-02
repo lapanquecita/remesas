@@ -532,12 +532,6 @@ def plot_map():
     Esta función crea un mapa de las aportaciones a las remesas por país de origen.
     """
 
-
-    # Creamos nuestra escala logarítmica para la barra de colores del mapa.
-    marcas = [item for item in range(1, 11)]
-    textos = ["10", "100", "1k", "10k", "100k",
-              "1M", "10M", "100M", "1G", "10G"]
-
     # Cargamos el archivo CSV de remesas por país.
     df = pd.read_csv("./remesas_pais.csv", index_col="País")
 
@@ -553,8 +547,19 @@ def plot_map():
     # Quitamos los decimales de las cifras.
     df["total"] = df["total"] * 1000000
 
+    # Quitamos todos los valores en cero.
+    df = df[df["total"] != 0]
+
     # Obtenemos los valores logarítmicos.
     df["log"] = np.log10(df["total"])
+
+    # Creamos la escala logarítmica usando el valor máximo y mínimo en nuestro dataset.
+    min_value = df["log"].min()
+    max_value = df["log"].max()
+
+    # Creamos las marcas para la escala.
+    marcas = np.linspace(min_value, max_value, 11)
+    textos = [f"{10 ** item:,.0f}" for item in marcas]
 
     # Agregamos los códigos ISO3 de cada país.
     df["iso3"] = df.index.map(CODIGOS_ISO3)
@@ -570,6 +575,8 @@ def plot_map():
             showscale=True,
             showlegend=False,
             marker_line_width=2,
+            zmax=max_value,
+            zmin=min_value,
             colorbar={
                 "x": 0.03,
                 "y": 0.42,
@@ -664,5 +671,5 @@ def plot_map():
 if __name__ == "__main__":
 
     plot_top()
-    # plot_bottom()
-    # plot_map()
+    plot_bottom()
+    plot_map()
