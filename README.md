@@ -4,21 +4,23 @@ Este repositorio incluye varios datasets y scripts para analizar los ingreos por
 
 Las remesas han ido en aumento, siendo los últimos meses máximos históricos. En este repositorio observaremos de donde vienen y a donde llegan estas remesas.
 
+![Imagen 1](./imgs/remesas_mensuales.png)
+
 ## Remesas por país de origen
 
 México recibe remesas de casi todos los países del mundo, sin embargo EE. UU. es el que más aporta, con el 96.03% del total de estas.
 
 En la siguiente gráfica de barras se muestran los 30 países que más envían remesas hacia México. Se tuvo que usar una escala logarítmica para poder hacer una mejor comparación, dada la gran diferencia de cifras.
 
-![Imagen 1](./imgs/remesas_pais_top.png)
+![Imagen 2](./imgs/remesas_pais_top.png)
 
 Del otro lado tenemos a los 30 países que menos remesas aportan. En esta gráfica no se muestran porcentajes ya que todos se aproximan al 0%.
 
-![Imagen 2](./imgs/remesas_pais_bottom.png)
+![Imagen 3](./imgs/remesas_pais_bottom.png)
 
 Por último, tenemos un mapa Choropleth con la distribución espacial. Se puede apreciar que la mayoría de las remesas provienen de América y Europa occidental. También se se hizo uso de una escala logarítmica para poder distribuir mejor las cifras.
 
-![Imagen 3](./imgs/mapa_paises.png)
+![Imagen 4](./imgs/mapa_paises.png)
 
 ## Remesas provenientes de EE. UU.
 
@@ -60,17 +62,17 @@ Ahora bien, aquí esta la tabla de los 10 estados que más enviaron remesas a M�
 
 En el siguiente mapa Choropleth se puede observar la distribución completa. También se utilizó una escala logarítmica dada la diferencia entre los primeros valores.
 
-![Imagen 4](./imgs/mapa_usa.png)
+![Imagen 5](./imgs/mapa_usa.png)
 
 ## Ingresos por municipio
 
 Ya sabemos de donde vienen las remesas, ahora falta saber a donde llegan. Primero vamos a revisar las cifras absolutas. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante la primera mitad del 2023:
 
-![Imagen 5](./imgs/tabla_absolutos.png)
+![Imagen 6](./imgs/tabla_absolutos.png)
 
 La mayoría de estos municipios coinciden con las ciudades más grandes del país. Debemos ajustar estas cifras con la población de cada municipio para conocer su impacto económico.
 
-![Imagen 6](./imgs/tabla_capita.png)
+![Imagen 7](./imgs/tabla_capita.png)
 
 Ahora sabemos que en Chiapas, Michoacán, Oaxaca, Puebla y Zacatecas es donde las remesas tienen mayor impacto económico.
 
