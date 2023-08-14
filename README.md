@@ -64,16 +64,28 @@ En el siguiente mapa Choropleth se puede observar la distribución completa. Tam
 
 ![Imagen 5](./imgs/mapa_usa.png)
 
+## Ingresos por entidad
+
+Ya sabemos de donde vienen las remesas, ahora falta saber a donde llegan. En el sigiente mapa y tablas se muestra la distribución por entidad federativa.
+
+Michoacán, Zacatecas y Guerrero ocupan los primeros 3 lugares una vez ajustadas las cifras per cápita. Estas 3 entidades actualmente tienen un problema muy grave de seguridad, se puede inferir que por los altos niveles delictivos, es preferible recibir dinero del extranjero a emprender un negocio.
+
+![Imagen 6](./imgs/mapa_mexico.png)
+
 ## Ingresos por municipio
 
-Ya sabemos de donde vienen las remesas, ahora falta saber a donde llegan. Primero vamos a revisar las cifras absolutas. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante la primera mitad del 2023:
+La información por entidad nos da una perspectiva generalizada de la distribución de las remesas, pero también es importante ir más a detalle y saber exactamente en que municipios están llegando. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante la primera mitad del 2023:
 
-![Imagen 6](./imgs/tabla_absolutos.png)
+![Imagen 7](./imgs/tabla_absolutos.png)
 
 La mayoría de estos municipios coinciden con las ciudades más grandes del país. Debemos ajustar estas cifras con la población de cada municipio para conocer su impacto económico.
 
-![Imagen 7](./imgs/tabla_capita.png)
+![Imagen 8](./imgs/tabla_capita.png)
 
 Ahora sabemos que en Chiapas, Michoacán, Oaxaca, Puebla y Zacatecas es donde las remesas tienen mayor impacto económico.
 
+## Conclusión
 
+La tendencia nos indica que cada año las remesas están aumentando, sabemos que casi en su totalidad provienen de Estaods Unidos y Canadá y que los estados más afectados por la inseguridad tienen un ingreso mayor remesas que los que no.
+
+El aumento de remesas es un indicador que suele mal interpretarse, se piensa que es algo bueno que cada vez se reciba más dinero de parientes en el extnrajero, pero en realidad es un síntoma de la falta de oportunidades en el país.
