@@ -158,7 +158,7 @@ def plot_mapa():
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos por remesas hacia México por entidad durante la primera mtiad del 2023",
+                text="Ingresos por remesas hacia México por entidad durante la primera mitad del 2023",
                 font_size=28
             ),
             dict(
@@ -213,7 +213,7 @@ def plot_mapa():
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    f"<b>Total dólares</b>",
+                    f"<b>Total en dólares</b>",
                     F"<b>Per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
@@ -244,7 +244,7 @@ def plot_mapa():
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    f"<b>Total dólares</b>",
+                    f"<b>Total en dólares</b>",
                     F"<b>Per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
