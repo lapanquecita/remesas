@@ -347,7 +347,7 @@ def plot_top():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text="<b>Nota:</b> Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores.."
+                text="<b>Nota:</b> Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores."
             ),
             dict(
                 x=0.01,
