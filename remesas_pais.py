@@ -570,7 +570,7 @@ def plot_map():
         go.Choropleth(
             locations=df["iso3"],
             z=df["log"],
-            colorscale="portland_r",
+            colorscale="portland",
             marker_line_color="#FFFFFF",
             showscale=True,
             showlegend=False,
