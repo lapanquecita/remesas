@@ -1,7 +1,9 @@
 """
 Este script muestra la tendencia y totales de remesas hacia México.
 
+Fuente:
 https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81&locale=es
+
 """
 
 import pandas as pd

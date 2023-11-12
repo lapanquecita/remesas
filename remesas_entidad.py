@@ -1,6 +1,7 @@
 """
 
-Fuente: https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE100&locale=es
+Fuente:
+https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE100&locale=es
 
 """
 
@@ -45,7 +46,7 @@ def plot_mapa():
     pop = pop["poblacion"]
 
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./remesas_entidad.csv", index_col="Entidad")
+    df = pd.read_csv("./data/remesas_entidad.csv", index_col="Entidad")
 
     # Seleccionamos las columnas del año que nos interesa.
     cols = [col for col in df.columns if "2023" in col]
@@ -57,7 +58,7 @@ def plot_mapa():
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares p. c."
 
     # Asignamos la población a cada entidad.
     df["pop"] = df.index.map(pop)
@@ -73,8 +74,8 @@ def plot_mapa():
     valores = list()
 
     # Estos valores serán usados para definir la escala en el mapa.
-    min_val = 80
-    max_val = 550
+    min_val = df["capita"].min()
+    max_val = df["capita"].max()
 
     marcas = np.linspace(min_val, max_val, 11)
     etiquetas = list()
@@ -158,11 +159,11 @@ def plot_mapa():
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos por remesas hacia México por entidad durante la primera mitad del 2023",
+                text="Ingresos por remesas hacia México por entidad durante enero-septiembre del 2023",
                 font_size=28
             ),
             dict(
-                x=0.5,
+                x=0.58,
                 y=-0.04,
                 xanchor="center",
                 yanchor="top",
@@ -183,7 +184,7 @@ def plot_mapa():
                 y=-0.04,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)",
+                text="Fuente: Banxico (noviembre 2023)",
                 font_size=24
             ),
             dict(
