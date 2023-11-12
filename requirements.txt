@@ -1,0 +1,6 @@
+kaleido
+numpy
+pandas
+pillow
+plotly
+tabulate

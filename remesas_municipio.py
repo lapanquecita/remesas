@@ -1,6 +1,7 @@
 """
 
-Fuente: https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE166&locale=es
+Fuente:
+https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE166&locale=es
 
 """
 
@@ -8,6 +9,10 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+
+
+# El mes en que actualizamos los datos.
+MES_FUENTE = "noviembre"
 
 
 def plot_capita():
@@ -34,12 +39,12 @@ def plot_capita():
     pop = pop["poblacion"]
 
     # Cargamos el dataset de remesas por municipio.
-    df = pd.read_csv("./remesas_municipio.csv")
+    df = pd.read_csv("./data/remesas_municipio.csv")
 
     # La estructura de este dataset es jerárquica.
     # Tenemos que hacer algunas modificaciones para que coincida con el dataset de población.
     df["Entidad"] = df["Municipio"].apply(fill_entidad)
-    df.fillna(method="ffill", inplace=True)
+    df.ffill(inplace=True)
     df.index = df.apply(fill_cve, axis=1)
 
     # Quitamos los registros que no sean municipios.
@@ -55,7 +60,7 @@ def plot_capita():
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares p. c."
 
     # Asignamos la población a cada municipio.
     df["pop"] = df.index.map(pop)
@@ -73,7 +78,7 @@ def plot_capita():
     df = df[df["capita"] != np.inf]
 
     # Seleccionamos las primeras 30 filas.
-    df = df[:30]
+    df = df.head(30)
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
     df.reset_index(inplace=True)
@@ -131,7 +136,7 @@ def plot_capita():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante la primera mitad del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante enero-septiembre del 2023",
         paper_bgcolor="#16213E",
         annotations=[
             dict(
@@ -139,10 +144,10 @@ def plot_capita():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)"
+                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
             ),
             dict(
-                x=0.5,
+                x=0.58,
                 y=0.015,
                 xanchor="center",
                 yanchor="top",
@@ -185,12 +190,12 @@ def plot_absolutos():
     pop = pop["poblacion"]
 
     # Cargamos el dataset de remesas por municipio.
-    df = pd.read_csv("./remesas_municipio.csv")
+    df = pd.read_csv("./data/remesas_municipio.csv")
 
     # La estructura de este dataset es jerárquica.
     # Tenemos que hacer algunas modificaciones para que coincida con el dataset de población.
     df["Entidad"] = df["Municipio"].apply(fill_entidad)
-    df.fillna(method="ffill", inplace=True)
+    df.ffill(inplace=True)
     df.index = df.apply(fill_cve, axis=1)
 
     # Quitamos los registros que no sean municipios.
@@ -224,7 +229,7 @@ def plot_absolutos():
     df = df[df["capita"] != np.inf]
 
     # Seleccionamos las primeras 30 filas.
-    df = df[:30]
+    df = df.head(30)
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
     df.reset_index(inplace=True)
@@ -282,7 +287,7 @@ def plot_absolutos():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante la primera mitad del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante enero-septiembre del 2023",
         paper_bgcolor="#1e453e",
         annotations=[
             dict(
@@ -290,10 +295,10 @@ def plot_absolutos():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)"
+                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
             ),
             dict(
-                x=0.5,
+                x=0.58,
                 y=0.015,
                 xanchor="center",
                 yanchor="top",
@@ -339,20 +344,20 @@ def plot_tendencias():
     """
 
     # Cargamos el dataset de remesas por municipio.
-    df = pd.read_csv("./remesas_municipio.csv")
+    df = pd.read_csv("./data/remesas_municipio.csv")
 
     # La estructura de este dataset es jerárquica.
     # Tenemos que hacer algunas modificaciones para asignar la entdad a cada municipio.
     df["Entidad"] = df["Municipio"].apply(fill_entidad)
-    df.fillna(method="ffill", inplace=True)
+    df.ffill(inplace=True)
     df.index = df.apply(fill_cve, axis=1)
 
     # Quitamos los registros que no sean municipios.
     df = df[df["Municipio"].str.contains("⚬")]
 
     # Vamos a sumar los totales de remesas por año.
-    # PAra esto crearemos un ciclo del 2013 al 2022.
-    for year in range(2013, 2023):
+    # PAra esto crearemos un ciclo del 2013 al 2023.
+    for year in range(2014, 2024):
 
         cols = [col for col in df.columns if str(year) in col]
         df[str(year)] = df[cols].sum(axis=1)
@@ -360,15 +365,15 @@ def plot_tendencias():
     # Solo vamos a escoger las últimas columnas que creamos.
     df = df.iloc[:, -10:]
 
-    # Vamos a calcular el cambio porcentual del 2013 al 2022.
-    df["change"] = (df["2022"] - df["2013"]) / df["2013"] * 100
+    # Vamos a calcular el cambio porcentual del 2013 al 2023.
+    df["change"] = (df["2023"] - df["2014"]) / df["2014"] * 100
 
     # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
     # Quitamos los municipios que hayan tenido menos de 10 millones de dólares durante el 2013.
     # Esto es con el propósito de eliminar ruido.
-    df = df[df["2013"] >= 10]
+    df = df[df["2014"] >= 10]
 
     # Ordenamos los valores usando el cambio porcentual de mayor a menor.
     df = df.sort_values("change", ascending=False)
@@ -408,8 +413,8 @@ def plot_tendencias():
             sizes[-1] = 20
 
             # Vamos a extraer algunos valores para calcular el cambio porcentual y saber cual fue el valor máximo.
-            primer_valor = temp_df[0]
-            ultimo_valor = temp_df[-1]
+            primer_valor = temp_df.iloc[0]
+            ultimo_valor = temp_df.iloc[-1]
             valor_maximo = temp_df.max()
 
             # Solo el primer y último registro llevarán un texto con sus valores.
@@ -555,7 +560,7 @@ def plot_tendencias():
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text="Fuente: Banxico (agosto 2023)"
+        text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
     )
 
     fig.add_annotation(
@@ -566,7 +571,7 @@ def plot_tendencias():
         yanchor="top",
         yref="paper",
         font_size=22,
-        text="(sólo se tomaron en cuenta los municipios con al menos 10 mdd por ingresos de remesas durante el 2013)"
+        text="(sólo se tomaron en cuenta los municipios con al menos 10 mdd por ingresos de remesas durante el 2014)"
     )
 
     fig.add_annotation(

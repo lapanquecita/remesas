@@ -2,9 +2,11 @@
 
 Esta script genera un mapa con las remesas provenientes de EE. UU. ajustadas con la población estimada de mexicanos viviendo en EE. UU.
 
-Fuente remesas: https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE168&locale=es
+Fuente remesas:
+https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE168&locale=es
 
-Fuente población: https://data.census.gov/table?q=DP05
+Fuente población:
+https://data.census.gov/table?q=DP05
 
 """
 
@@ -128,10 +130,14 @@ POBLACION = {
 }
 
 
-def main():
+def plot_usa():
+    """
+    Crea un mapa Choropleth de EE. UU. con los egresos por remesas per cápita
+    de población mexicana.
+    """
 
     # Cargamos el archivo CSV con las remesas provenientes de EE. UU.
-    df = pd.read_csv("./remesas_usa.csv", index_col="Estado")
+    df = pd.read_csv("./data/remesas_usa.csv", index_col="Estado")
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if "2023" in col]
@@ -158,9 +164,9 @@ def main():
     df["log"] = np.log10(df["capita"])
 
     # Extraemos valores totales que serán usados para algunas anotaciones.
-    total_remesas = df["total"][0]
-    total_poblacion = df["poblacion"][0]
-    total_capita = df["capita"][0]
+    total_remesas = df["total"].iloc[0]
+    total_poblacion = df["poblacion"].iloc[0]
+    total_capita = df["capita"].iloc[0]
 
     # Quitamos los registros sin abreviatura.
     df = df[~pd.isna(df["abreviatura"])]
@@ -239,7 +245,7 @@ def main():
                 y=1.08,
                 xanchor="center",
                 yanchor="top",
-                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante la primera mitad del 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
+                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante enero-septiembre del 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
                 font_size=120
             ),
             dict(
@@ -256,7 +262,7 @@ def main():
                 y=-0.08,
                 xanchor="left",
                 yanchor="bottom",
-                text="Fuente: Banxico (agosto 2023)",
+                text="Fuente: Banxico (noviembre 2023)",
                 font_size=100
             ),
             dict(
@@ -293,6 +299,52 @@ def main():
     fig.write_image("./mapa_usa.png")
 
 
+def stats_usa():
+    """
+    Obtiene el top 10 de estados en una tabla Markdown.
+    """
+
+    # Cargamos el archivo CSV con las remesas provenientes de EE. UU.
+    df = pd.read_csv("./data/remesas_usa.csv", index_col="Estado")
+
+    # Seleccionamos las columnas del año que nos interesa.
+    columnas = [col for col in df.columns if "2023" in col]
+
+    # Filtramos el DataFrama con las columnas que nos interesan.
+    df = df[columnas]
+
+    # Sumamos todas las columnas.
+    df = df.sum(axis=1).to_frame("total")
+
+    # Quitamos los decimales de las cifras.
+    df["total"] = df["total"] * 1000000
+
+    # Asignamos las abreviaturas de cada estado.
+    df["abreviatura"] = df.index.map(ABREVIACIONES)
+
+    # Asignamos la población de cada estado.
+    df["poblacion"] = df.index.map(POBLACION)
+
+    # Calculamos las remesas per cápita.
+    df["capita"] = df["total"] / df["poblacion"]
+
+    # Quitamos la primera fila.
+    df = df.iloc[1:]
+
+    # Ordenamos por cifras totales.
+    df.sort_values("total", ascending=False, inplace=True)
+
+    # Mostramos el top 10.
+    print(df["total"].head(10).to_markdown(floatfmt=",.0f"))
+
+    # Ordenamos per cápita.
+    df.sort_values("capita", ascending=False, inplace=True)
+
+    # Mostramos el top 10.
+    print(df[["total", "capita"]].head(10).to_markdown(floatfmt=",.0f"))
+
+
 if __name__ == "__main__":
 
-    main()
+    plot_usa()
+    stats_usa()

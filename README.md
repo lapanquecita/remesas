@@ -8,7 +8,7 @@ Las remesas han ido en aumento, siendo los últimos meses máximos históricos. 
 
 ## Remesas por país de origen
 
-México recibe remesas de casi todos los países del mundo, sin embargo EE. UU. es el que más aporta, con el 96.03% del total de estas.
+México recibe remesas de casi todos los países del mundo, sin embargo EE. UU. es el que más aporta, con el 95.88% del total de estas.
 
 En la siguiente gráfica de barras se muestran los 30 países que más envían remesas hacia México. Se tuvo que usar una escala logarítmica para poder hacer una mejor comparación, dada la gran diferencia de cifras.
 
@@ -24,22 +24,22 @@ Por último, tenemos un mapa Choropleth con la distribución espacial. Se puede 
 
 ## Remesas provenientes de EE. UU.
 
-Como lo fue mencionado anteriormente, durante la primera mitad del 2023 EE. UU. aportó el 96.03% del total de las remesas hacia México.
+Como lo fue mencionado anteriormente, durante la primera mitad del 2023 EE. UU. aportó el 95.88% del total de las remesas hacia México.
 
 Los 10 estados de EE. UU. que aportaron más remesas fueron:
 
 | Estado     |         Total |
 |:-----------|--------------:|
-| California | 9,884,000,504 |
-| Texas      | 4,366,724,619 |
-| Minnesota  | 1,962,610,204 |
-| Arizona    | 1,057,911,811 |
-| Georgia    |   968,239,310 |
-| Illinois   |   869,591,832 |
-| Florida    |   668,745,790 |
-| Nueva York |   628,633,897 |
-| Colorado   |   590,558,795 |
-| Washington |   575,872,330 |
+| California | 15,474,748,224 |
+| Texas      |  6,875,342,549 |
+| Minnesota  |  2,488,315,490 |
+| Arizona    |  1,628,990,549 |
+| Georgia    |  1,515,909,994 |
+| Illinois   |  1,299,805,883 |
+| Florida    |  1,018,050,306 |
+| Nueva York |    981,018,053 |
+| Colorado   |    951,716,358 |
+| Washington |    902,820,311 |
 
 Aquí tenemos el problema que la mayoría de estos estados también son los que tienen la mayor población de mexaicanos. Debemos ajustar estas cifras para tener un mejor punto de comparación.
 
@@ -49,16 +49,16 @@ Ahora bien, aquí esta la tabla de los 10 estados que más enviaron remesas a M�
 
 | Estado           |         Total |  Per cápita |
 |:-----------------|--------------:|---------:|
-| Minnesota        | 1,962,610,204 |    9,814 |
-| Vermont          |    38,906,565 |    9,664 |
-| Dakota Del Norte |   113,982,003 |    5,413 |
-| Maine            |    42,111,175 |    5,154 |
-| Puerto Rico      |    31,113,334 |    5,133 |
-| Luisiana         |   249,192,082 |    3,623 |
-| Washington, D.C. |    30,712,093 |    2,681 |
-| Hawaii           |   122,466,877 |    2,333 |
-| Ohio             |   473,955,252 |    2,231 |
-| West Virginia    |    23,618,133 |    2,166 |
+| Vermont          |    60,496,783 |   15,027 |
+| Minnesota        | 2,488,315,490 |   12,443 |
+| Dakota Del Norte |   205,991,987 |    9,782 |
+| Maine            |    75,675,961 |    9,262 |
+| Puerto Rico      |    49,197,465 |    8,116 |
+| Luisiana         |   382,602,079 |    5,562 |
+| West Virginia    |    46,179,372 |    4,235 |
+| Washington, D.C. |    48,418,209 |    4,226 |
+| Hawaii           |   190,035,304 |    3,621 |
+| Ohio             |   755,823,138 |    3,558 |
 
 En el siguiente mapa Choropleth se puede observar la distribución completa. También se utilizó una escala logarítmica dada la diferencia entre los primeros valores.
 
