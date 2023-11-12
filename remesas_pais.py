@@ -229,6 +229,9 @@ CODIGOS_ISO3 = {
     "Zimbabwe": "ZWE"
 }
 
+# El mes en que actualizamos los datos.
+MES_FUENTE = "noviembre"
+
 
 def plot_top():
     """
@@ -236,7 +239,7 @@ def plot_top():
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if "2023" in col]
@@ -288,7 +291,7 @@ def plot_top():
     fig.update_xaxes(
         exponentformat="SI",
         type="log",
-        range=[4, np.log10(30000000000)],
+        range=[4, np.log10(df["total"].max() * 1.05)],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -324,7 +327,7 @@ def plot_top():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante la primera mitad del 2023",
+        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante enero-septiembre del 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -356,7 +359,7 @@ def plot_top():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)"
+                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
             ),
             dict(
                 x=0.55,
@@ -388,7 +391,7 @@ def plot_bottom():
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if "2023" in col]
@@ -434,6 +437,7 @@ def plot_bottom():
 
     fig.update_xaxes(
         ticks="outside",
+        range=[0, df["total"].max() * 1.01],
         separatethousands=True,
         ticklen=10,
         zeroline=False,
@@ -469,7 +473,7 @@ def plot_bottom():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante la primera mitad del 2023",
+        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante enero-septiembre del 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -501,7 +505,7 @@ def plot_bottom():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)"
+                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
             ),
             dict(
                 x=0.5,
@@ -533,13 +537,16 @@ def plot_map():
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if "2023" in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
+
+    # Descartamos la primera fila.
+    df = df.iloc[1:]
 
     # Sumamos todas las columnas.
     df = df.sum(axis=1).to_frame("total")
@@ -626,7 +633,7 @@ def plot_map():
                 y=1.045,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos totales por remesas hacia México por país de origen durante la primera mitad del 2023",
+                text="Ingresos totales por remesas hacia México por país de origen durante enero-septiembre del 2023",
                 font_size=140
             ),
             dict(
@@ -643,7 +650,7 @@ def plot_map():
                 y=-0.065,
                 xanchor="left",
                 yanchor="bottom",
-                text="Fuente: Banxico (agosto 2023)",
+                text=f"Fuente: Banxico ({MES_FUENTE} 2023)",
                 font_size=120
             ),
             dict(
@@ -651,7 +658,7 @@ def plot_map():
                 y=-0.065,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Ingreso total por remesas: ${df['total'][0]:,.0f} dólares",
+                text=f"Ingreso total por remesas: ${df['total'].sum():,.0f} dólares",
                 font_size=120
             ),
             dict(

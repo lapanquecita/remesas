@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 def plot_mensuales():
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./remesas_mensuales.csv",
+    df = pd.read_csv("./data/remesas_mensuales.csv",
                      parse_dates=["fecha"], index_col="fecha")
 
     # Calculamos el total de remesas por año para los últimos 10 años.
@@ -30,7 +30,8 @@ def plot_mensuales():
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (df["rolling"][-1] - df["rolling"][0]) / df["rolling"][0] * 100
+    cambio = (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / \
+        df["rolling"].iloc[0] * 100
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -41,7 +42,7 @@ def plot_mensuales():
             x=df.index,
             y=df["total"],
             name="Cifras absolutas",
-            marker_color="#0097a7",
+            marker_color="#04bfb3",
             opacity=1.0,
             marker_line_width=0,
         )
@@ -68,7 +69,7 @@ def plot_mensuales():
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.6,
+        gridwidth=0.35,
         mirror=True,
         nticks=50,
     )
@@ -83,7 +84,7 @@ def plot_mensuales():
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=True,
-        gridwidth=0.6,
+        gridwidth=0.35,
         showline=True,
         mirror=True,
         nticks=14,
@@ -146,7 +147,7 @@ def plot_mensuales():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (agosto 2023)"
+                text="Fuente: Banxico (noviembre 2023)"
             ),
             dict(
                 x=0.5,
