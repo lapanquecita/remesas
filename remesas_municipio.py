@@ -136,7 +136,7 @@ def plot_capita():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante enero-septiembre del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante enero-septiembre de 2023",
         paper_bgcolor="#16213E",
         annotations=[
             dict(
@@ -287,7 +287,7 @@ def plot_absolutos():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante enero-septiembre del 2023",
+        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante enero-septiembre de 2023",
         paper_bgcolor="#1e453e",
         annotations=[
             dict(

@@ -245,7 +245,7 @@ def plot_usa():
                 y=1.08,
                 xanchor="center",
                 yanchor="top",
-                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante enero-septiembre del 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
+                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante enero-septiembre de 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
                 font_size=120
             ),
             dict(

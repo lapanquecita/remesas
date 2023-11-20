@@ -291,7 +291,7 @@ def plot_top():
     fig.update_xaxes(
         exponentformat="SI",
         type="log",
-        range=[4, np.log10(df["total"].max() * 1.05)],
+        range=[5, np.log10(df["total"].max() * 1.05)],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -327,7 +327,7 @@ def plot_top():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante enero-septiembre del 2023",
+        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante enero-septiembre de 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -473,7 +473,7 @@ def plot_bottom():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante enero-septiembre del 2023",
+        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante enero-septiembre de 2023",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -633,7 +633,7 @@ def plot_map():
                 y=1.045,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos totales por remesas hacia México por país de origen durante enero-septiembre del 2023",
+                text="Ingresos totales por remesas hacia México por país de origen durante enero-septiembre de 2023",
                 font_size=140
             ),
             dict(

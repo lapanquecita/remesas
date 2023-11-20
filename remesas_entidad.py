@@ -159,7 +159,7 @@ def plot_mapa():
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos por remesas hacia México por entidad durante enero-septiembre del 2023",
+                text="Ingresos por remesas hacia México por entidad durante enero-septiembre de 2023",
                 font_size=28
             ),
             dict(
