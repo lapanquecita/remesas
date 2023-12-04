@@ -94,7 +94,6 @@ def plot_capita():
                 values=[
                     "<b>Pos.</b>",
                     f"<b>Municipio, Entidad</b>",
-                    # f"<b>Población 2020</b>",
                     f"<b>Remesas en dólares</b>",
                     "<b>Per cápita ↓</b>",
                 ],
@@ -108,7 +107,6 @@ def plot_capita():
                 values=[
                     df.index,
                     df["index"],
-                    # df["pop"],
                     df["total"],
                     df["capita"]
                 ],
@@ -245,7 +243,6 @@ def plot_absolutos():
                 values=[
                     "<b>Pos.</b>",
                     f"<b>Municipio, Entidad</b>",
-                    # f"<b>Población 2020</b>",
                     f"<b>Remesas en dólares ↓</b>",
                     "<b>Per cápita</b>",
                 ],
@@ -259,7 +256,6 @@ def plot_absolutos():
                 values=[
                     df.index,
                     df["index"],
-                    # df["pop"],
                     df["total"],
                     df["capita"]
                 ],

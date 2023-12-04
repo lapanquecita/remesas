@@ -18,6 +18,10 @@ import plotly.graph_objects as go
 import numpy as np
 
 
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "diciembre 2023"
+
+
 def plot_mensuales():
 
     # Cargamos el dataset de las remesas mensuales.
@@ -152,16 +156,16 @@ def plot_mensuales():
             ),
             dict(
                 x=0.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (noviembre 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})"
             ),
             dict(
                 x=0.5,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -170,7 +174,7 @@ def plot_mensuales():
             ),
             dict(
                 x=1.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
@@ -326,16 +330,16 @@ def plot_pesos():
             ),
             dict(
                 x=0.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (noviembre 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})"
             ),
             dict(
                 x=0.5,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -344,7 +348,7 @@ def plot_pesos():
             ),
             dict(
                 x=1.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
@@ -516,16 +520,16 @@ def plot_real():
             ),
             dict(
                 x=0.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (noviembre 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})"
             ),
             dict(
                 x=0.5,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -534,7 +538,7 @@ def plot_real():
             ),
             dict(
                 x=1.01,
-                y=-0.17,
+                y=-0.165,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
@@ -584,7 +588,7 @@ def plot_real_anual():
     df.index = df.index.year
 
     # Le daremos formato a las cifras para que sean más fáciles de interpretar.
-    df["texto"] = df["real"].apply(format_text)
+    df["texto"] = df["real"].apply(lambda x:f"{x/1000000:,.3f}")
 
     # Creamos la escala para el eje vertical.
     marcas = np.linspace(0, 1300000, 14)
@@ -619,7 +623,7 @@ def plot_real_anual():
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.35,
+        showgrid=False,
         mirror=True,
         nticks=50,
     )
@@ -628,6 +632,7 @@ def plot_real_anual():
         title="Billones de pesos a precios constantes de octubre de 2023",
         tickvals=marcas,
         ticktext=textos,
+        titlefont_size=20,
         tickfont_size=16,
         ticks="outside",
         ticklen=10,
@@ -684,7 +689,7 @@ def plot_real_anual():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (noviembre 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})"
             ),
             dict(
                 x=0.5,
@@ -709,13 +714,6 @@ def plot_real_anual():
 
     fig.write_image("./remesas_anuales_reales.png")
 
-
-def format_text(x):
-
-    if x >= 1000000:
-        return f"{x/1000000:,.2f}B"
-    else:
-        return f"{x/1000:,.0f}MM"
 
 
 if __name__ == "__main__":
