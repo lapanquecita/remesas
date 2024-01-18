@@ -190,7 +190,7 @@ def plot_mensuales():
 def plot_pesos():
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./data/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
     df = pd.read_csv("./data/remesas_mensuales.csv",
@@ -364,7 +364,7 @@ def plot_pesos():
 def plot_real():
 
     # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./data/IPC.csv", parse_dates=["Fecha"], index_col=0)
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
     ipc_referencia = ipc["IPC"].iloc[-1]
@@ -373,7 +373,7 @@ def plot_real():
     ipc["factor"] = ipc_referencia / ipc["IPC"]
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./data/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
     df = pd.read_csv("./data/remesas_mensuales.csv",
@@ -554,7 +554,7 @@ def plot_real():
 def plot_real_anual():
 
     # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./data/IPC.csv", parse_dates=["Fecha"], index_col=0)
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
     ipc_referencia = ipc["IPC"].iloc[-1]
@@ -563,7 +563,7 @@ def plot_real_anual():
     ipc["factor"] = ipc_referencia / ipc["IPC"]
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./data/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
     df = pd.read_csv("./data/remesas_mensuales.csv",

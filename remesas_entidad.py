@@ -21,35 +21,38 @@ PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
 
-def plot_mapa():
+def plot_mapa(año):
     """
     Esta función crea un mapa y unas tablas con la información de remesas per cápita.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa graficar.
+
     """
 
-    # Cargamos el archivo CSV con la población por municipio.
-    pop = pd.read_csv("./poblacion.csv")
+    # Cargamos el dataset de población total por entidad.
+    pop = pd.read_csv("./assets/poblacion_anual.csv", index_col=0)
 
-    # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
-    pop = pop.replace(
-        {"entidad": {
+    # Seleccionamos la población del año que nos interesa.
+    pop = pop[str(año)]
+
+    # Renombramos algunos estados a sus nombres más comunes.
+    pop = pop.rename(
+        {
             "Coahuila de Zaragoza": "Coahuila",
             "México": "Estado de México",
             "Michoacán de Ocampo": "Michoacán",
-            "Veracruz de Ignacio de la Llave": "Veracruz"}
-         }
+            "Veracruz de Ignacio de la Llave": "Veracruz"
+        }
     )
-
-    # Agrupamos el DataFrame por entidad.
-    pop = pop.groupby("entidad").sum(numeric_only=True)
-
-    # Solo necesitamos la columna de población.
-    pop = pop["poblacion"]
 
     # Cargamos el dataset de remesas por entidad.
     df = pd.read_csv("./data/remesas_entidad.csv", index_col="Entidad")
 
     # Seleccionamos las columnas del año que nos interesa.
-    cols = [col for col in df.columns if "2023" in col]
+    cols = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[cols]
@@ -84,7 +87,7 @@ def plot_mapa():
         etiquetas.append("{:,.0f}".format(item))
 
     # Cargamos el archivo GeoJSON de México.
-    geojson = json.loads(open("./mexico.json",
+    geojson = json.loads(open("./assets/mexico.json",
                               "r", encoding="utf-8").read())
     
     # Iteramos sobre cada entidad dentro de nuestro archivo GeoJSON de México.
@@ -111,19 +114,20 @@ def plot_mapa():
             marker_line_width=1.0,
             zmin=min_val,
             zmax=max_val,
-            colorbar={
-                "x": 0.03,
-                "y": 0.5,
-                "ypad": 50,
-                "ticks": "outside",
-                "outlinewidth": 1.5,
-                "outlinecolor": "#FFFFFF",
-                "tickvals": marcas,
-                "ticktext": etiquetas,
-                "tickwidth": 2,
-                "tickcolor": "#FFFFFF",
-                "ticklen": 10,
-                "tickfont_size": 20},
+            colorbar=dict(
+                x=0.03,
+                y=0.5,
+                ypad=50,
+                ticks="outside",
+                outlinewidth=1.5,
+                outlinecolor="#FFFFFF",
+                tickvals=marcas,
+                ticktext=etiquetas,
+                tickwidth=2,
+                tickcolor="#FFFFFF",
+                ticklen=10,
+                tickfont_size=20
+            ),
         )
     )
 
@@ -159,7 +163,7 @@ def plot_mapa():
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos por remesas hacia México por entidad durante enero-septiembre de 2023",
+                text=f"Ingresos por remesas hacia México por entidad durante el {año}",
                 font_size=28
             ),
             dict(
@@ -312,4 +316,4 @@ def plot_mapa():
 
 if __name__ == "__main__":
 
-    plot_mapa()
+    plot_mapa(2023)

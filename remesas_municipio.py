@@ -21,7 +21,7 @@ def plot_capita():
     """
 
     # Cargamos el archivo CSV con la población por municipio.
-    pop = pd.read_csv("./poblacion.csv")
+    pop = pd.read_csv("./assets/poblacion2020.csv")
 
     # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
     pop = pop.replace(
@@ -170,7 +170,7 @@ def plot_absolutos():
     """
 
     # Cargamos el archivo CSV con la población por municipio.
-    pop = pd.read_csv("./poblacion.csv")
+    pop = pd.read_csv("./assets/poblacion2020.csv")
 
     # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
     pop = pop.replace(
