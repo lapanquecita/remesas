@@ -12,21 +12,23 @@ https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?acci
 
 """
 
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-import numpy as np
-
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2023"
+FECHA_FUENTE = "febrero 2024"
+
+# Mes y año del IPC de referencia.
+FECHA_INFLACION = "diciembre de 2023"
 
 
 def plot_mensuales():
-
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv",
-                     parse_dates=["fecha"], index_col="fecha")
+    df = pd.read_csv(
+        "./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col="fecha"
+    )
 
     # Calculamos el total de remesas por año para los últimos 10 años.
     por_año = df.resample("Y").sum().tail(10)
@@ -44,8 +46,9 @@ def plot_mensuales():
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / \
-        df["rolling"].iloc[0] * 100
+    cambio = (
+        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -139,7 +142,7 @@ def plot_mensuales():
                 borderpad=7,
                 bgcolor="#111111",
                 align="left",
-                text=tabla
+                text=tabla,
             ),
             dict(
                 x=0.5,
@@ -152,49 +155,47 @@ def plot_mensuales():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>"
+                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
             ),
             dict(
                 x=0.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({FECHA_FUENTE})"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.5,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Mes y año de registro"
+                text="Mes y año de registro",
             ),
             dict(
                 x=1.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_mensuales.png")
 
 
 def plot_pesos():
-
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv",
-                     parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
 
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["Cambio"]
@@ -218,8 +219,9 @@ def plot_pesos():
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / \
-        df["rolling"].iloc[0] * 100
+    cambio = (
+        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -313,7 +315,7 @@ def plot_pesos():
                 borderpad=7,
                 bgcolor="#111111",
                 align="left",
-                text=tabla
+                text=tabla,
             ),
             dict(
                 x=0.5,
@@ -326,43 +328,42 @@ def plot_pesos():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>"
+                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
             ),
             dict(
                 x=0.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({FECHA_FUENTE})"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.5,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Mes y año de registro"
+                text="Mes y año de registro",
             ),
             dict(
                 x=1.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_mensuales_pesos.png")
 
 
 def plot_real():
-
     # Cargamos el dataset del IPC.
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
@@ -376,8 +377,7 @@ def plot_real():
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv",
-                     parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
 
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["Cambio"]
@@ -407,8 +407,9 @@ def plot_real():
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / \
-        df["rolling"].iloc[0] * 100
+    cambio = (
+        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -452,7 +453,7 @@ def plot_real():
     )
 
     fig.update_yaxes(
-        title="Millones de pesos a precios constantes de octubre de 2023",
+        title=f"Millones de pesos a precios constantes de {FECHA_INFLACION}",
         titlefont_size=20,
         tickfont_size=16,
         separatethousands=True,
@@ -503,7 +504,7 @@ def plot_real():
                 borderpad=7,
                 bgcolor="#111111",
                 align="left",
-                text=tabla
+                text=tabla,
             ),
             dict(
                 x=0.5,
@@ -516,43 +517,42 @@ def plot_real():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>"
+                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
             ),
             dict(
                 x=0.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({FECHA_FUENTE})"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.5,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Mes y año de registro"
+                text="Mes y año de registro",
             ),
             dict(
                 x=1.01,
-                y=-0.165,
+                y=-0.162,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_mensuales_reales.png")
 
 
 def plot_real_anual():
-
     # Cargamos el dataset del IPC.
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
@@ -566,8 +566,7 @@ def plot_real_anual():
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv",
-                     parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
 
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["Cambio"]
@@ -588,7 +587,7 @@ def plot_real_anual():
     df.index = df.index.year
 
     # Le daremos formato a las cifras para que sean más fáciles de interpretar.
-    df["texto"] = df["real"].apply(lambda x:f"{x/1000000:,.3f}")
+    df["texto"] = df["real"].apply(lambda x: f"{x/1000000:,.3f}")
 
     # Creamos la escala para el eje vertical.
     marcas = np.linspace(0, 1300000, 14)
@@ -629,7 +628,7 @@ def plot_real_anual():
     )
 
     fig.update_yaxes(
-        title="Billones de pesos a precios constantes de octubre de 2023",
+        title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
         tickvals=marcas,
         ticktext=textos,
         titlefont_size=20,
@@ -680,7 +679,7 @@ def plot_real_anual():
                 borderpad=7,
                 bgcolor="#111111",
                 align="left",
-                text="<b>Metodología:</b><br>Se convirtieron los dólares a pesos utilizando<br>el tipo de cambio promedio mensual, se ajustó<br>por inflación en octubre de 2023 y se sumaron<br>los valores para obtener los totales anuales."
+                text=f"<b>Metodología:</b><br>Se convirtieron los dólares a pesos utilizando<br>el tipo de cambio de cada mes, se ajustó por<br>inflación a valores de {FECHA_INFLACION} y se<br>agruparon los resultados de forma anual.",
             ),
             dict(
                 x=0.01,
@@ -689,7 +688,7 @@ def plot_real_anual():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({FECHA_FUENTE})"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.5,
@@ -698,7 +697,7 @@ def plot_real_anual():
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Año de registro"
+                text="Año de registro",
             ),
             dict(
                 x=1.01,
@@ -707,17 +706,15 @@ def plot_real_anual():
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_anuales_reales.png")
 
 
-
 if __name__ == "__main__":
-
     plot_mensuales()
     plot_pesos()
     plot_real()
