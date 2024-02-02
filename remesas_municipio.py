@@ -512,7 +512,7 @@ def plot_tendencias():
         margin_l=110,
         margin_r=40,
         margin_b=100,
-        title_text=f"Los 15 municipios de México con mayor crecimiento en ingresos por remesas {primer_año} vs. {ultimo_año}",
+        title_text=f"Los 15 municipios de México con mayor crecimiento en ingresos por remesas ({primer_año} vs. {ultimo_año})",
         title_x=0.5,
         title_y=0.985,
         title_font_size=26,
@@ -581,7 +581,7 @@ def plot_tendencias():
         yanchor="top",
         yref="paper",
         font_size=22,
-        text=f"(sólo se tomaron en cuenta los municipios con al menos 100 mdd por ingresos de remesas durante el {ultimo_año})",
+        text=f"(solo se tomaron en cuenta los municipios con al menos 100 mdd por ingresos de remesas durante el {ultimo_año})",
     )
 
     fig.add_annotation(
