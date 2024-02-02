@@ -55,7 +55,7 @@ def plot_mapa(año):
     )
 
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./data/remesas_entidad.csv", index_col="Entidad")
+    df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
 
     # Seleccionamos las columnas del año que nos interesa.
     cols = [col for col in df.columns if str(año) in col]

@@ -68,7 +68,7 @@ ABREVIACIONES = {
     "Washington, D.C.": "DC",
     "West Virginia": "WV",
     "Wisconsin": "WI",
-    "Wyoming": "WY"
+    "Wyoming": "WY",
 }
 
 # Población estimada de mexicanos viviendo en cada estado de EE. UU.
@@ -129,18 +129,30 @@ POBLACION = {
     "Puerto Rico": 6062,
 }
 
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "febrero 2024"
 
-def plot_usa():
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre de 2023"
+
+
+def plot_usa(año):
     """
     Crea un mapa Choropleth de EE. UU. con los egresos por remesas per cápita
     de población mexicana.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV con las remesas provenientes de EE. UU.
-    df = pd.read_csv("./data/remesas_usa.csv", index_col="Estado")
+    df = pd.read_csv("./data/remesas_usa.csv", index_col=0)
 
     # Seleccionamos las columnas del año que nos interesa.
-    columnas = [col for col in df.columns if "2023" in col]
+    columnas = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
@@ -194,21 +206,21 @@ def plot_usa():
             marker_line_width=2,
             zmax=max_value,
             zmin=min_value,
-            colorbar={
-                "x": 0.03,
-                "y": 0.5,
-                "thickness": 150,
-                "ypad": 400,
-                "ticks": "outside",
-                "outlinewidth": 5,
-                "outlinecolor": "#FFFFFF",
-                "tickwidth": 5,
-                "tickcolor": "#FFFFFF",
-                "ticklen": 30,
-                "tickfont_size": 80,
-                "tickvals": marcas,
-                "ticktext": textos,
-            },
+            colorbar=dict(
+                x=0.03,
+                y=0.5,
+                thickness=150,
+                ypad=400,
+                ticks="outside",
+                outlinewidth=5,
+                outlinecolor="#FFFFFF",
+                tickwidth=5,
+                tickcolor="#FFFFFF",
+                ticklen=30,
+                tickfont_size=80,
+                tickvals=marcas,
+                ticktext=textos,
+            ),
         )
     )
 
@@ -230,7 +242,7 @@ def plot_usa():
         legend_font_size=100,
         legend_bordercolor="#FFFFFF",
         legend_borderwidth=2,
-        font_family="Quicksand",
+        font_family="Lato",
         font_color="#FFFFFF",
         margin_t=400,
         margin_r=300,
@@ -245,8 +257,8 @@ def plot_usa():
                 y=1.08,
                 xanchor="center",
                 yanchor="top",
-                text="Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante enero-septiembre de 2023<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
-                font_size=120
+                text=f"Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante {PERIODO_TIEMPO}<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
+                font_size=110,
             ),
             dict(
                 x=0.02,
@@ -255,23 +267,23 @@ def plot_usa():
                 xanchor="left",
                 yanchor="middle",
                 text="Dólares estadounidenses`por cada mexicano (escala logarítmica)",
-                font_size=90
+                font_size=90,
             ),
             dict(
                 x=0.01,
                 y=-0.08,
                 xanchor="left",
                 yanchor="bottom",
-                text="Fuente: Banxico (noviembre 2023)",
-                font_size=100
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+                font_size=100,
             ),
             dict(
                 x=0.5,
                 y=-0.08,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Nacional: ${total_capita:,.0f} dólares por cada mexicano en EE. UU.",
-                font_size=100
+                text=f"Nacional: {total_capita:,.0f} dólares por cada mexicano en EE. UU.",
+                font_size=100,
             ),
             dict(
                 x=1.0,
@@ -279,21 +291,21 @@ def plot_usa():
                 xanchor="right",
                 yanchor="bottom",
                 text="🧁 @lapanquecita",
-                font_size=100
+                font_size=100,
             ),
             dict(
                 x=1.0,
                 y=0.3,
                 xanchor="right",
                 yanchor="top",
-                text=f"Remesas totales durante la primera<br>mitad del 2023: <b>${total_remesas:,.0f}</b> dólares<br>Población estimada de mexicanos<br>en EE. UU. (2021): <b>{total_poblacion:,.0f}</b>",
+                text=f"Remesas totales: <b>{total_remesas:,.0f}</b> dólares<br>Población estimada de mexicanos<br>en EE. UU. (2021): <b>{total_poblacion:,.0f}</b>",
                 font_size=70,
                 align="left",
                 bordercolor="#FFFFFF",
                 borderwidth=5,
                 borderpad=30,
-            )
-        ]
+            ),
+        ],
     )
 
     fig.write_image("./mapa_usa.png")
@@ -345,6 +357,5 @@ def stats_usa():
 
 
 if __name__ == "__main__":
-
-    plot_usa()
+    plot_usa(2023)
     stats_usa()

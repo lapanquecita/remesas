@@ -249,7 +249,7 @@ def plot_top(año):
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col=0)
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if str(año) in col]
@@ -406,7 +406,7 @@ def plot_bottom(año):
 
     """
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col=0)
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if str(año) in col]
@@ -559,7 +559,7 @@ def plot_map(año):
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
+    df = pd.read_csv("./data/remesas_pais.csv", index_col=0)
 
     # Seleccionamos las columnas del año que nos interesa.
     columnas = [col for col in df.columns if str(año) in col]
@@ -640,7 +640,7 @@ def plot_map(año):
         legend_font_size=100,
         legend_bordercolor="#FFFFFF",
         legend_borderwidth=2,
-        font_family="Quicksand",
+        font_family="Lato",
         font_color="#FFFFFF",
         margin_t=240,
         margin_r=100,
