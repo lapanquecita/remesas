@@ -20,6 +20,12 @@ PLOT_COLOR = "#18122B"
 PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "febrero 2024"
+
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre de 2023"
+
 
 def plot_mapa(año):
     """
@@ -44,7 +50,7 @@ def plot_mapa(año):
             "Coahuila de Zaragoza": "Coahuila",
             "México": "Estado de México",
             "Michoacán de Ocampo": "Michoacán",
-            "Veracruz de Ignacio de la Llave": "Veracruz"
+            "Veracruz de Ignacio de la Llave": "Veracruz",
         }
     )
 
@@ -61,7 +67,7 @@ def plot_mapa(año):
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares p. c."
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita."
 
     # Asignamos la población a cada entidad.
     df["pop"] = df.index.map(pop)
@@ -87,12 +93,10 @@ def plot_mapa(año):
         etiquetas.append("{:,.0f}".format(item))
 
     # Cargamos el archivo GeoJSON de México.
-    geojson = json.loads(open("./assets/mexico.json",
-                              "r", encoding="utf-8").read())
-    
+    geojson = json.loads(open("./assets/mexico.json", "r", encoding="utf-8").read())
+
     # Iteramos sobre cada entidad dentro de nuestro archivo GeoJSON de México.
     for item in geojson["features"]:
-
         geo = item["properties"]["NOM_ENT"]
 
         # Alimentamos las listas creadas anteriormente con la ubicación y su valor per capita.
@@ -126,7 +130,7 @@ def plot_mapa(año):
                 tickwidth=2,
                 tickcolor="#FFFFFF",
                 ticklen=10,
-                tickfont_size=20
+                tickfont_size=20,
             ),
         )
     )
@@ -141,11 +145,11 @@ def plot_mapa(año):
         framewidth=2,
         showlakes=False,
         coastlinewidth=0,
-        landcolor="#1C0A00"
+        landcolor="#1C0A00",
     )
 
     fig.update_layout(
-        legend_x=.01,
+        legend_x=0.01,
         legend_y=0.07,
         legend_bgcolor="#111111",
         legend_font_size=20,
@@ -163,16 +167,16 @@ def plot_mapa(año):
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text=f"Ingresos por remesas hacia México por entidad durante el {año}",
-                font_size=28
+                text=f"Ingresos por remesas hacia México por entidad durante {PERIODO_TIEMPO}",
+                font_size=28,
             ),
             dict(
-                x=0.58,
+                x=0.57,
                 y=-0.04,
                 xanchor="center",
                 yanchor="top",
                 text=subtitulo,
-                font_size=26
+                font_size=26,
             ),
             dict(
                 x=0.0275,
@@ -181,15 +185,15 @@ def plot_mapa(año):
                 xanchor="center",
                 yanchor="middle",
                 text="Dólares per cápita",
-                font_size=18
+                font_size=18,
             ),
             dict(
                 x=0.01,
                 y=-0.04,
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Banxico (noviembre 2023)",
-                font_size=24
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+                font_size=24,
             ),
             dict(
                 x=1.01,
@@ -197,19 +201,19 @@ def plot_mapa(año):
                 xanchor="right",
                 yanchor="top",
                 text="🧁 @lapanquecita",
-                font_size=24
-            )
-        ]
+                font_size=24,
+            ),
+        ],
     )
 
     fig.write_image("./0.png")
 
     # Vamos a crear dos tablas, cada una con la información de 16 entidades.
     fig = make_subplots(
-        rows=1, cols=2,
+        rows=1,
+        cols=2,
         horizontal_spacing=0.03,
-        specs=[
-              [{"type": "table"}, {"type": "table"}]]
+        specs=[[{"type": "table"}, {"type": "table"}]],
     )
 
     fig.add_trace(
@@ -218,14 +222,14 @@ def plot_mapa(año):
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    f"<b>Total en dólares</b>",
-                    F"<b>Per cápita ↓</b>",
+                    "<b>Total en dólares</b>",
+                    "<b>Per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
                 align="center",
                 height=29,
-                line_width=0.8
+                line_width=0.8,
             ),
             cells=dict(
                 values=[
@@ -238,9 +242,11 @@ def plot_mapa(año):
                 prefix=["", "$", "$"],
                 format=["", ",.0f", ",.2f"],
                 line_width=0.8,
-                align=["left", "left", "center"]
-            )
-        ), col=1, row=1
+                align=["left", "left", "center"],
+            ),
+        ),
+        col=1,
+        row=1,
     )
 
     fig.add_trace(
@@ -249,14 +255,14 @@ def plot_mapa(año):
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    f"<b>Total en dólares</b>",
-                    F"<b>Per cápita ↓</b>",
+                    "<b>Total en dólares</b>",
+                    "<b>Per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
                 align="center",
                 height=29,
-                line_width=0.8
+                line_width=0.8,
             ),
             cells=dict(
                 values=[
@@ -269,9 +275,11 @@ def plot_mapa(año):
                 prefix=["", "$", "$"],
                 format=["", ",.0f", ",.2f"],
                 line_width=0.8,
-                align=["left", "left", "center"]
-            )
-        ), col=2, row=1
+                align=["left", "left", "center"],
+            ),
+        ),
+        col=2,
+        row=1,
     )
 
     fig.update_layout(
@@ -315,5 +323,4 @@ def plot_mapa(año):
 
 
 if __name__ == "__main__":
-
     plot_mapa(2023)

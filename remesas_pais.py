@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
+
 # Códigos usados para enlazar los países con el mapa.
 CODIGOS_ISO3 = {
     "Afganistán": "AFG",
@@ -226,23 +227,32 @@ CODIGOS_ISO3 = {
     "Vietnam": "VNM",
     "Yemen": "YEM",
     "Zambia": "ZMB",
-    "Zimbabwe": "ZWE"
+    "Zimbabwe": "ZWE",
 }
 
-# El mes en que actualizamos los datos.
-MES_FUENTE = "noviembre"
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "febrero 2024"
+
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre de 2023"
 
 
-def plot_top():
+def plot_top(año):
     """
     Esta función crea una gráfica de los países con mayor aportación a las remesas.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV de remesas por país.
     df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
-    columnas = [col for col in df.columns if "2023" in col]
+    columnas = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
@@ -260,8 +270,7 @@ def plot_top():
     df["perc"] = df["total"] / df["total"].sum() * 100
 
     # Creamos el texto que irá en cada barra.
-    df["text"] = df.apply(
-        lambda x: f" ${x['total']:,.0f} ({x['perc']:,.4f}%) ", axis=1)
+    df["text"] = df.apply(lambda x: f" ${x['total']:,.0f} ({x['perc']:,.4f}%) ", axis=1)
 
     # ordenamos el DAtaframe de mayor a menor cantidad de remesas.
     df = df.sort_values("total", ascending=False)
@@ -281,10 +290,11 @@ def plot_top():
             x=df["total"],
             text=df["text"],
             textfont_color="#FFFFFF",
-            textposition=["inside"] + ["outside" for _ in range(len(df)-1)],
+            textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
             orientation="h",
             marker_color="#0277bd",
-        ))
+        )
+    )
 
     # Data la grana diferencia entre valores, usaremos una escala logarítmica.
     # En vez de usar billón para mil millones, usaremos giga.
@@ -317,7 +327,7 @@ def plot_top():
         showgrid=False,
         gridwidth=0.5,
         showline=True,
-        mirror=True
+        mirror=True,
     )
 
     fig.update_layout(
@@ -327,7 +337,7 @@ def plot_top():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante enero-septiembre de 2023",
+        title_text=f"Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO}",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -350,7 +360,7 @@ def plot_top():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text="<b>Nota:</b> Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores."
+                text="<b>Nota:</b> Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores.",
             ),
             dict(
                 x=0.01,
@@ -359,7 +369,7 @@ def plot_top():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.55,
@@ -368,7 +378,7 @@ def plot_top():
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Dólares estadounidenses (proporción respecto al total de remesas)"
+                text="Dólares estadounidenses (proporción respecto al total de remesas)",
             ),
             dict(
                 x=1.01,
@@ -377,24 +387,29 @@ def plot_top():
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_pais_top.png")
 
 
-def plot_bottom():
+def plot_bottom(año):
     """
     Esta función crea una gráfica de los países con menor aportación a las remesas.
-    """
 
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
+    """
     # Cargamos el archivo CSV de remesas por país.
     df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
-    columnas = [col for col in df.columns if "2023" in col]
+    columnas = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
@@ -416,7 +431,7 @@ def plot_bottom():
     df = df[df["total"] != 0]
 
     # Algunos nombres son muy largos, los partiremos en 2 líneas.
-    df.index = df.index.str.wrap(15).str.replace("\n", "<br>")
+    df.index = df.index.str.wrap(18).str.replace("\n", "<br>")
 
     # Seleccionamos las primeras 30 filas.
     df = df[:30]
@@ -429,11 +444,12 @@ def plot_bottom():
             x=df["total"],
             text=df["text"],
             textfont_color="#FFFFFF",
-            textposition=["outside" for _ in range(len(df)-1)] + ["inside"],
+            textposition=["outside" for _ in range(len(df) - 1)] + ["inside"],
             orientation="h",
             marker_color="#e65100",
             marker_line_width=0,
-        ))
+        )
+    )
 
     fig.update_xaxes(
         ticks="outside",
@@ -463,7 +479,7 @@ def plot_bottom():
         gridwidth=0.5,
         showline=True,
         nticks=40,
-        mirror=True
+        mirror=True,
     )
 
     fig.update_layout(
@@ -473,7 +489,7 @@ def plot_bottom():
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text="Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante enero-septiembre de 2023",
+        title_text=f"Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO}",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -496,7 +512,7 @@ def plot_bottom():
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text="<b>Nota:</b> No se tomaron en cuenta los países<br>que reportaron remesas en cero."
+                text="<b>Nota:</b> No se tomaron en cuenta los países<br>que reportaron remesas en cero.",
             ),
             dict(
                 x=0.01,
@@ -505,7 +521,7 @@ def plot_bottom():
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.5,
@@ -514,7 +530,7 @@ def plot_bottom():
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Dólares estadounidenses"
+                text="Dólares estadounidenses",
             ),
             dict(
                 x=1.01,
@@ -523,24 +539,30 @@ def plot_bottom():
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
+                text="🧁 @lapanquecita",
             ),
-        ]
+        ],
     )
 
     fig.write_image("./remesas_pais_bottom.png")
 
 
-def plot_map():
+def plot_map(año):
     """
     Esta función crea un mapa de las aportaciones a las remesas por país de origen.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV de remesas por país.
     df = pd.read_csv("./data/remesas_pais.csv", index_col="País")
 
     # Seleccionamos las columnas del año que nos interesa.
-    columnas = [col for col in df.columns if "2023" in col]
+    columnas = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
@@ -584,21 +606,21 @@ def plot_map():
             marker_line_width=2,
             zmax=max_value,
             zmin=min_value,
-            colorbar={
-                "x": 0.03,
-                "y": 0.42,
-                "thickness": 150,
-                "ypad": 840,
-                "ticks": "outside",
-                "outlinewidth": 5,
-                "outlinecolor": "#FFFFFF",
-                "tickwidth": 5,
-                "tickcolor": "#FFFFFF",
-                "ticklen": 30,
-                "tickfont_size": 80,
-                "tickvals": marcas,
-                "ticktext": textos,
-            },
+            colorbar=dict(
+                x=0.03,
+                y=0.42,
+                thickness=150,
+                ypad=840,
+                ticks="outside",
+                outlinewidth=5,
+                outlinecolor="#FFFFFF",
+                tickwidth=5,
+                tickcolor="#FFFFFF",
+                ticklen=30,
+                tickfont_size=80,
+                tickvals=marcas,
+                ticktext=textos,
+            ),
         )
     )
 
@@ -610,7 +632,7 @@ def plot_map():
         framewidth=5,
         showlakes=False,
         coastlinewidth=0,
-        landcolor="#1C0A00"
+        landcolor="#1C0A00",
     )
 
     fig.update_layout(
@@ -633,8 +655,8 @@ def plot_map():
                 y=1.045,
                 xanchor="center",
                 yanchor="top",
-                text="Ingresos totales por remesas hacia México por país de origen durante enero-septiembre de 2023",
-                font_size=140
+                text=f"Ingresos totales por remesas hacia México por país de origen durante {PERIODO_TIEMPO}",
+                font_size=140,
             ),
             dict(
                 x=0.02,
@@ -643,23 +665,23 @@ def plot_map():
                 xanchor="left",
                 yanchor="middle",
                 text="Dólares estadounidenses (escala logarítmica)",
-                font_size=90
+                font_size=90,
             ),
             dict(
                 x=0.01,
                 y=-0.065,
                 xanchor="left",
                 yanchor="bottom",
-                text=f"Fuente: Banxico ({MES_FUENTE} 2023)",
-                font_size=120
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+                font_size=120,
             ),
             dict(
                 x=0.5,
                 y=-0.065,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Ingreso total por remesas: ${df['total'].sum():,.0f} dólares",
-                font_size=120
+                text=f"Ingreso total por remesas: {df['total'].sum():,.0f} dólares",
+                font_size=120,
             ),
             dict(
                 x=1.0,
@@ -667,16 +689,15 @@ def plot_map():
                 xanchor="right",
                 yanchor="bottom",
                 text="🧁 @lapanquecita",
-                font_size=120
-            )
-        ]
+                font_size=120,
+            ),
+        ],
     )
 
     fig.write_image("./mapa_paises.png")
 
 
 if __name__ == "__main__":
-
-    plot_top()
-    plot_bottom()
-    plot_map()
+    plot_top(2023)
+    plot_bottom(2023)
+    plot_map(2023)

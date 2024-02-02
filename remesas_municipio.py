@@ -11,13 +11,22 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-# El mes en que actualizamos los datos.
-MES_FUENTE = "noviembre"
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "febrero 2024"
+
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre de 2023"
 
 
-def plot_capita():
+def plot_capita(año):
     """
     Esta función crea una tabla con los municiios que reciben mas remesas per cápita.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV con la población por municipio.
@@ -25,11 +34,13 @@ def plot_capita():
 
     # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
     pop = pop.replace(
-        {"entidad": {
-            "Coahuila de Zaragoza": "Coahuila",
-            "Michoacán de Ocampo": "Michoacán",
-            "Veracruz de Ignacio de la Llave": "Veracruz"}
-         }
+        {
+            "entidad": {
+                "Coahuila de Zaragoza": "Coahuila",
+                "Michoacán de Ocampo": "Michoacán",
+                "Veracruz de Ignacio de la Llave": "Veracruz",
+            }
+        }
     )
 
     # Juntamos el nombre de la entidad y municipio para crear nuestro índice.
@@ -51,7 +62,7 @@ def plot_capita():
     df = df[df["Municipio"].str.contains("⚬")]
 
     # Seleccionamos las columnas del año que nos interesa.
-    cols = [col for col in df.columns if "2023" in col]
+    cols = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[cols]
@@ -60,7 +71,7 @@ def plot_capita():
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares p. c."
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
 
     # Asignamos la población a cada municipio.
     df["pop"] = df.index.map(pop)
@@ -82,7 +93,13 @@ def plot_capita():
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
     df.reset_index(inplace=True)
-    df.index = df.index + 1
+    df.index += 1
+
+    # Acortamos el nombre del municipio más largo de México.
+    df["index"] = df["index"].replace(
+        "Dolores Hidalgo Cuna de la Independencia Nal., Guanajuato",
+        "Dolores Hidalgo, Guanajuato",
+    )
 
     fig = go.Figure()
 
@@ -93,30 +110,25 @@ def plot_capita():
             header=dict(
                 values=[
                     "<b>Pos.</b>",
-                    f"<b>Municipio, Entidad</b>",
-                    f"<b>Remesas en dólares</b>",
+                    "<b>Municipio, Entidad</b>",
+                    "<b>Remesas en dólares</b>",
                     "<b>Per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 line_width=0.75,
                 fill_color="#E94560",
                 align="center",
-                height=28
+                height=28,
             ),
             cells=dict(
-                values=[
-                    df.index,
-                    df["index"],
-                    df["total"],
-                    df["capita"]
-                ],
+                values=[df.index, df["index"], df["total"], df["capita"]],
                 line_width=0.75,
                 fill_color="#1A1A2E",
                 height=28,
                 format=["", "", ",.0f", ",.2f"],
                 prefix=["", "", "$", "$"],
-                align=["center", "left", "left", "center", "center"]
-            )
+                align=["center", "left", "left", "center", "center"],
+            ),
         )
     )
 
@@ -134,7 +146,7 @@ def plot_capita():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante enero-septiembre de 2023",
+        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO}",
         paper_bgcolor="#16213E",
         annotations=[
             dict(
@@ -142,31 +154,27 @@ def plot_capita():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
+            dict(x=0.58, y=0.015, xanchor="center", yanchor="top", text=subtitulo),
             dict(
-                x=0.58,
-                y=0.015,
-                xanchor="center",
-                yanchor="top",
-                text=subtitulo
+                x=1.01, y=0.015, xanchor="right", yanchor="top", text="🧁 @lapanquecita"
             ),
-            dict(
-                x=1.01,
-                y=0.015,
-                xanchor="right",
-                yanchor="top",
-                text="🧁 @lapanquecita"
-            )
-        ]
+        ],
     )
 
     fig.write_image("./tabla_capita.png")
 
 
-def plot_absolutos():
+def plot_absolutos(año):
     """
     Esta función crea una tabla con los municiios que reciben mas remesas totales.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV con la población por municipio.
@@ -174,11 +182,13 @@ def plot_absolutos():
 
     # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
     pop = pop.replace(
-        {"entidad": {
-            "Coahuila de Zaragoza": "Coahuila",
-            "Michoacán de Ocampo": "Michoacán",
-            "Veracruz de Ignacio de la Llave": "Veracruz"}
-         }
+        {
+            "entidad": {
+                "Coahuila de Zaragoza": "Coahuila",
+                "Michoacán de Ocampo": "Michoacán",
+                "Veracruz de Ignacio de la Llave": "Veracruz",
+            }
+        }
     )
 
     # Juntamos el nombre de la entidad y municipio para crear nuestro índice.
@@ -200,7 +210,7 @@ def plot_absolutos():
     df = df[df["Municipio"].str.contains("⚬")]
 
     # Seleccionamos las columnas del año que nos interesa.
-    cols = [col for col in df.columns if "2023" in col]
+    cols = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[cols]
@@ -231,7 +241,13 @@ def plot_absolutos():
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
     df.reset_index(inplace=True)
-    df.index = df.index + 1
+    df.index += 1
+
+    # Acortamos el nombre del municipio más largo de México.
+    df["index"] = df["index"].replace(
+        "Dolores Hidalgo Cuna de la Independencia Nal., Guanajuato",
+        "Dolores Hidalgo, Guanajuato",
+    )
 
     fig = go.Figure()
 
@@ -242,30 +258,25 @@ def plot_absolutos():
             header=dict(
                 values=[
                     "<b>Pos.</b>",
-                    f"<b>Municipio, Entidad</b>",
-                    f"<b>Remesas en dólares ↓</b>",
+                    "<b>Municipio, Entidad</b>",
+                    "<b>Remesas en dólares ↓</b>",
                     "<b>Per cápita</b>",
                 ],
                 font_color="#FFFFFF",
                 line_width=0.75,
                 fill_color="#f4511e",
                 align="center",
-                height=28
+                height=28,
             ),
             cells=dict(
-                values=[
-                    df.index,
-                    df["index"],
-                    df["total"],
-                    df["capita"]
-                ],
+                values=[df.index, df["index"], df["total"], df["capita"]],
                 line_width=0.75,
                 fill_color="#182c25",
                 height=28,
                 format=["", "", ",.0f", ",.2f"],
                 prefix=["", "", "$", "$"],
-                align=["center", "left", "left", "center", "center"]
-            )
+                align=["center", "left", "left", "center", "center"],
+            ),
         )
     )
 
@@ -283,7 +294,7 @@ def plot_absolutos():
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text="Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante enero-septiembre de 2023",
+        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante {PERIODO_TIEMPO}",
         paper_bgcolor="#1e453e",
         annotations=[
             dict(
@@ -291,7 +302,7 @@ def plot_absolutos():
                 y=0.015,
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.58,
@@ -301,13 +312,9 @@ def plot_absolutos():
                 text=subtitulo,
             ),
             dict(
-                x=1.01,
-                y=0.015,
-                xanchor="right",
-                yanchor="top",
-                text="🧁 @lapanquecita"
-            )
-        ]
+                x=1.01, y=0.015, xanchor="right", yanchor="top", text="🧁 @lapanquecita"
+            ),
+        ],
     )
 
     fig.write_image("./tabla_absolutos.png")
@@ -352,27 +359,30 @@ def plot_tendencias():
     df = df[df["Municipio"].str.contains("⚬")]
 
     # Vamos a sumar los totales de remesas por año.
-    # PAra esto crearemos un ciclo del 2013 al 2023.
+    # Para esto crearemos un ciclo del 2013 al 2023.
     for year in range(2014, 2024):
-
         cols = [col for col in df.columns if str(year) in col]
         df[str(year)] = df[cols].sum(axis=1)
 
-    # Solo vamos a escoger las últimas columnas que creamos.
+    # Solo vamos a escoger las últimas 10 columnas que creamos.
     df = df.iloc[:, -10:]
 
-    # Vamos a calcular el cambio porcentual del 2013 al 2023.
-    df["change"] = (df["2023"] - df["2014"]) / df["2014"] * 100
+    primer_año = df.columns[0]
+    ultimo_año = df.columns[-1]
+
+    # Vamos a calcular el cambio porcentual entre el primer y último año.
+    df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
 
     # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
-    # Quitamos los municipios que hayan tenido menos de 10 millones de dólares durante el 2013.
-    # Esto es con el propósito de eliminar ruido.
-    df = df[df["2014"] >= 10]
+    # Quitamos los municipios que hayan tenido menos de
+    # 100 millones de dólares durante el último año.
+    # Esto es con el propósito de encontrar los outliers más interesantes.
+    df = df[df[ultimo_año] >= 100]
 
     # Ordenamos los valores usando el cambio porcentual de mayor a menor.
-    df = df.sort_values("change", ascending=False)
+    df.sort_values("change", ascending=False, inplace=True)
 
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
@@ -382,10 +392,11 @@ def plot_tendencias():
 
     # Vamos a crear una cuadrícula de 3 columnas por 5 filas (15 cuadros).
     fig = make_subplots(
-        rows=5, cols=3,
+        rows=5,
+        cols=3,
         horizontal_spacing=0.09,
         vertical_spacing=0.07,
-        subplot_titles=titles
+        subplot_titles=titles,
     )
 
     # Esta variable la usaremos para saber de que fila extraer la información.
@@ -394,8 +405,7 @@ def plot_tendencias():
     # Con ciclos anidados es como creamos la cuadrícula.
     for row in range(5):
         for column in range(3):
-
-            # Seleccinamos la fila correspondiente a la variable index pero omitimos la última columna.
+            # Seleccionamos la fila correspondiente a la variable index pero omitimos la última columna.
             # la cual contiene el cambio porcentual.
             temp_df = df.iloc[index, :-1]
 
@@ -437,7 +447,7 @@ def plot_tendencias():
             # Calculamos el cambio porcentual y creamos el texto que irá en la anotación de cada cuadro.
             change = (ultimo_valor - primer_valor) / primer_valor * 100
             diff = ultimo_valor - primer_valor
-            texto_anotaciones.append(f"<b>+{diff:,.1f}</b><br>+{change:,.2f}%")
+            texto_anotaciones.append(f"<b>+{diff:,.1f}</b><br>+{change:,.0f}%")
 
             fig.add_trace(
                 go.Scatter(
@@ -455,7 +465,9 @@ def plot_tendencias():
                     line_shape="spline",
                     line_smoothing=1.0,
                 ),
-                row=row+1, col=column+1)
+                row=row + 1,
+                col=column + 1,
+            )
 
             # Sumamos 1 a esta variable para que el siguiente cuadro extraíga la siguiente fila.
             index += 1
@@ -470,7 +482,7 @@ def plot_tendencias():
         showline=True,
         gridwidth=0.35,
         mirror=True,
-        nticks=15
+        nticks=15,
     )
 
     fig.update_yaxes(
@@ -486,7 +498,7 @@ def plot_tendencias():
         showgrid=True,
         gridwidth=0.35,
         mirror=True,
-        nticks=8
+        nticks=8,
     )
 
     fig.update_layout(
@@ -500,7 +512,7 @@ def plot_tendencias():
         margin_l=110,
         margin_r=40,
         margin_b=100,
-        title_text="Los 15 municipios de México con mayor crecimiento en ingresos por remesas durante los últimos 10 años",
+        title_text=f"Los 15 municipios de México con mayor crecimiento en ingresos por remesas {primer_año} vs. {ultimo_año}",
         title_x=0.5,
         title_y=0.985,
         title_font_size=26,
@@ -515,7 +527,6 @@ def plot_tendencias():
 
     # Iteramos sobre todos los subtítulos de cada cuadro, los cuales son considerados como anotaciones.
     for annotation in fig["layout"]["annotations"]:
-
         # A cada subtítulo lo vamos a ajustar ligeramente.
         annotation["y"] += 0.005
         annotation["font"]["size"] = 20
@@ -527,8 +538,11 @@ def plot_tendencias():
 
     # Es momento de crear nuestras nuevas anotaciones.
     # Usando la función zip() podemos iterar sobre nuestras listas de valores al mismo tiempo.
-    for x, y, t, in zip(annotations_x, annotations_y, texto_anotaciones):
-
+    for (
+        x,
+        y,
+        t,
+    ) in zip(annotations_x, annotations_y, texto_anotaciones):
         # Vamos a ajustar las nuevas anotaciones basandonos en las coornedas de los subtítulos.
         x -= 0.12
         y -= 0.035
@@ -556,7 +570,7 @@ def plot_tendencias():
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text=f"Fuente: Banxico ({MES_FUENTE} 2023)"
+        text=f"Fuente: Banxico ({FECHA_FUENTE})",
     )
 
     fig.add_annotation(
@@ -567,7 +581,7 @@ def plot_tendencias():
         yanchor="top",
         yref="paper",
         font_size=22,
-        text="(sólo se tomaron en cuenta los municipios con al menos 10 mdd por ingresos de remesas durante el 2014)"
+        text=f"(sólo se tomaron en cuenta los municipios con al menos 100 mdd por ingresos de remesas durante el {ultimo_año})",
     )
 
     fig.add_annotation(
@@ -577,7 +591,7 @@ def plot_tendencias():
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text="El crecimiento nacional por ingresos de remesas del 2013 al 2022 es de <b>162.34%</b>"
+        text=f"El crecimiento nacional por ingresos de remesas del {primer_año} al {ultimo_año} es de <b>162.34%</b>",
     )
 
     fig.add_annotation(
@@ -587,14 +601,13 @@ def plot_tendencias():
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text="🧁 @lapanquecita"
+        text="🧁 @lapanquecita",
     )
 
     fig.write_image("./municipios_tendencia.png")
 
 
 if __name__ == "__main__":
-
-    plot_capita()
-    plot_absolutos()
+    # plot_capita(2023)
+    # plot_absolutos(2023)
     plot_tendencias()
