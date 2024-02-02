@@ -67,7 +67,7 @@ def plot_mapa(año):
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita."
+    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
 
     # Asignamos la población a cada entidad.
     df["pop"] = df.index.map(pop)
@@ -155,7 +155,7 @@ def plot_mapa(año):
         legend_font_size=20,
         legend_bordercolor="#FFFFFF",
         legend_borderwidth=2,
-        font_family="Quicksand",
+        font_family="Lato",
         font_color="#FFFFFF",
         margin={"r": 40, "t": 50, "l": 40, "b": 30},
         width=1280,
@@ -288,7 +288,7 @@ def plot_mapa(año):
         xaxis_rangeslider_visible=False,
         width=1280,
         height=560,
-        font_family="Quicksand",
+        font_family="Lato",
         font_color="#FFFFFF",
         font_size=18,
         title="",
