@@ -608,6 +608,6 @@ def plot_tendencias():
 
 
 if __name__ == "__main__":
-    plot_capita(2023)
-    plot_absolutos(2023)
+    # plot_capita(2023)
+    # plot_absolutos(2023)
     plot_tendencias()

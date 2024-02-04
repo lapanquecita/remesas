@@ -311,16 +311,22 @@ def plot_usa(año):
     fig.write_image("./mapa_usa.png")
 
 
-def stats_usa():
+def stats_usa(año):
     """
     Obtiene el top 10 de estados en una tabla Markdown.
+    
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
     """
 
     # Cargamos el archivo CSV con las remesas provenientes de EE. UU.
     df = pd.read_csv("./data/remesas_usa.csv", index_col="Estado")
 
     # Seleccionamos las columnas del año que nos interesa.
-    columnas = [col for col in df.columns if "2023" in col]
+    columnas = [col for col in df.columns if str(año) in col]
 
     # Filtramos el DataFrama con las columnas que nos interesan.
     df = df[columnas]
@@ -358,4 +364,4 @@ def stats_usa():
 
 if __name__ == "__main__":
     plot_usa(2023)
-    stats_usa()
+    stats_usa(2023)
