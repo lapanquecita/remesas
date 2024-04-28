@@ -25,13 +25,17 @@ FECHA_INFLACION = "diciembre de 2023"
 
 
 def plot_mensuales():
+    """
+    Crea una gráfica de barras con las cifras mensuales de remesas en dólares nominales.
+    """
+
     # Cargamos el dataset de las remesas mensuales.
     df = pd.read_csv(
         "./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col="fecha"
     )
 
     # Calculamos el total de remesas por año para los últimos 10 años.
-    por_año = df.resample("Y").sum().tail(10)
+    por_año = df.resample("YS").sum().tail(10)
 
     # Vamos a crear una tabla con los totales.
     tabla = "<b>Total por año (MDD)</b>"
@@ -191,6 +195,10 @@ def plot_mensuales():
 
 
 def plot_pesos():
+    """
+    Crea una gráfica de barras con las cifras mensuales de remesas en pesos nominales.
+    """
+
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
 
@@ -204,7 +212,7 @@ def plot_pesos():
     df["pesos"] = df["total"] * df["cambio"]
 
     # Calculamos el total de remesas por año para los últimos 10 años.
-    por_año = df.resample("Y").sum().tail(10)
+    por_año = df.resample("YS").sum().tail(10)
 
     # Vamos a crear una tabla con los totales.
     tabla = "<b>Total por año (MDP)</b>"
@@ -364,6 +372,10 @@ def plot_pesos():
 
 
 def plot_real():
+    """
+    Crea una gráfica de barras con las cifras mensuales de remesas en pesos reales.
+    """
+
     # Cargamos el dataset del IPC.
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
@@ -392,7 +404,7 @@ def plot_real():
     df["real"] = df["pesos"] * df["inflacion"]
 
     # Calculamos el total de remesas por año para los últimos 10 años.
-    por_año = df.resample("Y").sum().tail(10)
+    por_año = df.resample("YS").sum().tail(10)
 
     # Vamos a crear una tabla con los totales.
     tabla = "<b>Total por año (MDP)</b>"
@@ -553,6 +565,10 @@ def plot_real():
 
 
 def plot_real_anual():
+    """
+    Crea una gráfica de barras con las cifras anuales de remesas en pesos reales.
+    """
+
     # Cargamos el dataset del IPC.
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
 
@@ -581,7 +597,7 @@ def plot_real_anual():
     df["real"] = df["pesos"] * df["inflacion"]
 
     # Calculamos el total de remesas por año.
-    df = df.resample("Y").sum()
+    df = df.resample("YS").sum()
 
     # Cambiamos de fecha a integral para el índice.
     df.index = df.index.year
