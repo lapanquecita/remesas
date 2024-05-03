@@ -97,7 +97,7 @@ def plot_mapa(año):
 
     # Iteramos sobre cada entidad dentro de nuestro archivo GeoJSON de México.
     for item in geojson["features"]:
-        geo = item["properties"]["NOM_ENT"]
+        geo = item["properties"]["NOMGEO"]
 
         # Alimentamos las listas creadas anteriormente con la ubicación y su valor per capita.
         ubicaciones.append(geo)
@@ -111,7 +111,7 @@ def plot_mapa(año):
             geojson=geojson,
             locations=ubicaciones,
             z=valores,
-            featureidkey="properties.NOM_ENT",
+            featureidkey="properties.NOMGEO",
             colorscale="oranges",
             reversescale=True,
             marker_line_color="#FFFFFF",
