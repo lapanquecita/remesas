@@ -113,7 +113,7 @@ def plot_map(año):
     # Para el valor máximo usamos el 95 percentil para mitigar los
     # efectos de valores atípicos.
     valor_min = df["capita"].min()
-    valor_max = df["capita"].quantile(0.95)
+    valor_max = df["capita"].quantile(0.975)
 
     # Vamos a crear nuestra escala con 13 intervalos.
     marcas = np.linspace(valor_min, valor_max, 13)
