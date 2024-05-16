@@ -21,10 +21,10 @@ PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2024"
+FECHA_FUENTE = "mayo 2024"
 
 # Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre de 2023"
+PERIODO_TIEMPO = "enero-diciembre"
 
 
 def plot_mapa(año):
@@ -38,10 +38,13 @@ def plot_mapa(año):
 
     """
 
-    # Cargamos el dataset de población total por entidad.
-    pop = pd.read_csv("./assets/poblacion_anual.csv", index_col=0)
+    # Cargamos el dataset de la polación total estimada según el CONAPO.
+    pop = pd.read_csv("./assets/poblacion.csv")
 
-    # Seleccionamos la población del año que nos interesa.
+    # Calculamos la población total por entidad.
+    pop = pop.groupby("Entidad").sum(numeric_only=True)
+
+    # Seleccionamos la población del año de nuestro interés.
     pop = pop[str(año)]
 
     # Renombramos algunos estados a sus nombres más comunes.
@@ -70,7 +73,7 @@ def plot_mapa(año):
     subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
 
     # Asignamos la población a cada entidad.
-    df["pop"] = df.index.map(pop)
+    df["pop"] = pop
 
     # Calculamos el valor per cápita.
     df["capita"] = df["total"] / df["pop"]
@@ -167,7 +170,7 @@ def plot_mapa(año):
                 y=1.01,
                 xanchor="center",
                 yanchor="top",
-                text=f"Ingresos por remesas hacia México por entidad durante {PERIODO_TIEMPO}",
+                text=f"Ingresos por remesas hacia México por entidad durante {PERIODO_TIEMPO} de {año}",
                 font_size=28,
             ),
             dict(
@@ -322,26 +325,38 @@ def plot_mapa(año):
     os.remove("./1.png")
 
 
-def plot_tendencias():
+def plot_tendencias(primer_año, ultimo_año):
     """
     Esta función crea una cuadrícula de sparklines con los
-     estados que han crecido más en ingresos por remesas.
+    estados que han crecido más en ingresos por remesas.
+    
+    Parameters
+    ----------
+    primer_año : int
+        El año inicial que se desea comparar.
+
+    ultimo_año :  int
+        El año final que se desea comparar.
+    
     """
 
     # Cargamos el dataset de remesas por entidad.
     df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
 
     # Vamos a sumar los totales de remesas por año.
-    # Para esto crearemos un ciclo del 2013 al 2023.
-    for year in range(2014, 2024):
+    # Para esto crearemos un ciclo del 2013 al 2024.
+    for year in range(2013, 2025):
         cols = [col for col in df.columns if str(year) in col]
         df[str(year)] = df[cols].sum(axis=1)
 
-    # Solo vamos a escoger las últimas 10 columnas que creamos.
-    df = df.iloc[:, -10:]
+    # Solo vamos a escoger las columnas que creamos.
+    df = df.iloc[:, -11:]
 
-    primer_año = df.columns[0]
-    ultimo_año = df.columns[-1]
+    # Cambiamos las columnas de str a int.
+    df.columns = [int(col) for col in df.columns]
+
+    # Seleccionamos solo las columnas que nos interesan.
+    df = df[[col for col in df.columns if col >= primer_año and col <= ultimo_año]]
 
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
@@ -379,7 +394,7 @@ def plot_tendencias():
 
             # Al íncide (que son los años) lq quitamos los primeros 2 dígitos y le agregamos un apóstrofe.
             # Esto es para reducir el tamaño de la etiqueta de cada año.
-            temp_df.index = temp_df.index.map(lambda x: f"'{x[-2:]}")
+            temp_df.index = temp_df.index.map(lambda x: f"'{x-2000}")
 
             # Para nuestra gráfica de línea solo vamos a necesitar que el primer y último registro tengan un punto.
             sizes = [0 for _ in range(len(temp_df))]
@@ -566,4 +581,4 @@ def plot_tendencias():
 
 if __name__ == "__main__":
     plot_mapa(2023)
-    plot_tendencias()
+    plot_tendencias(2014, 2023)

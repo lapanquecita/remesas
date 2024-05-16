@@ -5,6 +5,8 @@ https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sect
 
 """
 
+import json
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -12,10 +14,295 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2024"
+FECHA_FUENTE = "mayo 2024"
 
 # Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre de 2023"
+PERIODO_TIEMPO = "enero-diciembre"
+
+
+def plot_map(año):
+    """
+    Esta función crea un mpara choropleth de los municipios de México.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa analizar.
+
+    """
+
+    # El índice lo vamos a necesitar como cadena.
+    pop_types = {"CVE": str}
+
+    # Cargamos el dataset de población por municipio.
+    pop = pd.read_csv("./assets/poblacion.csv", dtype=pop_types)
+
+    # Renombramos algunos estados a sus nombres más comunes.
+    pop["Entidad"] = pop["Entidad"].replace(
+        {
+            "Coahuila de Zaragoza": "Coahuila",
+            "México": "Estado de México",
+            "Michoacán de Ocampo": "Michoacán",
+            "Veracruz de Ignacio de la Llave": "Veracruz",
+        }
+    )
+
+    # Creamos el índice y seleccionamos las columnas de nuestro interés.
+    pop.index = pop["Municipio"] + ", " + pop["Entidad"]
+    pop = pop[["CVE", str(año)]]
+
+    # Renombramos las columnas.
+    pop.columns = ["CVE", "poblacion"]
+
+    # Cargamos el dataset de remesas por municipio.
+    df = pd.read_csv("./data/remesas_municipio.csv")
+
+    # La estructura de este dataset es jerárquica.
+    # Tenemos que hacer algunas modificaciones para que coincida con el dataset de población.
+    df["Entidad"] = df["Municipio"].apply(fill_entidad)
+    df["Entidad"] = df["Entidad"].replace("México", "Estado de México")
+    df.ffill(inplace=True)
+    df.index = df.apply(fill_cve, axis=1)
+
+    # Quitamos los registros que no sean municipios.
+    df = df[df["Municipio"].str.contains("⚬")]
+
+    # Seleccionamos las columnas del año que nos interesa.
+    cols = [col for col in df.columns if str(año) in col]
+
+    # Filtramos el DataFrama con las columnas que nos interesan.
+    df = df[cols]
+
+    # Quitamos los decimales de las cifras.
+    df["total"] = df.sum(axis=1) * 1000000
+
+    # Calculamos las remesas per cápita para toda la polación.
+    subtitulo = f"Nacional: {df['total'].sum() / pop["poblacion"].sum():,.2f} dólares per cápita"
+
+    # Asignamos la población a cada municipio.
+    df = df.join(pop)
+
+    # Rellenamos con 0 a los municipios no identificados.
+    df = df.fillna(0)
+
+    # Calculamos el valor per cápita.
+    df["capita"] = df["total"] / df["poblacion"]
+
+    # Quitamos los valores infinitos o en ceros.
+    df = df[df["capita"] != np.inf]
+    df = df[df["capita"] > 0]
+
+    # Usaremos la clave del municipio como índice.
+    df.set_index("CVE", inplace=True)
+
+    # Calculamos algunas estadísticas descriptivas.
+    estadisticas = [
+        "Estadísticas descriptivas",
+        f"Media: <b>{df['capita'].mean():,.1f}</b>",
+        f"Mediana: <b>{df['capita'].median():,.1f}</b>",
+        f"DE: <b>{df['capita'].std():,.1f}</b>",
+        f"25%: <b>{df['capita'].quantile(.25):,.1f}</b>",
+        f"75%: <b>{df['capita'].quantile(.75):,.1f}</b>",
+        f"95%: <b>{df['capita'].quantile(.95):,.1f}</b>",
+        f"Máximo: <b>{df['capita'].max():,.1f}</b>",
+    ]
+
+    estadisticas = "<br>".join(estadisticas)
+
+    # Determinamos los valores mínimos y máximos para nuestra escala.
+    # Para el valor máximo usamos el 95 percentil para mitigar los
+    # efectos de valores atípicos.
+    valor_min = df["capita"].min()
+    valor_max = df["capita"].quantile(0.95)
+
+    # Vamos a crear nuestra escala con 13 intervalos.
+    marcas = np.linspace(valor_min, valor_max, 13)
+    etiquetas = list()
+
+    for item in marcas:
+        etiquetas.append(f"{item:,.0f}")
+
+    # A la última etiqueta le agregamos el símbolo de 'mayor o igual que'.
+    etiquetas[-1] = f"≥{valor_max:,.0f}"
+
+    # Cargamos el GeoJSON de municipios de México.
+    geojson = json.loads(open("./assets/mexico2020.json", "r", encoding="utf-8").read())
+
+    # Estas listas serán usadas para configurar el mapa Choropleth.
+    ubicaciones = list()
+    valores = list()
+
+    # Iteramos sobre cada municipio e nuestro GeoJSON.
+    for item in geojson["features"]:
+        geo = str(item["properties"]["CVEGEO"])
+
+        # Si el municipio no se encuentra en nuestro DataFrame,
+        # agregamos un valor nulo.
+        try:
+            value = df.loc[geo]["capita"]
+        except Exception as _:
+            value = None
+
+        # Agregamos el objeto del municipio y su valor a las listas correspondientes.
+        ubicaciones.append(geo)
+        valores.append(value)
+
+    fig = go.Figure()
+
+    # Configuramos nuestro mapa Choropleth con todas las variables antes definidas.
+    # El parámetro 'featureidkey' debe coincidir con el de la variable 'geo' que
+    # extrajimos en un paso anterior.
+    fig.add_traces(
+        go.Choropleth(
+            geojson=geojson,
+            locations=ubicaciones,
+            z=valores,
+            featureidkey="properties.CVEGEO",
+            colorscale="solar",
+            marker_line_color="#FFFFFF",
+            marker_line_width=1,
+            zmin=valor_min,
+            zmax=valor_max,
+            colorbar=dict(
+                x=0.035,
+                y=0.5,
+                thickness=150,
+                ypad=400,
+                ticks="outside",
+                outlinewidth=5,
+                outlinecolor="#FFFFFF",
+                tickvals=marcas,
+                ticktext=etiquetas,
+                tickwidth=5,
+                tickcolor="#FFFFFF",
+                ticklen=30,
+                tickfont_size=80,
+            ),
+        )
+    )
+
+    # Vamos a sobreponer otro mapa Choropleth, el cual
+    # tiene el único propósito de mostrar la división política
+    # de las entidades federativas.
+
+    # Cargamos el archivo GeoJSON de México.
+    geojson_borde = json.loads(
+        open("./assets/mexico.json", "r", encoding="utf-8").read()
+    )
+
+    # Estas listas serán usadas para configurar el mapa Choropleth.
+    ubicaciones_borde = list()
+    valores_borde = list()
+
+    # Iteramos sobre cada entidad dentro de nuestro archivo GeoJSON de México.
+    for item in geojson_borde["features"]:
+        geo = item["properties"]["NOMGEO"]
+
+        # Alimentamos las listas creadas anteriormente con la ubicación y su valor per capita.
+        ubicaciones_borde.append(geo)
+        valores_borde.append(1)
+
+    # Este mapa tiene mucho menos personalización.
+    # Lo único que necesitamos es que muestre los contornos
+    # de cada entidad.
+    fig.add_traces(
+        go.Choropleth(
+            geojson=geojson_borde,
+            locations=ubicaciones_borde,
+            z=valores_borde,
+            featureidkey="properties.NOMGEO",
+            colorscale=["hsla(0, 0, 0, 0)", "hsla(0, 0, 0, 0)"],
+            marker_line_color="#FFFFFF",
+            marker_line_width=4,
+            showscale=False,
+        )
+    )
+
+    # Personalizamos algunos aspectos del mapa, como el color del oceáno
+    # y el del terreno.
+    fig.update_geos(
+        fitbounds="locations",
+        showocean=True,
+        oceancolor="#092635",
+        showcountries=False,
+        framecolor="#FFFFFF",
+        framewidth=5,
+        showlakes=False,
+        coastlinewidth=0,
+        landcolor="#000000",
+    )
+
+    # Agregamos las anotaciones correspondientes.
+    fig.update_layout(
+        showlegend=False,
+        font_family="Lato",
+        font_color="#FFFFFF",
+        margin_t=50,
+        margin_r=100,
+        margin_b=30,
+        margin_l=100,
+        width=7680,
+        height=4320,
+        paper_bgcolor="#393053",
+        annotations=[
+            dict(
+                x=0.5,
+                y=0.985,
+                xanchor="center",
+                yanchor="top",
+                text=f"Ingresos por remesas per cápita en municipios de México durante {PERIODO_TIEMPO} de {año}",
+                font_size=140,
+            ),
+            dict(
+                x=0.02,
+                y=0.49,
+                textangle=-90,
+                xanchor="center",
+                yanchor="middle",
+                text="Dólares per cápita",
+                font_size=100,
+            ),
+            dict(
+                x=0.98,
+                y=0.9,
+                xanchor="right",
+                yanchor="top",
+                text=estadisticas,
+                align="left",
+                borderpad=30,
+                bordercolor="#FFFFFF",
+                bgcolor="#000000",
+                borderwidth=5,
+                font_size=120,
+            ),
+            dict(
+                x=0.01,
+                y=-0.003,
+                xanchor="left",
+                yanchor="bottom",
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+                font_size=120,
+            ),
+            dict(
+                x=0.5,
+                y=-0.003,
+                xanchor="center",
+                yanchor="bottom",
+                text=subtitulo,
+                font_size=120,
+            ),
+            dict(
+                x=1.0,
+                y=-0.003,
+                xanchor="right",
+                yanchor="bottom",
+                text="🧁 @lapanquecita",
+                font_size=120,
+            ),
+        ],
+    )
+
+    fig.write_image(f"./municipal_{año}.png")
 
 
 def plot_capita(año):
@@ -29,25 +316,22 @@ def plot_capita(año):
 
     """
 
-    # Cargamos el archivo CSV con la población por municipio.
-    pop = pd.read_csv("./assets/poblacion2020.csv")
+    # Cargamos el dataset de población por municipio.
+    pop = pd.read_csv("./assets/poblacion.csv")
 
-    # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
-    pop = pop.replace(
+    # Renombramos algunos estados a sus nombres más comunes.
+    pop["Entidad"] = pop["Entidad"].replace(
         {
-            "entidad": {
-                "Coahuila de Zaragoza": "Coahuila",
-                "Michoacán de Ocampo": "Michoacán",
-                "Veracruz de Ignacio de la Llave": "Veracruz",
-            }
+            "Coahuila de Zaragoza": "Coahuila",
+            "México": "Estado de México",
+            "Michoacán de Ocampo": "Michoacán",
+            "Veracruz de Ignacio de la Llave": "Veracruz",
         }
     )
 
-    # Juntamos el nombre de la entidad y municipio para crear nuestro índice.
-    pop.index = pop["municipio"] + ", " + pop["entidad"]
-
-    # Solo necesitamos la columna de población.
-    pop = pop["poblacion"]
+    # Creamos el índice y seleccionamos las columnas de nuestro interés.
+    pop.index = pop["Municipio"] + ", " + pop["Entidad"]
+    pop = pop[str(año)]
 
     # Cargamos el dataset de remesas por municipio.
     df = pd.read_csv("./data/remesas_municipio.csv")
@@ -55,6 +339,7 @@ def plot_capita(año):
     # La estructura de este dataset es jerárquica.
     # Tenemos que hacer algunas modificaciones para que coincida con el dataset de población.
     df["Entidad"] = df["Municipio"].apply(fill_entidad)
+    df["Entidad"] = df["Entidad"].replace("México", "Estado de México")
     df.ffill(inplace=True)
     df.index = df.apply(fill_cve, axis=1)
 
@@ -74,7 +359,7 @@ def plot_capita(año):
     subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
 
     # Asignamos la población a cada municipio.
-    df["pop"] = df.index.map(pop)
+    df["pop"] = pop
 
     # Rellenamos con 0 a los municipios no identificados.
     df = df.fillna(0)
@@ -97,8 +382,9 @@ def plot_capita(año):
 
     # Acortamos el nombre del municipio más largo de México.
     df["index"] = df["index"].replace(
-        "Dolores Hidalgo Cuna de la Independencia Nal., Guanajuato",
-        "Dolores Hidalgo, Guanajuato",
+        {
+            "Dolores Hidalgo Cuna de la Independencia Nal., Guanajuato": "Dolores Hidalgo, Guanajuato",
+        }
     )
 
     fig = go.Figure()
@@ -146,7 +432,7 @@ def plot_capita(año):
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO}",
+        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO}  de {año}",
         paper_bgcolor="#16213E",
         annotations=[
             dict(
@@ -177,25 +463,22 @@ def plot_absolutos(año):
 
     """
 
-    # Cargamos el archivo CSV con la población por municipio.
-    pop = pd.read_csv("./assets/poblacion2020.csv")
+    # Cargamos el dataset de población por municipio.
+    pop = pd.read_csv("./assets/poblacion.csv")
 
-    # Vamos a renombrar algunas entidades para que coincidan con el dataset de Banxico.
-    pop = pop.replace(
+    # Renombramos algunos estados a sus nombres más comunes.
+    pop["Entidad"] = pop["Entidad"].replace(
         {
-            "entidad": {
-                "Coahuila de Zaragoza": "Coahuila",
-                "Michoacán de Ocampo": "Michoacán",
-                "Veracruz de Ignacio de la Llave": "Veracruz",
-            }
+            "Coahuila de Zaragoza": "Coahuila",
+            "México": "Estado de México",
+            "Michoacán de Ocampo": "Michoacán",
+            "Veracruz de Ignacio de la Llave": "Veracruz",
         }
     )
 
-    # Juntamos el nombre de la entidad y municipio para crear nuestro índice.
-    pop.index = pop["municipio"] + ", " + pop["entidad"]
-
-    # Solo necesitamos la columna de población.
-    pop = pop["poblacion"]
+    # Creamos el índice y seleccionamos las columnas de nuestro interés.
+    pop.index = pop["Municipio"] + ", " + pop["Entidad"]
+    pop = pop[str(año)]
 
     # Cargamos el dataset de remesas por municipio.
     df = pd.read_csv("./data/remesas_municipio.csv")
@@ -203,6 +486,7 @@ def plot_absolutos(año):
     # La estructura de este dataset es jerárquica.
     # Tenemos que hacer algunas modificaciones para que coincida con el dataset de población.
     df["Entidad"] = df["Municipio"].apply(fill_entidad)
+    df["Entidad"] = df["Entidad"].replace("México", "Estado de México")
     df.ffill(inplace=True)
     df.index = df.apply(fill_cve, axis=1)
 
@@ -294,7 +578,7 @@ def plot_absolutos(año):
         title_x=0.5,
         title_y=0.95,
         title_font_size=26,
-        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante {PERIODO_TIEMPO}",
+        title_text=f"Los 30 municipios de México con mayores ingresos por remesas<br><b>totales</b> durante {PERIODO_TIEMPO} de {año}",
         paper_bgcolor="#1e453e",
         annotations=[
             dict(
@@ -341,9 +625,18 @@ def fill_cve(x):
     return x["Municipio"].replace("⚬", "").strip() + ", " + x["Entidad"]
 
 
-def plot_tendencias():
+def plot_tendencias(primer_año, ultimo_año):
     """
     Esta función crea una cuadrícula de sparklines con los municipios que han crecido más en ingresos por remesas.
+
+    Parameters
+    ----------
+    primer_año : int
+        El año inicial que se desea comparar.
+
+    ultimo_año :  int
+        El año final que se desea comparar.
+
     """
 
     # Cargamos el dataset de remesas por municipio.
@@ -359,16 +652,19 @@ def plot_tendencias():
     df = df[df["Municipio"].str.contains("⚬")]
 
     # Vamos a sumar los totales de remesas por año.
-    # Para esto crearemos un ciclo del 2013 al 2023.
-    for year in range(2014, 2024):
+    # Para esto crearemos un ciclo del 2013 al 2024.
+    for year in range(2014, 2025):
         cols = [col for col in df.columns if str(year) in col]
         df[str(year)] = df[cols].sum(axis=1)
 
-    # Solo vamos a escoger las últimas 10 columnas que creamos.
-    df = df.iloc[:, -10:]
+    # Solo vamos a escoger las columnas que creamos.
+    df = df.iloc[:, -11:]
 
-    primer_año = df.columns[0]
-    ultimo_año = df.columns[-1]
+    # Cambiamos las columnas de str a int.
+    df.columns = [int(col) for col in df.columns]
+
+    # Seleccionamos solo las columnas que nos interesan.
+    df = df[[col for col in df.columns if col >= primer_año and col <= ultimo_año]]
 
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
@@ -411,7 +707,7 @@ def plot_tendencias():
 
             # Al íncide (que son los años) lq quitamos los primeros 2 dígitos y le agregamos un apóstrofe.
             # Esto es para reducir el tamaño de la etiqueta de cada año.
-            temp_df.index = temp_df.index.map(lambda x: f"'{x[-2:]}")
+            temp_df.index = temp_df.index.map(lambda x: f"'{x-2000}")
 
             # Para nuestra gráfica de línea solo vamos a necesitar que el primer y último registro tengan un punto.
             sizes = [0 for _ in range(len(temp_df))]
@@ -608,6 +904,7 @@ def plot_tendencias():
 
 
 if __name__ == "__main__":
+    plot_map(2023)
     plot_capita(2023)
     plot_absolutos(2023)
-    plot_tendencias()
+    plot_tendencias(2014, 2023)

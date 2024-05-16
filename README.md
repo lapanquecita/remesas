@@ -78,7 +78,7 @@ Una vez que ajustamos las cifras per cápita, podemos observar que Michoacán, Z
 
 ## Ingresos por municipio
 
-La información por entidad nos da una perspectiva generalizada de la distribución de las remesas, pero también es importante ir más a detalle y saber exactamente en que municipios están llegando. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante la primera mitad del 2023:
+La información por entidad nos da una perspectiva generalizada de la distribución de las remesas, pero también es importante ir más a detalle y saber exactamente en que municipios están llegando. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante el 2023:
 
 ![Imagen 7](./imgs/tabla_absolutos.png)
 
@@ -88,21 +88,23 @@ La mayoría de estos municipios coinciden con las ciudades más grandes del paí
 
 Ahora sabemos que en Chiapas, Michoacán, Oaxaca, Puebla y Zacatecas es donde las remesas tienen mayor impacto económico.
 
+![Imagen 9](./imgs/municipal_2023.png)
+
 ## Tendencias y crecimiento
 
 De 2014 a 2023 los ingresos por remesas hacia México han crecido en un 162%. Un crecimiento de más del doble es bastante importante, pero como siempre, el diablo está en los detalles.
 
 Veamos como han crecido los ingresos por remesas a nivel estatal.
 
-![Imagen 9](./imgs/estados_tendencia.png)
+![Imagen 10](./imgs/estados_tendencia.png)
 
 El estado de Chiapas es el que ha tenido más crecimiento de todos, con un 740%. Esto es casi el triple que el segundo lugar, Baja California Sur con 271% de crecimiento.
 
 Esto nos lleva a indagar más a fondo. Es momento de revisar que municipios han crecido más.
 
-![Imagen 10](./imgs/municipios_tendencia.png)
+![Imagen 11](./imgs/municipios_tendencia.png)
 
-Si un crecimiento del 740% parece anormal, uno de 2,000% es increíble.
+Si un crecimiento del 740% parece anormal, uno de 4,500% es increíble.
 
 Hay especulaciones del porqué algunos municipios de Chiapas tienen estas cifras tan sospechosas.
 
@@ -118,7 +120,7 @@ Banxico también provee estos datos, los cuales están en la carpeta `assets`.
 
 La siguiente gráfica muestra como se ven las remesas al convertirse a pesos.
 
-![Imagen 11](./imgs/remesas_mensuales_pesos.png)
+![Imagen 12](./imgs/remesas_mensuales_pesos.png)
 
 Es interesante como podemos distinguir mejor la estacionalidad después de hacer este ajuste.
 
@@ -126,13 +128,13 @@ También podemos notar que el promedio móvil va a la baja, esto es debido a que
 
 Ahora solo nos falta ajustarlo por la inflación de diciembre de 2023.
 
-![Imagen 12](./imgs/remesas_mensuales_reales.png)
+![Imagen 13](./imgs/remesas_mensuales_reales.png)
 
 Al ajustar por inflación se acentuá la desaceleración y la reducción en el valor de las remesas.
 
 Y ya para terminar, los totales anuales.
 
-![Imagen 13](./imgs/remesas_anuales_reales.png)
+![Imagen 14](./imgs/remesas_anuales_reales.png)
 
 ## Conclusión
 
