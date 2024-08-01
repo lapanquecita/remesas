@@ -21,7 +21,7 @@ PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "mayo 2024"
+FECHA_FUENTE = "agosto 2024"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -115,7 +115,7 @@ def plot_mapa(año):
             locations=ubicaciones,
             z=valores,
             featureidkey="properties.NOMGEO",
-            colorscale="oranges",
+            colorscale="solar_r",
             reversescale=True,
             marker_line_color="#FFFFFF",
             marker_line_width=1.0,
@@ -187,7 +187,7 @@ def plot_mapa(año):
                 textangle=-90,
                 xanchor="center",
                 yanchor="middle",
-                text="Dólares per cápita",
+                text="Dólares per cápita durante el año",
                 font_size=18,
             ),
             dict(
@@ -350,7 +350,7 @@ def plot_tendencias(primer_año, ultimo_año):
         df[str(year)] = df[cols].sum(axis=1)
 
     # Solo vamos a escoger las columnas que creamos.
-    df = df.iloc[:, -11:]
+    df = df.iloc[:, -12:]
 
     # Cambiamos las columnas de str a int.
     df.columns = [int(col) for col in df.columns]

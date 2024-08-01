@@ -231,10 +231,10 @@ CODIGOS_ISO3 = {
 }
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2024"
+FECHA_FUENTE = "agosto 2024"
 
 # Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre de 2023"
+PERIODO_TIEMPO = "enero-diciembre"
 
 
 def plot_top(año):
@@ -337,7 +337,7 @@ def plot_top(año):
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text=f"Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO}",
+        title_text=f"Los 30 países que aportaron los <b>mayores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO} de {año}",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -360,7 +360,7 @@ def plot_top(año):
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text="<b>Nota:</b> Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores.",
+                text="<b>Nota:</b><br>Se utilizó una escala logarítmica<br>dada la gran diferencia entre valores.",
             ),
             dict(
                 x=0.01,
@@ -489,7 +489,7 @@ def plot_bottom(año):
         font_family="Lato",
         font_color="#FFFFFF",
         font_size=16,
-        title_text=f"Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO}",
+        title_text=f"Los 30 países que aportaron los <b>menores ingresos</b> por remesas hacia México<br>durante {PERIODO_TIEMPO} de {año}",
         title_x=0.5,
         title_y=0.965,
         margin_t=100,
@@ -512,7 +512,7 @@ def plot_bottom(año):
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor="#111111",
-                text="<b>Nota:</b> No se tomaron en cuenta los países<br>que reportaron remesas en cero.",
+                text="<b>Nota:</b><br>No se tomaron en cuenta los países<br>que reportaron remesas en cero.",
             ),
             dict(
                 x=0.01,
@@ -587,8 +587,14 @@ def plot_map(año):
     max_value = df["log"].max()
 
     # Creamos las marcas para la escala.
-    marcas = np.linspace(min_value, max_value, 11)
-    textos = [f"{10 ** item:,.0f}" for item in marcas]
+    marcas = np.arange(np.floor(min_value), np.ceil(max_value))
+
+    textos = list()
+
+    # Convertiremos los textos a base 10.
+    for item in marcas:
+        v, e = f"{10 ** item:e}".split("e")
+        textos.append(f"{10* float(v):.0f}<sup>{int(e)-1}</sup>")
 
     # Agregamos los códigos ISO3 de cada país.
     df["iso3"] = df.index.map(CODIGOS_ISO3)
@@ -655,7 +661,7 @@ def plot_map(año):
                 y=1.045,
                 xanchor="center",
                 yanchor="top",
-                text=f"Ingresos totales por remesas hacia México por país de origen durante {PERIODO_TIEMPO}",
+                text=f"Ingresos totales por remesas hacia México por país de origen durante {PERIODO_TIEMPO} de {año}",
                 font_size=140,
             ),
             dict(
@@ -668,7 +674,7 @@ def plot_map(año):
                 font_size=90,
             ),
             dict(
-                x=0.01,
+                x=0.001,
                 y=-0.065,
                 xanchor="left",
                 yanchor="bottom",

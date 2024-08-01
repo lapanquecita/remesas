@@ -130,10 +130,10 @@ POBLACION = {
 }
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2024"
+FECHA_FUENTE = "agosto 2024"
 
 # Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre de 2023"
+PERIODO_TIEMPO = "enero-diciembre"
 
 
 def plot_usa(año):
@@ -199,7 +199,7 @@ def plot_usa(año):
             locations=df["abreviatura"],
             z=df["log"],
             locationmode="USA-states",
-            colorscale="speed_r",
+            colorscale="solar",
             marker_line_color="#FFFFFF",
             showscale=True,
             showlegend=False,
@@ -257,12 +257,12 @@ def plot_usa(año):
                 y=1.08,
                 xanchor="center",
                 yanchor="top",
-                text=f"Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante {PERIODO_TIEMPO}<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
+                text=f"Estado de origen de los ingresos por remesas provenientes de EE. UU. hacia México durante {PERIODO_TIEMPO} de {año}<br>(ajustado con la población estimada de mexicanos en EE. UU. durante el 2021)",
                 font_size=110,
             ),
             dict(
                 x=0.02,
-                y=0.105,
+                y=0.135,
                 textangle=270,
                 xanchor="left",
                 yanchor="middle",
@@ -270,7 +270,7 @@ def plot_usa(año):
                 font_size=90,
             ),
             dict(
-                x=0.01,
+                x=0.001,
                 y=-0.08,
                 xanchor="left",
                 yanchor="bottom",

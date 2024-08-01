@@ -18,10 +18,10 @@ import plotly.graph_objects as go
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2024"
+FECHA_FUENTE = "agosto 2024"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "diciembre de 2023"
+FECHA_INFLACION = "junio de 2024"
 
 
 def plot_mensuales():
@@ -607,8 +607,8 @@ def plot_real_anual():
 
     # Creamos la escala para el eje vertical.
     marcas = np.linspace(0, 1300000, 14)
-    textos = [f"{item/1000000:,.1f}B" for item in marcas]
-    textos[0] = "0B"
+    textos = [f"{item/1000000:,.1f}" for item in marcas]
+    textos[0] = "0"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -672,7 +672,7 @@ def plot_real_anual():
         font_family="Quicksand",
         font_color="#FFFFFF",
         font_size=18,
-        title_text="Ingresos anuales por remesas hacia México (pesos reales)",
+        title_text="Evolución de los ingresos anuales por remesas hacia México (pesos reales)",
         title_x=0.5,
         title_y=0.97,
         margin_t=60,

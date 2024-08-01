@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "mayo 2024"
+FECHA_FUENTE = "agosto 2024"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -126,7 +126,7 @@ def plot_map(año):
     etiquetas[-1] = f"≥{valor_max:,.0f}"
 
     # Cargamos el GeoJSON de municipios de México.
-    geojson = json.loads(open("./assets/mexico2020.json", "r", encoding="utf-8").read())
+    geojson = json.loads(open("./assets/mexico2019.json", "r", encoding="utf-8").read())
 
     # Estas listas serán usadas para configurar el mapa Choropleth.
     ubicaciones = list()
@@ -259,7 +259,7 @@ def plot_map(año):
                 textangle=-90,
                 xanchor="center",
                 yanchor="middle",
-                text="Dólares per cápita",
+                text="Dólares per cápita durante el año",
                 font_size=100,
             ),
             dict(
@@ -276,7 +276,7 @@ def plot_map(año):
                 font_size=120,
             ),
             dict(
-                x=0.01,
+                x=0.001,
                 y=-0.003,
                 xanchor="left",
                 yanchor="bottom",
@@ -653,12 +653,12 @@ def plot_tendencias(primer_año, ultimo_año):
 
     # Vamos a sumar los totales de remesas por año.
     # Para esto crearemos un ciclo del 2013 al 2024.
-    for year in range(2014, 2025):
+    for year in range(2013, 2025):
         cols = [col for col in df.columns if str(year) in col]
         df[str(year)] = df[cols].sum(axis=1)
 
     # Solo vamos a escoger las columnas que creamos.
-    df = df.iloc[:, -11:]
+    df = df.iloc[:, -12:]
 
     # Cambiamos las columnas de str a int.
     df.columns = [int(col) for col in df.columns]
