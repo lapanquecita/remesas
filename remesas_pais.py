@@ -270,7 +270,7 @@ def plot_top(año):
     df["perc"] = df["total"] / df["total"].sum() * 100
 
     # Creamos el texto que irá en cada barra.
-    df["text"] = df.apply(lambda x: f" ${x['total']:,.0f} ({x['perc']:,.4f}%) ", axis=1)
+    df["text"] = df.apply(lambda x: f" {x['total']:,.0f} ({x['perc']:,.4f}%) ", axis=1)
 
     # ordenamos el DAtaframe de mayor a menor cantidad de remesas.
     df = df.sort_values("total", ascending=False)
@@ -424,7 +424,7 @@ def plot_bottom(año):
     df["total"] = df["total"] * 1000000
 
     # Creamos el texto que irá en cada barra.
-    df["text"] = df.apply(lambda x: f" ${x['total']:,.0f} ", axis=1)
+    df["text"] = df.apply(lambda x: f" {x['total']:,.0f} ", axis=1)
 
     # Ordenamos los valores de menor a mayor y quitamos los registros en cero.
     df = df.sort_values("total")
@@ -666,7 +666,7 @@ def plot_map(año):
             ),
             dict(
                 x=0.02,
-                y=0.16,
+                y=0.175,
                 textangle=270,
                 xanchor="left",
                 yanchor="middle",
