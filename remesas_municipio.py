@@ -412,7 +412,6 @@ def plot_capita(año):
                 fill_color="#1A1A2E",
                 height=28,
                 format=["", "", ",.0f", ",.2f"],
-                prefix=["", "", "$", "$"],
                 align=["center", "left", "left", "center", "center"],
             ),
         )
@@ -558,7 +557,6 @@ def plot_absolutos(año):
                 fill_color="#182c25",
                 height=28,
                 format=["", "", ",.0f", ",.2f"],
-                prefix=["", "", "$", "$"],
                 align=["center", "left", "left", "center", "center"],
             ),
         )
