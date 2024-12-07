@@ -15,13 +15,13 @@ https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?acci
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-
+from statsmodels.tsa.seasonal import STL
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2024"
+FECHA_FUENTE = "diciembre 2024"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "junio de 2024"
+FECHA_INFLACION = "octubre de 2024"
 
 
 def plot_mensuales():
@@ -43,15 +43,15 @@ def plot_mensuales():
     for k, v in por_año["total"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
-    # Calculamos la media móvil a 12 periodos.
-    df["rolling"] = df["total"].rolling(12).mean()
+    # Calculamos la tendencia.
+    df["trend"] = STL(df["total"]).fit().trend
 
     # Seleccionamos los últimos 10 años (121 meses).
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
     cambio = (
-        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
     )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
@@ -72,8 +72,8 @@ def plot_mensuales():
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=df["rolling"],
-            name="Promedio móvil (12 periodos)",
+            y=df["trend"],
+            name="Tendencia (12 periodos)",
             mode="lines",
             line_color="#fbc02d",
             line_width=5,
@@ -220,15 +220,15 @@ def plot_pesos():
     for k, v in por_año["pesos"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
-    # Calculamos la media móvil a 12 periodos.
-    df["rolling"] = df["pesos"].rolling(12).mean()
+    # Calculamos la tendencia.
+    df["trend"] = STL(df["pesos"]).fit().trend
 
     # Seleccionamos los últimos 10 años (121 meses).
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
     cambio = (
-        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
     )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
@@ -249,8 +249,8 @@ def plot_pesos():
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=df["rolling"],
-            name="Promedio móvil (12 periodos)",
+            y=df["trend"],
+            name="Tendencia (12 periodos)",
             mode="lines",
             line_color="#fbc02d",
             line_width=5,
@@ -412,15 +412,15 @@ def plot_real():
     for k, v in por_año["real"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
-    # Calculamos la media móvil a 12 periodos.
-    df["rolling"] = df["real"].rolling(12).mean()
+    # Calculamos la tendencia.
+    df["trend"] = STL(df["real"]).fit().trend
 
     # Seleccionamos los últimos 10 años (121 meses).
     df = df[-121:]
 
     # Calculamos el cambio porcentual del primer y último periodo.
     cambio = (
-        (df["rolling"].iloc[-1] - df["rolling"].iloc[0]) / df["rolling"].iloc[0] * 100
+        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
     )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
@@ -441,8 +441,8 @@ def plot_real():
     fig.add_trace(
         go.Scatter(
             x=df.index,
-            y=df["rolling"],
-            name="Promedio móvil (12 periodos)",
+            y=df["trend"],
+            name="Tendencia (12 periodos)",
             mode="lines",
             line_color="#fbc02d",
             line_width=5,

@@ -7,6 +7,7 @@ https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sect
 
 import json
 import os
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -21,7 +22,7 @@ PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2024"
+FECHA_FUENTE = "diciembre 2024"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -327,7 +328,7 @@ def plot_tendencias(primer_año, ultimo_año):
     """
     Esta función crea una cuadrícula de sparklines con los
     estados que han crecido más en ingresos por remesas.
-    
+
     Parameters
     ----------
     primer_año : int
@@ -335,7 +336,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
     ultimo_año :  int
         El año final que se desea comparar.
-    
+
     """
 
     # Cargamos el dataset de remesas por entidad.
@@ -577,6 +578,208 @@ def plot_tendencias(primer_año, ultimo_año):
     fig.write_image("./estados_tendencia.png")
 
 
+def comparar_pib(año):
+    """
+    Esta función crea una gráfica de barras para comparar el valor
+     de las remesas y el del PIB de cada entidad.
+
+    Parameters
+    ----------
+    año : int
+        El año que nos interesa graficar.
+
+    """
+
+    # Cargamos el dataset del PIB por entidad.
+    pib = pd.read_csv("./assets/PIBE_2018.csv", index_col=0)
+
+    # Seleccionamos los datos del año que nos interesa.
+    pib = pib[str(año)]
+
+    # Cargamos el dataset del IPC.
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
+
+    # Nuestro IPC de referencia será 100, para coincider con la
+    # metodología del INEGI (junio 2018).
+    ipc_referencia = 100
+
+    # Calculamos el factor.
+    ipc["factor"] = ipc_referencia / ipc["IPC"]
+
+    # Remuestramos por promedio trimestral.
+    ipc = ipc.resample("QS").mean()
+
+    # Cargamos el dataset del tipo de cambio.
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+
+    # Remuestramos por promedio trimestral.
+    fx = fx.resample("QS").mean()
+
+    # Cargamos el dataset de remesas por entidad.
+    df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
+
+    # Seleccionamos las columnas del año que nos interesa.
+    cols = [col for col in df.columns if str(año) in col]
+
+    # Filtramos el DataFrama con las columnas que nos interesan.
+    df = df[cols].transpose()
+
+    # Convertimos el índice a DateTime.
+    df.index = [
+        datetime(año, 1, 1),
+        datetime(año, 4, 1),
+        datetime(año, 7, 1),
+        datetime(año, 10, 1),
+    ]
+
+    data = dict()
+
+    # Iteramos por cada entidad.
+    for entidad in df.columns:
+        # Convertiremos las remesas a su valor real a base 2018.
+        temp_df = df[entidad].to_frame("total")
+        temp_df["cambio"] = fx["Cambio"]
+        temp_df["ipc"] = ipc["factor"]
+        temp_df["real"] = temp_df["total"] * temp_df["cambio"] * temp_df["ipc"]
+
+        # Calculamos el total anual y lo agregamos a nuestro diccionario.
+        data[entidad] = temp_df["real"].sum()
+
+    # Convertimos el diccionario a DataFrame.
+    df = pd.DataFrame.from_dict(data, orient="index", columns=["total"])
+
+    # Calculamos el total anual.
+    df.loc["Nacional"] = df.sum(axis=0)
+
+    # Agregamos el PIB a cada total.
+    df["pib"] = pib
+
+    # Calculamos el porcentaje.
+    df["perc"] = df["total"] / df["pib"] * 100
+
+    # Ordenamos de mayor a menor.
+    df.sort_values("perc", ascending=False, inplace=True)
+
+    # Creamos el texto para cada barra.
+    df["text"] = df.apply(lambda x: f" {x['perc']:,.2f}% ({x['total']:,.0f}) ", axis=1)
+
+    # Hacemos la categoría nacional en negritas.
+    df.index = df.index.str.replace("Nacional", "<b>Nacional</b>")
+
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Bar(
+            y=df.index,
+            x=df["perc"],
+            text=df["text"],
+            textfont_color="#FFFFFF",
+            textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
+            orientation="h",
+            marker_color="#aa00ff",
+            textfont_family="Oswald",
+            textfont_size=20,
+        )
+    )
+
+    fig.update_xaxes(
+        range=[0, df["perc"].max() * 1.01],
+        ticksuffix="%",
+        ticks="outside",
+        separatethousands=True,
+        ticklen=10,
+        zeroline=False,
+        title_standoff=15,
+        tickcolor="#FFFFFF",
+        linewidth=2,
+        showline=True,
+        gridwidth=0.5,
+        mirror=True,
+        nticks=20,
+    )
+
+    fig.update_yaxes(
+        tickfont_size=17,
+        tickfont_color="#FFFFFF",
+        autorange="reversed",
+        ticks="outside",
+        separatethousands=True,
+        ticklen=10,
+        title_standoff=6,
+        tickcolor="#FFFFFF",
+        linewidth=2,
+        showgrid=False,
+        gridwidth=0.5,
+        showline=True,
+        mirror=True,
+    )
+
+    fig.update_layout(
+        showlegend=False,
+        width=1280,
+        height=1280,
+        font_family="Lato",
+        font_color="#FFFFFF",
+        font_size=18,
+        title_text=f"Proporción del valor de las remesas respecto al PIB estatal en México durante el año {año}",
+        title_x=0.5,
+        title_y=0.975,
+        margin_t=80,
+        margin_r=40,
+        margin_b=85,
+        margin_l=170,
+        title_font_size=28,
+        plot_bgcolor="#111111",
+        paper_bgcolor="#282A3A",
+        annotations=[
+            dict(
+                x=0.99,
+                y=-0.01,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="bottom",
+                align="left",
+                bordercolor="#FFFFFF",
+                borderwidth=1.5,
+                borderpad=7,
+                bgcolor="#111111",
+                text="<b>Notas:</b><br>Los ingresos por remesas no forman parte del PIB, sin embargo,<br>se comparan para medir su importancia en la economía estatal.<br>Las cifras están expresadas en millones de pesos constantes de 2018.",
+            ),
+            dict(
+                x=0.01,
+                y=-0.07,
+                xref="paper",
+                yref="paper",
+                xanchor="left",
+                yanchor="top",
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+            ),
+            dict(
+                x=0.55,
+                y=-0.07,
+                xref="paper",
+                yref="paper",
+                xanchor="center",
+                yanchor="top",
+                text="Porcentaje respecto al PIB (millones de pesos reales)",
+            ),
+            dict(
+                x=1.01,
+                y=-0.07,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="top",
+                text="🧁 @lapanquecita",
+            ),
+        ],
+    )
+
+    fig.write_image(f"./remesas_pib_{año}.png")
+
+
 if __name__ == "__main__":
     plot_mapa(2023)
     plot_tendencias(2014, 2023)
+    comparar_pib(2023)

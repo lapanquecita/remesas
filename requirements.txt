@@ -3,4 +3,5 @@ numpy
 pandas
 pillow
 plotly
+statsmodels
 tabulate
