@@ -181,7 +181,7 @@ CODIGOS_ISO3 = {
     "Reino Unido": "GBR",
     "República Centroafricana": "CAF",
     "República Checa": "CZE",
-    "República de Abjasia": "ABH",
+    "República de Abjasia": "ABK",
     "República del Congo": "COG",
     "República Democrática del Congo": "COD",
     "República Dominicana": "DOM",
@@ -231,7 +231,7 @@ CODIGOS_ISO3 = {
 }
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2024"
+FECHA_FUENTE = "diciembre 2024"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -263,14 +263,11 @@ def plot_top(año):
     # Quitamos la primera fila (total)
     df = df.iloc[1:]
 
-    # Quitamos los decimales de las cifras.
-    df["total"] = df["total"] * 1000000
-
     # Calculamos el porcentaje relativo al total de remesas.
     df["perc"] = df["total"] / df["total"].sum() * 100
 
     # Creamos el texto que irá en cada barra.
-    df["text"] = df.apply(lambda x: f" {x['total']:,.0f} ({x['perc']:,.4f}%) ", axis=1)
+    df["text"] = df.apply(lambda x: f" {x['total']:,.1f} ({x['perc']:,.4f}%) ", axis=1)
 
     # ordenamos el DAtaframe de mayor a menor cantidad de remesas.
     df = df.sort_values("total", ascending=False)
@@ -290,6 +287,7 @@ def plot_top(año):
             x=df["total"],
             text=df["text"],
             textfont_color="#FFFFFF",
+            textfont_family="Oswald",
             textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
             orientation="h",
             marker_color="#0277bd",
@@ -301,7 +299,7 @@ def plot_top(año):
     fig.update_xaxes(
         exponentformat="SI",
         type="log",
-        range=[5, np.log10(df["total"].max() * 1.05)],
+        range=[np.log10(df["total"].min()) // 1, np.log10(df["total"].max() * 1.05)],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -378,7 +376,7 @@ def plot_top(año):
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Dólares estadounidenses (proporción respecto al total de remesas)",
+                text="Millones de dólares estadounidenses (proporción respecto al total)",
             ),
             dict(
                 x=1.01,
@@ -444,6 +442,7 @@ def plot_bottom(año):
             x=df["total"],
             text=df["text"],
             textfont_color="#FFFFFF",
+            textfont_family="Oswald",
             textposition=["outside" for _ in range(len(df) - 1)] + ["inside"],
             orientation="h",
             marker_color="#e65100",

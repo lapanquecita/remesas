@@ -674,10 +674,10 @@ def comparar_pib(año):
             x=df["perc"],
             text=df["text"],
             textfont_color="#FFFFFF",
+            textfont_family="Oswald",
             textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
             orientation="h",
-            marker_color="#aa00ff",
-            textfont_family="Oswald",
+            marker_color="#ab47bc",
             textfont_size=20,
         )
     )
