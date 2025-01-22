@@ -641,10 +641,6 @@ def plot_map(año):
     )
 
     fig.update_layout(
-        legend_bgcolor="#111111",
-        legend_font_size=100,
-        legend_bordercolor="#FFFFFF",
-        legend_borderwidth=2,
         font_family="Lato",
         font_color="#FFFFFF",
         margin_t=240,
