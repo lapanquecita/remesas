@@ -466,7 +466,7 @@ def plot_real():
 
     fig.update_yaxes(
         title=f"Millones de pesos a precios constantes de {FECHA_INFLACION}",
-        titlefont_size=20,
+        title_font_size=20,
         tickfont_size=16,
         separatethousands=True,
         ticks="outside",
