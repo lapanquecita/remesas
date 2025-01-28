@@ -647,7 +647,7 @@ def plot_real_anual():
         title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
         tickvals=marcas,
         ticktext=textos,
-        titlefont_size=20,
+        title_font_size=20,
         tickfont_size=16,
         ticks="outside",
         ticklen=10,
