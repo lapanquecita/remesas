@@ -18,10 +18,10 @@ import plotly.graph_objects as go
 from statsmodels.tsa.seasonal import STL
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2024"
+FECHA_FUENTE = "febrero 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "octubre de 2024"
+FECHA_INFLACION = "diciembre de 2024"
 
 
 def plot_mensuales():
@@ -43,16 +43,11 @@ def plot_mensuales():
     for k, v in por_año["total"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
+    # Seleccionamos los últimos 10 años (120 meses).
+    df = df.tail(120)
+
     # Calculamos la tendencia.
     df["trend"] = STL(df["total"]).fit().trend
-
-    # Seleccionamos los últimos 10 años (121 meses).
-    df = df[-121:]
-
-    # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (
-        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
-    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -149,19 +144,6 @@ def plot_mensuales():
                 text=tabla,
             ),
             dict(
-                x=0.5,
-                y=0.08,
-                xref="paper",
-                yref="paper",
-                xanchor="center",
-                yanchor="top",
-                bordercolor="#FFFFFF",
-                borderwidth=1.5,
-                borderpad=7,
-                bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
-            ),
-            dict(
                 x=0.01,
                 y=-0.162,
                 xref="paper",
@@ -220,16 +202,11 @@ def plot_pesos():
     for k, v in por_año["pesos"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
+    # Seleccionamos los últimos 10 años (120 meses).
+    df = df.tail(120)
+
     # Calculamos la tendencia.
     df["trend"] = STL(df["pesos"]).fit().trend
-
-    # Seleccionamos los últimos 10 años (121 meses).
-    df = df[-121:]
-
-    # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (
-        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
-    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -326,19 +303,6 @@ def plot_pesos():
                 text=tabla,
             ),
             dict(
-                x=0.5,
-                y=0.08,
-                xref="paper",
-                yref="paper",
-                xanchor="center",
-                yanchor="top",
-                bordercolor="#FFFFFF",
-                borderwidth=1.5,
-                borderpad=7,
-                bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
-            ),
-            dict(
                 x=0.01,
                 y=-0.162,
                 xref="paper",
@@ -412,16 +376,11 @@ def plot_real():
     for k, v in por_año["real"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
+    # Seleccionamos los últimos 10 años (120 meses).
+    df = df.tail(120)
+
     # Calculamos la tendencia.
     df["trend"] = STL(df["real"]).fit().trend
-
-    # Seleccionamos los últimos 10 años (121 meses).
-    df = df[-121:]
-
-    # Calculamos el cambio porcentual del primer y último periodo.
-    cambio = (
-        (df["trend"].iloc[-1] - df["trend"].iloc[0]) / df["trend"].iloc[0] * 100
-    )
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -519,19 +478,6 @@ def plot_real():
                 text=tabla,
             ),
             dict(
-                x=0.5,
-                y=0.08,
-                xref="paper",
-                yref="paper",
-                xanchor="center",
-                yanchor="top",
-                bordercolor="#FFFFFF",
-                borderwidth=1.5,
-                borderpad=7,
-                bgcolor="#111111",
-                text=f"Cambio porcentual (promedio móvil): <b>{cambio:,.2f}%</b>",
-            ),
-            dict(
                 x=0.01,
                 y=-0.162,
                 xref="paper",
@@ -602,12 +548,15 @@ def plot_real_anual():
     # Cambiamos de fecha a integral para el índice.
     df.index = df.index.year
 
+    # Nos limitamos a los úlitmos 25 años.
+    df = df.tail(25)
+
     # Le daremos formato a las cifras para que sean más fáciles de interpretar.
-    df["texto"] = df["real"].apply(lambda x: f"{x/1000000:,.3f}")
+    df["texto"] = df["real"].apply(lambda x: f"{x / 1000000:,.3f}")
 
     # Creamos la escala para el eje vertical.
     marcas = np.linspace(0, 1300000, 14)
-    textos = [f"{item/1000000:,.1f}" for item in marcas]
+    textos = [f"{item / 1000000:,.1f}" for item in marcas]
     textos[0] = "0"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
