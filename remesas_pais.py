@@ -231,7 +231,7 @@ CODIGOS_ISO3 = {
 }
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2024"
+FECHA_FUENTE = "febrero 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -277,7 +277,7 @@ def plot_top(año):
     df.index = df.index.str.wrap(22).str.replace("\n", "<br>")
 
     # Seleccionamos las primeras 30 filas.
-    df = df[:30]
+    df = df.head(30)
 
     fig = go.Figure()
 
@@ -432,7 +432,12 @@ def plot_bottom(año):
     df.index = df.index.str.wrap(18).str.replace("\n", "<br>")
 
     # Seleccionamos las primeras 30 filas.
-    df = df[:30]
+    df = df.head(30)
+
+    # Para acomodar el texto calcularemos que tan cerca está del valor máximo.
+    df["ratio"] = df["total"] / df["total"].max()
+
+    df["text_pos"] = df["ratio"].apply(lambda x: "inside" if x >= 0.95 else "outside")
 
     fig = go.Figure()
 
@@ -443,7 +448,7 @@ def plot_bottom(año):
             text=df["text"],
             textfont_color="#FFFFFF",
             textfont_family="Oswald",
-            textposition=["outside" for _ in range(len(df) - 1)] + ["inside"],
+            textposition=df["text_pos"],
             orientation="h",
             marker_color="#e65100",
             marker_line_width=0,
@@ -592,8 +597,8 @@ def plot_map(año):
 
     # Convertiremos los textos a base 10.
     for item in marcas:
-        v, e = f"{10 ** item:e}".split("e")
-        textos.append(f"{10* float(v):.0f}<sup>{int(e)-1}</sup>")
+        v, e = f"{10**item:e}".split("e")
+        textos.append(f"{10 * float(v):.0f}<sup>{int(e) - 1}</sup>")
 
     # Agregamos los códigos ISO3 de cada país.
     df["iso3"] = df.index.map(CODIGOS_ISO3)
@@ -681,7 +686,7 @@ def plot_map(año):
                 y=-0.065,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Ingreso total por remesas: {df['total'].sum():,.0f} dólares",
+                text=f"Ingreso total por remesas: <b>{df['total'].sum():,.0f}</b> dólares",
                 font_size=120,
             ),
             dict(
@@ -699,6 +704,6 @@ def plot_map(año):
 
 
 if __name__ == "__main__":
-    plot_top(2023)
-    plot_bottom(2023)
-    plot_map(2023)
+    plot_top(2024)
+    plot_bottom(2024)
+    plot_map(2024)

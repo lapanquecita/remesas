@@ -22,7 +22,7 @@ PAPER_COLOR = "#393053"
 HEADER_COLOR = "#e65100"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2024"
+FECHA_FUENTE = "febrero 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -71,7 +71,7 @@ def plot_mapa(año):
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop.sum():,.2f} dólares per cápita"
+    subtitulo = f"Nacional: <b>{df['total'].sum() / pop.sum():,.2f}</b> dólares per cápita"
 
     # Asignamos la población a cada entidad.
     df["pop"] = pop
@@ -81,10 +81,6 @@ def plot_mapa(año):
 
     # Ordenamos per cápita de mayor a menor.
     df = df.sort_values("capita", ascending=False)
-
-    # Estas listas nos serviran para alimetnar el mapa.
-    ubicaciones = list()
-    valores = list()
 
     # Estos valores serán usados para definir la escala en el mapa.
     min_val = df["capita"].min()
@@ -99,22 +95,14 @@ def plot_mapa(año):
     # Cargamos el archivo GeoJSON de México.
     geojson = json.loads(open("./assets/mexico.json", "r", encoding="utf-8").read())
 
-    # Iteramos sobre cada entidad dentro de nuestro archivo GeoJSON de México.
-    for item in geojson["features"]:
-        geo = item["properties"]["NOMGEO"]
-
-        # Alimentamos las listas creadas anteriormente con la ubicación y su valor per capita.
-        ubicaciones.append(geo)
-        valores.append(df.loc[geo, "capita"])
-
     fig = go.Figure()
 
     # Vamos a crear un mapa Choropleth con todas las variables anteriormente definidas.
     fig.add_traces(
         go.Choropleth(
             geojson=geojson,
-            locations=ubicaciones,
-            z=valores,
+            locations=df.index,
+            z=df["capita"],
             featureidkey="properties.NOMGEO",
             colorscale="solar_r",
             reversescale=True,
@@ -393,7 +381,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
             # Al íncide (que son los años) lq quitamos los primeros 2 dígitos y le agregamos un apóstrofe.
             # Esto es para reducir el tamaño de la etiqueta de cada año.
-            temp_df.index = temp_df.index.map(lambda x: f"'{x-2000}")
+            temp_df.index = temp_df.index.map(lambda x: f"'{x - 2000}")
 
             # Para nuestra gráfica de línea solo vamos a necesitar que el primer y último registro tengan un punto.
             sizes = [0 for _ in range(len(temp_df))]
@@ -780,6 +768,6 @@ def comparar_pib(año):
 
 
 if __name__ == "__main__":
-    plot_mapa(2023)
-    plot_tendencias(2014, 2023)
+    plot_mapa(2024)
+    plot_tendencias(2015, 2024)
     comparar_pib(2023)

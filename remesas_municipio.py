@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2024"
+FECHA_FUENTE = "febrero 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -77,7 +77,7 @@ def plot_map(año):
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: {df['total'].sum() / pop["poblacion"].sum():,.2f} dólares per cápita"
+    subtitulo = f"Nacional: <b>{df['total'].sum() / pop['poblacion'].sum():,.2f}</b> dólares per cápita"
 
     # Asignamos la población a cada municipio.
     df = df.join(pop)
@@ -101,9 +101,9 @@ def plot_map(año):
         f"Media: <b>{df['capita'].mean():,.1f}</b>",
         f"Mediana: <b>{df['capita'].median():,.1f}</b>",
         f"DE: <b>{df['capita'].std():,.1f}</b>",
-        f"25%: <b>{df['capita'].quantile(.25):,.1f}</b>",
-        f"75%: <b>{df['capita'].quantile(.75):,.1f}</b>",
-        f"95%: <b>{df['capita'].quantile(.95):,.1f}</b>",
+        f"25%: <b>{df['capita'].quantile(0.25):,.1f}</b>",
+        f"75%: <b>{df['capita'].quantile(0.75):,.1f}</b>",
+        f"95%: <b>{df['capita'].quantile(0.95):,.1f}</b>",
         f"Máximo: <b>{df['capita'].max():,.1f}</b>",
     ]
 
@@ -128,25 +128,6 @@ def plot_map(año):
     # Cargamos el GeoJSON de municipios de México.
     geojson = json.loads(open("./assets/mexico2019.json", "r", encoding="utf-8").read())
 
-    # Estas listas serán usadas para configurar el mapa Choropleth.
-    ubicaciones = list()
-    valores = list()
-
-    # Iteramos sobre cada municipio e nuestro GeoJSON.
-    for item in geojson["features"]:
-        geo = str(item["properties"]["CVEGEO"])
-
-        # Si el municipio no se encuentra en nuestro DataFrame,
-        # agregamos un valor nulo.
-        try:
-            value = df.loc[geo]["capita"]
-        except Exception as _:
-            value = None
-
-        # Agregamos el objeto del municipio y su valor a las listas correspondientes.
-        ubicaciones.append(geo)
-        valores.append(value)
-
     fig = go.Figure()
 
     # Configuramos nuestro mapa Choropleth con todas las variables antes definidas.
@@ -155,8 +136,8 @@ def plot_map(año):
     fig.add_traces(
         go.Choropleth(
             geojson=geojson,
-            locations=ubicaciones,
-            z=valores,
+            locations=df.index,
+            z=df["capita"],
             featureidkey="properties.CVEGEO",
             colorscale="solar",
             marker_line_color="#FFFFFF",
@@ -705,7 +686,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
             # Al íncide (que son los años) lq quitamos los primeros 2 dígitos y le agregamos un apóstrofe.
             # Esto es para reducir el tamaño de la etiqueta de cada año.
-            temp_df.index = temp_df.index.map(lambda x: f"'{x-2000}")
+            temp_df.index = temp_df.index.map(lambda x: f"'{x - 2000}")
 
             # Para nuestra gráfica de línea solo vamos a necesitar que el primer y último registro tengan un punto.
             sizes = [0 for _ in range(len(temp_df))]
@@ -902,7 +883,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    plot_map(2023)
-    plot_capita(2023)
-    plot_absolutos(2023)
-    plot_tendencias(2014, 2023)
+    plot_map(2024)
+    plot_capita(2024)
+    plot_absolutos(2024)
+    plot_tendencias(2015, 2024)
