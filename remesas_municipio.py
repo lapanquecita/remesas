@@ -606,7 +606,8 @@ def fill_cve(x):
 
 def plot_tendencias(primer_año, ultimo_año):
     """
-    Esta función crea una cuadrícula de sparklines con los municipios que han crecido más en ingresos por remesas.
+    Esta función crea una cuadrícula de sparklines con
+    los municipios que han crecido más en ingresos por remesas.
 
     Parameters
     ----------
@@ -648,6 +649,9 @@ def plot_tendencias(primer_año, ultimo_año):
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
 
+    # Calculamos el cambio nacional.
+    cambio = (df[ultimo_año].sum() - df[primer_año].sum()) / df[primer_año].sum() * 100
+
     # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
@@ -662,7 +666,7 @@ def plot_tendencias(primer_año, ultimo_año):
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
 
-    # Fromateamos los subtítulos para cada cuadro en nuestra cuadrícula.
+    # Formateamos los subtítulos para cada cuadro en nuestra cuadrícula.
     titles = [f"<b>{item}</b>" for item in df.index.tolist()]
 
     # Vamos a crear una cuadrícula de 3 columnas por 5 filas (15 cuadros).
@@ -856,7 +860,7 @@ def plot_tendencias(primer_año, ultimo_año):
         yanchor="top",
         yref="paper",
         font_size=22,
-        text=f"(solo se tomaron en cuenta los municipios con al menos 100 mdd por ingresos de remesas durante el {ultimo_año})",
+        text=f"(sólo se tomaron en cuenta los municipios con al menos 100 mdd de ingresos por remesas durante el {ultimo_año})",
     )
 
     fig.add_annotation(
@@ -866,7 +870,7 @@ def plot_tendencias(primer_año, ultimo_año):
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text=f"El crecimiento nacional por ingresos de remesas del {primer_año} al {ultimo_año} es de <b>162.34%</b>",
+        text=f"El crecimiento nacional de ingresos por remesas del {primer_año} al {ultimo_año} es de <b>{cambio:,.2f}%</b>",
     )
 
     fig.add_annotation(

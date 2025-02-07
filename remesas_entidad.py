@@ -71,7 +71,9 @@ def plot_mapa(año):
     df["total"] = df.sum(axis=1) * 1000000
 
     # Calculamos las remesas per cápita para toda la polación.
-    subtitulo = f"Nacional: <b>{df['total'].sum() / pop.sum():,.2f}</b> dólares per cápita"
+    subtitulo = (
+        f"Nacional: <b>{df['total'].sum() / pop.sum():,.2f}</b> dólares per cápita"
+    )
 
     # Asignamos la población a cada entidad.
     df["pop"] = pop
@@ -348,6 +350,9 @@ def plot_tendencias(primer_año, ultimo_año):
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
 
+    # Calculamos el cambio nacional.
+    cambio = (df[ultimo_año].sum() - df[primer_año].sum()) / df[primer_año].sum() * 100
+
     # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
@@ -357,7 +362,7 @@ def plot_tendencias(primer_año, ultimo_año):
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
 
-    # Fromateamos los subtítulos para cada cuadro en nuestra cuadrícula.
+    # Formateamos los subtítulos para cada cuadro en nuestra cuadrícula.
     titles = [f"<b>{item}</b>" for item in df.index.tolist()]
 
     # Vamos a crear una cuadrícula de 3 columnas por 5 filas (15 cuadros).
@@ -550,7 +555,7 @@ def plot_tendencias(primer_año, ultimo_año):
         y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text=f"El crecimiento nacional por ingresos de remesas del {primer_año} al {ultimo_año} es de <b>162.34%</b>",
+        text=f"El crecimiento nacional de ingresos por remesas del {primer_año} al {ultimo_año} es de <b>{cambio:,.2f}%</b>",
     )
 
     fig.add_annotation(
