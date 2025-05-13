@@ -18,10 +18,14 @@ import plotly.graph_objects as go
 from statsmodels.tsa.seasonal import STL
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2025"
+FECHA_FUENTE = "mayo 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "diciembre de 2024"
+FECHA_INFLACION = "abril de 2025"
+
+# Paleta de colores para todas las gráficas.
+PLOT_COLOR = "#0d0d0d"
+PAPER_COLOR = "#1a1a1a"
 
 
 def plot_mensuales():
@@ -71,7 +75,7 @@ def plot_mensuales():
             name="Tendencia (12 periodos)",
             mode="lines",
             line_color="#fbc02d",
-            line_width=5,
+            line_width=8,
             opacity=1.0,
         )
     )
@@ -79,28 +83,27 @@ def plot_mensuales():
     fig.update_xaxes(
         tickformat="%m<br>'%y",
         ticks="outside",
-        tickfont_size=14,
         ticklen=10,
         zeroline=False,
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
-        nticks=50,
+        nticks=30,
     )
 
     fig.update_yaxes(
         title="Millones de dólares (nominales)",
-        tickfont_size=16,
+        tickformat=".2s",
         separatethousands=True,
         ticks="outside",
         ticklen=10,
-        title_standoff=6,
+        title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         mirror=True,
         nticks=14,
@@ -108,26 +111,27 @@ def plot_mensuales():
 
     fig.update_layout(
         legend_itemsizing="constant",
+        legend_orientation="h",
         showlegend=True,
         legend_x=0.5,
-        legend_y=0.98,
+        legend_y=1.06,
         legend_xanchor="center",
         legend_yanchor="top",
-        width=1280,
-        height=720,
-        font_family="Quicksand",
+        width=1920,
+        height=1080,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
+        font_size=24,
         title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (dólares nominales)",
         title_x=0.5,
-        title_y=0.97,
-        margin_t=60,
-        margin_l=110,
+        title_y=0.965,
+        margin_t=120,
+        margin_l=140,
         margin_r=40,
-        margin_b=100,
-        title_font_size=24,
-        plot_bgcolor="#111111",
-        paper_bgcolor="#282A3A",
+        margin_b=160,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.02,
@@ -217,7 +221,7 @@ def plot_pesos():
             x=df.index,
             y=df["pesos"],
             name="Cifras absolutas",
-            marker_color="#e64a19",
+            marker_color="#ff4081",
             opacity=1.0,
             marker_line_width=0,
         )
@@ -238,28 +242,26 @@ def plot_pesos():
     fig.update_xaxes(
         tickformat="%m<br>'%y",
         ticks="outside",
-        tickfont_size=14,
         ticklen=10,
         zeroline=False,
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
-        nticks=50,
+        nticks=30,
     )
 
     fig.update_yaxes(
         title="Millones de pesos (nominales)",
-        tickfont_size=16,
         separatethousands=True,
         ticks="outside",
         ticklen=10,
-        title_standoff=6,
+        title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         mirror=True,
         nticks=14,
@@ -267,26 +269,27 @@ def plot_pesos():
 
     fig.update_layout(
         legend_itemsizing="constant",
+        legend_orientation="h",
         showlegend=True,
         legend_x=0.5,
-        legend_y=0.98,
+        legend_y=1.06,
         legend_xanchor="center",
         legend_yanchor="top",
-        width=1280,
-        height=720,
-        font_family="Quicksand",
+        width=1920,
+        height=1080,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
+        font_size=24,
         title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos nominales)",
         title_x=0.5,
-        title_y=0.97,
-        margin_t=60,
-        margin_l=110,
+        title_y=0.965,
+        margin_t=120,
+        margin_l=140,
         margin_r=40,
-        margin_b=100,
-        title_font_size=24,
-        plot_bgcolor="#111111",
-        paper_bgcolor="#282A3A",
+        margin_b=160,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.02,
@@ -404,7 +407,7 @@ def plot_real():
             name="Tendencia (12 periodos)",
             mode="lines",
             line_color="#fbc02d",
-            line_width=5,
+            line_width=8,
             opacity=1.0,
         )
     )
@@ -412,21 +415,18 @@ def plot_real():
     fig.update_xaxes(
         tickformat="%m<br>'%y",
         ticks="outside",
-        tickfont_size=14,
         ticklen=10,
         zeroline=False,
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
-        nticks=50,
+        nticks=30,
     )
 
     fig.update_yaxes(
-        title=f"Millones de pesos a precios constantes de {FECHA_INFLACION}",
-        title_font_size=20,
-        tickfont_size=16,
+        title=f"Millones de pesos reales (precio base, {FECHA_INFLACION})",
         separatethousands=True,
         ticks="outside",
         ticklen=10,
@@ -434,7 +434,7 @@ def plot_real():
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         mirror=True,
         nticks=14,
@@ -442,26 +442,27 @@ def plot_real():
 
     fig.update_layout(
         legend_itemsizing="constant",
+        legend_orientation="h",
         showlegend=True,
         legend_x=0.5,
-        legend_y=0.98,
+        legend_y=1.06,
         legend_xanchor="center",
         legend_yanchor="top",
-        width=1280,
-        height=720,
-        font_family="Quicksand",
+        width=1920,
+        height=1080,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
+        font_size=24,
         title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos reales)",
         title_x=0.5,
-        title_y=0.97,
-        margin_t=60,
-        margin_l=110,
+        title_y=0.965,
+        margin_t=120,
+        margin_l=140,
         margin_r=40,
-        margin_b=100,
-        title_font_size=24,
-        plot_bgcolor="#111111",
-        paper_bgcolor="#282A3A",
+        margin_b=160,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.02,
@@ -548,8 +549,8 @@ def plot_real_anual():
     # Cambiamos de fecha a integral para el índice.
     df.index = df.index.year
 
-    # Nos limitamos a los úlitmos 25 años.
-    df = df.tail(25)
+    # Nos limitamos a los úlitmos 20 años.
+    df = df.tail(20)
 
     # Le daremos formato a las cifras para que sean más fáciles de interpretar.
     df["texto"] = df["real"].apply(lambda x: f"{x / 1000000:,.3f}")
@@ -576,12 +577,12 @@ def plot_real_anual():
             marker_colorscale="agsunset",
             opacity=1.0,
             marker_line_width=0,
+            textfont_size=36,
         )
     )
 
     fig.update_xaxes(
         ticks="outside",
-        tickfont_size=14,
         ticklen=10,
         zeroline=False,
         tickcolor="#FFFFFF",
@@ -589,48 +590,42 @@ def plot_real_anual():
         showline=True,
         showgrid=False,
         mirror=True,
-        nticks=50,
+        nticks=30,
     )
 
     fig.update_yaxes(
+        range=[0, df["real"].max() * 1.1],
         title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
         tickvals=marcas,
         ticktext=textos,
-        title_font_size=20,
-        tickfont_size=16,
         ticks="outside",
         ticklen=10,
-        title_standoff=6,
+        title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         mirror=True,
     )
 
     fig.update_layout(
-        legend_itemsizing="constant",
         showlegend=False,
-        legend_x=0.5,
-        legend_y=0.98,
-        legend_xanchor="center",
-        legend_yanchor="top",
-        width=1280,
-        height=720,
-        font_family="Quicksand",
+        width=1920,
+        height=1080,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
+        font_size=24,
         title_text="Evolución de los ingresos anuales por remesas hacia México (pesos reales)",
         title_x=0.5,
         title_y=0.97,
-        margin_t=60,
-        margin_l=110,
+        margin_t=80,
+        margin_l=140,
         margin_r=40,
-        margin_b=85,
-        title_font_size=26,
-        plot_bgcolor="#111111",
-        paper_bgcolor="#282A3A",
+        margin_b=125,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.02,
@@ -648,7 +643,7 @@ def plot_real_anual():
             ),
             dict(
                 x=0.01,
-                y=-0.13,
+                y=-0.12,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
@@ -657,7 +652,7 @@ def plot_real_anual():
             ),
             dict(
                 x=0.5,
-                y=-0.13,
+                y=-0.12,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -666,7 +661,7 @@ def plot_real_anual():
             ),
             dict(
                 x=1.01,
-                y=-0.13,
+                y=-0.12,
                 xref="paper",
                 yref="paper",
                 xanchor="right",
