@@ -18,10 +18,10 @@ import plotly.graph_objects as go
 from statsmodels.tsa.seasonal import STL
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "mayo 2025"
+FECHA_FUENTE = "julio 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "abril de 2025"
+FECHA_INFLACION = "junio de 2025"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#0d0d0d"
@@ -35,8 +35,11 @@ def plot_mensuales():
 
     # Cargamos el dataset de las remesas mensuales.
     df = pd.read_csv(
-        "./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col="fecha"
+        "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
     )
+
+    # Convertimos las cifras a millones de dólares.
+    df /= 1000000
 
     # Calculamos el total de remesas por año para los últimos 10 años.
     por_año = df.resample("YS").sum().tail(10)
@@ -44,14 +47,14 @@ def plot_mensuales():
     # Vamos a crear una tabla con los totales.
     tabla = "<b>Total por año (MDD)</b>"
 
-    for k, v in por_año["total"].items():
+    for k, v in por_año["TOTAL"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
     # Seleccionamos los últimos 10 años (120 meses).
     df = df.tail(120)
 
     # Calculamos la tendencia.
-    df["trend"] = STL(df["total"]).fit().trend
+    df["trend"] = STL(df["TOTAL"]).fit().trend
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -60,8 +63,8 @@ def plot_mensuales():
     fig.add_trace(
         go.Bar(
             x=df.index,
-            y=df["total"],
-            name="Cifras absolutas",
+            y=df["TOTAL"],
+            name="Serie original",
             marker_color="#04bfb3",
             opacity=1.0,
             marker_line_width=0,
@@ -95,7 +98,7 @@ def plot_mensuales():
 
     fig.update_yaxes(
         title="Millones de dólares (nominales)",
-        tickformat=".2s",
+        tickformat="s",
         separatethousands=True,
         ticks="outside",
         ticklen=10,
@@ -186,16 +189,21 @@ def plot_pesos():
     """
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv(
+        "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
+    )
+
+    # Convertimos las cifras a millones de dólares.
+    df /= 1000000
 
     # Agregamos el tipo de cambio mensual.
-    df["cambio"] = fx["Cambio"]
+    df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["total"] * df["cambio"]
+    df["pesos"] = df["TOTAL"] * df["cambio"]
 
     # Calculamos el total de remesas por año para los últimos 10 años.
     por_año = df.resample("YS").sum().tail(10)
@@ -255,6 +263,7 @@ def plot_pesos():
     fig.update_yaxes(
         title="Millones de pesos (nominales)",
         separatethousands=True,
+        tickformat="s",
         ticks="outside",
         ticklen=10,
         title_standoff=15,
@@ -344,7 +353,7 @@ def plot_real():
     """
 
     # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
     ipc_referencia = ipc["IPC"].iloc[-1]
@@ -353,16 +362,19 @@ def plot_real():
     ipc["factor"] = ipc_referencia / ipc["IPC"]
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0)
+
+    # Convertimos las cifras a millones de dólares.
+    df /= 1000000
 
     # Agregamos el tipo de cambio mensual.
-    df["cambio"] = fx["Cambio"]
+    df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["total"] * df["cambio"]
+    df["pesos"] = df["TOTAL"] * df["cambio"]
 
     # Agregamos la columna de inflación.
     df["inflacion"] = ipc["factor"]
@@ -427,6 +439,7 @@ def plot_real():
 
     fig.update_yaxes(
         title=f"Millones de pesos reales (precio base, {FECHA_INFLACION})",
+        tickformat="s",
         separatethousands=True,
         ticks="outside",
         ticklen=10,
@@ -517,7 +530,7 @@ def plot_real_anual():
     """
 
     # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
     ipc_referencia = ipc["IPC"].iloc[-1]
@@ -526,22 +539,27 @@ def plot_real_anual():
     ipc["factor"] = ipc_referencia / ipc["IPC"]
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Cargamos el dataset de las remesas mensuales.
-    df = pd.read_csv("./data/remesas_mensuales.csv", parse_dates=["fecha"], index_col=0)
+    df = pd.read_csv(
+        "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
+    )
 
     # Agregamos el tipo de cambio mensual.
-    df["cambio"] = fx["Cambio"]
+    df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["total"] * df["cambio"]
+    df["pesos"] = df["TOTAL"] * df["cambio"]
 
     # Agregamos la columna de inflación.
     df["inflacion"] = ipc["factor"]
 
     # Ajustamos por inflación para obtener pesos reales.
     df["real"] = df["pesos"] * df["inflacion"]
+
+    # Convertimos las cifras a billones de pesos.
+    df["real"] /= 1000000000000
 
     # Calculamos el total de remesas por año.
     df = df.resample("YS").sum()
@@ -552,14 +570,6 @@ def plot_real_anual():
     # Nos limitamos a los úlitmos 20 años.
     df = df.tail(20)
 
-    # Le daremos formato a las cifras para que sean más fáciles de interpretar.
-    df["texto"] = df["real"].apply(lambda x: f"{x / 1000000:,.3f}")
-
-    # Creamos la escala para el eje vertical.
-    marcas = np.linspace(0, 1300000, 14)
-    textos = [f"{item / 1000000:,.1f}" for item in marcas]
-    textos[0] = "0"
-
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
     fig = go.Figure()
@@ -568,13 +578,13 @@ def plot_real_anual():
         go.Bar(
             x=df.index,
             y=df["real"],
-            text=df["texto"],
+            text=df["real"],
+            texttemplate="%{text:,.3f}",
             textfont_color="#FFFFFF",
             textfont_family="Oswald",
             textposition="outside",
             marker_color=df["real"],
-            name="Cifras absolutas",
-            marker_colorscale="agsunset",
+            marker_colorscale="redor_r",
             opacity=1.0,
             marker_line_width=0,
             textfont_size=36,
@@ -596,8 +606,6 @@ def plot_real_anual():
     fig.update_yaxes(
         range=[0, df["real"].max() * 1.1],
         title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
-        tickvals=marcas,
-        ticktext=textos,
         ticks="outside",
         ticklen=10,
         title_standoff=15,
@@ -616,7 +624,7 @@ def plot_real_anual():
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text="Evolución de los ingresos anuales por remesas hacia México (pesos reales)",
+        title_text=f"Evolución de los ingresos anuales reales por remesas hacia México ({df.index.min()}-{df.index.max()})",
         title_x=0.5,
         title_y=0.97,
         margin_t=80,
