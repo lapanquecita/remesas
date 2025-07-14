@@ -59,14 +59,14 @@ def plot_mapa(año):
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['TOTAL_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
+        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
     )
 
     # Asignamos la población a cada entidad.
     df["pop"] = pop
 
     # Calculamos el valor per cápita.
-    df["capita"] = df["TOTAL_USD"] / df["pop"]
+    df["capita"] = df["VALOR_USD"] / df["pop"]
 
     # Ordenamos per cápita de mayor a menor.
     df = df.sort_values("capita", ascending=False)
@@ -209,7 +209,7 @@ def plot_mapa(año):
             cells=dict(
                 values=[
                     df.index[:16],
-                    df["TOTAL_USD"][:16],
+                    df["VALOR_USD"][:16],
                     df["capita"][:16],
                 ],
                 fill_color=PLOT_COLOR,
@@ -241,7 +241,7 @@ def plot_mapa(año):
             cells=dict(
                 values=[
                     df.index[16:],
-                    df["TOTAL_USD"][16:],
+                    df["VALOR_USD"][16:],
                     df["capita"][16:],
                 ],
                 fill_color=PLOT_COLOR,
@@ -315,7 +315,7 @@ def plot_tendencias(primer_año, ultimo_año):
     df = df.pivot_table(
         index="ENTIDAD",
         columns=df["PERIODO"].dt.year,
-        values="TOTAL_USD",
+        values="VALOR_USD",
         aggfunc="sum",
     )
 
@@ -585,7 +585,7 @@ def comparar_pib(año):
     df["factor"] = ipc["factor"]
 
     # Calculamos el valor real.
-    df["real"] = df["TOTAL_USD"] * df["cambio"] * df["factor"]
+    df["real"] = df["VALOR_USD"] * df["cambio"] * df["factor"]
 
     # Agrupamos por entidad.
     df = df.groupby("ENTIDAD").sum()
@@ -657,6 +657,8 @@ def comparar_pib(año):
     )
 
     fig.update_layout(
+        uniformtext_minsize=24,
+        uniformtext_mode="show",
         showlegend=False,
         width=1920,
         height=1920,

@@ -12,10 +12,10 @@ https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?acci
 
 """
 
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from statsmodels.tsa.seasonal import STL
+
 
 # Mes y año en que se recopilaron los datos.
 FECHA_FUENTE = "julio 2025"
@@ -47,14 +47,14 @@ def plot_mensuales():
     # Vamos a crear una tabla con los totales.
     tabla = "<b>Total por año (MDD)</b>"
 
-    for k, v in por_año["TOTAL_USD"].items():
+    for k, v in por_año["VALOR_USD"].items():
         tabla += f"<br>{k.year}: {v:,.0f}"
 
     # Seleccionamos los últimos 10 años (120 meses).
     df = df.tail(120)
 
     # Calculamos la tendencia.
-    df["trend"] = STL(df["TOTAL_USD"]).fit().trend
+    df["trend"] = STL(df["VALOR_USD"]).fit().trend
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -63,7 +63,7 @@ def plot_mensuales():
     fig.add_trace(
         go.Bar(
             x=df.index,
-            y=df["TOTAL_USD"],
+            y=df["VALOR_USD"],
             name="Serie original",
             marker_color="#04bfb3",
             opacity=1.0,
@@ -203,7 +203,7 @@ def plot_pesos():
     df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["TOTAL_USD"] * df["cambio"]
+    df["pesos"] = df["VALOR_USD"] * df["cambio"]
 
     # Calculamos el total de remesas por año para los últimos 10 años.
     por_año = df.resample("YS").sum().tail(10)
@@ -376,7 +376,7 @@ def plot_real():
     df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["TOTAL_USD"] * df["cambio"]
+    df["pesos"] = df["VALOR_USD"] * df["cambio"]
 
     # Agregamos la columna de inflación.
     df["inflacion"] = ipc["factor"]
@@ -552,7 +552,7 @@ def plot_real_anual():
     df["cambio"] = fx["TIPO_CAMBIO"]
 
     # Hacemos la conversión a pesos.
-    df["pesos"] = df["TOTAL_USD"] * df["cambio"]
+    df["pesos"] = df["VALOR_USD"] * df["cambio"]
 
     # Agregamos la columna de inflación.
     df["inflacion"] = ipc["factor"]
