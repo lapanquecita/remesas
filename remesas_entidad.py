@@ -17,12 +17,12 @@ from plotly.subplots import make_subplots
 
 
 # Definimos los colores que usaremos para el mapa y tablas.
-PLOT_COLOR = "#18122B"
-PAPER_COLOR = "#393053"
+PLOT_COLOR = "#142521"
+PAPER_COLOR = "#1F3630"
 HEADER_COLOR = "#e65100"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2025"
+FECHA_FUENTE = "julio 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -48,47 +48,34 @@ def plot_mapa(año):
     # Seleccionamos la población del año de nuestro interés.
     pop = pop[str(año)]
 
-    # Renombramos algunos estados a sus nombres más comunes.
-    pop = pop.rename(
-        {
-            "Coahuila de Zaragoza": "Coahuila",
-            "México": "Estado de México",
-            "Michoacán de Ocampo": "Michoacán",
-            "Veracruz de Ignacio de la Llave": "Veracruz",
-        }
-    )
-
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"], index_col=0)
 
-    # Seleccionamos las columnas del año que nos interesa.
-    cols = [col for col in df.columns if str(año) in col]
+    # Seleccionamos los reigstros del año especificado.
+    df = df[df.index.year == año]
 
-    # Filtramos el DataFrama con las columnas que nos interesan.
-    df = df[cols]
-
-    # Quitamos los decimales de las cifras.
-    df["total"] = df.sum(axis=1) * 1000000
+    # Calculamos el total por entidad.
+    df = df.groupby("ENTIDAD").sum()
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['total'].sum() / pop.sum():,.2f}</b> dólares per cápita"
+        f"Nacional: <b>{df['TOTAL_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
     )
 
     # Asignamos la población a cada entidad.
     df["pop"] = pop
 
     # Calculamos el valor per cápita.
-    df["capita"] = df["total"] / df["pop"]
+    df["capita"] = df["TOTAL_USD"] / df["pop"]
 
     # Ordenamos per cápita de mayor a menor.
     df = df.sort_values("capita", ascending=False)
 
     # Estos valores serán usados para definir la escala en el mapa.
-    min_val = df["capita"].min()
-    max_val = df["capita"].max()
+    valor_min = df["capita"].min()
+    valor_max = df["capita"].max()
 
-    marcas = np.linspace(min_val, max_val, 11)
+    marcas = np.linspace(valor_min, valor_max, 11)
     etiquetas = list()
 
     for item in marcas:
@@ -106,32 +93,31 @@ def plot_mapa(año):
             locations=df.index,
             z=df["capita"],
             featureidkey="properties.NOMGEO",
-            colorscale="solar_r",
+            colorscale="deep",
             reversescale=True,
             marker_line_color="#FFFFFF",
-            marker_line_width=1.0,
-            zmin=min_val,
-            zmax=max_val,
+            marker_line_width=1.5,
+            zmin=valor_min,
+            zmax=valor_max,
             colorbar=dict(
                 x=0.03,
                 y=0.5,
                 ypad=50,
                 ticks="outside",
-                outlinewidth=1.5,
+                outlinewidth=2,
                 outlinecolor="#FFFFFF",
                 tickvals=marcas,
                 ticktext=etiquetas,
-                tickwidth=2,
+                tickwidth=3,
                 tickcolor="#FFFFFF",
                 ticklen=10,
-                tickfont_size=20,
             ),
         )
     )
 
     # Personalizamos la apariencia del mapa.
     fig.update_geos(
-        fitbounds="locations",
+        fitbounds="geojson",
         showocean=True,
         oceancolor=PLOT_COLOR,
         showcountries=False,
@@ -143,59 +129,54 @@ def plot_mapa(año):
     )
 
     fig.update_layout(
-        legend_x=0.01,
-        legend_y=0.07,
-        legend_bgcolor="#111111",
-        legend_font_size=20,
-        legend_bordercolor="#FFFFFF",
-        legend_borderwidth=2,
-        font_family="Lato",
+        showlegend=False,
+        font_family="Inter",
         font_color="#FFFFFF",
-        margin={"r": 40, "t": 50, "l": 40, "b": 30},
-        width=1280,
-        height=720,
+        font_size=28,
+        margin_t=80,
+        margin_r=40,
+        margin_b=60,
+        margin_l=40,
+        width=1920,
+        height=1080,
         paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.5,
-                y=1.01,
+                y=1.025,
                 xanchor="center",
                 yanchor="top",
                 text=f"Ingresos por remesas hacia México por entidad durante {PERIODO_TIEMPO} de {año}",
-                font_size=28,
-            ),
-            dict(
-                x=0.57,
-                y=-0.04,
-                xanchor="center",
-                yanchor="top",
-                text=subtitulo,
-                font_size=26,
+                font_size=42,
             ),
             dict(
                 x=0.0275,
-                y=0.45,
+                y=0.46,
                 textangle=-90,
                 xanchor="center",
                 yanchor="middle",
                 text="Dólares per cápita durante el año",
-                font_size=18,
             ),
             dict(
                 x=0.01,
-                y=-0.04,
+                y=-0.056,
                 xanchor="left",
                 yanchor="top",
                 text=f"Fuente: Banxico ({FECHA_FUENTE})",
-                font_size=24,
+            ),
+            dict(
+                x=0.5,
+                y=-0.056,
+                xanchor="center",
+                yanchor="top",
+                text=subtitulo,
             ),
             dict(
                 x=1.01,
-                y=-0.04,
+                y=-0.056,
                 xanchor="right",
                 yanchor="top",
                 text="🧁 @lapanquecita",
-                font_size=24,
             ),
         ],
     )
@@ -222,20 +203,20 @@ def plot_mapa(año):
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
                 align="center",
-                height=29,
+                height=45,
                 line_width=0.8,
             ),
             cells=dict(
                 values=[
                     df.index[:16],
-                    df["total"][:16],
+                    df["TOTAL_USD"][:16],
                     df["capita"][:16],
                 ],
                 fill_color=PLOT_COLOR,
-                height=29,
-                format=["", ",.0f", ",.2f"],
+                height=45,
+                format=["", ",.0f"],
                 line_width=0.8,
-                align=["left", "left", "center"],
+                align=["left", "center"],
             ),
         ),
         col=1,
@@ -254,20 +235,20 @@ def plot_mapa(año):
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
                 align="center",
-                height=29,
+                height=45,
                 line_width=0.8,
             ),
             cells=dict(
                 values=[
                     df.index[16:],
-                    df["total"][16:],
+                    df["TOTAL_USD"][16:],
                     df["capita"][16:],
                 ],
                 fill_color=PLOT_COLOR,
-                height=29,
-                format=["", ",.0f", ",.2f"],
+                height=45,
+                format=["", ",.0f"],
                 line_width=0.8,
-                align=["left", "left", "center"],
+                align=["left", "center"],
             ),
         ),
         col=2,
@@ -275,22 +256,15 @@ def plot_mapa(año):
     )
 
     fig.update_layout(
-        showlegend=False,
-        legend_borderwidth=1.5,
-        xaxis_rangeslider_visible=False,
-        width=1280,
-        height=560,
-        font_family="Lato",
+        width=1920,
+        height=840,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
-        title="",
-        title_x=0.5,
-        title_y=0.95,
-        margin_t=20,
+        font_size=28,
+        margin_t=25,
         margin_l=40,
         margin_r=40,
         margin_b=0,
-        title_font_size=26,
         paper_bgcolor=PAPER_COLOR,
     )
 
@@ -300,7 +274,7 @@ def plot_mapa(año):
     image1 = Image.open("./0.png")
     image2 = Image.open("./1.png")
 
-    result_width = 1280
+    result_width = image1.width
     result_height = image1.height + image2.height
 
     result = Image.new("RGB", (result_width, result_height))
@@ -330,22 +304,23 @@ def plot_tendencias(primer_año, ultimo_año):
     """
 
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"])
 
-    # Vamos a sumar los totales de remesas por año.
-    # Para esto crearemos un ciclo del 2013 al 2024.
-    for year in range(2013, 2025):
-        cols = [col for col in df.columns if str(year) in col]
-        df[str(year)] = df[cols].sum(axis=1)
+    # Seleccionamos los años dentro de nuestro rango de interés.
+    df = df[
+        (df["PERIODO"].dt.year >= primer_año) & (df["PERIODO"].dt.year <= ultimo_año)
+    ]
 
-    # Solo vamos a escoger las columnas que creamos.
-    df = df.iloc[:, -12:]
+    # Transformamos nuestro dataset para que el índice sean los estados y las columnas los años.
+    df = df.pivot_table(
+        index="ENTIDAD",
+        columns=df["PERIODO"].dt.year,
+        values="TOTAL_USD",
+        aggfunc="sum",
+    )
 
-    # Cambiamos las columnas de str a int.
-    df.columns = [int(col) for col in df.columns]
-
-    # Seleccionamos solo las columnas que nos interesan.
-    df = df[[col for col in df.columns if col >= primer_año and col <= ultimo_año]]
+    # Convertimos las cifras a millones de dólares.
+    df /= 1000000
 
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
@@ -400,15 +375,8 @@ def plot_tendencias(primer_año, ultimo_año):
             # Solo el primer y último registro llevarán un texto con sus valores.
             textos = ["" for _ in range(len(temp_df))]
 
-            if primer_valor >= 1000:
-                textos[0] = f"<b>{primer_valor:,.0f}</b>"
-            else:
-                textos[0] = f"<b>{primer_valor:,.1f}</b>"
-
-            if ultimo_valor >= 1000:
-                textos[-1] = f"<b>{ultimo_valor:,.0f}</b>"
-            else:
-                textos[-1] = f"<b>{ultimo_valor:,.1f}</b>"
+            textos[0] = f"<b>{primer_valor:,.0f}</b>"
+            textos[-1] = f"<b>{ultimo_valor:,.0f}</b>"
 
             # Posicionamos los dos textos.
             text_pos = ["middle center" for _ in range(len(temp_df))]
@@ -419,10 +387,7 @@ def plot_tendencias(primer_año, ultimo_año):
             change = (ultimo_valor - primer_valor) / primer_valor * 100
             diff = ultimo_valor - primer_valor
 
-            if diff >= 1000:
-                texto_anotaciones.append(f"<b>+{diff:,.0f}</b><br>+{change:,.0f}%")
-            else:
-                texto_anotaciones.append(f"<b>+{diff:,.1f}</b><br>+{change:,.0f}%")
+            texto_anotaciones.append(f"<b>+{diff:,.0f}</b><br>+{change:,.0f}%")
 
             fig.add_trace(
                 go.Scatter(
@@ -431,7 +396,6 @@ def plot_tendencias(primer_año, ultimo_año):
                     text=textos,
                     mode="markers+lines+text",
                     textposition=text_pos,
-                    textfont_size=18,
                     marker_color="#64ffda",
                     marker_opacity=1.0,
                     marker_size=sizes,
@@ -448,7 +412,7 @@ def plot_tendencias(primer_año, ultimo_año):
             index += 1
 
     fig.update_xaxes(
-        tickfont_size=14,
+        tickfont_size=20,
         ticks="outside",
         ticklen=10,
         zeroline=False,
@@ -463,7 +427,8 @@ def plot_tendencias(primer_año, ultimo_año):
     fig.update_yaxes(
         title_text="Millones de dólares",
         separatethousands=True,
-        tickfont_size=14,
+        tickfont_size=20,
+        tickformat="s",
         ticks="outside",
         ticklen=10,
         zeroline=False,
@@ -477,22 +442,22 @@ def plot_tendencias(primer_año, ultimo_año):
     )
 
     fig.update_layout(
-        font_family="Lato",
+        font_family="Inter",
         showlegend=False,
-        width=1280,
-        height=1600,
+        width=1920,
+        height=2400,
         font_color="#FFFFFF",
-        font_size=14,
-        margin_t=120,
-        margin_l=110,
-        margin_r=40,
-        margin_b=100,
+        font_size=24,
+        margin_t=160,
+        margin_l=140,
+        margin_r=60,
+        margin_b=150,
         title_text=f"Las 15 entidades de México con mayor crecimiento en ingresos por remesas ({primer_año} vs. {ultimo_año})",
         title_x=0.5,
         title_y=0.985,
-        title_font_size=26,
-        plot_bgcolor="#171010",
-        paper_bgcolor="#2B2B2B",
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
     )
 
     # Vamos a crear una anotación en cada cuadro con textos mostrando el total y el cambio porcentual.
@@ -504,7 +469,7 @@ def plot_tendencias(primer_año, ultimo_año):
     for annotation in fig["layout"]["annotations"]:
         # A cada subtítulo lo vamos a ajustar ligeramente.
         annotation["y"] += 0.005
-        annotation["font"]["size"] = 20
+        annotation["font"]["size"] = 30
 
         # Vamos a extraer las coordenadas X y Y de cada subtítulo para usarlas de referencia
         # para nuestras nuevas anotaciones.
@@ -520,7 +485,7 @@ def plot_tendencias(primer_año, ultimo_año):
     ) in zip(annotations_x, annotations_y, texto_anotaciones):
         # Vamos a ajustar las nuevas anotaciones basandonos en las coornedas de los subtítulos.
         x -= 0.12
-        y -= 0.035
+        y -= 0.03
 
         fig.add_annotation(
             x=x,
@@ -531,18 +496,17 @@ def plot_tendencias(primer_año, ultimo_año):
             yref="paper",
             text=t,
             font_color="#64ffda",
-            font_size=18,
             bordercolor="#64ffda",
             borderpad=5,
             borderwidth=1.5,
-            bgcolor="#171010",
+            bgcolor=PLOT_COLOR,
         )
 
     fig.add_annotation(
         x=0.01,
+        y=-0.07,
         xanchor="left",
         xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
         text=f"Fuente: Banxico ({FECHA_FUENTE})",
@@ -550,19 +514,19 @@ def plot_tendencias(primer_año, ultimo_año):
 
     fig.add_annotation(
         x=0.5,
+        y=-0.07,
         xanchor="center",
         xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text=f"El crecimiento nacional de ingresos por remesas del {primer_año} al {ultimo_año} es de <b>{cambio:,.2f}%</b>",
+        text=f"Crecimiento nacional de {primer_año} a {ultimo_año}: <b>{cambio:,.2f}%</b>",
     )
 
     fig.add_annotation(
         x=1.01,
+        y=-0.07,
         xanchor="right",
         xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
         text="🧁 @lapanquecita",
@@ -590,7 +554,7 @@ def comparar_pib(año):
     pib = pib[str(año)]
 
     # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["Fecha"], index_col=0)
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Nuestro IPC de referencia será 100, para coincider con la
     # metodología del INEGI (junio 2018).
@@ -603,43 +567,28 @@ def comparar_pib(año):
     ipc = ipc.resample("QS").mean()
 
     # Cargamos el dataset del tipo de cambio.
-    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["Fecha"], index_col=0)
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Remuestramos por promedio trimestral.
     fx = fx.resample("QS").mean()
 
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./data/remesas_entidad.csv", index_col=0)
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"], index_col=0)
 
-    # Seleccionamos las columnas del año que nos interesa.
-    cols = [col for col in df.columns if str(año) in col]
+    # Seleccionamos los reigstros del año especificado.
+    df = df[df.index.year == año]
 
-    # Filtramos el DataFrama con las columnas que nos interesan.
-    df = df[cols].transpose()
+    # Agregamos el tipo de cmabio.
+    df["cambio"] = fx["TIPO_CAMBIO"]
 
-    # Convertimos el índice a DateTime.
-    df.index = [
-        datetime(año, 1, 1),
-        datetime(año, 4, 1),
-        datetime(año, 7, 1),
-        datetime(año, 10, 1),
-    ]
+    # Agregamos el factodr inflación.
+    df["factor"] = ipc["factor"]
 
-    data = dict()
+    # Calculamos el valor real.
+    df["real"] = df["TOTAL_USD"] * df["cambio"] * df["factor"]
 
-    # Iteramos por cada entidad.
-    for entidad in df.columns:
-        # Convertiremos las remesas a su valor real a base 2018.
-        temp_df = df[entidad].to_frame("total")
-        temp_df["cambio"] = fx["Cambio"]
-        temp_df["ipc"] = ipc["factor"]
-        temp_df["real"] = temp_df["total"] * temp_df["cambio"] * temp_df["ipc"]
-
-        # Calculamos el total anual y lo agregamos a nuestro diccionario.
-        data[entidad] = temp_df["real"].sum()
-
-    # Convertimos el diccionario a DataFrame.
-    df = pd.DataFrame.from_dict(data, orient="index", columns=["total"])
+    # Agrupamos por entidad.
+    df = df.groupby("ENTIDAD").sum()
 
     # Calculamos el total anual.
     df.loc["Nacional"] = df.sum(axis=0)
@@ -648,13 +597,18 @@ def comparar_pib(año):
     df["pib"] = pib
 
     # Calculamos el porcentaje.
-    df["perc"] = df["total"] / df["pib"] * 100
+    df["perc"] = df["real"] / df["pib"] * 100
 
     # Ordenamos de mayor a menor.
     df.sort_values("perc", ascending=False, inplace=True)
 
     # Creamos el texto para cada barra.
-    df["text"] = df.apply(lambda x: f" {x['perc']:,.2f}% ({x['total']:,.0f}) ", axis=1)
+    df["text"] = df.apply(
+        lambda x: f" {x['perc']:,.1f}% ({x['real'] / 1000000:,.0f}) ", axis=1
+    )
+
+    # Todas las barrras serán rojas excepto la del total nacional.
+    df["color"] = df.index.map(lambda x: "#ffd54f" if x == "Nacional" else "#e57373")
 
     # Hacemos la categoría nacional en negritas.
     df.index = df.index.str.replace("Nacional", "<b>Nacional</b>")
@@ -670,8 +624,9 @@ def comparar_pib(año):
             textfont_family="Oswald",
             textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
             orientation="h",
-            marker_color="#ab47bc",
-            textfont_size=20,
+            marker_color=df["color"],
+            marker_cornerradius=45,
+            width=0.6,
         )
     )
 
@@ -679,10 +634,8 @@ def comparar_pib(año):
         range=[0, df["perc"].max() * 1.01],
         ticksuffix="%",
         ticks="outside",
-        separatethousands=True,
         ticklen=10,
         zeroline=False,
-        title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
@@ -692,13 +645,9 @@ def comparar_pib(año):
     )
 
     fig.update_yaxes(
-        tickfont_size=17,
-        tickfont_color="#FFFFFF",
         autorange="reversed",
         ticks="outside",
-        separatethousands=True,
         ticklen=10,
-        title_standoff=6,
         tickcolor="#FFFFFF",
         linewidth=2,
         showgrid=False,
@@ -709,24 +658,24 @@ def comparar_pib(año):
 
     fig.update_layout(
         showlegend=False,
-        width=1280,
-        height=1280,
-        font_family="Lato",
+        width=1920,
+        height=1920,
+        font_family="Inter",
         font_color="#FFFFFF",
-        font_size=18,
-        title_text=f"Proporción del valor de las remesas respecto al PIB estatal en México durante el año {año}",
+        font_size=24,
+        title_text=f"Valor de los ingresos por remesas respecto al PIB estatal en México durante el {año}",
         title_x=0.5,
-        title_y=0.975,
+        title_y=0.985,
         margin_t=80,
         margin_r=40,
-        margin_b=85,
-        margin_l=170,
-        title_font_size=28,
-        plot_bgcolor="#111111",
-        paper_bgcolor="#282A3A",
+        margin_b=120,
+        margin_l=280,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
-                x=0.99,
+                x=1.0,
                 y=-0.01,
                 xref="paper",
                 yref="paper",
@@ -736,12 +685,12 @@ def comparar_pib(año):
                 bordercolor="#FFFFFF",
                 borderwidth=1.5,
                 borderpad=7,
-                bgcolor="#111111",
+                bgcolor=PLOT_COLOR,
                 text="<b>Notas:</b><br>Los ingresos por remesas no forman parte del PIB, sin embargo,<br>se comparan para medir su importancia en la economía estatal.<br>Las cifras están expresadas en millones de pesos constantes de 2018.",
             ),
             dict(
                 x=0.01,
-                y=-0.07,
+                y=-0.06,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
@@ -750,7 +699,7 @@ def comparar_pib(año):
             ),
             dict(
                 x=0.55,
-                y=-0.07,
+                y=-0.06,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -759,7 +708,7 @@ def comparar_pib(año):
             ),
             dict(
                 x=1.01,
-                y=-0.07,
+                y=-0.06,
                 xref="paper",
                 yref="paper",
                 xanchor="right",

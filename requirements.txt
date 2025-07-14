@@ -1,5 +1,6 @@
 kaleido
 numpy
+openpyxl
 pandas
 pillow
 plotly
