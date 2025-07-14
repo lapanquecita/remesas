@@ -411,6 +411,12 @@ def plot_map(año, flujo):
         v, e = f"{10**item:e}".split("e")
         textos.append(f"{10 * float(v):.0f}<sup>{int(e) - 1}</sup>")
 
+    # El título cambia dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = f"Valor de las remesas recibidas en México por país de origen durante {PERIODO_TIEMPO} de {año}"
+    elif flujo == "Egresos":
+        titulo = f"Valor de las remesas enviadas desde  México por país de destino durante {PERIODO_TIEMPO} de {año}"
+
     fig = go.Figure()
 
     fig.add_traces(
@@ -444,7 +450,7 @@ def plot_map(año, flujo):
 
     fig.update_geos(
         showocean=True,
-        oceancolor="#082032",
+        oceancolor=PLOT_COLOR,
         showcountries=False,
         framecolor="#FFFFFF",
         framewidth=5,
@@ -462,19 +468,19 @@ def plot_map(año, flujo):
         margin_l=100,
         width=7680,
         height=4320,
-        paper_bgcolor="#282A3A",
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.5,
-                y=1.045,
+                y=1.04,
                 xanchor="center",
                 yanchor="top",
-                text=f"Ingresos totales por remesas hacia México por país de origen durante {PERIODO_TIEMPO} de {año}",
+                text=titulo,
                 font_size=140,
             ),
             dict(
                 x=0.02,
-                y=0.175,
+                y=0.16,
                 textangle=270,
                 xanchor="left",
                 yanchor="middle",
@@ -494,7 +500,7 @@ def plot_map(año, flujo):
                 y=-0.065,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Ingreso total por remesas: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares",
+                text=f"Valor total de las remesas: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares",
                 font_size=120,
             ),
             dict(
@@ -791,11 +797,11 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    # plot_top(2024, "Ingresos")
-    # plot_top(2024, "Egresos")
+    plot_top(2024, "Ingresos")
+    plot_top(2024, "Egresos")
 
-    # plot_bottom(2024, "Ingresos")
-    # plot_bottom(2024, "Egresos")
+    plot_bottom(2024, "Ingresos")
+    plot_bottom(2024, "Egresos")
 
     plot_map(2024, "Ingresos")
     plot_map(2024, "Egresos")
