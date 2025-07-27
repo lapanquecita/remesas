@@ -15,62 +15,6 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-# Estas abreviaciones son usadas para enlazar los valores con el amapa.
-ABREVIACIONES = {
-    "Alabama": "AL",
-    "Alaska": "AK",
-    "Arizona": "AZ",
-    "Arkansas": "AR",
-    "California": "CA",
-    "Colorado": "CO",
-    "Connecticut": "CT",
-    "Delaware": "DE",
-    "Florida": "FL",
-    "Georgia": "GA",
-    "Hawaii": "HI",
-    "Idaho": "ID",
-    "Illinois": "IL",
-    "Indiana": "IN",
-    "Iowa": "IA",
-    "Kansas": "KS",
-    "Kentucky": "KY",
-    "Luisiana": "LA",
-    "Maine": "ME",
-    "Maryland": "MD",
-    "Massachusetts": "MA",
-    "Michigan": "MI",
-    "Minnesota": "MN",
-    "Mississipi": "MS",
-    "Misuri": "MO",
-    "Montana": "MT",
-    "Nebraska": "NE",
-    "Nevada": "NV",
-    "Nuevo Hampshire": "NH",
-    "Nueva Jersey": "NJ",
-    "Nuevo Mexico": "NM",
-    "Nueva York": "NY",
-    "Carolina Del Norte": "NC",
-    "Dakota Del Norte": "ND",
-    "Ohio": "OH",
-    "Oklahoma": "OK",
-    "Oregon": "OR",
-    "Pensilvania": "PA",
-    "Puerto Rico": "PR",
-    "Rhode Island": "RI",
-    "Carolina Del Sur": "SC",
-    "Dakota Del Sur": "SD",
-    "Tennessee": "TN",
-    "Texas": "TX",
-    "Utah": "UT",
-    "Vermont": "VT",
-    "Virginia": "VA",
-    "Washington": "WA",
-    "Washington, D.C.": "DC",
-    "West Virginia": "WV",
-    "Wisconsin": "WI",
-    "Wyoming": "WY",
-}
-
 # Población estimada de mexicanos viviendo en cada estado de EE. UU.
 # Confirmación obtenida de la American Community Survey (ACS)
 POBLACION = {
@@ -188,7 +132,7 @@ def plot_usa(año):
     max_value = df["log"].max()
 
     marcas = np.linspace(min_value, max_value, 11)
-    textos = [f"{10 ** item:,.0f}" for item in marcas]
+    textos = [f"{10**item:,.0f}" for item in marcas]
 
     fig = go.Figure()
 
@@ -314,7 +258,7 @@ def plot_usa(año):
 def stats_usa(año):
     """
     Obtiene el top 10 de estados en una tabla Markdown.
-    
+
     Parameters
     ----------
     año : int

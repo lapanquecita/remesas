@@ -797,13 +797,13 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    plot_top(2024, "Ingresos")
+    # plot_top(2024, "Ingresos")
     plot_top(2024, "Egresos")
 
-    plot_bottom(2024, "Ingresos")
+    # plot_bottom(2024, "Ingresos")
     plot_bottom(2024, "Egresos")
 
-    plot_map(2024, "Ingresos")
+    # plot_map(2024, "Ingresos")
     plot_map(2024, "Egresos")
 
     # plot_tendencias(2015, 2024)
