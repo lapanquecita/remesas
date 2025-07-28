@@ -76,10 +76,7 @@ def plot_mapa(año):
     valor_max = df["capita"].max()
 
     marcas = np.linspace(valor_min, valor_max, 11)
-    etiquetas = list()
-
-    for item in marcas:
-        etiquetas.append("{:,.0f}".format(item))
+    etiquetas = [f"{item:,.0f}" for item in marcas]
 
     # Cargamos el archivo GeoJSON de México.
     geojson = json.loads(open("./assets/mexico.json", "r", encoding="utf-8").read())
@@ -93,8 +90,7 @@ def plot_mapa(año):
             locations=df.index,
             z=df["capita"],
             featureidkey="properties.NOMGEO",
-            colorscale="deep",
-            reversescale=True,
+            colorscale="deep_r",
             marker_line_color="#FFFFFF",
             marker_line_width=1.5,
             zmin=valor_min,
