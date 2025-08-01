@@ -14,8 +14,8 @@ from plotly.subplots import make_subplots
 
 
 # Definimos los colores usados para todas las visualizaciones.
-PLOT_COLOR = "#142521"
-PAPER_COLOR = "#1F3630"
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
 
 # Mes y año en que se recopilaron los datos.
 FECHA_FUENTE = "julio 2025"
@@ -518,7 +518,7 @@ def plot_map(año, flujo):
     fig.write_image(f"./mapa_pais_{flujo.lower()}_{año}.png")
 
 
-def plot_tendencias(primer_año, ultimo_año):
+def plot_tendencias(primer_año, ultimo_año, flujo):
     """
     Esta función crea una cuadrícula de sparklines con
     los países que han crecido más en envios de remesas.
@@ -531,42 +531,60 @@ def plot_tendencias(primer_año, ultimo_año):
     ultimo_año :  int
         El año final que se desea comparar.
 
+    flujo : str
+        Puede ser "Ingresos"|"Egresos" para diferenciar entre
+        remesas enviadas o recibidas desde México.
+
     """
 
     # Cargamos el dataset de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", index_col=0)
+    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"])
 
-    # Vamos a sumar los totales de remesas por año.
-    # Para esto crearemos un ciclo del 2013 al 2024.
-    for year in range(2013, 2025):
-        cols = [col for col in df.columns if str(year) in col]
-        df[str(year)] = df[cols].sum(axis=1)
+    # Seleccionamos solo los registros del tipo de flujo indicado.
+    df = df[df["FLUJO"] == flujo]
 
-    # Solo vamos a escoger las columnas que creamos.
-    df = df.iloc[:, -12:]
+    # Seleccionamos los años dentro de nuestro rango de interés.
+    df = df[
+        (df["PERIODO"].dt.year >= primer_año) & (df["PERIODO"].dt.year <= ultimo_año)
+    ]
 
-    # Cambiamos las columnas de str a int.
-    df.columns = [int(col) for col in df.columns]
+    # Transformamos nuestro dataset para que el índice sean los países y las columnas los años.
+    df = df.pivot_table(
+        index="PAIS",
+        columns=df["PERIODO"].dt.year,
+        values="VALOR_USD",
+        aggfunc="sum",
+    )
 
-    # Seleccionamos solo las columnas que nos interesan.
-    df = df[[col for col in df.columns if col >= primer_año and col <= ultimo_año]]
+    # Convertimos las cifras a millones de dólares.
+    df /= 1000000
 
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
 
-    # Extraemos el cambio total.
-    cambio = df.loc["Total", "change"]
+    # Calculamos el cambio nacional.
+    cambio = (df[ultimo_año].sum() - df[primer_año].sum()) / df[primer_año].sum() * 100
 
-    # Quitamos los países con valores infinitos.
+    # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
     # Quitamos los países que hayan tenido menos de
-    # 1 millón de dólares durante el último año.
-    # Esto es con el propósito de encontrar los outliers más interesantes.
-    df = df[df[ultimo_año] >= 1]
+    # 5 millones de dólares durante el último año.
+    # Esto es con el propósito de encontrar los outliers más substanciales.
+    df = df[df[ultimo_año] >= 5]
 
     # Ordenamos los valores usando el cambio porcentual de mayor a menor.
     df.sort_values("change", ascending=False, inplace=True)
+
+    # El título y subtítulo cambian dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = f"Los 15 países con mayor crecimiento en envio de remesas hacia México ({primer_año} vs. {ultimo_año})"
+        subtitulo = f"Crecimiento nacional de {primer_año} a {ultimo_año}: <b>{cambio:,.2f}%</b>"
+    elif flujo == "Egresos":
+        titulo = f"Los 15 países con mayor crecimiento en recepción de remesas enviadas desde México ({primer_año} vs. {ultimo_año})"
+        subtitulo = (
+            f"Crecimiento general de {primer_año} a {ultimo_año}: <b>{cambio:,.2f}%</b>"
+        )
 
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
@@ -602,41 +620,36 @@ def plot_tendencias(primer_año, ultimo_año):
             sizes[0] = 20
             sizes[-1] = 20
 
-            # Vamos a extraer algunos valores para calcular el cambio porcentual y saber cual fue el valor máximo.
+            # Vamos a extraer algunos valores para calcular el cambio porcentual.
             primer_valor = temp_df.iloc[0]
             ultimo_valor = temp_df.iloc[-1]
-            valor_maximo = temp_df.max()
 
             # Solo el primer y último registro llevarán un texto con sus valores.
             textos = ["" for _ in range(len(temp_df))]
 
-            if primer_valor < 1:
-                textos[0] = f"<b>{primer_valor:,.2f}</b>"
-            else:
+            if primer_valor < 10:
                 textos[0] = f"<b>{primer_valor:,.1f}</b>"
+            else:
+                textos[0] = f"<b>{primer_valor:,.0f}</b>"
 
-            textos[-1] = f"<b>{ultimo_valor:,.1f}</b>"
+            if ultimo_valor < 10:
+                textos[-1] = f"<b>{ultimo_valor:,.1f}</b>"
+            else:
+                textos[-1] = f"<b>{ultimo_valor:,.0f}</b>"
 
-            # Posicionar los textos es un poco complicado ya que se pueden salir fácilmente
-            # de la gráfica, con el siguiente código detectamos estos escenarios y ajustamos la posición.
+            # Posicionamos los dos textos.
             text_pos = ["middle center" for _ in range(len(temp_df))]
-
-            # Este código ajusta el primer texto.
-            if primer_valor == valor_maximo:
-                text_pos[0] = "middle right"
-            else:
-                text_pos[0] = "top center"
-
-            # Este código ajusta el último texto.
-            if ultimo_valor == valor_maximo:
-                text_pos[-1] = "middle left"
-            else:
-                text_pos[-1] = "bottom center"
+            text_pos[0] = "top center"
+            text_pos[-1] = "bottom center"
 
             # Calculamos el cambio porcentual y creamos el texto que irá en la anotación de cada cuadro.
             change = (ultimo_valor - primer_valor) / primer_valor * 100
             diff = ultimo_valor - primer_valor
-            texto_anotaciones.append(f"<b>+{diff:,.1f}</b><br>+{change:,.0f}%")
+
+            if diff < 10:
+                texto_anotaciones.append(f"<b>+{diff:,.1f}</b><br>+{change:,.0f}%")
+            else:
+                texto_anotaciones.append(f"<b>+{diff:,.0f}</b><br>+{change:,.0f}%")
 
             fig.add_trace(
                 go.Scatter(
@@ -645,8 +658,7 @@ def plot_tendencias(primer_año, ultimo_año):
                     text=textos,
                     mode="markers+lines+text",
                     textposition=text_pos,
-                    textfont_size=18,
-                    marker_color="#ffd740",
+                    marker_color="#ffd600",
                     marker_opacity=1.0,
                     marker_size=sizes,
                     marker_line_width=0,
@@ -662,14 +674,14 @@ def plot_tendencias(primer_año, ultimo_año):
             index += 1
 
     fig.update_xaxes(
-        tickfont_size=14,
+        tickfont_size=20,
         ticks="outside",
         ticklen=10,
         zeroline=False,
         tickcolor="#FFFFFF",
         linewidth=1.5,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=15,
     )
@@ -677,7 +689,8 @@ def plot_tendencias(primer_año, ultimo_año):
     fig.update_yaxes(
         title_text="Millones de dólares",
         separatethousands=True,
-        tickfont_size=14,
+        tickfont_size=20,
+        tickformat="s",
         ticks="outside",
         ticklen=10,
         zeroline=False,
@@ -685,28 +698,28 @@ def plot_tendencias(primer_año, ultimo_año):
         linewidth=1.5,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=8,
     )
 
     fig.update_layout(
-        font_family="Lato",
+        font_family="Inter",
         showlegend=False,
-        width=1280,
-        height=1600,
+        width=1920,
+        height=2400,
         font_color="#FFFFFF",
-        font_size=14,
-        margin_t=140,
-        margin_l=110,
-        margin_r=40,
-        margin_b=100,
-        title_text=f"Los 15 países con mayor crecimiento en remesas enviadas a México ({primer_año} vs. {ultimo_año})",
+        font_size=24,
+        margin_t=160,
+        margin_l=140,
+        margin_r=60,
+        margin_b=150,
+        title_text=titulo,
         title_x=0.5,
         title_y=0.985,
-        title_font_size=26,
-        plot_bgcolor="#171010",
-        paper_bgcolor="#2B2B2B",
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
     )
 
     # Vamos a crear una anotación en cada cuadro con textos mostrando el total y el cambio porcentual.
@@ -718,7 +731,7 @@ def plot_tendencias(primer_año, ultimo_año):
     for annotation in fig["layout"]["annotations"]:
         # A cada subtítulo lo vamos a ajustar ligeramente.
         annotation["y"] += 0.005
-        annotation["font"]["size"] = 20
+        annotation["font"]["size"] = 30
 
         # Vamos a extraer las coordenadas X y Y de cada subtítulo para usarlas de referencia
         # para nuestras nuevas anotaciones.
@@ -734,7 +747,7 @@ def plot_tendencias(primer_año, ultimo_año):
     ) in zip(annotations_x, annotations_y, texto_anotaciones):
         # Vamos a ajustar las nuevas anotaciones basandonos en las coornedas de los subtítulos.
         x -= 0.12
-        y -= 0.035
+        y -= 0.03
 
         fig.add_annotation(
             x=x,
@@ -744,19 +757,18 @@ def plot_tendencias(primer_año, ultimo_año):
             yanchor="top",
             yref="paper",
             text=t,
-            font_color="#ffd740",
-            font_size=18,
-            bordercolor="#ffd740",
+            font_color="#ffd600",
+            bordercolor="#ffd600",
             borderpad=5,
             borderwidth=1.5,
-            bgcolor="#171010",
+            bgcolor=PLOT_COLOR,
         )
 
     fig.add_annotation(
         x=0.01,
+        y=-0.07,
         xanchor="left",
         xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
         text=f"Fuente: Banxico ({FECHA_FUENTE})",
@@ -764,46 +776,36 @@ def plot_tendencias(primer_año, ultimo_año):
 
     fig.add_annotation(
         x=0.5,
+        y=-0.07,
         xanchor="center",
         xref="paper",
-        y=1.04,
-        yanchor="top",
-        yref="paper",
-        font_size=22,
-        text=f"(sólo se tomaron en cuenta los países con al menos 1 mdd de remesas enviadas durante el {ultimo_año})",
-    )
-
-    fig.add_annotation(
-        x=0.5,
-        xanchor="center",
-        xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
-        text=f"El crecimiento total de los ingresos por remesas del {primer_año} al {ultimo_año} es de <b>{cambio:,.2f}%</b>",
+        text=subtitulo,
     )
 
     fig.add_annotation(
         x=1.01,
+        y=-0.07,
         xanchor="right",
         xref="paper",
-        y=-0.085,
         yanchor="bottom",
         yref="paper",
         text="🧁 @lapanquecita",
     )
 
-    fig.write_image("./paises_tendencia.png")
+    fig.write_image(f"./municipios_tendencia_pais_{flujo.lower()}.png")
 
 
 if __name__ == "__main__":
-    # plot_top(2024, "Ingresos")
+    plot_top(2024, "Ingresos")
     plot_top(2024, "Egresos")
 
-    # plot_bottom(2024, "Ingresos")
+    plot_bottom(2024, "Ingresos")
     plot_bottom(2024, "Egresos")
 
-    # plot_map(2024, "Ingresos")
+    plot_map(2024, "Ingresos")
     plot_map(2024, "Egresos")
 
-    # plot_tendencias(2015, 2024)
+    plot_tendencias(2015, 2024, "Ingresos")
+    plot_tendencias(2015, 2024, "Egresos")

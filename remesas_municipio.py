@@ -14,9 +14,9 @@ from plotly.subplots import make_subplots
 
 
 # Definimos los colores que usaremos para el mapa y tablas.
-PLOT_COLOR = "#142521"
-PAPER_COLOR = "#1F3630"
-HEADER_COLOR = "#e65100"
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
+HEADER_COLOR = "#C25B42"
 
 
 # Mes y año en que se recopilaron los datos.
@@ -26,7 +26,7 @@ FECHA_FUENTE = "julio 2025"
 PERIODO_TIEMPO = "enero-diciembre"
 
 
-def plot_map(año):
+def plot_mapa(año):
     """
     Esta función crea un mpara choropleth de los municipios de México.
 
@@ -87,8 +87,9 @@ def plot_map(año):
     estadisticas = "<br>".join(estadisticas)
 
     # Estos valores serán usados para definir la escala en el mapa.
+    # Para mitigar el impacto de valores atípicos, toparemola escala al percentíl 97.5.
     valor_min = df["capita"].min()
-    valor_max = df["capita"].quantile(0.95)
+    valor_max = df["capita"].quantile(0.975)
 
     marcas = np.linspace(valor_min, valor_max, 11)
     etiquetas = [f"{item:,.0f}" for item in marcas]
@@ -323,7 +324,7 @@ def plot_capita(año):
                 ],
                 font_color="#FFFFFF",
                 line_width=1,
-                fill_color=["#00897b", "#00897b", "#00897b", "#ff1744"],
+                fill_color=["#00897b", "#00897b", "#00897b", HEADER_COLOR],
                 align="center",
                 height=43,
             ),
@@ -464,7 +465,7 @@ def plot_absolutos(año):
                 ],
                 font_color="#FFFFFF",
                 line_width=1,
-                fill_color=["#00897b", "#00897b", "#ff1744", "#00897b"],
+                fill_color=["#00897b", "#00897b", HEADER_COLOR, "#00897b"],
                 align="center",
                 height=43,
             ),
@@ -525,27 +526,6 @@ def plot_absolutos(año):
     )
 
     fig.write_image(f"./tabla_absolutos_{año}.png")
-
-
-def fill_entidad(x):
-    """
-    En el dataset de municipios los registros que empiezan con un círculo son las entidades.
-    Si el registro es una entidad la regresamos limpia, de lo contrario regresamos un valor nulo.
-    """
-
-    if "●" in x:
-        return x.replace("●", "").strip()
-    else:
-        return None
-
-
-def fill_cve(x):
-    """
-    Vamos a crear un valor 'cve' igual al del dataset de población.
-    Para esto limpiamos el nombre del municipio y lo juntamos con la entidad.
-    """
-
-    return x["Municipio"].replace("⚬", "").strip() + ", " + x["Entidad"]
 
 
 def plot_tendencias(primer_año, ultimo_año):
@@ -691,7 +671,7 @@ def plot_tendencias(primer_año, ultimo_año):
         tickcolor="#FFFFFF",
         linewidth=1.5,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=15,
     )
@@ -708,7 +688,7 @@ def plot_tendencias(primer_año, ultimo_año):
         linewidth=1.5,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=8,
     )
@@ -808,7 +788,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    plot_map(2024)
+    plot_mapa(2024)
     plot_capita(2024)
     plot_absolutos(2024)
     plot_tendencias(2015, 2024)

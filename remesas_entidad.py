@@ -17,9 +17,9 @@ from plotly.subplots import make_subplots
 
 
 # Definimos los colores que usaremos para el mapa y tablas.
-PLOT_COLOR = "#142521"
-PAPER_COLOR = "#1F3630"
-HEADER_COLOR = "#e65100"
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
+HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
 FECHA_FUENTE = "julio 2025"
@@ -277,7 +277,7 @@ def plot_mapa(año):
     result.paste(im=image1, box=(0, 0))
     result.paste(im=image2, box=(0, image1.height))
 
-    result.save("./mapa_mexico.png")
+    result.save(f"./mapa_estatal_{año}.png")
 
     # Borramos las imágenes originales.
     os.remove("./0.png")
@@ -415,7 +415,7 @@ def plot_tendencias(primer_año, ultimo_año):
         tickcolor="#FFFFFF",
         linewidth=1.5,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=15,
     )
@@ -432,7 +432,7 @@ def plot_tendencias(primer_año, ultimo_año):
         linewidth=1.5,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=8,
     )

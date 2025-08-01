@@ -24,8 +24,8 @@ FECHA_FUENTE = "julio 2025"
 FECHA_INFLACION = "junio de 2025"
 
 # Paleta de colores para todas las gráficas.
-PLOT_COLOR = "#0d0d0d"
-PAPER_COLOR = "#1a1a1a"
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
 
 
 def plot_mensuales():

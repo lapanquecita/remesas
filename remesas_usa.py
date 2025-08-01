@@ -15,6 +15,11 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
+
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
+
+
 # Población estimada de mexicanos viviendo en cada estado de EE. UU.
 # Confirmación obtenida de la American Community Survey (ACS)
 POBLACION = {
