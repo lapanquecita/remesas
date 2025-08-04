@@ -20,7 +20,7 @@ HEADER_COLOR = "#C25B42"
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "julio 2025"
+FECHA_FUENTE = "agosto 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -357,7 +357,7 @@ def plot_capita(año):
         title_x=0.5,
         title_y=0.95,
         title_font_size=40,
-        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO}  de {año}",
+        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO} de {año}",
         paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
@@ -498,7 +498,7 @@ def plot_absolutos(año):
         title_x=0.5,
         title_y=0.95,
         title_font_size=40,
-        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>totales</b> durante {PERIODO_TIEMPO}  de {año}",
+        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>totales</b> durante {PERIODO_TIEMPO} de {año}",
         paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(

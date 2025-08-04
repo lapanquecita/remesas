@@ -22,7 +22,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "julio 2025"
+FECHA_FUENTE = "agosto 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -49,13 +49,13 @@ def plot_mapa(año):
     pop = pop[str(año)]
 
     # Cargamos el dataset de remesas por entidad.
-    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"], index_col=0)
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"])
 
     # Seleccionamos los reigstros del año especificado.
-    df = df[df.index.year == año]
+    df = df[df["PERIODO"].dt.year == año]
 
     # Calculamos el total por entidad.
-    df = df.groupby("ENTIDAD").sum()
+    df = df.groupby("ENTIDAD").sum(numeric_only=True)
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
@@ -189,12 +189,12 @@ def plot_mapa(año):
 
     fig.add_trace(
         go.Table(
-            columnwidth=[145, 100, 100],
+            columnwidth=[120, 120, 110],
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    "<b>Total en dólares</b>",
-                    "<b>Per cápita ↓</b>",
+                    "<b>Ingreso total (MDD)</b>",
+                    "<b>USD per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
@@ -205,7 +205,7 @@ def plot_mapa(año):
             cells=dict(
                 values=[
                     df.index[:16],
-                    df["VALOR_USD"][:16],
+                    df["VALOR_USD"][:16] / 1000000,
                     df["capita"][:16],
                 ],
                 fill_color=PLOT_COLOR,
@@ -221,12 +221,12 @@ def plot_mapa(año):
 
     fig.add_trace(
         go.Table(
-            columnwidth=[145, 100, 100],
+            columnwidth=[120, 120, 110],
             header=dict(
                 values=[
                     "<b>Entidad</b>",
-                    "<b>Total en dólares</b>",
-                    "<b>Per cápita ↓</b>",
+                    "<b>Ingreso total (MDD)</b>",
+                    "<b>USD per cápita ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 fill_color=HEADER_COLOR,
@@ -237,7 +237,7 @@ def plot_mapa(año):
             cells=dict(
                 values=[
                     df.index[16:],
-                    df["VALOR_USD"][16:],
+                    df["VALOR_USD"][16:] / 1000000,
                     df["capita"][16:],
                 ],
                 fill_color=PLOT_COLOR,
@@ -282,6 +282,175 @@ def plot_mapa(año):
     # Borramos las imágenes originales.
     os.remove("./0.png")
     os.remove("./1.png")
+
+
+def comparacion_interanual(primer_año, segundo_año):
+    """
+    Crea una gráfica de barras horizontal mostrando el cambio
+    porcentual interanual para cada entidad en México.
+
+    Parameters
+    ----------
+    primre_año : int
+        El año base que nos interesa comparar.
+
+    segundo_año : int
+        El año destino que nos interesa comparar.
+
+    """
+
+    # Cargamos el dataset de remesas por entidad.
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"])
+
+    # Seleccionamos los años dentro de nuestro rango de interés.
+    df = df[
+        (df["PERIODO"].dt.year >= primer_año) & (df["PERIODO"].dt.year <= segundo_año)
+    ]
+
+    # Convertimos las cifras a millones de dólares.
+    df["VALOR_USD"] /= 1000000
+
+    # Transformamos nuestro dataset para que el índice sean los estados y las columnas los años.
+    df = df.pivot_table(
+        index="ENTIDAD",
+        columns=df["PERIODO"].dt.year,
+        values="VALOR_USD",
+        aggfunc="sum",
+    )
+
+    # Calculamos el total nacional.
+    df.loc["<b>Nacional</b>"] = df.sum(axis=0)
+
+    # Calculamos el cambio porcentual.
+    df["cambio"] = (df[segundo_año] - df[primer_año]) / df[primer_año] * 100
+
+    # Preparamos el texto para cada observación.
+    df["texto"] = df.apply(
+        lambda x: f" <b>{x['cambio']:,.0f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) "
+        if abs(x["cambio"]) >= 100
+        else f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
+        axis=1,
+    )
+
+    # Ordenamos de mayor a menor basado en el cambio porcentual.
+    df.sort_values("cambio", ascending=False, inplace=True)
+
+    # Calculamos el valor máximo para ajustar el rango del eje horizontal.
+    valor_max = df["cambio"].abs().max()
+    valor_max = ((valor_max // 2) + 2) * 2
+
+    # Determinamos la posición de los textos para cada barra.
+    df["ratio"] = df["cambio"].abs() / valor_max
+    df["texto_pos"] = df["ratio"].apply(lambda x: "inside" if x >= 0.7 else "outside")
+
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Bar(
+            y=df.index,
+            x=df["cambio"],
+            text=df["texto"],
+            textposition=df["texto_pos"],
+            textfont_color="#FFFFFF",
+            orientation="h",
+            marker_color=df["cambio"],
+            marker_colorscale="geyser_r",
+            marker_cmid=0,
+            marker_line_width=0,
+            textfont_size=30,
+            textfont_family="Oswald",
+        )
+    )
+
+    fig.update_xaxes(
+        range=[valor_max * -1, valor_max],
+        ticksuffix="%",
+        ticks="outside",
+        ticklen=10,
+        zeroline=False,
+        tickcolor="#FFFFFF",
+        linewidth=2,
+        showline=True,
+        gridwidth=0.5,
+        mirror=True,
+        nticks=20,
+    )
+
+    fig.update_yaxes(
+        autorange="reversed",
+        ticks="outside",
+        separatethousands=True,
+        ticklen=10,
+        tickcolor="#FFFFFF",
+        linewidth=2,
+        gridwidth=0.5,
+        showline=True,
+        mirror=True,
+    )
+
+    fig.update_layout(
+        showlegend=False,
+        width=1920,
+        height=1920,
+        font_family="Inter",
+        font_color="#FFFFFF",
+        font_size=24,
+        title_text=f"Comparación del ingreso por remesas en México durante {PERIODO_TIEMPO} ({primer_año} vs. {segundo_año})",
+        title_x=0.5,
+        title_y=0.985,
+        margin_t=80,
+        margin_r=40,
+        margin_b=120,
+        margin_l=280,
+        title_font_size=36,
+        paper_bgcolor=PAPER_COLOR,
+        plot_bgcolor=PLOT_COLOR,
+        annotations=[
+            dict(
+                x=0.99,
+                y=0.0,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="bottom",
+                align="left",
+                bgcolor="#323232",
+                bordercolor="#FFFFFF",
+                borderwidth=1.5,
+                borderpad=7,
+                text="<b>Nota:</b><br>Cifras expresadas en millones de dólares.",
+            ),
+            dict(
+                x=0.01,
+                y=-0.06,
+                xref="paper",
+                yref="paper",
+                xanchor="left",
+                yanchor="top",
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+            ),
+            dict(
+                x=0.58,
+                y=-0.06,
+                xref="paper",
+                yref="paper",
+                xanchor="center",
+                yanchor="top",
+                text="Cambio porcentual (cambio absoluto)",
+            ),
+            dict(
+                x=1.0,
+                y=-0.06,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="top",
+                text="🧁 @lapanquecita",
+            ),
+        ],
+    )
+
+    fig.write_image(f"./comparacion_entidad_{primer_año}_{segundo_año}.png")
 
 
 def plot_tendencias(primer_año, ultimo_año):
@@ -721,5 +890,6 @@ def comparar_pib(año):
 
 if __name__ == "__main__":
     plot_mapa(2024)
+    comparacion_interanual(2023, 2024)
     plot_tendencias(2015, 2024)
     comparar_pib(2023)
