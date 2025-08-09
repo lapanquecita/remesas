@@ -419,8 +419,11 @@ def descargar_remesas_mensuales():
         REMESAS_MENSUALES_URL.format(ENERO_1991, FECHA_FIN), skiprows=9, index_col=1
     )
 
-    # Seleccionamos la fila del tipo de cambio FIX.
-    df = df.iloc[2].to_frame("VALOR_USD")
+    # Seleccionamos las filas del remesas y operaciones.
+    df = df.iloc[[2, 7]].transpose()
+
+    # Nombramos las collumnas.
+    df.columns = ["VALOR_USD", "OPERACIONES"]
 
     # Quitamos filas inválidas.
     df = df.dropna(axis=0)
@@ -432,6 +435,10 @@ def descargar_remesas_mensuales():
     # Convertimos el índice a formato ISO.
     df.index = df.index.map(arreglar_fecha)
     df.index.name = "PERIODO"
+
+    # COnvertimos las operaciones de miles a absolutos.
+    df["OPERACIONES"] = df["OPERACIONES"].astype(float) * 1000
+    df["OPERACIONES"] = df["OPERACIONES"].astype(int)
 
     # Guardamos el archivo en la carpeta data.
     df.to_csv("./data/remesas_mensuales.csv", encoding="utf-8")

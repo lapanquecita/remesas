@@ -40,10 +40,10 @@ def plot_top(año, flujo):
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"], index_col=0)
+    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"])
 
     # Seleccionamos los reigstros del año especificado.
-    df = df[df.index.year == año]
+    df = df[df["PERIODO"].dt.year == año]
 
     # Seleccionamos solo los registros del tipo de flujo indicado.
     df = df[df["FLUJO"] == flujo]
@@ -215,10 +215,10 @@ def plot_bottom(año, flujo):
 
     """
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"], index_col=0)
+    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"])
 
     # Seleccionamos los reigstros del año especificado.
-    df = df[df.index.year == año]
+    df = df[df["PERIODO"].dt.year == año]
 
     # Seleccionamos solo los registros del tipo de flujo indicado.
     df = df[df["FLUJO"] == flujo]
@@ -380,10 +380,10 @@ def plot_map(año, flujo):
     """
 
     # Cargamos el archivo CSV de remesas por país.
-    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"], index_col=0)
+    df = pd.read_csv("./data/remesas_pais.csv", parse_dates=["PERIODO"])
 
     # Seleccionamos los reigstros del año especificado.
-    df = df[df.index.year == año]
+    df = df[df["PERIODO"].dt.year == año]
 
     # Seleccionamos solo los registros del tipo de flujo indicado.
     df = df[df["FLUJO"] == flujo]
@@ -423,7 +423,7 @@ def plot_map(año, flujo):
         go.Choropleth(
             locations=df.index,
             z=df["log"],
-            colorscale="portland",
+            colorscale="geyser_r",
             marker_line_color="#FFFFFF",
             showscale=True,
             showlegend=False,
