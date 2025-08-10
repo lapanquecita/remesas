@@ -794,7 +794,7 @@ def plot_tendencias(primer_año, ultimo_año, flujo):
         text="🧁 @lapanquecita",
     )
 
-    fig.write_image(f"./municipios_tendencia_pais_{flujo.lower()}.png")
+    fig.write_image(f"./pais_tendencia_{flujo.lower()}.png")
 
 
 if __name__ == "__main__":

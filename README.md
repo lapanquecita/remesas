@@ -1,147 +1,157 @@
 # Ingresos por remesas hacia México
 
-Este repositorio contiene scripts para analizar todos los datasets que Banxico provee acerca de los ingresos por remesas hacia México.
+Este repositorio contiene conjuntos de datos y scripts para la recolección, análisis y visualización de información pública sobre los ingresos y egresos por remesas en México.
 
-Banxico provee la información en intervalos mensuales para los ingresor generales y en intervalos trimestrales para la información a nivel estatal, municipal y por país de origen.
+La información se obtiene del [Sistema de Información Económica (SIE) de Banxico.](https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?&sector=1&accion=consultarDirectorioCuadros&locale=es#contenidoPrincipal)
 
-Las cifras se encuentran en milllones de dólares estadounidenses nominales, esto quiere decir que son cifras sin ajustar por inflacioón ni tipo de cambio, estos ajustes son efectuados en sus respectivos scripts.
+El análisis de remesas se realiza desde distintas perspectivas:
 
-Las remesas son muy importantes en México, llegan a representar el único ingreso de las familias que los reciben. Las remesas han aumentado año tras año, sin embargo, hay tendencias que pasan desapercibidas para el público general y en este repositorio las estudiaremos a fondo.
+* Temporal: mensual, trimestral y anual
+* Geoespacial: por entidad federativa, municipio y país
 
-![Imagen 1](./imgs/remesas_mensuales.png)
+Asimismo, se evalúa el impacto económico de las remesas a nivel micro y macroeconómico, utilizando proyecciones de población del CONAPO y datos del PIB estatal publicados por el INEGI.
 
-## Remesas por país de origen
+---
 
-México recibe remesas de casi todos los países del mundo, sin embargo, EE. UU. es por mucho el que más aporta, con el 96.2% del total de estas.
+## Estructura del repositorio
 
-En la siguiente gráfica de barras se muestran los 30 países que más envían remesas hacia México. Se tuvo que usar una escala logarítmica para poder hacer una mejor comparación, dada la gran diferencia de cifras.
+El repositorio está organizado en dos carpetas principales y varios scripts para procesar la información:
 
-![Imagen 2](./imgs/remesas_pais_top.png)
+* Carpeta `assets`: contiene insumos y datos complementarios
+* Carpeta `data`: contiene los conjuntos de datos principales de remesas
+* Scripts en Python para descarga, limpieza y procesamiento de datos
 
-Del otro lado tenemos a los 30 países que menos remesas aportan. En esta gráfica no se muestran porcentajes ya que todos se aproximan al 0%.
+---
 
-![Imagen 3](./imgs/remesas_pais_bottom.png)
+## Archivos en `assets`
 
-Por último, tenemos un mapa Choropleth con la distribución espacial. Se puede apreciar que la mayoría de las remesas provienen de América y Europa occidental. También se se hizo uso de una escala logarítmica para poder distribuir mejor las cifras.
+* `IPC.csv`: Índice Nacional de Precios al Consumidor (INPC), utilizado para ajustar los valores de remesas a pesos reales
+* `USDMXN.csv`: Promedio mensual del tipo de cambio peso-dólar, usado para convertir cifras de USD a MXN
+* `PIBE_2018.csv`: Producto Interno Bruto estatal (base: segunda quincena de 2018)
+* `poblacion.csv`: Población municipal estimada por el CONAPO
+* `mexico.json`: GeoJSON con la división política de México a nivel estatal
+* `municipios.zip`: contiene `municipios.json`, un GeoJSON con la división política a nivel municipal
 
-![Imagen 4](./imgs/mapa_paises.png)
+---
 
-## Remesas provenientes de EE. UU.
+## Archivos en `data`
 
-Como lo fue mencionado anteriormente, durante el 2023 EE. UU. aportó el 96.2% del total de las remesas hacia México.
+* `remesas_mensuales.csv`: valor y número de operaciones de remesas por mes a nivel nacional
+* `remesas_entidad.csv`: ingresos trimestrales de remesas por entidad federativa
+* `remesas_municipal.csv`: ingresos trimestrales de remesas a nivel municipal
+* `remesas_pais.csv`: ingresos y egresos por remesas según país de origen o destino, de forma trimestral
+* `remesas_usa.csv`: remesas trimestrales enviadas desde cada estado de Estados Unidos hacia México
 
-Los 10 estados de EE. UU. que aportaron más remesas fueron:
+## Scripts
 
-| Estado     |         Total |
-|:-----------|--------------:|
-| California         | 20,694,926,098 |
-| Texas              |  9,246,118,422 |
-| Georgia            |  2,275,752,317 |
-| Illinois           |  2,075,400,470 |
-| Colorado           |  1,891,334,038 |
-| Florida            |  1,855,241,458 |
-| Arizona            |  1,747,921,085 |
-| Nueva York         |  1,602,169,747 |
-| Carolina Del Norte |  1,354,214,490 |
-| Ohio               |  1,145,917,651 |
+Cada script del repositorio permite generar distintos análisis y visualizaciones a partir de los datos procesados. A continuación se describe el propósito de cada uno y se muestran ejemplos de sus resultados.
 
-Aquí tenemos el detalle que la mayoría de estos estados también son los que tienen la mayor población de mexicanos. Debemos ajustar estas cifras para tener un mejor punto de comparación.
+### `etl.py`
 
-*Nota: Es importante recordar que no todos los mexicanos que viven en EE. UU. mandan dinero a México. No pude encontrar información exacta de cuantos migrantes mexicanos viven en EE. UU., así que utilicé la información más cercana dispoible.*
+Este script automatiza el flujo de extracción, transformación y carga de datos:
 
-Ahora bien, aquí está la tabla de los 10 estados que más enviaron remesas a México ajustado con la población de mexicanos:
+1. Descarga los conjuntos de datos desde el Sistema de Información Económica de Banxico
+2. Obtiene el INPC y el tipo de cambio FIX
+3. Limpia y transforma la información a formato de panel de datos, lo que facilita su análisis posterior
 
-| Estado           |         Total |  Per cápita |
-|:-----------------|--------------:|---------:|
-| Vermont          |    90,214,416 |   22,408 |
-| Maine            |    87,048,280 |   10,653 |
-| Puerto Rico      |    62,902,859 |   10,377 |
-| Dakota Del Norte |   174,874,802 |    8,304 |
-| Luisiana         |   482,336,309 |    7,012 |
-| Washington, D.C. |    77,939,113 |    6,803 |
-| Mississipi       |   266,461,015 |    5,516 |
-| Ohio             | 1,145,917,651 |    5,395 |
-| West Virginia    |    53,502,483 |    4,906 |
-| Hawaii           |   254,424,399 |    4,848 |
+Los archivos originales se descargan en formato XLS y se convierten a CSV para su uso en herramientas estadísticas y de visualización.
 
-En el siguiente mapa Choropleth se puede observar la distribución completa. También se utilizó una escala logarítmica dada la diferencia entre los valores más altos.
+### `remesas_mensuales.py`
 
-![Imagen 5](./imgs/mapa_usa.png)
+Este script analiza las cifras de remesas mensuales e incorpora una línea de tendencia calculada mediante descomposición STL, que ofrece mayor robustez frente a un promedio móvil simple.
 
-## Ingresos por entidad
+La primera visualización muestra el valor nominal en dólares estadounidenses:
 
-Ya sabemos de donde vienen las remesas, ahora falta saber a donde llegan. En el sigiente mapa y tablas se muestra la distribución por entidad federativa.
+![Remesas mensuales (USD nominal)](./imgs/remesas_mensuales.png)
 
-Una vez que ajustamos las cifras per cápita, podemos observar que Michoacán, Zacatecas y Guerrero son las entidades donde las remesas tienen el mayor impacto económico. Estas 3 entidades actualmente tienen un problema muy grave de seguridad, se puede inferir que por los altos niveles delictivos, es preferible recibir dinero del extranjero a emprender un negocio.
+La segunda visualización presenta el valor nominal convertido a pesos mexicanos:
 
-![Imagen 6](./imgs/mapa_mexico.png)
+![Remesas mensuales (MXN nominal)](./imgs/remesas_mensuales_pesos.png)
 
-## Ingresos por municipio
+La tercera visualización muestra el valor real de las remesas, ya ajustadas por inflación:
 
-La información por entidad nos da una perspectiva generalizada de la distribución de las remesas, pero también es importante ir más a detalle y saber exactamente en que municipios están llegando. En la siguiente tabla se muestran los 30 municipios que han recibido el mayor número de remesas durante el 2023:
+![Remesas mensuales (MXN real)](./imgs/remesas_mensuales_reales.png)
 
-![Imagen 7](./imgs/tabla_absolutos.png)
+Finalmente, la última gráfica presenta los totales anuales en pesos reales, útil para un análisis de largo plazo:
 
-La mayoría de estos municipios coinciden con las ciudades más grandes del país. Debemos ajustar estas cifras con la población de cada municipio para conocer su impacto económico.
+![Remesas anuales (MXN real)](./imgs/remesas_anuales_reales.png)
 
-![Imagen 8](./imgs/tabla_capita.png)
+Para la conversión a pesos mexicanos se utiliza el tipo de cambio FIX publicado por el Banco de México.
 
-Ahora sabemos que en Chiapas, Michoacán, Oaxaca, Puebla y Zacatecas es donde las remesas tienen mayor impacto económico.
+El ajuste inflacionario se realiza empleando el Índice Nacional de Precios al Consumidor (INPC).
 
-![Imagen 9](./imgs/municipal_2023.png)
+### `remesas_entidad.py`
 
-## Tendencias y crecimiento
+Este script analiza el destino de los ingresos por remesas a nivel estatal y evalúa su relevancia económica.
 
-De 2014 a 2023 los ingresos por remesas hacia México han crecido en un 162%. Un crecimiento de más del doble es bastante importante, pero como siempre, el diablo está en los detalles.
+La primera visualización es un mapa tipo choropleth que muestra el ingreso total por entidad federativa en millones de dólares y, adicionalmente, el ingreso per cápita. Se acompaña de una tabla con el desglose de estas cifras:
 
-Veamos como han crecido los ingresos por remesas a nivel estatal.
+![Remesas entidad](./imgs/mapa_estatal_2024.png)
 
-![Imagen 10](./imgs/estados_tendencia.png)
+La segunda visualización permite realizar una comparación interanual, es decir, contrastar el mismo periodo de tiempo entre dos años diferentes:
 
-El estado de Chiapas es el que ha tenido más crecimiento de todos, con un 740%. Esto es casi el triple que el segundo lugar, Baja California Sur con 271% de crecimiento.
+![Comparación interanual](./imgs/comparacion_entidad_2023_2024.png)
 
-Esto nos lleva a indagar más a fondo. Es momento de revisar que municipios han crecido más.
+La tercera visualización muestra la evolución del ingreso en las 15 entidades con mayor crecimiento, lo que permite identificar cuáles han incrementado su participación más rápidamente:
 
-![Imagen 11](./imgs/municipios_tendencia.png)
+![Tendencia entidad](./imgs/estados_tendencia.png)
 
-Si un crecimiento del 740% parece anormal, uno de 4,500% es increíble.
+Finalmente, la última visualización presenta la relación entre el valor de las remesas y el PIB de cada entidad:
 
-Hay especulaciones del porqué algunos municipios de Chiapas tienen estas cifras tan sospechosas.
+![Remesas PIB](./imgs/remesas_pib_2023.png)
 
-Algunos creen que es el resultado del lavado de dinero o de extorsión. No cuento con la evidencia para sostener o descartar estas teorías, pero es algo que se debe investigar a fondo.
+Es importante destacar que las remesas no forman parte del PIB. La comparación se realiza únicamente para dimensionar su impacto económico relativo en cada entidad federativa.
 
-## Valor real
+### `remesas_municipio.py`
 
-Los ingresos en dólares por remesas han crecido año con año, pero esto no significa que su valor real también lo haga.
+Este script analiza las remesas a nivel municipal.
 
-Para poder comparar el impacto económico de las remesas debemos primero convertirlas a pesos y después ajustar estos pesos por la inflación.
+La primera visualización es un mapa tipo choropleth que muestra el ingreso per cápita por municipio, acompañado de estadísticas descriptivas para comprender mejor la distribución:
 
-Banxico también provee estos datos, los cuales están en la carpeta `assets`.
+![Mapa municipal](./imgs/municipal_2024.png)
 
-La siguiente gráfica muestra como se ven las remesas al convertirse a pesos.
+La segunda visualización presenta los 15 municipios con mayor crecimiento en remesas recibidas:
 
-![Imagen 12](./imgs/remesas_mensuales_pesos.png)
+![Tendencia municipios](./imgs/municipios_tendencia.png)
 
-Es interesante como podemos distinguir mejor la estacionalidad después de hacer este ajuste.
+El script también genera dos tablas con los 30 municipios con mayores ingresos, tanto en valores absolutos como per cápita:
 
-También podemos notar que el promedio móvil va a la baja, esto es debido a que el tipo de cambio durante el 2023 fue bastante favorable para el peso mexicano.
+![Tabla absolutos](./imgs/tabla_absolutos_2024.png)
 
-Ahora solo nos falta ajustarlo por la inflación de diciembre de 2023.
+La tabla per cápita resulta especialmente interesante, ya que evidencia que algunos municipios reciben cantidades muy elevadas en proporción a su población:
 
-![Imagen 13](./imgs/remesas_mensuales_reales.png)
+![Tabla cápita](./imgs/tabla_capita_2024.png)
 
-Al ajustar por inflación se acentuá la desaceleración y la reducción en el valor de las remesas.
+La población utilizada proviene de las proyecciones de población publicadas por el CONAPO.
 
-Y ya para terminar, los totales anuales.
+### `remesas_pais.py`
 
-![Imagen 14](./imgs/remesas_anuales_reales.png)
+Este script identifica de qué países provienen las remesas enviadas a México y a qué países se dirigen las remesas salientes desde México.
+
+La primera visualización muestra los 30 países que más dinero enviaron a México. Para representar adecuadamente la gran diferencia entre los primeros lugares y el resto, se emplea una escala logarítmica:
+
+![Top 30 países](./imgs/remesas_pais_top_ingresos_2024.png)
+
+La segunda visualización presenta a los 30 países que enviaron menos dinero a México:
+
+![Bottom 30 países](./imgs/remesas_pais_bottom_ingresos_2024.png)
+
+Posteriormente, se incluye un mapa mundial tipo choropleth que muestra la distribución geográfica completa de los ingresos. Al igual que en la gráfica del top 30, se utiliza una escala logarítmica:
+
+![Mapa mundo](./imgs/mapa_pais_ingresos_2024.png)
+
+Finalmente, se presenta la tendencia de los 15 países que han enviado mayores cantidades de remesas a México:
+
+![Tendencia país](./imgs/pais_tendencia_ingresos.png)
+
+Todas estas visualizaciones pueden generarse tanto para los ingresos de remesas hacia México como para los egresos de remesas desde México.
 
 ## Conclusión
 
-La tendencia nos indica que cada año las remesas están aumentando, sabemos que casi en su totalidad provienen de EE. UU. y Canadá, y que los estados más afectados por la inseguridad tienen un ingreso mayor de remesas que los demás.
+Este proyecto ofrece un conjunto integral de herramientas y datos para analizar el comportamiento de las remesas hacia y desde México, tanto en el tiempo como en el espacio geográfico.
 
-El aumento de remesas es un indicador que suele mal interpretarse, se piensa que es algo bueno que cada vez se reciba más dinero de parientes en el extranjero, pero en realidad es un síntoma de la falta de oportunidades en el país.
+La estructura modular de los scripts permite estudiar el fenómeno desde distintas perspectivas: nacional, estatal, municipal y por país, facilitando la comparación, la detección de tendencias y la evaluación de impactos económicos relativos.
 
-También es importante reconocer que el aumento en la cantidad de dólares no está significando un aumento en el poder adquisitivo de los recipientes y que quizás haya un esquema de lavado de dinero a gran escala debido al crecimiento anormal en Chiapas.
+La combinación de fuentes oficiales, como Banxico, CONAPO e INEGI, asegura la calidad y confiabilidad de la información, mientras que el procesamiento automatizado garantiza la reproducibilidad de los resultados.
 
-Espero que hayan disfrutado de este análisis. Todo el código se encuentra documentado para poder adaptarse a otro tipo de contextos.
+Esto convierte al repositorio en una base sólida para estudios académicos, análisis de políticas públicas y exploraciones económicas orientadas a comprender el papel de las remesas en la economía mexicana.
