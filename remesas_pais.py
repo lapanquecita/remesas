@@ -18,7 +18,7 @@ PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "julio 2025"
+FECHA_FUENTE = "septiembre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -460,6 +460,7 @@ def plot_map(año, flujo):
     )
 
     fig.update_layout(
+        font_size=120,
         font_family="Inter",
         font_color="#FFFFFF",
         margin_t=240,
@@ -493,7 +494,6 @@ def plot_map(año, flujo):
                 xanchor="left",
                 yanchor="bottom",
                 text=f"Fuente: Banxico ({FECHA_FUENTE})",
-                font_size=120,
             ),
             dict(
                 x=0.5,
@@ -501,7 +501,6 @@ def plot_map(año, flujo):
                 xanchor="center",
                 yanchor="bottom",
                 text=f"Valor total de las remesas: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares",
-                font_size=120,
             ),
             dict(
                 x=1.0,
@@ -509,7 +508,6 @@ def plot_map(año, flujo):
                 xanchor="right",
                 yanchor="bottom",
                 text="🧁 @lapanquecita",
-                font_size=120,
             ),
         ],
     )

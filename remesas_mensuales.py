@@ -18,7 +18,7 @@ from statsmodels.tsa.seasonal import STL
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2025"
+FECHA_FUENTE = "septiembre 2025"
 
 # Mes y año del IPC de referencia.
 FECHA_INFLACION = "julio de 2025"
