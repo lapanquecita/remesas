@@ -606,7 +606,7 @@ def plot_real_anual():
     )
 
     fig.update_yaxes(
-        range=[0, df["real"].max() * 1.1],
+        range=[0, df["real"].max() * 1.08],
         title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
         ticks="outside",
         ticklen=10,
