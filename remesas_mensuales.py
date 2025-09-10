@@ -21,7 +21,7 @@ from statsmodels.tsa.seasonal import STL
 FECHA_FUENTE = "septiembre 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "julio de 2025"
+FECHA_INFLACION = "agosto de 2025"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
@@ -356,10 +356,10 @@ def plot_real():
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
-    ipc_referencia = ipc["IPC"].iloc[-1]
+    ipc_referencia = ipc["GENERAL"].iloc[-1]
 
     # Calculamos el factor.
-    ipc["factor"] = ipc_referencia / ipc["IPC"]
+    ipc["factor"] = ipc_referencia / ipc["GENERAL"]
 
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
@@ -535,10 +535,10 @@ def plot_real_anual():
     ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
 
     # Escogemos un IPC de referencia (el más reciente)
-    ipc_referencia = ipc["IPC"].iloc[-1]
+    ipc_referencia = ipc["GENERAL"].iloc[-1]
 
     # Calculamos el factor.
-    ipc["factor"] = ipc_referencia / ipc["IPC"]
+    ipc["factor"] = ipc_referencia / ipc["GENERAL"]
 
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)

@@ -8,7 +8,7 @@ from datetime import datetime
 import pandas as pd
 
 # EStos timestamps son utilizados para formar las URLS.
-ENERO_1970 = 100000
+ENERO_1982 = int(datetime(1982, 1, 1).timestamp() * 1000)
 ENERO_1991 = int(datetime(1991, 1, 1).timestamp() * 1000)
 
 FECHA_FIN = int(datetime(2026, 1, 1).timestamp() * 1000)
@@ -371,10 +371,14 @@ def descargar_ipc():
     Descarga el índice de precios al consumidor.
     """
 
-    df = pd.read_excel(IPC_URL.format(ENERO_1970, FECHA_FIN), skiprows=9, index_col=1)
+    # Antes de 1982 solo se encuentra disponible el INPC general.
+    df = pd.read_excel(IPC_URL.format(ENERO_1982, FECHA_FIN), skiprows=9, index_col=1)
 
-    # Seleccionamos la fila del INPC general.
-    df = df.iloc[1].to_frame("IPC")
+    # Seleccionamos las filas del INPC general, subyacente y no subyacente.
+    df = df.iloc[[1, 2, 13]].transpose()
+
+    # Nombramos las collumnas.
+    df.columns = ["GENERAL", "SUBYACENTE", "NO_SUBYACENTE"]
 
     # Quitamos filas inválidas.
     df = df.dropna(axis=0)

@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2025"
+FECHA_FUENTE = "septiembre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -725,7 +725,7 @@ def comparar_pib(año):
     ipc_referencia = 100
 
     # Calculamos el factor.
-    ipc["factor"] = ipc_referencia / ipc["IPC"]
+    ipc["factor"] = ipc_referencia / ipc["GENERAL"]
 
     # Remuestramos por promedio trimestral.
     ipc = ipc.resample("QS").mean()
