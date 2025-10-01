@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "septiembre 2025"
+FECHA_FUENTE = "octubre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -413,7 +413,7 @@ def comparacion_interanual(primer_año, segundo_año):
                 xanchor="right",
                 yanchor="bottom",
                 align="left",
-                bgcolor="#323232",
+                bgcolor=PLOT_COLOR,
                 bordercolor="#FFFFFF",
                 borderwidth=1.5,
                 borderpad=7,
