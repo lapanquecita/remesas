@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "octubre 2025"
+FECHA_FUENTE = "noviembre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
