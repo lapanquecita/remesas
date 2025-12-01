@@ -18,10 +18,10 @@ from statsmodels.tsa.seasonal import STL
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "noviembre 2025"
+FECHA_FUENTE = "diciembre 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "septiembre de 2025"
+FECHA_INFLACION = "octubre de 2025"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
@@ -628,7 +628,7 @@ def plot_real_anual():
         font_size=24,
         title_text=f"Evolución de los ingresos anuales reales por remesas hacia México ({df.index.min()}-{df.index.max()})",
         title_x=0.5,
-        title_y=0.97,
+        title_y=0.965,
         margin_t=80,
         margin_l=140,
         margin_r=40,
@@ -653,7 +653,7 @@ def plot_real_anual():
             ),
             dict(
                 x=0.01,
-                y=-0.12,
+                y=-0.11,
                 xref="paper",
                 yref="paper",
                 xanchor="left",
@@ -662,7 +662,7 @@ def plot_real_anual():
             ),
             dict(
                 x=0.5,
-                y=-0.12,
+                y=-0.11,
                 xref="paper",
                 yref="paper",
                 xanchor="center",
@@ -671,7 +671,7 @@ def plot_real_anual():
             ),
             dict(
                 x=1.01,
-                y=-0.12,
+                y=-0.11,
                 xref="paper",
                 yref="paper",
                 xanchor="right",

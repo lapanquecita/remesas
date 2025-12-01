@@ -18,7 +18,7 @@ PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "noviembre 2025"
+FECHA_FUENTE = "diciembre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"

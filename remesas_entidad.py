@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "noviembre 2025"
+FECHA_FUENTE = "diciembre 2025"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -712,23 +712,16 @@ def comparar_pib(año):
     """
 
     # Cargamos el dataset del PIB por entidad.
-    pib = pd.read_csv("./assets/PIBE_2018.csv", index_col=0)
+    pib = pd.read_csv("./assets/pib_estatal.csv")
 
     # Seleccionamos los datos del año que nos interesa.
-    pib = pib[str(año)]
+    pib = pib[pib["PERIODO"] == año]
 
-    # Cargamos el dataset del IPC.
-    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
+    # Seleccionamos los datos del PIB total.
+    pib = pib[pib["CLAVE_INDUSTRIA"] == "PIB"]
 
-    # Nuestro IPC de referencia será 100, para coincider con la
-    # metodología del INEGI (junio 2018).
-    ipc_referencia = 100
-
-    # Calculamos el factor.
-    ipc["factor"] = ipc_referencia / ipc["GENERAL"]
-
-    # Remuestramos por promedio trimestral.
-    ipc = ipc.resample("QS").mean()
+    # Vamos a utilizar los valores corrientes.
+    pib = pib.groupby("ENTIDAD").last()["VALOR_CORRIENTE"] * 1000000
 
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
@@ -745,11 +738,8 @@ def comparar_pib(año):
     # Agregamos el tipo de cmabio.
     df["cambio"] = fx["TIPO_CAMBIO"]
 
-    # Agregamos el factodr inflación.
-    df["factor"] = ipc["factor"]
-
-    # Calculamos el valor real.
-    df["real"] = df["VALOR_USD"] * df["cambio"] * df["factor"]
+    # Calculamos el valor en pesos.
+    df["pesos"] = df["VALOR_USD"] * df["cambio"]
 
     # Agrupamos por entidad.
     df = df.groupby("ENTIDAD").sum()
@@ -761,14 +751,14 @@ def comparar_pib(año):
     df["pib"] = pib
 
     # Calculamos el porcentaje.
-    df["perc"] = df["real"] / df["pib"] * 100
+    df["perc"] = df["pesos"] / df["pib"] * 100
 
     # Ordenamos de mayor a menor.
     df.sort_values("perc", ascending=False, inplace=True)
 
     # Creamos el texto para cada barra.
     df["text"] = df.apply(
-        lambda x: f" {x['perc']:,.1f}% ({x['real'] / 1000000:,.0f}) ", axis=1
+        lambda x: f" {x['perc']:,.1f}% ({x['pesos'] / 1000000:,.0f}) ", axis=1
     )
 
     # Todas las barrras serán rojas excepto la del total nacional.
@@ -852,7 +842,7 @@ def comparar_pib(año):
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor=PLOT_COLOR,
-                text="<b>Notas:</b><br>Los ingresos por remesas no forman parte del PIB, sin embargo,<br>se comparan para medir su importancia en la economía estatal.<br>Las cifras están expresadas en millones de pesos constantes de 2018.",
+                text="<b>Notas:</b><br>Los ingresos por remesas no forman parte del PIB, sin embargo,<br>se comparan para medir su importancia en la economía estatal.<br>Las cifras están expresadas en millones de pesos corrientes.",
             ),
             dict(
                 x=0.01,
@@ -870,7 +860,7 @@ def comparar_pib(año):
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="Porcentaje respecto al PIB (millones de pesos reales)",
+                text="Porcentaje respecto al PIB (millones de pesos nominales)",
             ),
             dict(
                 x=1.01,
