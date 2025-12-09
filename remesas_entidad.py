@@ -761,6 +761,10 @@ def comparar_pib(año):
         lambda x: f" {x['perc']:,.1f}% ({x['pesos'] / 1000000:,.0f}) ", axis=1
     )
 
+    # Calculamos la posición para cada texto.
+    df["ratio"] = df["perc"] / df["perc"].max()
+    df["text_pos"] = df["ratio"].apply(lambda x: "inside" if x >= 0.95 else "outside")
+
     # Todas las barrras serán rojas excepto la del total nacional.
     df["color"] = df.index.map(lambda x: "#ffd54f" if x == "Nacional" else "#e57373")
 
@@ -776,7 +780,7 @@ def comparar_pib(año):
             text=df["text"],
             textfont_color="#FFFFFF",
             textfont_family="Oswald",
-            textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
+            textposition=df["text_pos"],
             orientation="h",
             marker_color=df["color"],
             marker_cornerradius=45,
@@ -819,7 +823,7 @@ def comparar_pib(año):
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text=f"Valor de los ingresos por remesas respecto al PIB estatal en México durante el {año}",
+        title_text=f"Valor de los ingresos por remesas respecto al PIB estatal en México durante {año}",
         title_x=0.5,
         title_y=0.985,
         margin_t=80,
@@ -878,7 +882,7 @@ def comparar_pib(año):
 
 
 if __name__ == "__main__":
-    plot_mapa(2024)
-    comparacion_interanual(2023, 2024)
-    plot_tendencias(2015, 2024)
-    comparar_pib(2023)
+    # plot_mapa(2024)
+    # comparacion_interanual(2023, 2024)
+    # plot_tendencias(2015, 2024)
+    comparar_pib(2024)

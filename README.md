@@ -98,7 +98,7 @@ La tercera visualización muestra la evolución del ingreso en las 15 entidades 
 
 Finalmente, la última visualización presenta la relación entre el valor de las remesas y el PIB de cada entidad:
 
-![Remesas PIB](./imgs/remesas_pib_2023.png)
+![Remesas PIB](./imgs/remesas_pib_2024.png)
 
 Es importante destacar que las remesas no forman parte del PIB. La comparación se realiza únicamente para dimensionar su impacto económico relativo en cada entidad federativa.
 

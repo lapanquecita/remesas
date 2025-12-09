@@ -21,7 +21,7 @@ from statsmodels.tsa.seasonal import STL
 FECHA_FUENTE = "diciembre 2025"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "octubre de 2025"
+FECHA_INFLACION = "noviembre de 2025"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
