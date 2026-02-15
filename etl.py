@@ -11,13 +11,14 @@ import pandas as pd
 ENERO_1982 = int(datetime(1982, 1, 1).timestamp() * 1000)
 ENERO_1991 = int(datetime(1991, 1, 1).timestamp() * 1000)
 
-FECHA_FIN = int(datetime(2026, 1, 1).timestamp() * 1000)
+FECHA_FIN = int(datetime(2027, 1, 1).timestamp() * 1000)
 
 
 IPC_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=8&accion=consultarCuadro&idCuadro=CP154&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
 TIPO_CAMBIO_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=6&accion=consultarCuadro&idCuadro=CF86&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
 
-REMESAS_MENSUALES_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
+REMESAS_MENSUALES_INGRESOS_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
+REMESAS_MENSUALES_EGREOS_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE165&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
 REMESAS_ENTIDAD_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE100&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
 REMESAS_PAIS_ORIGEN_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=1&accion=consultarCuadro&idCuadro=CE167&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
 REMESAS_PAIS_DESTINO_URL = "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE169&locale=es&formatoXLS.x=1&fechaInicio={}&fechaFin={}"
@@ -416,36 +417,64 @@ def descargar_tipo_cambio():
 
 def descargar_remesas_mensuales():
     """
-    Descarga los ingresos mensuales por remesas.
+    Descarga los ingresos y egresos mensuales por remesas.
     """
 
-    df = pd.read_excel(
-        REMESAS_MENSUALES_URL.format(ENERO_1991, FECHA_FIN), skiprows=9, index_col=1
+    # Cargamos el EXcel de los ingresos mensuales de remesas.
+    df1 = pd.read_excel(
+        REMESAS_MENSUALES_INGRESOS_URL.format(ENERO_1991, FECHA_FIN),
+        skiprows=9,
+        index_col=1,
+    )
+
+    # Cargamos el Excel de los egresos mensuales de remesas.
+    df2 = pd.read_excel(
+        REMESAS_MENSUALES_EGREOS_URL.format(ENERO_1991, FECHA_FIN),
+        skiprows=9,
+        index_col=1,
     )
 
     # Seleccionamos las filas del remesas y operaciones.
-    df = df.iloc[[2, 7]].transpose()
+    df1 = df1.iloc[[2, 7]].transpose()
+    df2 = df2.iloc[[1, 2]].transpose()
 
     # Nombramos las collumnas.
-    df.columns = ["VALOR_USD", "OPERACIONES"]
+    df1.columns = ["VALOR_USD", "OPERACIONES"]
+    df2.columns = ["VALOR_USD", "OPERACIONES"]
 
     # Quitamos filas inválidas.
-    df = df.dropna(axis=0)
+    df1 = df1.dropna(axis=0)
+    df2 = df2.dropna(axis=0)
+
+    # Agregamos la dirección del flujo.
+    df1["ID_FLUJO"] = 1
+    df1["FLUJO"] = "Ingresos"
+    df2["ID_FLUJO"] = 2
+    df2["FLUJO"] = "Egresos"
+
+    # Unimos los DataFrames de cada flujo en uno solo.
+    final = pd.concat([df1, df2])
 
     # COnvertimos las cifras de millones de dólares a dólares.
-    df["VALOR_USD"] = df["VALOR_USD"].astype(float) * 1000000
-    df["VALOR_USD"] = df["VALOR_USD"].astype(int)
-
-    # Convertimos el índice a formato ISO.
-    df.index = df.index.map(arreglar_fecha)
-    df.index.name = "PERIODO"
+    final["VALOR_USD"] = final["VALOR_USD"].astype(float) * 1000000
+    final["VALOR_USD"] = final["VALOR_USD"].astype(int)
 
     # COnvertimos las operaciones de miles a absolutos.
-    df["OPERACIONES"] = df["OPERACIONES"].astype(float) * 1000
-    df["OPERACIONES"] = df["OPERACIONES"].astype(int)
+    final["OPERACIONES"] = final["OPERACIONES"].astype(float) * 1000
+    final["OPERACIONES"] = final["OPERACIONES"].astype(int)
+
+    # Reseteamos el índice y lo convertimos a fecha ISO.
+    final.reset_index(names=["PERIODO"], inplace=True)
+    final["PERIODO"] = final["PERIODO"].apply(arreglar_fecha)
+
+    # Ordenamos las columnas.
+    final = final[["PERIODO", "ID_FLUJO", "FLUJO", "OPERACIONES", "VALOR_USD"]]
+
+    # Ordenamos todo el DataFrame.
+    final.sort_values(list(final.columns), inplace=True)
 
     # Guardamos el archivo en la carpeta data.
-    df.to_csv("./data/remesas_mensuales.csv", encoding="utf-8")
+    final.to_csv("./data/remesas_mensuales.csv", index=False, encoding="utf-8")
 
 
 def descargar_remesas_entidad():
@@ -543,7 +572,7 @@ def descargar_remesas_pais():
 
         dfs.append(temp_df)
 
-    # Unimos los DataFrames de cada entidad en uno solo.
+    # Unimos los DataFrames de cada país en uno solo.
     final = pd.concat(dfs)
 
     # Reseteamos el índice.
@@ -709,6 +738,7 @@ def descargar_remesas_usa():
 if __name__ == "__main__":
     descargar_ipc()
     descargar_tipo_cambio()
+
     descargar_remesas_mensuales()
     descargar_remesas_entidad()
     descargar_remesas_pais()

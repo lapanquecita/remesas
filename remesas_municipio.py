@@ -20,7 +20,7 @@ HEADER_COLOR = "#C25B42"
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2025"
+FECHA_FUENTE = "febrero 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -788,7 +788,7 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    plot_mapa(2024)
-    plot_capita(2024)
-    plot_absolutos(2024)
-    plot_tendencias(2015, 2024)
+    plot_mapa(2025)
+    plot_capita(2025)
+    plot_absolutos(2025)
+    plot_tendencias(2016, 2025)

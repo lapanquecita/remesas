@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2025"
+FECHA_FUENTE = "febrero 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -88,7 +88,7 @@ def plot_mapa(año):
             geojson=geojson,
             locations=df.index,
             z=df["capita"],
-            featureidkey="properties.NOMGEO",
+            featureidkey="properties.NOM_ENT",
             colorscale="deep_r",
             marker_line_color="#FFFFFF",
             marker_line_width=1.5,
@@ -882,7 +882,7 @@ def comparar_pib(año):
 
 
 if __name__ == "__main__":
-    # plot_mapa(2024)
-    # comparacion_interanual(2023, 2024)
-    # plot_tendencias(2015, 2024)
+    plot_mapa(2025)
+    comparacion_interanual(2024, 2025)
+    plot_tendencias(2016, 2025)
     comparar_pib(2024)

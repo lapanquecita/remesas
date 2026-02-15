@@ -18,19 +18,26 @@ from statsmodels.tsa.seasonal import STL
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "enero 2026"
+FECHA_FUENTE = "febrero 2026"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "diciembre de 2025"
+FECHA_INFLACION = "enero de 2026"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 
-def plot_mensuales():
+def plot_mensuales(flujo):
     """
     Crea una gráfica de barras con las cifras mensuales de remesas en dólares nominales.
+
+    Parameters
+    ----------
+    flujo : str
+        Puede ser "Ingresos"|"Egresos" para diferenciar entre
+        remesas enviadas o recibidas desde México.
+
     """
 
     # Cargamos el dataset de las remesas mensuales.
@@ -38,8 +45,11 @@ def plot_mensuales():
         "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
     )
 
+    # Seleccionamos solo los registros del tipo de flujo indicado.
+    df = df[df["FLUJO"] == flujo]
+
     # Convertimos las cifras a millones de dólares.
-    df /= 1000000
+    df["VALOR_USD"] /= 1000000
 
     # Calculamos el total de remesas por año para los últimos 10 años.
     por_año = df.resample("YS").sum().tail(10)
@@ -55,6 +65,12 @@ def plot_mensuales():
 
     # Calculamos la tendencia.
     df["trend"] = STL(df["VALOR_USD"]).fit().trend
+
+    # El título cambia dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = "Ingresos mensuales por remesas hacia México durante los últimos 10 años (dólares nominales)"
+    elif flujo == "Egresos":
+        titulo = "Egresos mensuales por remesas desde México durante los últimos 10 años (dólares nominales)"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -125,7 +141,7 @@ def plot_mensuales():
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (dólares nominales)",
+        title_text=titulo,
         title_x=0.5,
         title_y=0.965,
         margin_t=120,
@@ -180,14 +196,20 @@ def plot_mensuales():
         ],
     )
 
-    fig.write_image("./remesas_mensuales.png")
+    fig.write_image(f"./remesas_mensuales_{flujo.lower()}.png")
 
 
-def plot_pesos():
+def plot_pesos(flujo):
     """
     Crea una gráfica de barras con las cifras mensuales de remesas en pesos nominales.
-    """
 
+    Parameters
+    ----------
+    flujo : str
+        Puede ser "Ingresos"|"Egresos" para diferenciar entre
+        remesas enviadas o recibidas desde México.
+
+    """
     # Cargamos el dataset del tipo de cambio.
     fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
 
@@ -196,8 +218,11 @@ def plot_pesos():
         "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
     )
 
+    # Seleccionamos solo los registros del tipo de flujo indicado.
+    df = df[df["FLUJO"] == flujo]
+
     # Convertimos las cifras a millones de dólares.
-    df /= 1000000
+    df["VALOR_USD"] /= 1000000
 
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["TIPO_CAMBIO"]
@@ -219,6 +244,12 @@ def plot_pesos():
 
     # Calculamos la tendencia.
     df["trend"] = STL(df["pesos"]).fit().trend
+
+    # El título cambia dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = "Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos nominales)"
+    elif flujo == "Egresos":
+        titulo = "Egresos mensuales por remesas desde México durante los últimos 10 años (pesos nominales)"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -289,7 +320,7 @@ def plot_pesos():
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos nominales)",
+        title_text=titulo,
         title_x=0.5,
         title_y=0.965,
         margin_t=120,
@@ -344,12 +375,19 @@ def plot_pesos():
         ],
     )
 
-    fig.write_image("./remesas_mensuales_pesos.png")
+    fig.write_image(f"./remesas_mensuales_pesos_{flujo.lower()}.png")
 
 
-def plot_real():
+def plot_real(flujo):
     """
     Crea una gráfica de barras con las cifras mensuales de remesas en pesos reales.
+
+    Parameters
+    ----------
+    flujo : str
+        Puede ser "Ingresos"|"Egresos" para diferenciar entre
+        remesas enviadas o recibidas desde México.
+
     """
 
     # Cargamos el dataset del IPC.
@@ -369,8 +407,11 @@ def plot_real():
         "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
     )
 
+    # Seleccionamos solo los registros del tipo de flujo indicado.
+    df = df[df["FLUJO"] == flujo]
+
     # Convertimos las cifras a millones de dólares.
-    df /= 1000000
+    df["VALOR_USD"] /= 1000000
 
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["TIPO_CAMBIO"]
@@ -398,6 +439,12 @@ def plot_real():
 
     # Calculamos la tendencia.
     df["trend"] = STL(df["real"]).fit().trend
+
+    # El título cambia dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = "Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos reales)"
+    elif flujo == "Egresos":
+        titulo = "Egresos mensuales por remesas desde México durante los últimos 10 años (pesos reales)"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -468,7 +515,7 @@ def plot_real():
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text="Ingresos mensuales por remesas hacia México durante los últimos 10 años (pesos reales)",
+        title_text=titulo,
         title_x=0.5,
         title_y=0.965,
         margin_t=120,
@@ -523,12 +570,19 @@ def plot_real():
         ],
     )
 
-    fig.write_image("./remesas_mensuales_reales.png")
+    fig.write_image(f"./remesas_mensuales_reales_{flujo.lower()}.png")
 
 
-def plot_real_anual():
+def plot_real_anual(flujo):
     """
     Crea una gráfica de barras con las cifras anuales de remesas en pesos reales.
+
+    Parameters
+    ----------
+    flujo : str
+        Puede ser "Ingresos"|"Egresos" para diferenciar entre
+        remesas enviadas o recibidas desde México.
+
     """
 
     # Cargamos el dataset del IPC.
@@ -548,6 +602,9 @@ def plot_real_anual():
         "./data/remesas_mensuales.csv", parse_dates=["PERIODO"], index_col=0
     )
 
+    # Seleccionamos solo los registros del tipo de flujo indicado.
+    df = df[df["FLUJO"] == flujo]
+
     # Agregamos el tipo de cambio mensual.
     df["cambio"] = fx["TIPO_CAMBIO"]
 
@@ -560,9 +617,6 @@ def plot_real_anual():
     # Ajustamos por inflación para obtener pesos reales.
     df["real"] = df["pesos"] * df["inflacion"]
 
-    # Convertimos las cifras a billones de pesos.
-    df["real"] /= 1000000000000
-
     # Calculamos el total de remesas por año.
     df = df.resample("YS").sum()
 
@@ -571,6 +625,22 @@ def plot_real_anual():
 
     # Nos limitamos a los úlitmos 20 años.
     df = df.tail(20)
+
+    # El título cambia dependiendo el flujo.
+    if flujo == "Ingresos":
+        titulo = f"Evolución de los ingresos anuales reales por remesas hacia México ({df.index.min()}-{df.index.max()})"
+        titulo_y = f"Billones de pesos a precios constantes de {FECHA_INFLACION}"
+
+        # Convertimos las cifras a billones de pesos.
+        df["real"] /= 1000000000000
+        plantilla = "%{text:,.3f}"
+    elif flujo == "Egresos":
+        titulo = f"Evolución de los egresos anuales reales por remesas desde México ({df.index.min()}-{df.index.max()})"
+        titulo_y = f"Millones de pesos a precios constantes de {FECHA_INFLACION}"
+
+        # Convertimos las cifras a millones de pesos.
+        df["real"] /= 1000000
+        plantilla = "%{text:,.0f}"
 
     # Vamos a crear una gráfica de barras con las cifras absolutas y una
     # gráfica de linea con la tendencia usando el promedio móvil.
@@ -581,7 +651,7 @@ def plot_real_anual():
             x=df.index,
             y=df["real"],
             text=df["real"],
-            texttemplate="%{text:,.3f}",
+            texttemplate=plantilla,
             textfont_color="#FFFFFF",
             textfont_family="Oswald",
             textposition="outside",
@@ -602,12 +672,12 @@ def plot_real_anual():
         showline=True,
         showgrid=False,
         mirror=True,
-        nticks=30,
+        nticks=len(df) + 1,
     )
 
     fig.update_yaxes(
         range=[0, df["real"].max() * 1.08],
-        title=f"Billones de pesos a precios constantes de {FECHA_INFLACION}",
+        title=titulo_y,
         ticks="outside",
         ticklen=10,
         title_standoff=15,
@@ -626,7 +696,7 @@ def plot_real_anual():
         font_family="Inter",
         font_color="#FFFFFF",
         font_size=24,
-        title_text=f"Evolución de los ingresos anuales reales por remesas hacia México ({df.index.min()}-{df.index.max()})",
+        title_text=titulo,
         title_x=0.5,
         title_y=0.965,
         margin_t=80,
@@ -681,11 +751,18 @@ def plot_real_anual():
         ],
     )
 
-    fig.write_image("./remesas_anuales_reales.png")
+    fig.write_image(f"./remesas_anuales_reales_{flujo.lower()}.png")
 
 
 if __name__ == "__main__":
-    plot_mensuales()
-    plot_pesos()
-    plot_real()
-    plot_real_anual()
+    plot_mensuales("Ingresos")
+    plot_mensuales("Egresos")
+
+    plot_pesos("Ingresos")
+    plot_pesos("Egresos")
+
+    plot_real("Ingresos")
+    plot_real("Egresos")
+
+    plot_real_anual("Ingresos")
+    plot_real_anual("Egresos")

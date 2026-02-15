@@ -18,7 +18,7 @@ PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "diciembre 2025"
+FECHA_FUENTE = "febrero 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -59,9 +59,11 @@ def plot_top(año, flujo):
 
     # Creamos el texto que irá en cada barra.
     df["text"] = df.apply(
-        lambda x: f" {x['VALOR_USD']:,.0f} ({x['perc']:,.4f}%) "
-        if x["VALOR_USD"] > 100
-        else f" {x['VALOR_USD']:,.1f} ({x['perc']:,.4f}%) ",
+        lambda x: (
+            f" {x['VALOR_USD']:,.0f} ({x['perc']:,.4f}%) "
+            if x["VALOR_USD"] > 100
+            else f" {x['VALOR_USD']:,.1f} ({x['perc']:,.4f}%) "
+        ),
         axis=1,
     )
 
@@ -414,8 +416,10 @@ def plot_map(año, flujo):
     # El título cambia dependiendo el flujo.
     if flujo == "Ingresos":
         titulo = f"Valor de las remesas recibidas en México por país de origen durante {PERIODO_TIEMPO} de {año}"
+        subtitulo = f"Valor total: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares de <b>{len(df)}</b> países"
     elif flujo == "Egresos":
         titulo = f"Valor de las remesas enviadas desde  México por país de destino durante {PERIODO_TIEMPO} de {año}"
+        subtitulo = f"Valor total: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares a <b>{len(df)}</b> países"
 
     fig = go.Figure()
 
@@ -500,7 +504,7 @@ def plot_map(año, flujo):
                 y=-0.065,
                 xanchor="center",
                 yanchor="bottom",
-                text=f"Valor total de las remesas: <b>{df['VALOR_USD'].sum():,.0f}</b> dólares",
+                text=subtitulo,
             ),
             dict(
                 x=1.0,
@@ -796,14 +800,14 @@ def plot_tendencias(primer_año, ultimo_año, flujo):
 
 
 if __name__ == "__main__":
-    plot_top(2024, "Ingresos")
-    plot_top(2024, "Egresos")
+    plot_top(2025, "Ingresos")
+    plot_top(2025, "Egresos")
 
-    plot_bottom(2024, "Ingresos")
-    plot_bottom(2024, "Egresos")
+    plot_bottom(2025, "Ingresos")
+    plot_bottom(2025, "Egresos")
 
-    plot_map(2024, "Ingresos")
-    plot_map(2024, "Egresos")
+    plot_map(2025, "Ingresos")
+    plot_map(2025, "Egresos")
 
-    plot_tendencias(2015, 2024, "Ingresos")
-    plot_tendencias(2015, 2024, "Egresos")
+    plot_tendencias(2016, 2025, "Ingresos")
+    plot_tendencias(2016, 2025, "Egresos")
