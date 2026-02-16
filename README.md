@@ -1,4 +1,4 @@
-# Ingresos por remesas hacia México
+# Remesas en México
 
 Este repositorio contiene conjuntos de datos y scripts para la recolección, análisis y visualización de información pública sobre los ingresos y egresos por remesas en México.
 
@@ -11,8 +11,6 @@ El análisis de remesas se realiza desde distintas perspectivas:
 
 Asimismo, se evalúa el impacto económico de las remesas a nivel micro y macroeconómico, utilizando proyecciones de población del CONAPO y datos del PIB estatal publicados por el INEGI.
 
----
-
 ## Estructura del repositorio
 
 El repositorio está organizado en dos carpetas principales y varios scripts para procesar la información:
@@ -21,22 +19,18 @@ El repositorio está organizado en dos carpetas principales y varios scripts par
 * Carpeta `data`: contiene los conjuntos de datos principales de remesas
 * Scripts en Python para descarga, limpieza y procesamiento de datos
 
----
-
 ## Archivos en `assets`
 
 * `IPC.csv`: Índice Nacional de Precios al Consumidor (INPC), utilizado para ajustar los valores de remesas a pesos reales
 * `USDMXN.csv`: Promedio mensual del tipo de cambio peso-dólar, usado para convertir cifras de USD a MXN
-* `PIBE_2018.csv`: Producto Interno Bruto estatal (base: segunda quincena de 2018)
+* `pib_estatal.csv`: Producto Interno Bruto estatal tanto en valores corrientes como contantes (base: segunda quincena de 2018)
 * `poblacion.csv`: Población municipal estimada por el CONAPO
 * `mexico.json`: GeoJSON con la división política de México a nivel estatal
-* `municipios.zip`: contiene `municipios.json`, un GeoJSON con la división política a nivel municipal
-
----
+* `municipios.json`: GeoJSON con la división política de México a nivel municipal
 
 ## Archivos en `data`
 
-* `remesas_mensuales.csv`: valor y número de operaciones de remesas por mes a nivel nacional
+* `remesas_mensuales.csv`: valor y número de operaciones de ingresos y egresos por remesas por mes a nivel nacional
 * `remesas_entidad.csv`: ingresos trimestrales de remesas por entidad federativa
 * `remesas_municipal.csv`: ingresos trimestrales de remesas a nivel municipal
 * `remesas_pais.csv`: ingresos y egresos por remesas según país de origen o destino, de forma trimestral
@@ -62,19 +56,19 @@ Este script analiza las cifras de remesas mensuales e incorpora una línea de te
 
 La primera visualización muestra el valor nominal en dólares estadounidenses:
 
-![Remesas mensuales (USD nominal)](./imgs/remesas_mensuales.png)
+![Remesas mensuales (USD nominal)](./imgs/remesas_mensuales_ingresos.png)
 
 La segunda visualización presenta el valor nominal convertido a pesos mexicanos:
 
-![Remesas mensuales (MXN nominal)](./imgs/remesas_mensuales_pesos.png)
+![Remesas mensuales (MXN nominal)](./imgs/remesas_mensuales_pesos_ingresos.png)
 
 La tercera visualización muestra el valor real de las remesas, ya ajustadas por inflación:
 
-![Remesas mensuales (MXN real)](./imgs/remesas_mensuales_reales.png)
+![Remesas mensuales (MXN real)](./imgs/remesas_mensuales_reales_ingresos.png)
 
 Finalmente, la última gráfica presenta los totales anuales en pesos reales, útil para un análisis de largo plazo:
 
-![Remesas anuales (MXN real)](./imgs/remesas_anuales_reales.png)
+![Remesas anuales (MXN real)](./imgs/remesas_anuales_reales_ingresos.png)
 
 Para la conversión a pesos mexicanos se utiliza el tipo de cambio FIX publicado por el Banco de México.
 
@@ -86,11 +80,11 @@ Este script analiza el destino de los ingresos por remesas a nivel estatal y eva
 
 La primera visualización es un mapa tipo choropleth que muestra el ingreso total por entidad federativa en millones de dólares y, adicionalmente, el ingreso per cápita. Se acompaña de una tabla con el desglose de estas cifras:
 
-![Remesas entidad](./imgs/mapa_estatal_2024.png)
+![Remesas entidad](./imgs/mapa_estatal_2025.png)
 
 La segunda visualización permite realizar una comparación interanual, es decir, contrastar el mismo periodo de tiempo entre dos años diferentes:
 
-![Comparación interanual](./imgs/comparacion_entidad_2023_2024.png)
+![Comparación interanual](./imgs/comparacion_entidad_2024_2025.png)
 
 La tercera visualización muestra la evolución del ingreso en las 15 entidades con mayor crecimiento, lo que permite identificar cuáles han incrementado su participación más rápidamente:
 
@@ -108,7 +102,7 @@ Este script analiza las remesas a nivel municipal.
 
 La primera visualización es un mapa tipo choropleth que muestra el ingreso per cápita por municipio, acompañado de estadísticas descriptivas para comprender mejor la distribución:
 
-![Mapa municipal](./imgs/municipal_2024.png)
+![Mapa municipal](./imgs/municipal_2025.png)
 
 La segunda visualización presenta los 15 municipios con mayor crecimiento en remesas recibidas:
 
@@ -116,11 +110,11 @@ La segunda visualización presenta los 15 municipios con mayor crecimiento en re
 
 El script también genera dos tablas con los 30 municipios con mayores ingresos, tanto en valores absolutos como per cápita:
 
-![Tabla absolutos](./imgs/tabla_absolutos_2024.png)
+![Tabla absolutos](./imgs/tabla_absolutos_2025.png)
 
 La tabla per cápita resulta especialmente interesante, ya que evidencia que algunos municipios reciben cantidades muy elevadas en proporción a su población:
 
-![Tabla cápita](./imgs/tabla_capita_2024.png)
+![Tabla cápita](./imgs/tabla_capita_2025.png)
 
 La población utilizada proviene de las proyecciones de población publicadas por el CONAPO.
 
@@ -130,15 +124,15 @@ Este script identifica de qué países provienen las remesas enviadas a México 
 
 La primera visualización muestra los 30 países que más dinero enviaron a México. Para representar adecuadamente la gran diferencia entre los primeros lugares y el resto, se emplea una escala logarítmica:
 
-![Top 30 países](./imgs/remesas_pais_top_ingresos_2024.png)
+![Top 30 países](./imgs/remesas_pais_top_ingresos_2025.png)
 
 La segunda visualización presenta a los 30 países que enviaron menos dinero a México:
 
-![Bottom 30 países](./imgs/remesas_pais_bottom_ingresos_2024.png)
+![Bottom 30 países](./imgs/remesas_pais_bottom_ingresos_2025.png)
 
 Posteriormente, se incluye un mapa mundial tipo choropleth que muestra la distribución geográfica completa de los ingresos. Al igual que en la gráfica del top 30, se utiliza una escala logarítmica:
 
-![Mapa mundo](./imgs/mapa_pais_ingresos_2024.png)
+![Mapa mundo](./imgs/mapa_pais_ingresos_2025.png)
 
 Finalmente, se presenta la tendencia de los 15 países que han enviado mayores cantidades de remesas a México:
 
