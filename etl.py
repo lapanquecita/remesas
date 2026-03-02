@@ -635,7 +635,7 @@ def descargar_remesas_municipio():
     # Vamos a extraer el nombre del estado.
     # Las filas con ● son estados.
     df[primera_columna] = df.index.map(lambda x: x if "●" in x else None)
-    df[primera_columna] = df[primera_columna].fillna(method="ffill")
+    df[primera_columna] = df[primera_columna].ffill()
 
     # Ya que hemos asignado la entidad para cada municipio
     # solo seleccionaremos filas de municpiios.
