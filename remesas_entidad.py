@@ -21,7 +21,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2026"
+FECHA_FUENTE = "abril 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -325,9 +325,11 @@ def comparacion_interanual(primer_año, segundo_año):
 
     # Preparamos el texto para cada observación.
     df["texto"] = df.apply(
-        lambda x: f" <b>{x['cambio']:,.0f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) "
-        if abs(x["cambio"]) >= 100
-        else f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
+        lambda x: (
+            f" <b>{x['cambio']:,.0f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) "
+            if abs(x["cambio"]) >= 100
+            else f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) "
+        ),
         axis=1,
     )
 
@@ -336,7 +338,7 @@ def comparacion_interanual(primer_año, segundo_año):
 
     # Calculamos el valor máximo para ajustar el rango del eje horizontal.
     valor_max = df["cambio"].abs().max()
-    valor_max = ((valor_max // 2) + 2) * 2
+    valor_max = ((valor_max // 2) + 1) * 2
 
     # Determinamos la posición de los textos para cada barra.
     df["ratio"] = df["cambio"].abs() / valor_max
