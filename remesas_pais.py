@@ -18,7 +18,7 @@ PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2026"
+FECHA_FUENTE = "mayo 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -411,7 +411,7 @@ def plot_map(año, flujo):
     # Convertiremos los textos a base 10.
     for item in marcas:
         v, e = f"{10**item:e}".split("e")
-        textos.append(f"{10 * float(v):.0f}<sup>{int(e) - 1}</sup>")
+        textos.append(f"{10 * float(v):.0f}<sup>{int(e)}</sup>")
 
     # El título cambia dependiendo el flujo.
     if flujo == "Ingresos":
