@@ -15,16 +15,16 @@ from PIL import Image
 from plotly.subplots import make_subplots
 
 
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "junio 2026"
+
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre"
+
 # Definimos los colores que usaremos para el mapa y tablas.
 PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
-
-# Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "abril 2026"
-
-# Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre"
 
 
 def plot_mapa(año):
@@ -100,11 +100,11 @@ def plot_mapa(año):
                 ypad=50,
                 ticks="outside",
                 outlinewidth=2,
-                outlinecolor="#FFFFFF",
                 tickvals=marcas,
                 ticktext=etiquetas,
                 tickwidth=3,
-                tickcolor="#FFFFFF",
+                tickcolor="#EEEEEE",
+                outlinecolor="#EEEEEE",
                 ticklen=10,
             ),
         )
@@ -116,7 +116,7 @@ def plot_mapa(año):
         showocean=True,
         oceancolor=PLOT_COLOR,
         showcountries=False,
-        framecolor="#FFFFFF",
+        framecolor="#EEEEEE",
         framewidth=2,
         showlakes=False,
         coastlinewidth=0,
@@ -195,7 +195,7 @@ def plot_mapa(año):
                     "<b>Ingreso total (MDD)</b>",
                     "<b>USD per cápita ↓</b>",
                 ],
-                font_color="#FFFFFF",
+                line_color="#EEEEEE",
                 fill_color=HEADER_COLOR,
                 align="center",
                 height=45,
@@ -227,7 +227,7 @@ def plot_mapa(año):
                     "<b>Ingreso total (MDD)</b>",
                     "<b>USD per cápita ↓</b>",
                 ],
-                font_color="#FFFFFF",
+                line_color="#EEEEEE",
                 fill_color=HEADER_COLOR,
                 align="center",
                 height=45,
@@ -369,7 +369,8 @@ def comparacion_interanual(primer_año, segundo_año):
         ticks="outside",
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showline=True,
         gridwidth=0.5,
@@ -382,7 +383,8 @@ def comparacion_interanual(primer_año, segundo_año):
         ticks="outside",
         separatethousands=True,
         ticklen=10,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         gridwidth=0.5,
         showline=True,
@@ -416,7 +418,7 @@ def comparacion_interanual(primer_año, segundo_año):
                 yanchor="bottom",
                 align="left",
                 bgcolor=PLOT_COLOR,
-                bordercolor="#FFFFFF",
+                bordercolor="#EEEEEE",
                 borderwidth=1.5,
                 borderpad=7,
                 text="<b>Nota:</b><br>Cifras expresadas en millones de dólares.",
@@ -582,7 +584,8 @@ def plot_tendencias(primer_año, ultimo_año):
         ticks="outside",
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=1.5,
         showline=True,
         gridwidth=0.5,
@@ -598,7 +601,8 @@ def plot_tendencias(primer_año, ultimo_año):
         ticks="outside",
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=1.5,
         showline=True,
         showgrid=True,
@@ -796,7 +800,8 @@ def comparar_pib(año):
         ticks="outside",
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showline=True,
         gridwidth=0.5,
@@ -808,7 +813,8 @@ def comparar_pib(año):
         autorange="reversed",
         ticks="outside",
         ticklen=10,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showgrid=False,
         gridwidth=0.5,
@@ -844,7 +850,7 @@ def comparar_pib(año):
                 xanchor="right",
                 yanchor="bottom",
                 align="left",
-                bordercolor="#FFFFFF",
+                bordercolor="#EEEEEE",
                 borderwidth=1.5,
                 borderpad=7,
                 bgcolor=PLOT_COLOR,
