@@ -21,7 +21,7 @@ from statsmodels.tsa.seasonal import STL
 FECHA_FUENTE = "julio 2026"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "mayo de 2026"
+FECHA_INFLACION = "junio de 2026"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
@@ -838,7 +838,7 @@ def remesa_promedio(flujo):
             mode="markers",
             name="Promedio anual",
             marker_color=color,
-            marker_size=24,
+            marker_size=30,
         )
     )
 
@@ -907,7 +907,8 @@ def remesa_promedio(flujo):
                 borderpad=7,
                 bgcolor=PLOT_COLOR,
                 align="left",
-                text="<b>Nota:</b><br>El promedio, mínimo y máximo anuales calculados a partir<br>de los montos promedio mensuales en pesos constantes.",
+                font_size=22,
+                text="<b>Nota:</b> El promedio, mínimo y máximo anuales son calculados<br>a partir de los montos promedio mensuales en pesos constantes.",
             ),
             dict(
                 x=0.01,
@@ -939,7 +940,7 @@ def remesa_promedio(flujo):
         ],
     )
 
-    fig.write_image(f"./remesas_valor_promedio_{flujo.lower()}.png")
+    fig.write_image(f"./remesas_monto_promedio_{flujo.lower()}.png")
 
 
 if __name__ == "__main__":

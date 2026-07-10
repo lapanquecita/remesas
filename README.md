@@ -66,9 +66,13 @@ La tercera visualización muestra el valor real de las remesas, ya ajustadas por
 
 ![Remesas mensuales (MXN real)](./imgs/remesas_mensuales_reales_ingresos.png)
 
-Finalmente, la última gráfica presenta los totales anuales en pesos reales, útil para un análisis de largo plazo:
+La cuarta gráfica presenta los totales anuales en pesos reales, útil para un análisis de largo plazo:
 
 ![Remesas anuales (MXN real)](./imgs/remesas_anuales_reales_ingresos.png)
+
+Finalmente, mostramos la evolución del monto promedio por remesa.
+
+![Monto promedio](./imgs/remesas_monto_promedio_ingresos.png)
 
 Para la conversión a pesos mexicanos se utiliza el tipo de cambio FIX publicado por el Banco de México.
 
@@ -88,7 +92,7 @@ La segunda visualización permite realizar una comparación interanual, es decir
 
 La tercera visualización muestra la evolución del ingreso en las 15 entidades con mayor crecimiento, lo que permite identificar cuáles han incrementado su participación más rápidamente:
 
-![Tendencia entidad](./imgs/estados_tendencia.png)
+![Tendencia entidad](./imgs/estados_tendencia_top.png)
 
 Finalmente, la última visualización presenta la relación entre el valor de las remesas y el PIB de cada entidad:
 

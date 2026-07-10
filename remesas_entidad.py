@@ -16,7 +16,10 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "junio 2026"
+FECHA_FUENTE = "julio 2026"
+
+# Mes y año del IPC de referencia.
+FECHA_INFLACION = "junio de 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -25,6 +28,43 @@ PERIODO_TIEMPO = "enero-diciembre"
 PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
+
+
+def cargar_deflactadores(modo):
+    """
+    Carga las series de tiempo del IPC y tipo de cambio
+    en un solo DataFrame.
+
+    Esto es utilizado para ajustar las remesas por inflación.
+
+    Parameters
+    ----------
+    modo : str
+        Puede ser 'mensual' o 'trimestral'.
+
+    """
+
+    # Cargamos el dataset del IPC.
+    ipc = pd.read_csv("./assets/IPC.csv", parse_dates=["PERIODO"], index_col=0)
+
+    # Escogemos un IPC de referencia (el más reciente).
+    ipc_referencia = ipc["GENERAL"].iloc[-1]
+
+    # Calculamos el factor.
+    ipc["factor"] = ipc_referencia / ipc["GENERAL"]
+
+    # Cargamos el dataset del tipo de cambio.
+    fx = pd.read_csv("./assets/USDMXN.csv", parse_dates=["PERIODO"], index_col=0)
+
+    # Unimos ambos DataFrames y quitamos las filas incompletas.
+    df = pd.concat([ipc["factor"], fx], axis=1).dropna(axis=0)
+
+    # Si la modalidad es mensual, regresamos el DataFrame tal cual.
+    # Si es trimestral, hacemos remuestreo usando el promedio trimestral.
+    if modo == "mensual":
+        return df
+    elif modo == "trimestral":
+        return df.resample("QS").mean()
 
 
 def plot_mapa(año):
@@ -456,7 +496,7 @@ def comparacion_interanual(primer_año, segundo_año):
     fig.write_image(f"./comparacion_entidad_{primer_año}_{segundo_año}.png")
 
 
-def plot_tendencias(primer_año, ultimo_año):
+def plot_tendencias(primer_año, ultimo_año, orden):
     """
     Esta función crea una cuadrícula de sparklines con los
     estados que han crecido más en ingresos por remesas.
@@ -469,6 +509,11 @@ def plot_tendencias(primer_año, ultimo_año):
     ultimo_año :  int
         El año final que se desea comparar.
 
+    orden : str
+        Define si se mostrarán las entidades
+        con mayor o menor crecimiento.
+        Puede ser 'top' o 'bottom'.
+
     """
 
     # Cargamos el dataset de remesas por entidad.
@@ -479,16 +524,33 @@ def plot_tendencias(primer_año, ultimo_año):
         (df["PERIODO"].dt.year >= primer_año) & (df["PERIODO"].dt.year <= ultimo_año)
     ]
 
-    # Transformamos nuestro dataset para que el índice sean los estados y las columnas los años.
+    # Transformamos nuestro DataFrame para que el índice sean los trimestres y las columnas las entidades.
     df = df.pivot_table(
-        index="ENTIDAD",
-        columns=df["PERIODO"].dt.year,
+        index="PERIODO",
+        columns="ENTIDAD",
         values="VALOR_USD",
         aggfunc="sum",
     )
 
-    # Convertimos las cifras a millones de dólares.
-    df /= 1000000
+    # Cargamos el IPC y el tipo de cambio trimestral.
+    ipc_fx = cargar_deflactadores("trimestral")
+    
+    # Preparamos el coeficiente de deflactación para cada trimestre.
+    ipc_fx = ipc_fx["TIPO_CAMBIO"] * ipc_fx["factor"]
+
+    # Deflactamos cada entidad y convertimos las cifras en millones de pesos.
+    for col in df.columns:
+        df[col] = df[col] * ipc_fx / 1000000
+
+    # Remuestreamos con la suma anual.
+    df = df.resample("YS").sum()
+
+    # Solo vamos a necesitar el año de cada fecha.
+    df.index = df.index.year
+    
+    # Modificamos el DataFrame para que ahora los años sean las columnas.
+    # Esto hace más fácil calcular el cambio porcentual.
+    df = df.transpose()
 
     # Vamos a calcular el cambio porcentual entre el primer y último año.
     df["change"] = (df[ultimo_año] - df[primer_año]) / df[primer_año] * 100
@@ -499,8 +561,14 @@ def plot_tendencias(primer_año, ultimo_año):
     # Quitamos los municipsios con valores infinitos.
     df = df[df["change"] != np.inf]
 
-    # Ordenamos los valores usando el cambio porcentual de mayor a menor.
-    df.sort_values("change", ascending=False, inplace=True)
+    # Ordenamos el DataFrame de acuerdo al valor del parámetro 'orden'.
+    # Aprovechamos para ajustar el título del gráfico.
+    if orden == "top":
+        df.sort_values("change", ascending=False, inplace=True)
+        titulo = f"Las 15 entidades de México con <b>mayor</b> crecimiento real en ingresos por remesas ({primer_año} vs. {ultimo_año})<br>(cifras en millones de pesos a precios constantes de {FECHA_INFLACION})"
+    elif orden == "bottom":
+        df.sort_values("change", ascending=True, inplace=True)
+        titulo = f"Las 15 entidades de México con <b>menor</b> crecimiento real en ingresos por remesas ({primer_año} vs. {ultimo_año})<br>(cifras en millones de pesos a precios constantes de {FECHA_INFLACION})"
 
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
@@ -543,8 +611,16 @@ def plot_tendencias(primer_año, ultimo_año):
             # Solo el primer y último registro llevarán un texto con sus valores.
             textos = ["" for _ in range(len(temp_df))]
 
-            textos[0] = f"<b>{primer_valor:,.0f}</b>"
-            textos[-1] = f"<b>{ultimo_valor:,.0f}</b>"
+            textos[0] = (
+                f"<b>{primer_valor / 1000:,.1f}k</b>"
+                if primer_valor >= 1000
+                else f"<b>{primer_valor:,.0f}</b>"
+            )
+            textos[-1] = (
+                f"<b>{ultimo_valor / 1000:,.1f}k</b>"
+                if ultimo_valor >= 1000
+                else f"<b>{ultimo_valor:,.0f}</b>"
+            )
 
             # Posicionamos los dos textos.
             text_pos = ["middle center" for _ in range(len(temp_df))]
@@ -555,7 +631,9 @@ def plot_tendencias(primer_año, ultimo_año):
             change = (ultimo_valor - primer_valor) / primer_valor * 100
             diff = ultimo_valor - primer_valor
 
-            texto_anotaciones.append(f"<b>+{diff:,.0f}</b><br>+{change:,.0f}%")
+            texto_anotaciones.append(
+                f"<b>+{diff:,.0f}</b><br>+{change:,.0f}%".replace("+-", "-")
+            )
 
             fig.add_trace(
                 go.Scatter(
@@ -564,13 +642,14 @@ def plot_tendencias(primer_año, ultimo_año):
                     text=textos,
                     mode="markers+lines+text",
                     textposition=text_pos,
-                    marker_color="#64ffda",
+                    marker_color="#b2ff59",
                     marker_opacity=1.0,
                     marker_size=sizes,
                     marker_line_width=0,
                     line_width=4,
                     line_shape="spline",
                     line_smoothing=1.0,
+                    textfont_size=22,
                 ),
                 row=row + 1,
                 col=column + 1,
@@ -594,7 +673,7 @@ def plot_tendencias(primer_año, ultimo_año):
     )
 
     fig.update_yaxes(
-        title_text="Millones de dólares",
+        title_text="Millones de pesos",
         separatethousands=True,
         tickfont_size=20,
         tickformat="s",
@@ -618,13 +697,13 @@ def plot_tendencias(primer_año, ultimo_año):
         height=2400,
         font_color="#FFFFFF",
         font_size=24,
-        margin_t=160,
+        margin_t=240,
         margin_l=140,
         margin_r=60,
         margin_b=150,
-        title_text=f"Las 15 entidades de México con mayor crecimiento en ingresos por remesas ({primer_año} vs. {ultimo_año})",
+        title_text=titulo,
         title_x=0.5,
-        title_y=0.985,
+        title_y=0.97,
         title_font_size=36,
         plot_bgcolor=PLOT_COLOR,
         paper_bgcolor=PAPER_COLOR,
@@ -665,8 +744,8 @@ def plot_tendencias(primer_año, ultimo_año):
             yanchor="top",
             yref="paper",
             text=t,
-            font_color="#64ffda",
-            bordercolor="#64ffda",
+            font_color="#b2ff59",
+            bordercolor="#b2ff59",
             borderpad=5,
             borderwidth=1.5,
             bgcolor=PLOT_COLOR,
@@ -689,7 +768,7 @@ def plot_tendencias(primer_año, ultimo_año):
         xref="paper",
         yanchor="bottom",
         yref="paper",
-        text=f"Crecimiento nacional de {primer_año} a {ultimo_año}: <b>{cambio:,.2f}%</b>",
+        text=f"Crecimiento real a nivel nacional de {primer_año} a {ultimo_año}: <b>{cambio:,.2f}%</b>",
     )
 
     fig.add_annotation(
@@ -702,7 +781,7 @@ def plot_tendencias(primer_año, ultimo_año):
         text="🧁 @lapanquecita",
     )
 
-    fig.write_image("./estados_tendencia.png")
+    fig.write_image(f"./estados_tendencia_{orden}.png")
 
 
 def comparar_pib(año):
@@ -892,5 +971,8 @@ def comparar_pib(año):
 if __name__ == "__main__":
     plot_mapa(2025)
     comparacion_interanual(2024, 2025)
-    plot_tendencias(2016, 2025)
+
+    plot_tendencias(2016, 2025, "top")
+    plot_tendencias(2016, 2025, "bottom")
+
     comparar_pib(2024)
