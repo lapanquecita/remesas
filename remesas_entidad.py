@@ -16,7 +16,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "julio 2026"
+FECHA_FUENTE = "agosto 2026"
 
 # Mes y año del IPC de referencia.
 FECHA_INFLACION = "junio de 2026"
@@ -30,7 +30,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 
-def cargar_deflactadores(modo):
+def cargar_deflactores(modo):
     """
     Carga las series de tiempo del IPC y tipo de cambio
     en un solo DataFrame.
@@ -533,9 +533,9 @@ def plot_tendencias(primer_año, ultimo_año, orden):
     )
 
     # Cargamos el IPC y el tipo de cambio trimestral.
-    ipc_fx = cargar_deflactadores("trimestral")
+    ipc_fx = cargar_deflactores("trimestral")
     
-    # Preparamos el coeficiente de deflactación para cada trimestre.
+    # Preparamos el coeficiente de deflación para cada trimestre.
     ipc_fx = ipc_fx["TIPO_CAMBIO"] * ipc_fx["factor"]
 
     # Deflactamos cada entidad y convertimos las cifras en millones de pesos.
@@ -942,7 +942,7 @@ def comparar_pib(año):
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+                text=f"Fuentes: INEGI, Banxico ({FECHA_FUENTE})",
             ),
             dict(
                 x=0.55,

@@ -18,7 +18,7 @@ from statsmodels.tsa.seasonal import STL
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "julio 2026"
+FECHA_FUENTE = "agosto 2026"
 
 # Mes y año del IPC de referencia.
 FECHA_INFLACION = "junio de 2026"
@@ -28,7 +28,7 @@ PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 
 
-def cargar_deflactadores(modo):
+def cargar_deflactores(modo):
     """
     Carga las series de tiempo del IPC y tipo de cambio
     en un solo DataFrame.
@@ -261,8 +261,8 @@ def plot_pesos(flujo):
     # Convertimos las cifras a millones de dólares.
     df["VALOR_USD"] /= 1000000
 
-    # Cargamos factor de inflación y tipo de cambio mensual.
-    df = df.join(cargar_deflactadores("mensual"))
+    # Cargamos el tipo de cambio mensual.
+    df = df.join(cargar_deflactores("mensual"))
 
     # Hacemos la conversión a pesos corrientes.
     # Para esta función no ajustaremos por inflación.
@@ -442,7 +442,7 @@ def plot_real(flujo):
     df["VALOR_USD"] /= 1000000
 
     # Cargamos factor de inflación y tipo de cambio mensual.
-    df = df.join(cargar_deflactadores("mensual"))
+    df = df.join(cargar_deflactores("mensual"))
 
     # Ajustamos por inflación y tipo de cambio para obtener pesos reales.
     df["real"] = df["VALOR_USD"] * df["factor"] * df["TIPO_CAMBIO"]
@@ -618,7 +618,7 @@ def plot_real_anual(flujo):
     df = df[df["FLUJO"] == flujo]
 
     # Cargamos factor de inflación y tipo de cambio mensual.
-    df = df.join(cargar_deflactadores("mensual"))
+    df = df.join(cargar_deflactores("mensual"))
 
     # Ajustamos por inflación y tipo de cambio para obtener pesos reales.
     df["real"] = df["VALOR_USD"] * df["factor"] * df["TIPO_CAMBIO"]
@@ -785,7 +785,7 @@ def remesa_promedio(flujo):
     df = df[df["FLUJO"] == flujo]
 
     # Cargamos factor de inflación y tipo de cambio mensual.
-    df = df.join(cargar_deflactadores("mensual"))
+    df = df.join(cargar_deflactores("mensual"))
 
     # Ajustamos por inflación y tipo de cambio para obtener pesos reales.
     df["real"] = df["VALOR_USD"] * df["factor"] * df["TIPO_CAMBIO"]
@@ -838,7 +838,7 @@ def remesa_promedio(flujo):
             mode="markers",
             name="Promedio anual",
             marker_color=color,
-            marker_size=30,
+            marker_size=28,
         )
     )
 

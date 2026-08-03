@@ -13,15 +13,15 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-# Definimos los colores usados para todas las visualizaciones.
-PLOT_COLOR = "#1C1F1A"
-PAPER_COLOR = "#262B23"
-
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "mayo 2026"
+FECHA_FUENTE = "agosto 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
+
+# Definimos los colores usados para todas las visualizaciones.
+PLOT_COLOR = "#1C1F1A"
+PAPER_COLOR = "#262B23"
 
 
 def plot_top(año, flujo):

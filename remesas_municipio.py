@@ -13,17 +13,17 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
+# Mes y año en que se recopilaron los datos.
+FECHA_FUENTE = "agosto 2026"
+
+# Periodo de tiempo del análisis.
+PERIODO_TIEMPO = "enero-diciembre"
+
+
 # Definimos los colores que usaremos para el mapa y tablas.
 PLOT_COLOR = "#1C1F1A"
 PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
-
-
-# Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "febrero 2026"
-
-# Periodo de tiempo del análisis.
-PERIODO_TIEMPO = "enero-diciembre"
 
 
 def plot_mapa(año):

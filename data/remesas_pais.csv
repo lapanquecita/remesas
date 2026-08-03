@@ -22789,3 +22789,433 @@ PERIODO,ID_PAIS,PAIS,ID_FLUJO,FLUJO,VALOR_USD
 2026-01-01,ZMB,Zambia,2,Egresos,11349
 2026-01-01,ZWE,Zimbabwe,1,Ingresos,0
 2026-01-01,ZWE,Zimbabwe,2,Egresos,2573
+2026-04-01,ABK,República de Abjasia,1,Ingresos,660
+2026-04-01,ABK,República de Abjasia,2,Egresos,0
+2026-04-01,ABW,Aruba,1,Ingresos,153665
+2026-04-01,ABW,Aruba,2,Egresos,11343
+2026-04-01,AFG,Afganistán,1,Ingresos,1693
+2026-04-01,AFG,Afganistán,2,Egresos,32362
+2026-04-01,AGO,Angola,1,Ingresos,0
+2026-04-01,AGO,Angola,2,Egresos,8704
+2026-04-01,AIA,Anguila,1,Ingresos,3920
+2026-04-01,AIA,Anguila,2,Egresos,0
+2026-04-01,ALB,Albania,1,Ingresos,10046
+2026-04-01,ALB,Albania,2,Egresos,5923
+2026-04-01,ANT,Antillas Holandesas,1,Ingresos,1525
+2026-04-01,ANT,Antillas Holandesas,2,Egresos,0
+2026-04-01,ARE,Emiratos Árabes Unidos,1,Ingresos,830609
+2026-04-01,ARE,Emiratos Árabes Unidos,2,Egresos,113900
+2026-04-01,ARG,Argentina,1,Ingresos,1354919
+2026-04-01,ARG,Argentina,2,Egresos,6525472
+2026-04-01,ARM,Armenia,1,Ingresos,5368
+2026-04-01,ARM,Armenia,2,Egresos,11387
+2026-04-01,ATG,Antigua y Barbuda,1,Ingresos,22997
+2026-04-01,ATG,Antigua y Barbuda,2,Egresos,289
+2026-04-01,AUS,Australia,1,Ingresos,993472
+2026-04-01,AUS,Australia,2,Egresos,327359
+2026-04-01,AUT,Austria,1,Ingresos,448573
+2026-04-01,AUT,Austria,2,Egresos,47466
+2026-04-01,AZE,Azerbaiyán,1,Ingresos,21280
+2026-04-01,AZE,Azerbaiyán,2,Egresos,4564
+2026-04-01,BDI,Burundi,1,Ingresos,0
+2026-04-01,BDI,Burundi,2,Egresos,3818
+2026-04-01,BEL,Bélgica,1,Ingresos,718483
+2026-04-01,BEL,Bélgica,2,Egresos,91121
+2026-04-01,BEN,Benín,1,Ingresos,1864
+2026-04-01,BEN,Benín,2,Egresos,37132
+2026-04-01,BES,Bonaire,1,Ingresos,0
+2026-04-01,BES,Bonaire,2,Egresos,0
+2026-04-01,BFA,Burkina Faso,1,Ingresos,1670
+2026-04-01,BFA,Burkina Faso,2,Egresos,9893
+2026-04-01,BGD,Bangladesh,1,Ingresos,0
+2026-04-01,BGD,Bangladesh,2,Egresos,315000
+2026-04-01,BGR,Bulgaria,1,Ingresos,165421
+2026-04-01,BGR,Bulgaria,2,Egresos,49042
+2026-04-01,BHR,Bahrein,1,Ingresos,54168
+2026-04-01,BHR,Bahrein,2,Egresos,2196
+2026-04-01,BHS,Bahamas,1,Ingresos,880634
+2026-04-01,BHS,Bahamas,2,Egresos,20860
+2026-04-01,BIH,Bosnia-Herzegovina,1,Ingresos,3493
+2026-04-01,BIH,Bosnia-Herzegovina,2,Egresos,8156
+2026-04-01,BLR,Bielorrusia,1,Ingresos,1789
+2026-04-01,BLR,Bielorrusia,2,Egresos,22108
+2026-04-01,BLZ,Belice,1,Ingresos,663595
+2026-04-01,BLZ,Belice,2,Egresos,157801
+2026-04-01,BMU,Bermudas,1,Ingresos,25567
+2026-04-01,BMU,Bermudas,2,Egresos,0
+2026-04-01,BOL,Bolivia,1,Ingresos,276809
+2026-04-01,BOL,Bolivia,2,Egresos,462406
+2026-04-01,BRA,Brasil,1,Ingresos,835625
+2026-04-01,BRA,Brasil,2,Egresos,1712370
+2026-04-01,BRB,Barbados,1,Ingresos,13107
+2026-04-01,BRB,Barbados,2,Egresos,177
+2026-04-01,BRN,Brunei,1,Ingresos,0
+2026-04-01,BRN,Brunei,2,Egresos,0
+2026-04-01,BTN,Bután,1,Ingresos,0
+2026-04-01,BTN,Bután,2,Egresos,48289
+2026-04-01,BWA,Botswana,1,Ingresos,0
+2026-04-01,BWA,Botswana,2,Egresos,1488
+2026-04-01,CAF,República Centroafricana,1,Ingresos,457
+2026-04-01,CAF,República Centroafricana,2,Egresos,0
+2026-04-01,CAN,Canadá,1,Ingresos,209295952
+2026-04-01,CAN,Canadá,2,Egresos,5398092
+2026-04-01,CCK,Islas Cocos,1,Ingresos,0
+2026-04-01,CCK,Islas Cocos,2,Egresos,0
+2026-04-01,CHE,Suiza,1,Ingresos,2020493
+2026-04-01,CHE,Suiza,2,Egresos,307103
+2026-04-01,CHL,Chile,1,Ingresos,2128524
+2026-04-01,CHL,Chile,2,Egresos,2371351
+2026-04-01,CHN,China,1,Ingresos,376705
+2026-04-01,CHN,China,2,Egresos,1423506
+2026-04-01,CIV,Costa de Marfil,1,Ingresos,22629
+2026-04-01,CIV,Costa de Marfil,2,Egresos,155870
+2026-04-01,CMR,Camerún,1,Ingresos,10892
+2026-04-01,CMR,Camerún,2,Egresos,391255
+2026-04-01,COD,República Democrática del Congo,1,Ingresos,36727
+2026-04-01,COD,República Democrática del Congo,2,Egresos,0
+2026-04-01,COG,República del Congo,1,Ingresos,170
+2026-04-01,COG,República del Congo,2,Egresos,95670
+2026-04-01,COK,Islas Cook,1,Ingresos,0
+2026-04-01,COK,Islas Cook,2,Egresos,0
+2026-04-01,COL,Colombia,1,Ingresos,5352994
+2026-04-01,COL,Colombia,2,Egresos,53938646
+2026-04-01,COM,Comores,1,Ingresos,0
+2026-04-01,COM,Comores,2,Egresos,0
+2026-04-01,CPV,Cabo Verde,1,Ingresos,3023
+2026-04-01,CPV,Cabo Verde,2,Egresos,1263
+2026-04-01,CRI,Costa Rica,1,Ingresos,1187561
+2026-04-01,CRI,Costa Rica,2,Egresos,1234585
+2026-04-01,CUB,Cuba,1,Ingresos,0
+2026-04-01,CUB,Cuba,2,Egresos,0
+2026-04-01,CUW,Curazao,1,Ingresos,19666
+2026-04-01,CUW,Curazao,2,Egresos,9938
+2026-04-01,CYM,Islas Caimán,1,Ingresos,333880
+2026-04-01,CYM,Islas Caimán,2,Egresos,0
+2026-04-01,CYP,Chipre,1,Ingresos,73257
+2026-04-01,CYP,Chipre,2,Egresos,464
+2026-04-01,CZE,República Checa,1,Ingresos,135201
+2026-04-01,CZE,República Checa,2,Egresos,18571
+2026-04-01,DEU,Alemania,1,Ingresos,4738061
+2026-04-01,DEU,Alemania,2,Egresos,768369
+2026-04-01,DJI,Djibouti,1,Ingresos,97398
+2026-04-01,DJI,Djibouti,2,Egresos,327
+2026-04-01,DMA,Dominica,1,Ingresos,1127
+2026-04-01,DMA,Dominica,2,Egresos,5299
+2026-04-01,DNK,Dinamarca,1,Ingresos,365282
+2026-04-01,DNK,Dinamarca,2,Egresos,15163
+2026-04-01,DOM,República Dominicana,1,Ingresos,3991547
+2026-04-01,DOM,República Dominicana,2,Egresos,14529027
+2026-04-01,DZA,Argelia,1,Ingresos,0
+2026-04-01,DZA,Argelia,2,Egresos,0
+2026-04-01,ECU,Ecuador,1,Ingresos,3511212
+2026-04-01,ECU,Ecuador,2,Egresos,4665594
+2026-04-01,EGY,Egipto,1,Ingresos,40214
+2026-04-01,EGY,Egipto,2,Egresos,198096
+2026-04-01,ESP,España,1,Ingresos,11640313
+2026-04-01,ESP,España,2,Egresos,3926706
+2026-04-01,EST,Estonia,1,Ingresos,15954
+2026-04-01,EST,Estonia,2,Egresos,3134
+2026-04-01,ETH,Etiopía,1,Ingresos,0
+2026-04-01,ETH,Etiopía,2,Egresos,820
+2026-04-01,FIN,Finlandia,1,Ingresos,110232
+2026-04-01,FIN,Finlandia,2,Egresos,11049
+2026-04-01,FJI,Fiyi,1,Ingresos,0
+2026-04-01,FJI,Fiyi,2,Egresos,2729
+2026-04-01,FRA,Francia,1,Ingresos,4008543
+2026-04-01,FRA,Francia,2,Egresos,595742
+2026-04-01,GAB,Gabón,1,Ingresos,660
+2026-04-01,GAB,Gabón,2,Egresos,16477
+2026-04-01,GBR,Reino Unido,1,Ingresos,6697886
+2026-04-01,GBR,Reino Unido,2,Egresos,122081
+2026-04-01,GEO,Georgia,1,Ingresos,1387
+2026-04-01,GEO,Georgia,2,Egresos,24905
+2026-04-01,GHA,Ghana,1,Ingresos,0
+2026-04-01,GHA,Ghana,2,Egresos,43412
+2026-04-01,GIB,Gibraltar,1,Ingresos,18223
+2026-04-01,GIB,Gibraltar,2,Egresos,0
+2026-04-01,GIN,República Guinea,1,Ingresos,1000
+2026-04-01,GIN,República Guinea,2,Egresos,27580
+2026-04-01,GLP,Guadalupe,1,Ingresos,22490
+2026-04-01,GLP,Guadalupe,2,Egresos,1185
+2026-04-01,GMB,Gambia,1,Ingresos,0
+2026-04-01,GMB,Gambia,2,Egresos,2911
+2026-04-01,GNB,Guinea Bisáu,1,Ingresos,1070
+2026-04-01,GNB,Guinea Bisáu,2,Egresos,5124
+2026-04-01,GNQ,Guinea Ecuatorial,1,Ingresos,4328
+2026-04-01,GNQ,Guinea Ecuatorial,2,Egresos,14100
+2026-04-01,GRC,Grecia,1,Ingresos,159655
+2026-04-01,GRC,Grecia,2,Egresos,42567
+2026-04-01,GRD,Granada,1,Ingresos,24164
+2026-04-01,GRD,Granada,2,Egresos,1128
+2026-04-01,GTM,Guatemala,1,Ingresos,10794890
+2026-04-01,GTM,Guatemala,2,Egresos,10401559
+2026-04-01,GUF,Guayana Francesa,1,Ingresos,1315
+2026-04-01,GUF,Guayana Francesa,2,Egresos,0
+2026-04-01,GUM,Guam,1,Ingresos,435
+2026-04-01,GUM,Guam,2,Egresos,0
+2026-04-01,GUY,Guyana,1,Ingresos,36312
+2026-04-01,GUY,Guyana,2,Egresos,6250
+2026-04-01,HKG,Hong Kong,1,Ingresos,391050
+2026-04-01,HKG,Hong Kong,2,Egresos,38144
+2026-04-01,HND,Honduras,1,Ingresos,4996552
+2026-04-01,HND,Honduras,2,Egresos,10856102
+2026-04-01,HRV,Croacia,1,Ingresos,44732
+2026-04-01,HRV,Croacia,2,Egresos,5523
+2026-04-01,HTI,Haití,1,Ingresos,1325396
+2026-04-01,HTI,Haití,2,Egresos,6650963
+2026-04-01,HUN,Hungría,1,Ingresos,139046
+2026-04-01,HUN,Hungría,2,Egresos,21285
+2026-04-01,IDN,Indonesia,1,Ingresos,7557
+2026-04-01,IDN,Indonesia,2,Egresos,642042
+2026-04-01,IND,India,1,Ingresos,115329
+2026-04-01,IND,India,2,Egresos,467276
+2026-04-01,IRL,Irlanda,1,Ingresos,1572261
+2026-04-01,IRL,Irlanda,2,Egresos,77773
+2026-04-01,IRQ,Iraq,1,Ingresos,8896
+2026-04-01,IRQ,Iraq,2,Egresos,3988
+2026-04-01,ISL,Islandia,1,Ingresos,24707
+2026-04-01,ISL,Islandia,2,Egresos,54057
+2026-04-01,ISR,Israel,1,Ingresos,331801
+2026-04-01,ISR,Israel,2,Egresos,256713
+2026-04-01,ITA,Italia,1,Ingresos,3038726
+2026-04-01,ITA,Italia,2,Egresos,1205984
+2026-04-01,JAM,Jamaica,1,Ingresos,92349
+2026-04-01,JAM,Jamaica,2,Egresos,77507
+2026-04-01,JOR,Jordania,1,Ingresos,18038
+2026-04-01,JOR,Jordania,2,Egresos,37713
+2026-04-01,JPN,Japón,1,Ingresos,401881
+2026-04-01,JPN,Japón,2,Egresos,215938
+2026-04-01,KAZ,Kazajistán,1,Ingresos,2630
+2026-04-01,KAZ,Kazajistán,2,Egresos,28088
+2026-04-01,KEN,Kenia,1,Ingresos,10107
+2026-04-01,KEN,Kenia,2,Egresos,51387
+2026-04-01,KGZ,Kirguistán,1,Ingresos,7801
+2026-04-01,KGZ,Kirguistán,2,Egresos,37479
+2026-04-01,KHM,Camboya,1,Ingresos,1616
+2026-04-01,KHM,Camboya,2,Egresos,9689
+2026-04-01,KIR,Kiribati,1,Ingresos,0
+2026-04-01,KIR,Kiribati,2,Egresos,0
+2026-04-01,KNA,San Cristobal y Nevis,1,Ingresos,19651
+2026-04-01,KNA,San Cristobal y Nevis,2,Egresos,2789
+2026-04-01,KOR,Corea del Sur,1,Ingresos,53252
+2026-04-01,KOR,Corea del Sur,2,Egresos,635927
+2026-04-01,KWT,Kuwait,1,Ingresos,31158
+2026-04-01,KWT,Kuwait,2,Egresos,3047
+2026-04-01,LAO,Laos,1,Ingresos,0
+2026-04-01,LAO,Laos,2,Egresos,1397
+2026-04-01,LBN,Líbano,1,Ingresos,61341
+2026-04-01,LBN,Líbano,2,Egresos,577767
+2026-04-01,LBR,Liberia,1,Ingresos,0
+2026-04-01,LBR,Liberia,2,Egresos,1211
+2026-04-01,LBY,Libia,1,Ingresos,0
+2026-04-01,LBY,Libia,2,Egresos,0
+2026-04-01,LCA,Santa Lucía,1,Ingresos,16101
+2026-04-01,LCA,Santa Lucía,2,Egresos,4830
+2026-04-01,LIE,Liechtenstein,1,Ingresos,9352
+2026-04-01,LIE,Liechtenstein,2,Egresos,0
+2026-04-01,LKA,Sri Lanka,1,Ingresos,0
+2026-04-01,LKA,Sri Lanka,2,Egresos,16876
+2026-04-01,LSO,Reino de Lesoto,1,Ingresos,0
+2026-04-01,LSO,Reino de Lesoto,2,Egresos,0
+2026-04-01,LTU,Lituania,1,Ingresos,52407
+2026-04-01,LTU,Lituania,2,Egresos,28188
+2026-04-01,LUX,Luxemburgo,1,Ingresos,84918
+2026-04-01,LUX,Luxemburgo,2,Egresos,1774
+2026-04-01,LVA,Letonia,1,Ingresos,6458
+2026-04-01,LVA,Letonia,2,Egresos,2681
+2026-04-01,MAC,Macao,1,Ingresos,1356
+2026-04-01,MAC,Macao,2,Egresos,1823
+2026-04-01,MAR,Marruecos,1,Ingresos,4800
+2026-04-01,MAR,Marruecos,2,Egresos,224909
+2026-04-01,MCO,Mónaco,1,Ingresos,2412
+2026-04-01,MCO,Mónaco,2,Egresos,0
+2026-04-01,MDA,Moldavia,1,Ingresos,66
+2026-04-01,MDA,Moldavia,2,Egresos,9733
+2026-04-01,MDG,Madagascar,1,Ingresos,0
+2026-04-01,MDG,Madagascar,2,Egresos,25171
+2026-04-01,MDV,Maldivas,1,Ingresos,3434
+2026-04-01,MDV,Maldivas,2,Egresos,2439
+2026-04-01,MHL,Islas Marshall,1,Ingresos,0
+2026-04-01,MHL,Islas Marshall,2,Egresos,151
+2026-04-01,MKD,Macedonia,1,Ingresos,3774
+2026-04-01,MKD,Macedonia,2,Egresos,4541
+2026-04-01,MLI,Malí,1,Ingresos,1441
+2026-04-01,MLI,Malí,2,Egresos,16184
+2026-04-01,MLT,Malta,1,Ingresos,88804
+2026-04-01,MLT,Malta,2,Egresos,6081
+2026-04-01,MMR,"Myanmar, Birmania",1,Ingresos,0
+2026-04-01,MMR,"Myanmar, Birmania",2,Egresos,1013
+2026-04-01,MNE,Montenegro,1,Ingresos,22875
+2026-04-01,MNE,Montenegro,2,Egresos,25901
+2026-04-01,MNG,Mongolia,1,Ingresos,1841
+2026-04-01,MNG,Mongolia,2,Egresos,15674
+2026-04-01,MNP,Marianas del Norte,1,Ingresos,0
+2026-04-01,MNP,Marianas del Norte,2,Egresos,0
+2026-04-01,MOZ,Mozambique,1,Ingresos,4060
+2026-04-01,MOZ,Mozambique,2,Egresos,25633
+2026-04-01,MRT,Mauritania,1,Ingresos,0
+2026-04-01,MRT,Mauritania,2,Egresos,1544
+2026-04-01,MSR,Montserrat,1,Ingresos,0
+2026-04-01,MSR,Montserrat,2,Egresos,262
+2026-04-01,MTQ,Martinica,1,Ingresos,4669
+2026-04-01,MTQ,Martinica,2,Egresos,0
+2026-04-01,MUS,Mauricio,1,Ingresos,1884
+2026-04-01,MUS,Mauricio,2,Egresos,215
+2026-04-01,MWI,Malawi,1,Ingresos,0
+2026-04-01,MWI,Malawi,2,Egresos,3684
+2026-04-01,MYS,Malasia,1,Ingresos,32244
+2026-04-01,MYS,Malasia,2,Egresos,43281
+2026-04-01,NAM,Namibia,1,Ingresos,0
+2026-04-01,NAM,Namibia,2,Egresos,1599
+2026-04-01,NCL,Nueva Caledonia,1,Ingresos,0
+2026-04-01,NCL,Nueva Caledonia,2,Egresos,0
+2026-04-01,NER,Niger,1,Ingresos,0
+2026-04-01,NER,Niger,2,Egresos,1030
+2026-04-01,NGA,Nigeria,1,Ingresos,0
+2026-04-01,NGA,Nigeria,2,Egresos,91587
+2026-04-01,NIC,Nicaragua,1,Ingresos,846743
+2026-04-01,NIC,Nicaragua,2,Egresos,2894008
+2026-04-01,NIU,Niue,1,Ingresos,0
+2026-04-01,NIU,Niue,2,Egresos,0
+2026-04-01,NLD,Países Bajos,1,Ingresos,1362505
+2026-04-01,NLD,Países Bajos,2,Egresos,59745
+2026-04-01,NOR,Noruega,1,Ingresos,417037
+2026-04-01,NOR,Noruega,2,Egresos,17795
+2026-04-01,NPL,Nepal,1,Ingresos,0
+2026-04-01,NPL,Nepal,2,Egresos,8092
+2026-04-01,NZL,Nueva Zelanda,1,Ingresos,83370
+2026-04-01,NZL,Nueva Zelanda,2,Egresos,99227
+2026-04-01,OMN,Omán,1,Ingresos,36553
+2026-04-01,OMN,Omán,2,Egresos,6800
+2026-04-01,PAK,Pakistán,1,Ingresos,2942
+2026-04-01,PAK,Pakistán,2,Egresos,1062673
+2026-04-01,PAN,Panamá,1,Ingresos,1836829
+2026-04-01,PAN,Panamá,2,Egresos,1827529
+2026-04-01,PER,Perú,1,Ingresos,2988957
+2026-04-01,PER,Perú,2,Egresos,6400581
+2026-04-01,PHL,Filipinas,1,Ingresos,52286
+2026-04-01,PHL,Filipinas,2,Egresos,664013
+2026-04-01,PLW,Palaos,1,Ingresos,0
+2026-04-01,PLW,Palaos,2,Egresos,2615
+2026-04-01,PNG,Papúa-Nueva Guinea,1,Ingresos,0
+2026-04-01,PNG,Papúa-Nueva Guinea,2,Egresos,777
+2026-04-01,POL,Polonia,1,Ingresos,475292
+2026-04-01,POL,Polonia,2,Egresos,77831
+2026-04-01,PRK,Corea del Norte,1,Ingresos,0
+2026-04-01,PRK,Corea del Norte,2,Egresos,0
+2026-04-01,PRT,Portugal,1,Ingresos,548697
+2026-04-01,PRT,Portugal,2,Egresos,207333
+2026-04-01,PRY,Paraguay,1,Ingresos,182137
+2026-04-01,PRY,Paraguay,2,Egresos,1270677
+2026-04-01,PSE,Cisjordania,1,Ingresos,0
+2026-04-01,PSE,Cisjordania,2,Egresos,0
+2026-04-01,PSE,Palestina,1,Ingresos,900
+2026-04-01,PSE,Palestina,2,Egresos,2742
+2026-04-01,PYF,Polinesia Francesa,1,Ingresos,0
+2026-04-01,PYF,Polinesia Francesa,2,Egresos,2178
+2026-04-01,QAT,Qatar,1,Ingresos,132327
+2026-04-01,QAT,Qatar,2,Egresos,1692
+2026-04-01,REU,Reunión,1,Ingresos,99
+2026-04-01,REU,Reunión,2,Egresos,0
+2026-04-01,ROU,Rumanía,1,Ingresos,206639
+2026-04-01,ROU,Rumanía,2,Egresos,75117
+2026-04-01,RUS,Federación Rusa,1,Ingresos,0
+2026-04-01,RUS,Federación Rusa,2,Egresos,0
+2026-04-01,RWA,Ruanda,1,Ingresos,2399
+2026-04-01,RWA,Ruanda,2,Egresos,40501
+2026-04-01,SAU,Arabia Saudita,1,Ingresos,343303
+2026-04-01,SAU,Arabia Saudita,2,Egresos,58729
+2026-04-01,SDN,Sudán,1,Ingresos,0
+2026-04-01,SDN,Sudán,2,Egresos,142
+2026-04-01,SEN,Senegal,1,Ingresos,5397
+2026-04-01,SEN,Senegal,2,Egresos,102012
+2026-04-01,SGP,Singapur,1,Ingresos,526501
+2026-04-01,SGP,Singapur,2,Egresos,27621
+2026-04-01,SLB,Islas Salomón,1,Ingresos,0
+2026-04-01,SLB,Islas Salomón,2,Egresos,0
+2026-04-01,SLE,Sierra Leona,1,Ingresos,4340
+2026-04-01,SLE,Sierra Leona,2,Egresos,2467
+2026-04-01,SLV,El Salvador,1,Ingresos,1975658
+2026-04-01,SLV,El Salvador,2,Egresos,4633764
+2026-04-01,SMR,San Marino,1,Ingresos,0
+2026-04-01,SMR,San Marino,2,Egresos,0
+2026-04-01,SRB,Serbia,1,Ingresos,25971
+2026-04-01,SRB,Serbia,2,Egresos,32210
+2026-04-01,STP,Santo Tomé y Príncipe,1,Ingresos,265
+2026-04-01,STP,Santo Tomé y Príncipe,2,Egresos,0
+2026-04-01,SUR,Surinam,1,Ingresos,23004
+2026-04-01,SUR,Surinam,2,Egresos,6122
+2026-04-01,SVK,Eslovaquia,1,Ingresos,34781
+2026-04-01,SVK,Eslovaquia,2,Egresos,18772
+2026-04-01,SVN,Eslovenia,1,Ingresos,17657
+2026-04-01,SVN,Eslovenia,2,Egresos,79610
+2026-04-01,SWE,Suecia,1,Ingresos,564159
+2026-04-01,SWE,Suecia,2,Egresos,118597
+2026-04-01,SWZ,Swazilandia,1,Ingresos,0
+2026-04-01,SWZ,Swazilandia,2,Egresos,0
+2026-04-01,SXM,Isla de San Martín,1,Ingresos,42400
+2026-04-01,SXM,Isla de San Martín,2,Egresos,0
+2026-04-01,SYR,Siria,1,Ingresos,0
+2026-04-01,SYR,Siria,2,Egresos,16785
+2026-04-01,TCA,Islas Turcas y Caicos,1,Ingresos,482980
+2026-04-01,TCA,Islas Turcas y Caicos,2,Egresos,3399
+2026-04-01,TCD,Chad,1,Ingresos,189
+2026-04-01,TCD,Chad,2,Egresos,4041
+2026-04-01,TGO,Togo,1,Ingresos,9758
+2026-04-01,TGO,Togo,2,Egresos,55007
+2026-04-01,THA,Tailandia,1,Ingresos,130514
+2026-04-01,THA,Tailandia,2,Egresos,495894
+2026-04-01,TJK,Tayikistán,1,Ingresos,108
+2026-04-01,TJK,Tayikistán,2,Egresos,0
+2026-04-01,TKM,Turkmenistán,1,Ingresos,0
+2026-04-01,TKM,Turkmenistán,2,Egresos,1315
+2026-04-01,TLS,Timor Oriental,1,Ingresos,0
+2026-04-01,TLS,Timor Oriental,2,Egresos,0
+2026-04-01,TTO,Trinidad y Tobago,1,Ingresos,70851
+2026-04-01,TTO,Trinidad y Tobago,2,Egresos,19378
+2026-04-01,TUN,Túnez,1,Ingresos,0
+2026-04-01,TUN,Túnez,2,Egresos,74541
+2026-04-01,TUR,Turquía,1,Ingresos,110037
+2026-04-01,TUR,Turquía,2,Egresos,925151
+2026-04-01,TUV,Tuvalu,1,Ingresos,0
+2026-04-01,TUV,Tuvalu,2,Egresos,0
+2026-04-01,TWN,Taiwan,1,Ingresos,57732
+2026-04-01,TWN,Taiwan,2,Egresos,50526
+2026-04-01,TZA,Tanzania,1,Ingresos,1292
+2026-04-01,TZA,Tanzania,2,Egresos,2770
+2026-04-01,UGA,Uganda,1,Ingresos,8636
+2026-04-01,UGA,Uganda,2,Egresos,51179
+2026-04-01,UKR,Ucrania,1,Ingresos,0
+2026-04-01,UKR,Ucrania,2,Egresos,118633
+2026-04-01,URY,Uruguay,1,Ingresos,712121
+2026-04-01,URY,Uruguay,2,Egresos,519066
+2026-04-01,USA,Estados Unidos,1,Ingresos,15672816501
+2026-04-01,USA,Estados Unidos,2,Egresos,140507378
+2026-04-01,UZB,Uzbekistán,1,Ingresos,898
+2026-04-01,UZB,Uzbekistán,2,Egresos,25721
+2026-04-01,VCT,San Vincente y Granadinas,1,Ingresos,2173
+2026-04-01,VCT,San Vincente y Granadinas,2,Egresos,2456
+2026-04-01,VEN,Venezuela,1,Ingresos,381672
+2026-04-01,VEN,Venezuela,2,Egresos,3002232
+2026-04-01,VGB,Islas Virgenes Británicas,1,Ingresos,15758
+2026-04-01,VGB,Islas Virgenes Británicas,2,Egresos,0
+2026-04-01,VIR,Islas Virgenes Americanas,1,Ingresos,677376
+2026-04-01,VIR,Islas Virgenes Americanas,2,Egresos,0
+2026-04-01,VNM,Vietnam,1,Ingresos,21708
+2026-04-01,VNM,Vietnam,2,Egresos,648626
+2026-04-01,VUT,Vanuatu,1,Ingresos,0
+2026-04-01,VUT,Vanuatu,2,Egresos,0
+2026-04-01,WSM,Samoa,1,Ingresos,0
+2026-04-01,WSM,Samoa,2,Egresos,2948
+2026-04-01,XKX,Kosovo,1,Ingresos,127815
+2026-04-01,XKX,Kosovo,2,Egresos,9708
+2026-04-01,XXX,No Identificado,1,Ingresos,84590516
+2026-04-01,XXX,No Identificado,2,Egresos,19365710
+2026-04-01,YEM,Yemen,1,Ingresos,6098
+2026-04-01,YEM,Yemen,2,Egresos,6584
+2026-04-01,ZAF,Sudáfrica,1,Ingresos,28507
+2026-04-01,ZAF,Sudáfrica,2,Egresos,42862
+2026-04-01,ZMB,Zambia,1,Ingresos,1226
+2026-04-01,ZMB,Zambia,2,Egresos,19422
+2026-04-01,ZWE,Zimbabwe,1,Ingresos,109
+2026-04-01,ZWE,Zimbabwe,2,Egresos,3067
