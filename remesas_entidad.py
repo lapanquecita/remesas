@@ -16,7 +16,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2026"
+FECHA_FUENTE = "septiembre 2026"
 
 # Mes y año del IPC de referencia.
 FECHA_INFLACION = "junio de 2026"
@@ -373,8 +373,8 @@ def comparacion_interanual(primer_año, segundo_año):
         axis=1,
     )
 
-    # Ordenamos de mayor a menor basado en el cambio porcentual.
-    df.sort_values("cambio", ascending=False, inplace=True)
+    # Ordenamos por cambio porcentual.
+    df.sort_values("cambio", ascending=True, inplace=True)
 
     # Calculamos el valor máximo para ajustar el rango del eje horizontal.
     valor_max = df["cambio"].abs().max()
@@ -419,7 +419,6 @@ def comparacion_interanual(primer_año, segundo_año):
     )
 
     fig.update_yaxes(
-        autorange="reversed",
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -534,7 +533,7 @@ def plot_tendencias(primer_año, ultimo_año, orden):
 
     # Cargamos el IPC y el tipo de cambio trimestral.
     ipc_fx = cargar_deflactores("trimestral")
-    
+
     # Preparamos el coeficiente de deflación para cada trimestre.
     ipc_fx = ipc_fx["TIPO_CAMBIO"] * ipc_fx["factor"]
 
@@ -547,7 +546,7 @@ def plot_tendencias(primer_año, ultimo_año, orden):
 
     # Solo vamos a necesitar el año de cada fecha.
     df.index = df.index.year
-    
+
     # Modificamos el DataFrame para que ahora los años sean las columnas.
     # Esto hace más fácil calcular el cambio porcentual.
     df = df.transpose()
@@ -838,8 +837,8 @@ def comparar_pib(año):
     # Calculamos el porcentaje.
     df["perc"] = df["pesos"] / df["pib"] * 100
 
-    # Ordenamos de mayor a menor.
-    df.sort_values("perc", ascending=False, inplace=True)
+    # Ordenamos por proporción del PIB.
+    df.sort_values("perc", ascending=True, inplace=True)
 
     # Creamos el texto para cada barra.
     df["text"] = df.apply(
@@ -889,7 +888,6 @@ def comparar_pib(año):
     )
 
     fig.update_yaxes(
-        autorange="reversed",
         ticks="outside",
         ticklen=10,
         tickcolor="#EEEEEE",
@@ -966,6 +964,157 @@ def comparar_pib(año):
     )
 
     fig.write_image(f"./remesas_pib_{año}.png")
+
+
+def plot_real_anual_estatal(entidad):
+    """
+    Crea una gráfica de barras con las cifras anuales de remesas en pesos reales
+    para la entidad federativa especificada.
+
+    Parameters
+    ----------
+    entidad = str
+        LA entidad federativa que se desea analizar.
+
+    """
+
+    # Cargamos el dataset de remesas por entidad.
+    df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"], index_col=0)
+
+    # Seleccionamos solo los registros de la entidad federativa especificada.
+    df = df[df["ENTIDAD"] == entidad]
+
+    # Cargamos factor de inflación y tipo de cambio trimestral.
+    df = df.join(cargar_deflactores("trimestral"))
+
+    # Ajustamos por inflación y tipo de cambio para obtener pesos reales.
+    df["real"] = df["VALOR_USD"] * df["factor"] * df["TIPO_CAMBIO"]
+
+    # Calculamos el total de remesas por año.
+    df = df.resample("YS").sum()
+
+    # Nos limitamos a los úlitmos 20 años.
+    df = df.tail(20)
+
+    # Cambiamos de fecha a integral para el índice.
+    df.index = df.index.year
+
+    # Convertimos las cifras a millones de pesos.
+    df["real"] /= 1000000
+
+    # Vamos a crear una gráfica de barras con las cifras absolutas y una
+    # gráfica de linea con la tendencia usando el promedio móvil.
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Bar(
+            x=df.index,
+            y=df["real"],
+            text=df["real"],
+            texttemplate="%{text:,.0f}",
+            textfont_color="#FFFFFF",
+            textfont_family="Oswald",
+            textposition="outside",
+            marker_color=df["real"],
+            marker_colorscale="redor_r",
+            opacity=1.0,
+            marker_line_width=0,
+            textfont_size=36,
+        )
+    )
+
+    fig.update_xaxes(
+        ticks="outside",
+        ticklen=10,
+        zeroline=False,
+        linecolor="#EEEEEE",
+        tickcolor="#EEEEEE",
+        linewidth=2,
+        showline=True,
+        showgrid=False,
+        mirror=True,
+        nticks=len(df) + 1,
+    )
+
+    fig.update_yaxes(
+        range=[0, df["real"].max() * 1.08],
+        title=f"Millones de pesos a precios constantes de {FECHA_INFLACION}",
+        ticks="outside",
+        ticklen=10,
+        title_standoff=15,
+        linecolor="#EEEEEE",
+        tickcolor="#EEEEEE",
+        linewidth=2,
+        showgrid=True,
+        gridwidth=0.5,
+        showline=True,
+        mirror=True,
+    )
+
+    fig.update_layout(
+        showlegend=False,
+        width=1920,
+        height=1080,
+        font_family="Inter",
+        font_color="#FFFFFF",
+        font_size=24,
+        title_text=f"Evolución de los ingresos anuales reales por remesas en <b>{entidad}</b> ({df.index.min()}-{df.index.max()})",
+        title_x=0.5,
+        title_y=0.965,
+        margin_t=80,
+        margin_l=140,
+        margin_r=40,
+        margin_b=125,
+        title_font_size=36,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
+        annotations=[
+            dict(
+                x=0.02,
+                y=0.92,
+                xref="paper",
+                yref="paper",
+                xanchor="left",
+                yanchor="top",
+                bordercolor="#EEEEEE",
+                borderwidth=1.5,
+                borderpad=7,
+                font_size=22,
+                bgcolor=PLOT_COLOR,
+                align="left",
+                text=f"<b>Metodología:</b><br>Se convirtieron los dólares a pesos utilizando<br>el tipo de cambio de cada trimestre, se ajustó<br>por inflación a valores de {FECHA_INFLACION} y se<br>agruparon los resultados de forma anual.",
+            ),
+            dict(
+                x=0.01,
+                y=-0.11,
+                xref="paper",
+                yref="paper",
+                xanchor="left",
+                yanchor="top",
+                text=f"Fuente: Banxico ({FECHA_FUENTE})",
+            ),
+            dict(
+                x=0.5,
+                y=-0.11,
+                xref="paper",
+                yref="paper",
+                xanchor="center",
+                yanchor="top",
+                text="Año de registro",
+            ),
+            dict(
+                x=1.01,
+                y=-0.11,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="top",
+                text="🧁 @lapanquecita",
+            ),
+        ],
+    )
+
+    fig.write_image(f"./remesas_anuales_reales_{entidad}.png")
 
 
 if __name__ == "__main__":

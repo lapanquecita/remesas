@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2026"
+FECHA_FUENTE = "septiembre 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -152,7 +152,7 @@ def plot_mapa(año):
             locations=[f"{i:02}" for i in range(1, 33)],
             z=[1 for _ in range(32)],
             featureidkey="properties.CVEGEO",
-            colorscale=["hsla(0, 0, 0, 0)", "hsla(0, 0, 0, 0)"],
+            colorscale=["hsla(0, 0%, 0%, 0)", "hsla(0, 0%, 0%, 0)"],
             marker_line_color="#FFFFFF",
             marker_line_width=4,
             showscale=False,

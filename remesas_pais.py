@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "agosto 2026"
+FECHA_FUENTE = "septiembre 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -48,14 +48,21 @@ def plot_top(año, flujo):
     # Seleccionamos solo los registros del tipo de flujo indicado.
     df = df[df["FLUJO"] == flujo]
 
-    # Calculamos el total por país.
-    df = df.groupby("PAIS").sum(numeric_only=True)
-
     # Convertimos las cifras a millones de dólares.
     df["VALOR_USD"] /= 1000000
 
+    # Obtenemos el monto total para calcular porcentajes.
+    monto_total = df["VALOR_USD"].sum()
+
+    # Calculamos el total por país.
+    df = df.groupby("PAIS").sum(numeric_only=True)
+
+    # Ordenamos por monto total y tomamos el top 30.
+    df.sort_values("VALOR_USD", ascending=True, inplace=True)
+    df = df.tail(30)
+
     # Calculamos el porcentaje relativo al total de remesas.
-    df["perc"] = df["VALOR_USD"] / df["VALOR_USD"].sum() * 100
+    df["perc"] = df["VALOR_USD"] / monto_total * 100
 
     # Creamos el texto que irá en cada barra.
     df["text"] = df.apply(
@@ -67,15 +74,9 @@ def plot_top(año, flujo):
         axis=1,
     )
 
-    # ordenamos el DAtaframe de mayor a menor cantidad de remesas.
-    df.sort_values("VALOR_USD", ascending=False, inplace=True)
-
     # Algunos nombres son muy largos, abreviaremos la palarba República y los partiremos en 2 líneas.
     df.index = df.index.str.replace("República", "Rep.")
     df.index = df.index.str.wrap(22).str.replace("\n", "<br>")
-
-    # Seleccionamos las primeras 30 filas.
-    df = df.head(30)
 
     # El título cambia dependiendo el flujo.
     if flujo == "Ingresos":
@@ -92,7 +93,7 @@ def plot_top(año, flujo):
             text=df["text"],
             textfont_color="#FFFFFF",
             textfont_family="Oswald",
-            textposition=["inside"] + ["outside" for _ in range(len(df) - 1)],
+            textposition=["outside" for _ in range(len(df) - 1)] + ["inside"],
             orientation="h",
             marker_color="#42a5f5",
             marker_cornerradius=45,
@@ -113,7 +114,8 @@ def plot_top(año, flujo):
         separatethousands=True,
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showline=True,
         gridwidth=0.5,
@@ -122,11 +124,10 @@ def plot_top(año, flujo):
     )
 
     fig.update_yaxes(
-        tickfont_color="#FFFFFF",
-        autorange="reversed",
         ticks="outside",
         ticklen=10,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showgrid=False,
         gridwidth=0.5,
@@ -231,15 +232,13 @@ def plot_bottom(año, flujo):
     # Creamos el texto que irá en cada barra.
     df["text"] = df.apply(lambda x: f" {x['VALOR_USD']:,.0f} ", axis=1)
 
-    # Ordenamos los valores de menor a mayor y quitamos los registros en cero.
-    df.sort_values("VALOR_USD", inplace=True)
+    # Ordenamos por monto total, quitamos valores en cero y tomamos el bottom 30.
+    df.sort_values("VALOR_USD", ascending=False, inplace=True)
     df = df[df["VALOR_USD"] != 0]
+    df = df.tail(30)
 
     # Algunos nombres son muy largos, los partiremos en 2 líneas.
     df.index = df.index.str.wrap(18).str.replace("\n", "<br>")
-
-    # Seleccionamos las primeras 30 filas.
-    df = df.head(30)
 
     # Para acomodar el texto calcularemos que tan cerca está del valor máximo.
     df["ratio"] = df["VALOR_USD"] / df["VALOR_USD"].max()
@@ -275,7 +274,8 @@ def plot_bottom(año, flujo):
         separatethousands=True,
         ticklen=10,
         zeroline=False,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showline=True,
         gridwidth=0.5,
@@ -284,12 +284,11 @@ def plot_bottom(año, flujo):
     )
 
     fig.update_yaxes(
-        tickfont_color="#FFFFFF",
-        autorange="reversed",
         ticks="outside",
         separatethousands=True,
         ticklen=10,
-        tickcolor="#FFFFFF",
+        tickcolor="#EEEEEE",
+        linecolor="#EEEEEE",
         linewidth=2,
         showgrid=False,
         gridwidth=0.5,
@@ -453,6 +452,7 @@ def plot_map(año, flujo):
     )
 
     fig.update_geos(
+        fitbounds=False,
         showocean=True,
         oceancolor=PLOT_COLOR,
         showcountries=False,
