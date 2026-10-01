@@ -16,10 +16,10 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "septiembre 2026"
+FECHA_FUENTE = "octubre 2026"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "junio de 2026"
+FECHA_INFLACION = "agosto de 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -118,7 +118,7 @@ def plot_mapa(año):
     etiquetas = [f"{item:,.0f}" for item in marcas]
 
     # Cargamos el archivo GeoJSON de México.
-    geojson = json.loads(open("./assets/mexico.json", "r", encoding="utf-8").read())
+    geojson = json.load(open("./assets/mexico.json", "r", encoding="utf-8"))
 
     fig = go.Figure()
 

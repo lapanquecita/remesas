@@ -18,7 +18,7 @@ from statsmodels.tsa.seasonal import STL
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "septiemre 2026"
+FECHA_FUENTE = "octubre 2026"
 
 # Mes y año del IPC de referencia.
 FECHA_INFLACION = "agosto de 2026"
