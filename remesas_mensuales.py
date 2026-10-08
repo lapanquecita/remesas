@@ -21,7 +21,7 @@ from statsmodels.tsa.seasonal import STL
 FECHA_FUENTE = "octubre 2026"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "agosto de 2026"
+FECHA_INFLACION = "septiembre de 2026"
 
 # Paleta de colores para todas las gráficas.
 PLOT_COLOR = "#1C1F1A"
@@ -765,8 +765,8 @@ def plot_real_anual(flujo):
 
 def remesa_promedio(flujo):
     """
-    Genera una gráfica de oruga mostrando la
-    evolución del motno promedio por remesa.
+    Genera una gráfica de caja mostrando la
+    evolución del monto promedio por remesa.
 
     Parameters
     ----------
@@ -793,57 +793,48 @@ def remesa_promedio(flujo):
     # Calculamos el valor promedio or operación.
     df["valor_promedio"] = df["real"] / df["OPERACIONES"]
 
-    # Para cada año vamos a a neceitar 3 valores.
-    # Máximo, mínimo y promedio.
-    df = df.resample("YS")["valor_promedio"].agg(max="max", min="min", promedio="mean")
+    # Extraemos el año de cada fecha.
+    df["año"] = df.index.year
 
-    # Cambiamos de fecha a integral para el índice.
-    df.index = df.index.year
+    # Calculamos la mediana para cada año.
+    medianas = df.groupby("año").median(numeric_only=True)["valor_promedio"]
 
     # El título cambia dependiendo el flujo.
     if flujo == "Ingresos":
-        titulo = f"Evolución del monto promedio por remesa <b>hacia</b> México ({df.index.min()}-{df.index.max()})"
-        color = "#ffa726"
+        titulo = f"Evolución del monto promedio por remesa <b>hacia</b> México ({df['año'].min()}-{df['año'].max()})"
+        color = "#ffff00"
     elif flujo == "Egresos":
-        titulo = f"Evolución del monto promedio por remesa <b>desde</b> México ({df.index.min()}-{df.index.max()})"
-        color = "#ba68c8"
+        titulo = f"Evolución del monto promedio por remesa <b>desde</b> México ({df['año'].min()}-{df['año'].max()})"
+        color = "#00e5ff"
 
-    # Haremos una gráfica tipo oruga.
-    # Cada año será representado por el
-    # promedio anual y su variabilidad.
+    # Usaremos dos gráficas. La de caja mostrará la
+    # distribución completa y la de línea mostrará las medianas.
     fig = go.Figure()
 
-    x = list()
-    y = list()
-
-    for index, row in df.iterrows():
-        x.extend([index, index, None])
-        y.extend([row["min"], row["max"], None])
-
     fig.add_traces(
-        go.Scatter(
-            x=x,
-            y=y,
-            mode="lines",
-            name="Rango anual (míniom-máximo)",
-            line_color="#FFFFFF",
-            line_width=4,
+        go.Box(
+            x=df["año"],
+            y=df["valor_promedio"],
+            marker_color=color,
+            showlegend=False,
         )
     )
 
-    fig.add_traces(
+    fig.add_trace(
         go.Scatter(
-            x=df.index,
-            y=df["promedio"],
-            mode="markers",
-            name="Promedio anual",
-            marker_color=color,
-            marker_size=28,
+            x=medianas.index,
+            y=medianas.values,
+            mode="markers+lines",
+            marker_color="#FFFFFF",
+            marker_size=12,
+            line_width=4,
+            line_shape="spline",
+            name="Mediana",
         )
     )
 
     fig.update_xaxes(
-        range=[df.index.min() - 0.7, df.index.max() + 0.7],
+        range=[df["año"].min() - 0.7, df["año"].max() + 0.7],
         ticks="outside",
         ticklen=10,
         zeroline=False,
@@ -908,7 +899,7 @@ def remesa_promedio(flujo):
                 bgcolor=PLOT_COLOR,
                 align="left",
                 font_size=22,
-                text="<b>Nota:</b> El promedio, mínimo y máximo anuales son calculados<br>a partir de los montos promedio mensuales en pesos constantes.",
+                text="<b>Nota:</b> Las distribuciones anuales son calculados a partir<br>de los montos promedio mensuales en pesos constantes.",
             ),
             dict(
                 x=0.01,

@@ -84,7 +84,7 @@ Este script analiza el destino de los ingresos por remesas a nivel estatal y eva
 
 La primera visualización es un mapa tipo choropleth que muestra el ingreso total por entidad federativa en millones de dólares y, adicionalmente, el ingreso per cápita. Se acompaña de una tabla con el desglose de estas cifras:
 
-![Remesas entidad](./imgs/mapa_estatal_2025.png)
+![Remesas entidad](./imgs/mapa_estatal_2025_per%20cápita.png)
 
 La segunda visualización permite realizar una comparación interanual, es decir, contrastar el mismo periodo de tiempo entre dos años diferentes:
 
@@ -106,7 +106,7 @@ Este script analiza las remesas a nivel municipal.
 
 La primera visualización es un mapa tipo choropleth que muestra el ingreso per cápita por municipio, acompañado de estadísticas descriptivas para comprender mejor la distribución:
 
-![Mapa municipal](./imgs/municipal_2025.png)
+![Mapa municipal](./imgs/municipal_2025_per%20cápita.png)
 
 La segunda visualización presenta los 15 municipios con mayor crecimiento en remesas recibidas:
 
@@ -114,11 +114,11 @@ La segunda visualización presenta los 15 municipios con mayor crecimiento en re
 
 El script también genera dos tablas con los 30 municipios con mayores ingresos, tanto en valores absolutos como per cápita:
 
-![Tabla absolutos](./imgs/tabla_absolutos_2025.png)
+![Tabla absolutos](./imgs/tabla_absolutos_2025_per%20cápita.png)
 
 La tabla per cápita resulta especialmente interesante, ya que evidencia que algunos municipios reciben cantidades muy elevadas en proporción a su población:
 
-![Tabla cápita](./imgs/tabla_capita_2025.png)
+![Tabla cápita](./imgs/tabla_tasa_2025_per%20cápita.png)
 
 La población utilizada proviene de las proyecciones de población publicadas por el CONAPO.
 

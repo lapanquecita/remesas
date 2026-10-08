@@ -26,7 +26,7 @@ PAPER_COLOR = "#262B23"
 HEADER_COLOR = "#C25B42"
 
 
-def plot_mapa(año):
+def plot_mapa(año, tipo):
     """
     Esta función crea un mpara choropleth de los municipios de México.
 
@@ -35,13 +35,30 @@ def plot_mapa(año):
     año : int
         El año que nos interesa analizar.
 
+    tipo : str
+        El tipo de denominador a usar.
+        Puede ser 'habitantes' o 'viviendas'.
+
     """
 
-    # Cargamos el dataset de población por municipio.
-    pop = pd.read_csv("./assets/poblacion.csv", dtype={"CVE": str}, index_col=0)
+    # Cargamos el dataset de población o de viviendas
+    # según el tipo de denominador especificado.
+    if tipo == "habitantes":
+        # Cargamos el dataset de población por municipio.
+        pop = pd.read_csv("./assets/poblacion.csv", dtype={"CVE": str}, index_col=0)
 
-    # Seleccionamos la población del año especificado.
-    pop = pop[str(año)]
+        # Seleccionamos la población del año especificado.
+        pop = pop[str(año)]
+
+        # Renombramos la etiqueta.
+        tipo = "per cápita"
+    elif tipo == "viviendas":
+        # Cargamos el dataset de viviendas habitadas por municipio.
+        pop = pd.read_csv("./assets/viviendas.csv", dtype={"CVEGEO": str}, index_col=0)
+        pop = pop["TOTAL"]
+
+        # Renombramos la etiqueta.
+        tipo = "por vivienda"
 
     # Cargamos el dataset de remesas por municipio.
     df = pd.read_csv(
@@ -56,25 +73,25 @@ def plot_mapa(año):
     # Calculamos el total por municipio.
     df = df.groupby("CVE_GEO").sum(numeric_only=True)
 
-    # Asignamos la población a cada municipio.
+    # Asignamos la población/viviendas a cada municipio.
     df["pop"] = pop
 
-    # Calculamos el valor per cápita.
+    # Calculamos el valor per cápita/por vivienda.
     df["capita"] = df["VALOR_USD"] / df["pop"]
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
+        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares {tipo}"
     )
 
-    # Quitamos los valores en cero y NaN para que no interfieran con los siguientes pasos.
+    # Quitamos los valores en cero e inválidos para que no interfieran con los siguientes pasos.
     df = df.dropna(axis=0)
     df = df[df["VALOR_USD"] != 0]
 
     # Calculamos algunas estadísticas descriptivas.
     estadisticas = [
         "Estadísticas descriptivas",
-        "<b>(dólares per cápita)</b>",
+        f"<b>(dólares {tipo})</b>",
         f"Media: <b>{df['capita'].mean():,.1f}</b>",
         f"Mediana: <b>{df['capita'].median():,.1f}</b>",
         f"DE: <b>{df['capita'].std():,.1f}</b>",
@@ -189,7 +206,7 @@ def plot_mapa(año):
                 y=0.985,
                 xanchor="center",
                 yanchor="top",
-                text=f"Ingresos por remesas per cápita en municipios de México durante {PERIODO_TIEMPO} de {año}",
+                text=f"Ingresos por remesas {tipo} en municipios de México durante {PERIODO_TIEMPO} de {año}",
                 font_size=140,
             ),
             dict(
@@ -198,7 +215,7 @@ def plot_mapa(año):
                 textangle=-90,
                 xanchor="center",
                 yanchor="middle",
-                text="Dólares per cápita durante el año",
+                text=f"Dólares {tipo} durante el año",
                 font_size=100,
             ),
             dict(
@@ -241,57 +258,75 @@ def plot_mapa(año):
         ],
     )
 
-    fig.write_image(f"./municipal_{año}.png")
+    fig.write_image(f"./municipal_{año}_{tipo}.png")
 
 
-def plot_capita(año):
+def plot_tasa(año, tipo):
     """
-    Esta función crea una tabla con los municiios que reciben mas remesas per cápita.
+    Genera una tabla con los 30 municipios que reciben más
+    remesas ajustados por población/viviendas.
 
     Parameters
     ----------
     año : int
         El año que nos interesa analizar.
 
+    tipo : str
+        El tipo de denominador a usar.
+        Puede ser 'habitantes' o 'viviendas'.
+
     """
 
-    # Cargamos el dataset de población por municipio.
-    pop = pd.read_csv("./assets/poblacion.csv")
+    # Cargamos el dataset de población o de viviendas
+    # según el tipo de denominador especificado.
+    if tipo == "habitantes":
+        # Cargamos el dataset de población por municipio.
+        pop = pd.read_csv("./assets/poblacion.csv", dtype={"CVE": str}, index_col=0)
 
-    # El índice será el nombre del municipio y su entidad.
-    pop.index = pop["Municipio"] + ", " + pop["Entidad"]
+        # Seleccionamos la población del año especificado.
+        pop = pop[str(año)]
 
-    # Seleccionamos la población del año especificado.
-    pop = pop[str(año)]
+        # Renombramos la etiqueta.
+        tipo = "per cápita"
+    elif tipo == "viviendas":
+        # Cargamos el dataset de viviendas habitadas por municipio.
+        pop = pd.read_csv("./assets/viviendas.csv", dtype={"CVEGEO": str}, index_col=0)
+        pop = pop["TOTAL"]
+
+        # Renombramos la etiqueta.
+        tipo = "por vivienda"
 
     # Cargamos el dataset de remesas por municipio.
-    df = pd.read_csv("./data/remesas_municipio.csv", parse_dates=["PERIODO"])
+    df = pd.read_csv(
+        "./data/remesas_municipio.csv", parse_dates=["PERIODO"], dtype={"CVE_GEO": str}
+    )
 
     # Seleccionamos los reigstros del año especificado.
     df = df[df["PERIODO"].dt.year == año]
 
-    # Creamos una nueva columna que después será el índice.
+    # Creamos una columna con el nombre completo de cada municipio.
+    # Esta será utilizada para indexar el DataFrame.
     df["nombre"] = df["MUNICIPIO"] + ", " + df["ENTIDAD"]
 
-    # Calculamos el total por municipio.
-    df = df.groupby("nombre").sum(numeric_only=True)
+    # Calculamos el monto total por municipio.
+    df = df.groupby(["CVE_GEO", "nombre"], as_index=False).sum(numeric_only=True)
 
-    # Asignamos la población a cada municipio.
-    df["pop"] = pop
+    # Quitamos valores en cero.
+    df = df[df["VALOR_USD"] != 0]
 
-    # Calculamos el valor per cápita.
+    # Asignamos la población/viviendas a cada municipio.
+    df["pop"] = df["CVE_GEO"].map(pop)
+
+    # Calculamos el valor per cápita/por vivienda.
     df["capita"] = df["VALOR_USD"] / df["pop"]
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
+        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares {tipo}"
     )
 
     # Ordenamos per cápita de mayor a menor.
     df.sort_values("capita", ascending=False, inplace=True)
-
-    # Quitamos los valores infinitos.
-    df = df[df["capita"] != np.inf]
 
     # Seleccionamos las primeras 30 filas.
     df = df.head(30)
@@ -318,7 +353,7 @@ def plot_capita(año):
                     "<b>Pos.</b>",
                     "<b>Municipio, Entidad</b>",
                     "<b>Ingreso total (MDD)</b>",
-                    "<b>USD per cápita ↓</b>",
+                    f"<b>USD {tipo} ↓</b>",
                 ],
                 font_color="#FFFFFF",
                 line_width=1,
@@ -355,7 +390,7 @@ def plot_capita(año):
         title_x=0.5,
         title_y=0.95,
         title_font_size=40,
-        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>per cápita</b> durante {PERIODO_TIEMPO} de {año}",
+        title_text=f"Los municipios de México con mayores ingresos por remesas<br><b>{tipo}</b> durante {PERIODO_TIEMPO} de {año}",
         paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
@@ -382,10 +417,10 @@ def plot_capita(año):
         ],
     )
 
-    fig.write_image(f"./tabla_capita_{año}.png")
+    fig.write_image(f"./tabla_tasa_{año}_{tipo}.png")
 
 
-def plot_absolutos(año):
+def plot_absolutos(año, tipo):
     """
     Esta función crea una tabla con los municiios que reciben mas remesas totales.
 
@@ -394,38 +429,58 @@ def plot_absolutos(año):
     año : int
         El año que nos interesa analizar.
 
+    tipo : str
+        El tipo de denominador a usar.
+        Puede ser 'habitantes' o 'viviendas'.
+
     """
 
-    # Cargamos el dataset de población por municipio.
-    pop = pd.read_csv("./assets/poblacion.csv")
+    # Cargamos el dataset de población o de viviendas
+    # según el tipo de denominador especificado.
+    if tipo == "habitantes":
+        # Cargamos el dataset de población por municipio.
+        pop = pd.read_csv("./assets/poblacion.csv", dtype={"CVE": str}, index_col=0)
 
-    # El índice será el nombre del municipio y su entidad.
-    pop.index = pop["Municipio"] + ", " + pop["Entidad"]
+        # Seleccionamos la población del año especificado.
+        pop = pop[str(año)]
 
-    # Seleccionamos la población del año especificado.
-    pop = pop[str(año)]
+        # Renombramos la etiqueta.
+        tipo = "per cápita"
+    elif tipo == "viviendas":
+        # Cargamos el dataset de viviendas habitadas por municipio.
+        pop = pd.read_csv("./assets/viviendas.csv", dtype={"CVEGEO": str}, index_col=0)
+        pop = pop["TOTAL"]
+
+        # Renombramos la etiqueta.
+        tipo = "por vivienda"
 
     # Cargamos el dataset de remesas por municipio.
-    df = pd.read_csv("./data/remesas_municipio.csv", parse_dates=["PERIODO"])
+    df = pd.read_csv(
+        "./data/remesas_municipio.csv", parse_dates=["PERIODO"], dtype={"CVE_GEO": str}
+    )
 
     # Seleccionamos los reigstros del año especificado.
     df = df[df["PERIODO"].dt.year == año]
 
-    # Creamos una nueva columna que después será el índice.
+    # Creamos una columna con el nombre completo de cada municipio.
+    # Esta será utilizada para indexar el DataFrame.
     df["nombre"] = df["MUNICIPIO"] + ", " + df["ENTIDAD"]
 
-    # Calculamos el total por municipio.
-    df = df.groupby("nombre").sum(numeric_only=True)
+    # Calculamos el monto total por municipio.
+    df = df.groupby(["CVE_GEO", "nombre"], as_index=False).sum(numeric_only=True)
 
-    # Asignamos la población a cada municipio.
-    df["pop"] = pop
+    # Quitamos valores en cero.
+    df = df[df["VALOR_USD"] != 0]
 
-    # Calculamos el valor per cápita.
+    # Asignamos la población/viviendas a cada municipio.
+    df["pop"] = df["CVE_GEO"].map(pop)
+
+    # Calculamos el valor per cápita/por vivienda.
     df["capita"] = df["VALOR_USD"] / df["pop"]
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
+        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares {tipo}"
     )
 
     # Ordenamos per cápita de mayor a menor.
@@ -459,7 +514,7 @@ def plot_absolutos(año):
                     "<b>Pos.</b>",
                     "<b>Municipio, Entidad</b>",
                     "<b>Ingreso total (MDD) ↓</b>",
-                    "<b>USD per cápita</b>",
+                    f"<b>USD {tipo}</b>",
                 ],
                 font_color="#FFFFFF",
                 line_width=1,
@@ -523,7 +578,7 @@ def plot_absolutos(año):
         ],
     )
 
-    fig.write_image(f"./tabla_absolutos_{año}.png")
+    fig.write_image(f"./tabla_absolutos_{año}_{tipo}.png")
 
 
 def plot_tendencias(primer_año, ultimo_año):
@@ -786,7 +841,13 @@ def plot_tendencias(primer_año, ultimo_año):
 
 
 if __name__ == "__main__":
-    plot_mapa(2025)
-    plot_capita(2025)
-    plot_absolutos(2025)
+    plot_mapa(2025, "habitantes")
+    # plot_mapa(2025, "viviendas")
+
+    plot_tasa(2025, "habitantes")
+    # plot_tasa(2025, "viviendas")
+
+    plot_absolutos(2025, "habitantes")
+    # plot_absolutos(2025, "viviendas")
+
     plot_tendencias(2016, 2025)

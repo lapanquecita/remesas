@@ -67,7 +67,7 @@ def cargar_deflactores(modo):
         return df.resample("QS").mean()
 
 
-def plot_mapa(año):
+def plot_mapa(año, tipo):
     """
     Esta función crea un mapa y unas tablas con la información de remesas per cápita.
 
@@ -76,16 +76,34 @@ def plot_mapa(año):
     año : int
         El año que nos interesa graficar.
 
+    tipo : str
+        El tipo de denominador a usar.
+        Puede ser 'habitantes' o 'viviendas'.
+
     """
 
-    # Cargamos el dataset de la polación total estimada según el CONAPO.
-    pop = pd.read_csv("./assets/poblacion.csv")
+    # Dependiendo del tipo de denominador, será el dataset que usaremos.
+    if tipo == "habitantes":
+        # Cargamos el dataset de la polación total estimada según el CONAPO.
+        pop = pd.read_csv("./assets/poblacion.csv")
 
-    # Calculamos la población total por entidad.
-    pop = pop.groupby("Entidad").sum(numeric_only=True)
+        # Calculamos la población total por entidad.
+        pop = pop.groupby("Entidad").sum(numeric_only=True)
 
-    # Seleccionamos la población del año de nuestro interés.
-    pop = pop[str(año)]
+        # Seleccionamos la población del año de nuestro interés.
+        pop = pop[str(año)]
+
+        # Renombramos la etiqueta.
+        tipo = "per cápita"
+    elif tipo == "viviendas":
+        # Cargamos el dataset de viviendas del INEGI (EIC 2025).
+        pop = pd.read_csv("./assets/viviendas.csv")
+
+        # Calculamos el total de viviendas por entidad.
+        pop = pop.groupby("NOM_ENT").sum()["TOTAL"]
+
+        # Renombramos la etiqueta.
+        tipo = "por vivienda"
 
     # Cargamos el dataset de remesas por entidad.
     df = pd.read_csv("./data/remesas_entidad.csv", parse_dates=["PERIODO"])
@@ -98,13 +116,13 @@ def plot_mapa(año):
 
     # Calculamos las remesas per cápita para toda la polación.
     subtitulo = (
-        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares per cápita"
+        f"Nacional: <b>{df['VALOR_USD'].sum() / pop.sum():,.0f}</b> dólares {tipo}"
     )
 
-    # Asignamos la población a cada entidad.
+    # Asignamos la población/viviendas a cada entidad.
     df["pop"] = pop
 
-    # Calculamos el valor per cápita.
+    # Calculamos el valor per cápita/por vivienda.
     df["capita"] = df["VALOR_USD"] / df["pop"]
 
     # Ordenamos per cápita de mayor a menor.
@@ -190,7 +208,7 @@ def plot_mapa(año):
                 textangle=-90,
                 xanchor="center",
                 yanchor="middle",
-                text="Dólares per cápita durante el año",
+                text=f"Dólares {tipo} durante el año",
             ),
             dict(
                 x=0.01,
@@ -228,12 +246,12 @@ def plot_mapa(año):
 
     fig.add_trace(
         go.Table(
-            columnwidth=[120, 120, 110],
+            columnwidth=[110, 120, 120],
             header=dict(
                 values=[
                     "<b>Entidad</b>",
                     "<b>Ingreso total (MDD)</b>",
-                    "<b>USD per cápita ↓</b>",
+                    f"<b>USD {tipo} ↓</b>",
                 ],
                 line_color="#EEEEEE",
                 fill_color=HEADER_COLOR,
@@ -260,12 +278,12 @@ def plot_mapa(año):
 
     fig.add_trace(
         go.Table(
-            columnwidth=[120, 120, 110],
+            columnwidth=[110, 120, 120],
             header=dict(
                 values=[
                     "<b>Entidad</b>",
                     "<b>Ingreso total (MDD)</b>",
-                    "<b>USD per cápita ↓</b>",
+                    f"<b>USD {tipo} ↓</b>",
                 ],
                 line_color="#EEEEEE",
                 fill_color=HEADER_COLOR,
@@ -316,7 +334,7 @@ def plot_mapa(año):
     result.paste(im=image1, box=(0, 0))
     result.paste(im=image2, box=(0, image1.height))
 
-    result.save(f"./mapa_estatal_{año}.png")
+    result.save(f"./mapa_estatal_{año}_{tipo}.png")
 
     # Borramos las imágenes originales.
     os.remove("./0.png")
@@ -1118,7 +1136,9 @@ def plot_real_anual_estatal(entidad):
 
 
 if __name__ == "__main__":
-    plot_mapa(2025)
+    plot_mapa(2025, "habitantes")
+    # plot_mapa(2025, "viviendas")
+
     comparacion_interanual(2024, 2025)
 
     plot_tendencias(2016, 2025, "top")
