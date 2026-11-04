@@ -16,10 +16,10 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "octubre 2026"
+FECHA_FUENTE = "noviembre 2026"
 
 # Mes y año del IPC de referencia.
-FECHA_INFLACION = "agosto de 2026"
+FECHA_INFLACION = "Septiembre de 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -178,7 +178,7 @@ def plot_mapa(año, tipo):
         framewidth=2,
         showlakes=False,
         coastlinewidth=0,
-        landcolor="#1C0A00",
+        landcolor=PLOT_COLOR,
     )
 
     fig.update_layout(
@@ -191,7 +191,7 @@ def plot_mapa(año, tipo):
         margin_b=60,
         margin_l=40,
         width=1920,
-        height=1080,
+        height=2400,
         paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
@@ -856,7 +856,7 @@ def comparar_pib(año):
     df["perc"] = df["pesos"] / df["pib"] * 100
 
     # Ordenamos por proporción del PIB.
-    df.sort_values("perc", ascending=True, inplace=True)
+    df = df.sort_values("perc", ascending=True)
 
     # Creamos el texto para cada barra.
     df["text"] = df.apply(

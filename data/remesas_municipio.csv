@@ -134351,3 +134351,2491 @@ PERIODO,CVE_GEO,ENTIDAD,MUNICIPIO,VALOR_USD
 2026-04-01,32057,Zacatecas,Trancoso,332349
 2026-04-01,32058,Zacatecas,Santa María de la Paz,12069
 2026-04-01,32999,Zacatecas,No identificado,3275835
+2026-07-01,01001,Aguascalientes,Aguascalientes,145259638
+2026-07-01,01002,Aguascalientes,Asientos,2629960
+2026-07-01,01003,Aguascalientes,Calvillo,37095847
+2026-07-01,01004,Aguascalientes,Cosío,659712
+2026-07-01,01005,Aguascalientes,Jesús María,7481966
+2026-07-01,01006,Aguascalientes,Pabellón de Arteaga,19114992
+2026-07-01,01007,Aguascalientes,Rincón de Romos,23851948
+2026-07-01,01008,Aguascalientes,San José de Gracia,799393
+2026-07-01,01009,Aguascalientes,Tepezalá,247786
+2026-07-01,01010,Aguascalientes,El Llano,446647
+2026-07-01,01011,Aguascalientes,San Francisco de los Romo,8456569
+2026-07-01,01999,Aguascalientes,No identificado,15031
+2026-07-01,02001,Baja California,Ensenada,72128349
+2026-07-01,02002,Baja California,Mexicali,87560325
+2026-07-01,02003,Baja California,Tecate,18308647
+2026-07-01,02004,Baja California,Tijuana,249851396
+2026-07-01,02005,Baja California,Playas de Rosarito,26679576
+2026-07-01,02999,Baja California,No identificado,8617930
+2026-07-01,03001,Baja California Sur,Comondú,1610524
+2026-07-01,03002,Baja California Sur,Mulegé,1420200
+2026-07-01,03003,Baja California Sur,La Paz,12496666
+2026-07-01,03008,Baja California Sur,Los Cabos,21779499
+2026-07-01,03009,Baja California Sur,Loreto,1416146
+2026-07-01,03999,Baja California Sur,No identificado,1837
+2026-07-01,04001,Campeche,Calkiní,1394397
+2026-07-01,04002,Campeche,Campeche,10226652
+2026-07-01,04003,Campeche,Carmen,5468718
+2026-07-01,04004,Campeche,Champotón,6158288
+2026-07-01,04005,Campeche,Hecelchakán,1701584
+2026-07-01,04006,Campeche,Hopelchén,691685
+2026-07-01,04007,Campeche,Palizada,76729
+2026-07-01,04008,Campeche,Tenabo,18251
+2026-07-01,04009,Campeche,Escárcega,9245054
+2026-07-01,04010,Campeche,Calakmul,3972366
+2026-07-01,04011,Campeche,Candelaria,9230493
+2026-07-01,04999,Campeche,No identificado,25534
+2026-07-01,05001,Coahuila,Abasolo,16907
+2026-07-01,05002,Coahuila,Acuña,21955180
+2026-07-01,05003,Coahuila,Allende,8288955
+2026-07-01,05004,Coahuila,Arteaga,70446
+2026-07-01,05005,Coahuila,Candela,15657
+2026-07-01,05006,Coahuila,Castaños,2641331
+2026-07-01,05007,Coahuila,Cuatro Ciénegas,421460
+2026-07-01,05008,Coahuila,Escobedo,49713
+2026-07-01,05009,Coahuila,Francisco I. Madero,6097561
+2026-07-01,05010,Coahuila,Frontera,4075948
+2026-07-01,05011,Coahuila,General Cepeda,181054
+2026-07-01,05012,Coahuila,Guerrero,38306
+2026-07-01,05013,Coahuila,Hidalgo,3414
+2026-07-01,05014,Coahuila,Jiménez,77213
+2026-07-01,05015,Coahuila,Juárez,6048
+2026-07-01,05016,Coahuila,Lamadrid,358512
+2026-07-01,05017,Coahuila,Matamoros,6300347
+2026-07-01,05018,Coahuila,Monclova,16842204
+2026-07-01,05019,Coahuila,Morelos,176954
+2026-07-01,05020,Coahuila,Múzquiz,9233802
+2026-07-01,05021,Coahuila,Nadadores,35702
+2026-07-01,05022,Coahuila,Nava,3597086
+2026-07-01,05023,Coahuila,Ocampo,37720
+2026-07-01,05024,Coahuila,Parras,825017
+2026-07-01,05025,Coahuila,Piedras Negras,19117525
+2026-07-01,05026,Coahuila,Progreso,78228
+2026-07-01,05027,Coahuila,Ramos Arizpe,3774272
+2026-07-01,05028,Coahuila,Sabinas,8390530
+2026-07-01,05029,Coahuila,Sacramento,16185
+2026-07-01,05030,Coahuila,Saltillo,29007231
+2026-07-01,05031,Coahuila,San Buenaventura,4034707
+2026-07-01,05032,Coahuila,San Juan de Sabinas,4659637
+2026-07-01,05033,Coahuila,San Pedro,8668393
+2026-07-01,05034,Coahuila,Sierra Mojada,46203
+2026-07-01,05035,Coahuila,Torreón,54176634
+2026-07-01,05036,Coahuila,Viesca,311183
+2026-07-01,05037,Coahuila,Villa Unión,129611
+2026-07-01,05038,Coahuila,Zaragoza,993142
+2026-07-01,05999,Coahuila,No identificado,1183797
+2026-07-01,06001,Colima,Armería,5020578
+2026-07-01,06002,Colima,Colima,34635560
+2026-07-01,06003,Colima,Comala,420548
+2026-07-01,06004,Colima,Coquimatlán,426642
+2026-07-01,06005,Colima,Cuauhtémoc,3737116
+2026-07-01,06006,Colima,Ixtlahuacán,294603
+2026-07-01,06007,Colima,Manzanillo,13724011
+2026-07-01,06008,Colima,Minatitlán,848137
+2026-07-01,06009,Colima,Tecomán,18612155
+2026-07-01,06010,Colima,Villa de Álvarez,23001641
+2026-07-01,06999,Colima,No identificado,111967
+2026-07-01,07001,Chiapas,Acacoyagua,84987
+2026-07-01,07002,Chiapas,Acala,2698445
+2026-07-01,07003,Chiapas,Acapetahua,8752080
+2026-07-01,07004,Chiapas,Altamirano,71266
+2026-07-01,07005,Chiapas,Amatán,1158571
+2026-07-01,07006,Chiapas,Amatenango de la Frontera,54574
+2026-07-01,07007,Chiapas,Amatenango del Valle,5135
+2026-07-01,07008,Chiapas,Angel Albino Corzo,25696965
+2026-07-01,07009,Chiapas,Arriaga,2849277
+2026-07-01,07010,Chiapas,Bejucal de Ocampo,53761
+2026-07-01,07011,Chiapas,Bella Vista,490632
+2026-07-01,07012,Chiapas,Berriozábal,374972
+2026-07-01,07013,Chiapas,Bochil,47789479
+2026-07-01,07014,Chiapas,El Bosque,139966
+2026-07-01,07015,Chiapas,Cacahoatán,12832691
+2026-07-01,07016,Chiapas,Catazajá,3655
+2026-07-01,07017,Chiapas,Cintalapa,9257506
+2026-07-01,07018,Chiapas,Coapilla,128430
+2026-07-01,07019,Chiapas,Comitán de Domínguez,137468157
+2026-07-01,07020,Chiapas,La Concordia,7353505
+2026-07-01,07021,Chiapas,Copainalá,25593435
+2026-07-01,07022,Chiapas,Chalchihuitán,22051
+2026-07-01,07023,Chiapas,Chamula,587341
+2026-07-01,07024,Chiapas,Chanal,8454
+2026-07-01,07025,Chiapas,Chapultenango,20847
+2026-07-01,07026,Chiapas,Chenalhó,190175
+2026-07-01,07027,Chiapas,Chiapa de Corzo,4495161
+2026-07-01,07028,Chiapas,Chiapilla,15279
+2026-07-01,07029,Chiapas,Chicoasén,16614
+2026-07-01,07030,Chiapas,Chicomuselo,378043
+2026-07-01,07031,Chiapas,Chilón,233507
+2026-07-01,07032,Chiapas,Escuintla,12558675
+2026-07-01,07033,Chiapas,Francisco León,26703
+2026-07-01,07034,Chiapas,Frontera Comalapa,36176313
+2026-07-01,07035,Chiapas,Frontera Hidalgo,20749
+2026-07-01,07036,Chiapas,La Grandeza,13870
+2026-07-01,07037,Chiapas,Huehuetán,4203716
+2026-07-01,07038,Chiapas,Huixtán,18118
+2026-07-01,07039,Chiapas,Huitiupán,49225
+2026-07-01,07040,Chiapas,Huixtla,22849213
+2026-07-01,07041,Chiapas,La Independencia,115409
+2026-07-01,07042,Chiapas,Ixhuatán,56240
+2026-07-01,07043,Chiapas,Ixtacomitán,20676
+2026-07-01,07044,Chiapas,Ixtapa,648909
+2026-07-01,07045,Chiapas,Ixtapangajoya,329
+2026-07-01,07046,Chiapas,Jiquipilas,1698063
+2026-07-01,07047,Chiapas,Jitotol,199913
+2026-07-01,07048,Chiapas,Juárez,1145463
+2026-07-01,07049,Chiapas,Larráinzar,196811
+2026-07-01,07050,Chiapas,La Libertad,0
+2026-07-01,07051,Chiapas,Mapastepec,17238380
+2026-07-01,07052,Chiapas,Las Margaritas,38752293
+2026-07-01,07053,Chiapas,Mazapa de Madero,7179
+2026-07-01,07054,Chiapas,Mazatán,378057
+2026-07-01,07055,Chiapas,Metapa,24445
+2026-07-01,07056,Chiapas,Mitontic,22625
+2026-07-01,07057,Chiapas,Motozintla,58413347
+2026-07-01,07058,Chiapas,Nicolás Ruiz,48
+2026-07-01,07059,Chiapas,Ocosingo,57620764
+2026-07-01,07060,Chiapas,Ocotepec,117661
+2026-07-01,07061,Chiapas,Ocozocoautla de Espinosa,12904067
+2026-07-01,07062,Chiapas,Ostuacán,381547
+2026-07-01,07063,Chiapas,Osumacinta,8663
+2026-07-01,07064,Chiapas,Oxchuc,18461
+2026-07-01,07065,Chiapas,Palenque,20775487
+2026-07-01,07066,Chiapas,Pantelhó,70637
+2026-07-01,07067,Chiapas,Pantepec,65346
+2026-07-01,07068,Chiapas,Pichucalco,4884142
+2026-07-01,07069,Chiapas,Pijijiapan,5386799
+2026-07-01,07070,Chiapas,El Porvenir,13261
+2026-07-01,07071,Chiapas,Villa Comaltitlán,4499536
+2026-07-01,07072,Chiapas,Pueblo Nuevo Solistahuacán,12881193
+2026-07-01,07073,Chiapas,Rayón,128124
+2026-07-01,07074,Chiapas,Reforma,1246401
+2026-07-01,07075,Chiapas,Las Rosas,5321832
+2026-07-01,07076,Chiapas,Sabanilla,13551
+2026-07-01,07077,Chiapas,Salto de Agua,343618
+2026-07-01,07078,Chiapas,San Cristóbal de las Casas,233737278
+2026-07-01,07079,Chiapas,San Fernando,243896
+2026-07-01,07080,Chiapas,Siltepec,1350712
+2026-07-01,07081,Chiapas,Simojovel,38817992
+2026-07-01,07082,Chiapas,Sitalá,18912
+2026-07-01,07083,Chiapas,Socoltenango,131035
+2026-07-01,07084,Chiapas,Solosuchiapa,38310
+2026-07-01,07085,Chiapas,Soyaló,14278
+2026-07-01,07086,Chiapas,Suchiapa,87382
+2026-07-01,07087,Chiapas,Suchiate,7966697
+2026-07-01,07088,Chiapas,Sunuapa,1373
+2026-07-01,07089,Chiapas,Tapachula,52765519
+2026-07-01,07090,Chiapas,Tapalapa,33155
+2026-07-01,07091,Chiapas,Tapilula,9108042
+2026-07-01,07092,Chiapas,Tecpatán,10102575
+2026-07-01,07093,Chiapas,Tenejapa,50170
+2026-07-01,07094,Chiapas,Teopisca,13071764
+2026-07-01,07096,Chiapas,Tila,24355
+2026-07-01,07097,Chiapas,Tonalá,3844781
+2026-07-01,07098,Chiapas,Totolapa,10238
+2026-07-01,07099,Chiapas,La Trinitaria,1297336
+2026-07-01,07100,Chiapas,Tumbalá,145520
+2026-07-01,07101,Chiapas,Tuxtla Gutiérrez,59996031
+2026-07-01,07102,Chiapas,Tuxtla Chico,1743749
+2026-07-01,07103,Chiapas,Tuzantán,109106
+2026-07-01,07104,Chiapas,Tzimol,99193
+2026-07-01,07105,Chiapas,Unión Juárez,39266
+2026-07-01,07106,Chiapas,Venustiano Carranza,2382089
+2026-07-01,07107,Chiapas,Villa Corzo,5717732
+2026-07-01,07108,Chiapas,Villaflores,16037416
+2026-07-01,07109,Chiapas,Yajalón,8440461
+2026-07-01,07110,Chiapas,San Lucas,8467
+2026-07-01,07111,Chiapas,Zinacantán,64478
+2026-07-01,07112,Chiapas,San Juan Cancuc,22093
+2026-07-01,07113,Chiapas,Aldama,5987
+2026-07-01,07114,Chiapas,Benemérito de las Américas,9316023
+2026-07-01,07115,Chiapas,Maravilla Tenejapa,24313
+2026-07-01,07116,Chiapas,Marqués de Comillas,298196
+2026-07-01,07117,Chiapas,Montecristo de Guerrero,0
+2026-07-01,07118,Chiapas,San Andrés Duraznal,0
+2026-07-01,07119,Chiapas,Santiago el Pinar,0
+2026-07-01,07999,Chiapas,No identificado,1637006
+2026-07-01,08001,Chihuahua,Ahumada,105578
+2026-07-01,08002,Chihuahua,Aldama,3581782
+2026-07-01,08003,Chihuahua,Allende,138746
+2026-07-01,08004,Chihuahua,Aquiles Serdán,55722
+2026-07-01,08005,Chihuahua,Ascensión,3836888
+2026-07-01,08006,Chihuahua,Bachíniva,27471
+2026-07-01,08007,Chihuahua,Balleza,426039
+2026-07-01,08008,Chihuahua,Batopilas,6523
+2026-07-01,08009,Chihuahua,Bocoyna,420430
+2026-07-01,08010,Chihuahua,Buenaventura,5332411
+2026-07-01,08011,Chihuahua,Camargo,11084846
+2026-07-01,08012,Chihuahua,Carichí,2903
+2026-07-01,08013,Chihuahua,Casas Grandes,137505
+2026-07-01,08014,Chihuahua,Coronado,2187
+2026-07-01,08015,Chihuahua,Coyame del Sotol,1176
+2026-07-01,08016,Chihuahua,La Cruz,43468
+2026-07-01,08017,Chihuahua,Cuauhtémoc,22567821
+2026-07-01,08018,Chihuahua,Cusihuiriachi,15524
+2026-07-01,08019,Chihuahua,Chihuahua,82573953
+2026-07-01,08020,Chihuahua,Chínipas,18126
+2026-07-01,08021,Chihuahua,Delicias,46691526
+2026-07-01,08022,Chihuahua,Dr. Belisario Domínguez,23831
+2026-07-01,08023,Chihuahua,Galeana,110383
+2026-07-01,08024,Chihuahua,Santa Isabel,115703
+2026-07-01,08025,Chihuahua,Gómez Farías,1126198
+2026-07-01,08026,Chihuahua,Gran Morelos,13147
+2026-07-01,08027,Chihuahua,Guachochi,107780
+2026-07-01,08028,Chihuahua,Guadalupe,35253
+2026-07-01,08029,Chihuahua,Guadalupe y Calvo,85899
+2026-07-01,08030,Chihuahua,Guazapares,42721
+2026-07-01,08031,Chihuahua,Guerrero,4448456
+2026-07-01,08032,Chihuahua,Hidalgo del Parral,19466826
+2026-07-01,08033,Chihuahua,Huejotitán,3835
+2026-07-01,08034,Chihuahua,Ignacio Zaragoza,813110
+2026-07-01,08035,Chihuahua,Janos,133549
+2026-07-01,08036,Chihuahua,Jiménez,5867710
+2026-07-01,08037,Chihuahua,Juárez,96744199
+2026-07-01,08038,Chihuahua,Julimes,176894
+2026-07-01,08039,Chihuahua,López,47563
+2026-07-01,08040,Chihuahua,Madera,2455129
+2026-07-01,08041,Chihuahua,Maguarichi,0
+2026-07-01,08042,Chihuahua,Manuel Benavides,18729
+2026-07-01,08043,Chihuahua,Matachí,283422
+2026-07-01,08044,Chihuahua,Matamoros,22118
+2026-07-01,08045,Chihuahua,Meoqui,9507328
+2026-07-01,08046,Chihuahua,Morelos,2821
+2026-07-01,08047,Chihuahua,Moris,14437
+2026-07-01,08048,Chihuahua,Namiquipa,5663334
+2026-07-01,08049,Chihuahua,Nonoava,123188
+2026-07-01,08050,Chihuahua,Nuevo Casas Grandes,15107027
+2026-07-01,08051,Chihuahua,Ocampo,12639
+2026-07-01,08052,Chihuahua,Ojinaga,5683951
+2026-07-01,08053,Chihuahua,Praxedis G. Guerrero,142720
+2026-07-01,08054,Chihuahua,Riva Palacio,48283
+2026-07-01,08055,Chihuahua,Rosales,196433
+2026-07-01,08056,Chihuahua,Rosario,2145
+2026-07-01,08057,Chihuahua,San Francisco de Borja,182837
+2026-07-01,08058,Chihuahua,San Francisco de Conchos,1596
+2026-07-01,08059,Chihuahua,San Francisco del Oro,8375
+2026-07-01,08060,Chihuahua,Santa Bárbara,197705
+2026-07-01,08061,Chihuahua,Satevó,157932
+2026-07-01,08062,Chihuahua,Saucillo,4999849
+2026-07-01,08063,Chihuahua,Temósachic,384062
+2026-07-01,08064,Chihuahua,El Tule,11725
+2026-07-01,08065,Chihuahua,Urique,48184
+2026-07-01,08066,Chihuahua,Uruachi,5507
+2026-07-01,08067,Chihuahua,Valle de Zaragoza,256637
+2026-07-01,08999,Chihuahua,No identificado,2194004
+2026-07-01,09002,Ciudad de México,Azcapotzalco,28334618
+2026-07-01,09003,Ciudad de México,Coyoacán,72219026
+2026-07-01,09004,Ciudad de México,Cuajimalpa de Morelos,76865956
+2026-07-01,09005,Ciudad de México,Gustavo A. Madero,98148737
+2026-07-01,09006,Ciudad de México,Iztacalco,31689706
+2026-07-01,09007,Ciudad de México,Iztapalapa,70207504
+2026-07-01,09008,Ciudad de México,La Magdalena Contreras,13293327
+2026-07-01,09009,Ciudad de México,Milpa Alta,14112557
+2026-07-01,09010,Ciudad de México,Álvaro Obregón,90058499
+2026-07-01,09011,Ciudad de México,Tláhuac,33803251
+2026-07-01,09012,Ciudad de México,Tlalpan,102102043
+2026-07-01,09013,Ciudad de México,Xochimilco,28342382
+2026-07-01,09014,Ciudad de México,Benito Juárez,111095125
+2026-07-01,09015,Ciudad de México,Cuauhtémoc,135759373
+2026-07-01,09016,Ciudad de México,Miguel Hidalgo,112236617
+2026-07-01,09017,Ciudad de México,Venustiano Carranza,35421481
+2026-07-01,09999,Ciudad de México,No identificado,202713
+2026-07-01,10001,Durango,Canatlán,14409642
+2026-07-01,10002,Durango,Canelas,172584
+2026-07-01,10003,Durango,Coneto de Comonfort,915329
+2026-07-01,10004,Durango,Cuencamé,9631768
+2026-07-01,10005,Durango,Durango,113516616
+2026-07-01,10006,Durango,General Simón Bolívar,1455497
+2026-07-01,10007,Durango,Gómez Palacio,31653908
+2026-07-01,10008,Durango,Guadalupe Victoria,25730822
+2026-07-01,10009,Durango,Guanaceví,619226
+2026-07-01,10010,Durango,Hidalgo,245858
+2026-07-01,10011,Durango,Indé,208949
+2026-07-01,10012,Durango,Lerdo,10055074
+2026-07-01,10013,Durango,Mapimí,2841328
+2026-07-01,10014,Durango,Mezquital,1816988
+2026-07-01,10015,Durango,Nazas,3243756
+2026-07-01,10016,Durango,Nombre de Dios,6489203
+2026-07-01,10017,Durango,Ocampo,745035
+2026-07-01,10018,Durango,El Oro,4611967
+2026-07-01,10019,Durango,Otáez,275
+2026-07-01,10020,Durango,Pánuco de Coronado,2490796
+2026-07-01,10021,Durango,Peñón Blanco,2133882
+2026-07-01,10022,Durango,Poanas,12969399
+2026-07-01,10023,Durango,Pueblo Nuevo,2044171
+2026-07-01,10024,Durango,Rodeo,5662577
+2026-07-01,10025,Durango,San Bernardo,7307
+2026-07-01,10026,Durango,San Dimas,29335
+2026-07-01,10027,Durango,San Juan de Guadalupe,1317711
+2026-07-01,10028,Durango,San Juan del Río,13922335
+2026-07-01,10029,Durango,San Luis del Cordero,523634
+2026-07-01,10030,Durango,San Pedro del Gallo,12362
+2026-07-01,10031,Durango,Santa Clara,829234
+2026-07-01,10032,Durango,Santiago Papasquiaro,19997849
+2026-07-01,10033,Durango,Súchil,469231
+2026-07-01,10034,Durango,Tamazula,24437
+2026-07-01,10035,Durango,Tepehuanes,4687514
+2026-07-01,10036,Durango,Tlahualilo,645147
+2026-07-01,10037,Durango,Topia,100852
+2026-07-01,10038,Durango,Vicente Guerrero,23112639
+2026-07-01,10039,Durango,Nuevo Ideal,25215655
+2026-07-01,10999,Durango,No identificado,2025160
+2026-07-01,11001,Guanajuato,Abasolo,21300518
+2026-07-01,11002,Guanajuato,Acámbaro,46128600
+2026-07-01,11003,Guanajuato,San Miguel de Allende,69052867
+2026-07-01,11004,Guanajuato,Apaseo el Alto,32282459
+2026-07-01,11005,Guanajuato,Apaseo el Grande,17824046
+2026-07-01,11006,Guanajuato,Atarjea,245655
+2026-07-01,11007,Guanajuato,Celaya,75981683
+2026-07-01,11008,Guanajuato,Manuel Doblado,37075881
+2026-07-01,11009,Guanajuato,Comonfort,34824612
+2026-07-01,11010,Guanajuato,Coroneo,13166549
+2026-07-01,11011,Guanajuato,Cortazar,23824490
+2026-07-01,11012,Guanajuato,Cuerámaro,22532527
+2026-07-01,11013,Guanajuato,Doctor Mora,2341245
+2026-07-01,11014,Guanajuato,Dolores Hidalgo Cuna de la Independencia Nal.,88752288
+2026-07-01,11015,Guanajuato,Guanajuato,25285983
+2026-07-01,11016,Guanajuato,Huanímaro,15329961
+2026-07-01,11017,Guanajuato,Irapuato,95146025
+2026-07-01,11018,Guanajuato,Jaral del Progreso,12193818
+2026-07-01,11019,Guanajuato,Jerécuaro,28467824
+2026-07-01,11020,Guanajuato,León,163190366
+2026-07-01,11021,Guanajuato,Moroleón,41817215
+2026-07-01,11022,Guanajuato,Ocampo,8145320
+2026-07-01,11023,Guanajuato,Pénjamo,41831061
+2026-07-01,11024,Guanajuato,Pueblo Nuevo,7413598
+2026-07-01,11025,Guanajuato,Purísima del Rincón,3758175
+2026-07-01,11026,Guanajuato,Romita,21951136
+2026-07-01,11027,Guanajuato,Salamanca,43952712
+2026-07-01,11028,Guanajuato,Salvatierra,41680638
+2026-07-01,11029,Guanajuato,San Diego de la Unión,13206305
+2026-07-01,11030,Guanajuato,San Felipe,50926687
+2026-07-01,11031,Guanajuato,San Francisco del Rincón,55829152
+2026-07-01,11032,Guanajuato,San José Iturbide,42464264
+2026-07-01,11033,Guanajuato,San Luis de la Paz,72171979
+2026-07-01,11034,Guanajuato,Santa Catarina,3856561
+2026-07-01,11035,Guanajuato,Santa Cruz de Juventino Rosas,21884021
+2026-07-01,11036,Guanajuato,Santiago Maravatío,539444
+2026-07-01,11037,Guanajuato,Silao,31284505
+2026-07-01,11038,Guanajuato,Tarandacuao,4323401
+2026-07-01,11039,Guanajuato,Tarimoro,24548300
+2026-07-01,11040,Guanajuato,Tierra Blanca,3660963
+2026-07-01,11041,Guanajuato,Uriangato,36827142
+2026-07-01,11042,Guanajuato,Valle de Santiago,46312255
+2026-07-01,11043,Guanajuato,Victoria,1710343
+2026-07-01,11044,Guanajuato,Villagrán,5629479
+2026-07-01,11045,Guanajuato,Xichú,1377855
+2026-07-01,11046,Guanajuato,Yuriria,25596485
+2026-07-01,11999,Guanajuato,No identificado,8741557
+2026-07-01,12001,Guerrero,Acapulco de Juárez,75190495
+2026-07-01,12002,Guerrero,Ahuacuotzingo,1477605
+2026-07-01,12003,Guerrero,Ajuchitlán del Progreso,9410116
+2026-07-01,12004,Guerrero,Alcozauca de Guerrero,629748
+2026-07-01,12005,Guerrero,Alpoyeca,1260139
+2026-07-01,12006,Guerrero,Apaxtla,1976523
+2026-07-01,12007,Guerrero,Arcelia,28656698
+2026-07-01,12008,Guerrero,Atenango del Río,410825
+2026-07-01,12009,Guerrero,Atlamajalcingo del Monte,21873
+2026-07-01,12010,Guerrero,Atlixtac,458193
+2026-07-01,12011,Guerrero,Atoyac de Álvarez,7209223
+2026-07-01,12012,Guerrero,Ayutla de los Libres,21500950
+2026-07-01,12013,Guerrero,Azoyú,3881859
+2026-07-01,12014,Guerrero,Benito Juárez,1892064
+2026-07-01,12015,Guerrero,Buenavista de Cuéllar,995885
+2026-07-01,12016,Guerrero,Coahuayutla de José María Izazaga,1031995
+2026-07-01,12017,Guerrero,Cocula,5737284
+2026-07-01,12018,Guerrero,Copala,1614635
+2026-07-01,12019,Guerrero,Copalillo,179748
+2026-07-01,12020,Guerrero,Copanatoyac,174653
+2026-07-01,12021,Guerrero,Coyuca de Benítez,6661335
+2026-07-01,12022,Guerrero,Coyuca de Catalán,530521
+2026-07-01,12023,Guerrero,Cuajinicuilapa,12651273
+2026-07-01,12024,Guerrero,Cualác,841037
+2026-07-01,12025,Guerrero,Cuautepec,721011
+2026-07-01,12026,Guerrero,Cuetzala del Progreso,18739
+2026-07-01,12027,Guerrero,Cutzamala de Pinzón,16043045
+2026-07-01,12028,Guerrero,Chilapa de Álvarez,37330694
+2026-07-01,12029,Guerrero,Chilpancingo de los Bravo,59891374
+2026-07-01,12030,Guerrero,Florencio Villarreal,12517223
+2026-07-01,12031,Guerrero,General Canuto A. Neri,1744
+2026-07-01,12032,Guerrero,General Heliodoro Castillo,4312452
+2026-07-01,12033,Guerrero,Huamuxtitlán,7806200
+2026-07-01,12034,Guerrero,Huitzuco de los Figueroa,20096606
+2026-07-01,12035,Guerrero,Iguala de la Independencia,59601442
+2026-07-01,12036,Guerrero,Igualapa,4884914
+2026-07-01,12037,Guerrero,Ixcateopan de Cuauhtémoc,94396
+2026-07-01,12038,Guerrero,Zihuatanejo de Azueta,18175630
+2026-07-01,12039,Guerrero,Juan R. Escudero,13665971
+2026-07-01,12040,Guerrero,Leonardo Bravo,5331008
+2026-07-01,12041,Guerrero,Malinaltepec,364659
+2026-07-01,12042,Guerrero,Mártir de Cuilapan,92010
+2026-07-01,12043,Guerrero,Metlatónoc,1560131
+2026-07-01,12044,Guerrero,Mochitlán,290616
+2026-07-01,12045,Guerrero,Olinalá,20093614
+2026-07-01,12046,Guerrero,Ometepec,40651699
+2026-07-01,12047,Guerrero,Pedro Ascencio Alquisiras,26966
+2026-07-01,12048,Guerrero,Petatlán,6127331
+2026-07-01,12049,Guerrero,Pilcaya,782937
+2026-07-01,12050,Guerrero,Pungarabato,35442510
+2026-07-01,12051,Guerrero,Quechultenango,18552425
+2026-07-01,12052,Guerrero,San Luis Acatlán,31811201
+2026-07-01,12053,Guerrero,San Marcos,17731967
+2026-07-01,12054,Guerrero,San Miguel Totolapan,40328
+2026-07-01,12055,Guerrero,Taxco de Alarcón,19636459
+2026-07-01,12056,Guerrero,Tecoanapa,7912124
+2026-07-01,12057,Guerrero,Técpan de Galeana,13596664
+2026-07-01,12058,Guerrero,Teloloapan,24046181
+2026-07-01,12059,Guerrero,Tepecoacuilco de Trujano,398583
+2026-07-01,12060,Guerrero,Tetipac,623515
+2026-07-01,12061,Guerrero,Tixtla de Guerrero,6831243
+2026-07-01,12062,Guerrero,Tlacoachistlahuaca,518694
+2026-07-01,12063,Guerrero,Tlacoapa,42779
+2026-07-01,12064,Guerrero,Tlalchapa,872812
+2026-07-01,12065,Guerrero,Tlalixtaquilla de Maldonado,1424570
+2026-07-01,12066,Guerrero,Tlapa de Comonfort,141182284
+2026-07-01,12067,Guerrero,Tlapehuala,5162218
+2026-07-01,12068,Guerrero,La Unión de Isidoro Montes de Oca,3212509
+2026-07-01,12069,Guerrero,Xalpatláhuac,284766
+2026-07-01,12070,Guerrero,Xochihuehuetlán,3359510
+2026-07-01,12071,Guerrero,Xochistlahuaca,1296951
+2026-07-01,12072,Guerrero,Zapotitlán Tablas,528263
+2026-07-01,12073,Guerrero,Zirándaro,1569090
+2026-07-01,12074,Guerrero,Zitlala,878786
+2026-07-01,12075,Guerrero,Eduardo Neri,4249833
+2026-07-01,12076,Guerrero,Acatepec,627927
+2026-07-01,12077,Guerrero,Marquelia,8295095
+2026-07-01,12078,Guerrero,Cochoapa el Grande,105289
+2026-07-01,12079,Guerrero,José Joaquín de Herrera,21239
+2026-07-01,12080,Guerrero,Juchitán,469924
+2026-07-01,12081,Guerrero,Iliatenco,982561
+2026-07-01,12999,Guerrero,No identificado,11348240
+2026-07-01,13001,Hidalgo,Acatlán,415442
+2026-07-01,13002,Hidalgo,Acaxochitlán,499028
+2026-07-01,13003,Hidalgo,Actopan,24165559
+2026-07-01,13004,Hidalgo,Agua Blanca de Iturbide,483271
+2026-07-01,13005,Hidalgo,Ajacuba,28871
+2026-07-01,13006,Hidalgo,Alfajayucan,3078332
+2026-07-01,13007,Hidalgo,Almoloya,62941
+2026-07-01,13008,Hidalgo,Apan,7465254
+2026-07-01,13009,Hidalgo,El Arenal,80097
+2026-07-01,13010,Hidalgo,Atitalaquia,681059
+2026-07-01,13011,Hidalgo,Atlapexco,1493410
+2026-07-01,13012,Hidalgo,Atotonilco el Grande,19795815
+2026-07-01,13013,Hidalgo,Atotonilco de Tula,88231
+2026-07-01,13014,Hidalgo,Calnali,1144924
+2026-07-01,13015,Hidalgo,Cardonal,69691
+2026-07-01,13016,Hidalgo,Cuautepec de Hinojosa,11488316
+2026-07-01,13017,Hidalgo,Chapantongo,47829
+2026-07-01,13018,Hidalgo,Chapulhuacán,10700221
+2026-07-01,13019,Hidalgo,Chilcuautla,87707
+2026-07-01,13020,Hidalgo,Eloxochitlán,13755
+2026-07-01,13021,Hidalgo,Emiliano Zapata,92194
+2026-07-01,13022,Hidalgo,Epazoyucan,30486
+2026-07-01,13023,Hidalgo,Francisco I. Madero,2049494
+2026-07-01,13024,Hidalgo,Huasca de Ocampo,9765872
+2026-07-01,13025,Hidalgo,Huautla,1345833
+2026-07-01,13026,Hidalgo,Huazalingo,34201
+2026-07-01,13027,Hidalgo,Huehuetla,387584
+2026-07-01,13028,Hidalgo,Huejutla de Reyes,15973514
+2026-07-01,13029,Hidalgo,Huichapan,16550854
+2026-07-01,13030,Hidalgo,Ixmiquilpan,70116419
+2026-07-01,13031,Hidalgo,Jacala de Ledezma,7522901
+2026-07-01,13032,Hidalgo,Jaltocán,17342
+2026-07-01,13033,Hidalgo,Juárez Hidalgo,23432
+2026-07-01,13034,Hidalgo,Lolotla,33702
+2026-07-01,13035,Hidalgo,Metepec,68624
+2026-07-01,13036,Hidalgo,San Agustín Metzquititlán,347227
+2026-07-01,13037,Hidalgo,Metztitlán,1495488
+2026-07-01,13038,Hidalgo,Mineral del Chico,47718
+2026-07-01,13039,Hidalgo,Mineral del Monte,294654
+2026-07-01,13040,Hidalgo,La Misión,142629
+2026-07-01,13041,Hidalgo,Mixquiahuala de Juárez,3136091
+2026-07-01,13042,Hidalgo,Molango de Escamilla,368698
+2026-07-01,13043,Hidalgo,Nicolás Flores,37647
+2026-07-01,13044,Hidalgo,Nopala de Villagrán,47527
+2026-07-01,13045,Hidalgo,Omitlán de Juárez,54893
+2026-07-01,13046,Hidalgo,San Felipe Orizatlán,9815566
+2026-07-01,13047,Hidalgo,Pacula,37659
+2026-07-01,13048,Hidalgo,Pachuca de Soto,46491095
+2026-07-01,13049,Hidalgo,Pisaflores,3084173
+2026-07-01,13050,Hidalgo,Progreso de Obregón,10329719
+2026-07-01,13051,Hidalgo,Mineral de la Reforma,10263551
+2026-07-01,13052,Hidalgo,San Agustín Tlaxiaca,236796
+2026-07-01,13053,Hidalgo,San Bartolo Tutotepec,573728
+2026-07-01,13054,Hidalgo,San Salvador,142244
+2026-07-01,13055,Hidalgo,Santiago de Anaya,89117
+2026-07-01,13056,Hidalgo,Santiago Tulantepec de Lugo Guerrero,232307
+2026-07-01,13057,Hidalgo,Singuilucan,65592
+2026-07-01,13058,Hidalgo,Tasquillo,2350600
+2026-07-01,13059,Hidalgo,Tecozautla,2712269
+2026-07-01,13060,Hidalgo,Tenango de Doria,7323801
+2026-07-01,13061,Hidalgo,Tepeapulco,8272550
+2026-07-01,13062,Hidalgo,Tepehuacán de Guerrero,1016947
+2026-07-01,13063,Hidalgo,Tepeji del Río de Ocampo,7271427
+2026-07-01,13064,Hidalgo,Tepetitlán,11303
+2026-07-01,13065,Hidalgo,Tetepango,41510
+2026-07-01,13066,Hidalgo,Villa de Tezontepec,521688
+2026-07-01,13067,Hidalgo,Tezontepec de Aldama,4253130
+2026-07-01,13068,Hidalgo,Tianguistengo,139019
+2026-07-01,13069,Hidalgo,Tizayuca,8969678
+2026-07-01,13070,Hidalgo,Tlahuelilpan,294601
+2026-07-01,13071,Hidalgo,Tlahuiltepa,102958
+2026-07-01,13072,Hidalgo,Tlanalapa,64982
+2026-07-01,13073,Hidalgo,Tlanchinol,754040
+2026-07-01,13074,Hidalgo,Tlaxcoapan,4422676
+2026-07-01,13075,Hidalgo,Tolcayuca,38096
+2026-07-01,13076,Hidalgo,Tula de Allende,9118211
+2026-07-01,13077,Hidalgo,Tulancingo de Bravo,68448661
+2026-07-01,13078,Hidalgo,Xochiatipan,86718
+2026-07-01,13079,Hidalgo,Xochicoatlán,121191
+2026-07-01,13080,Hidalgo,Yahualica,108941
+2026-07-01,13081,Hidalgo,Zacualtipán de Ángeles,26050500
+2026-07-01,13082,Hidalgo,Zapotlán de Juárez,1139126
+2026-07-01,13083,Hidalgo,Zempoala,1819403
+2026-07-01,13084,Hidalgo,Zimapán,21963644
+2026-07-01,13999,Hidalgo,No identificado,1732919
+2026-07-01,14001,Jalisco,Acatic,5423815
+2026-07-01,14002,Jalisco,Acatlán de Juárez,5646839
+2026-07-01,14003,Jalisco,Ahualulco de Mercado,11493468
+2026-07-01,14004,Jalisco,Amacueca,52966
+2026-07-01,14005,Jalisco,Amatitán,3629059
+2026-07-01,14006,Jalisco,Ameca,31972296
+2026-07-01,14007,Jalisco,San Juanito de Escobedo,332133
+2026-07-01,14008,Jalisco,Arandas,29473467
+2026-07-01,14009,Jalisco,El Arenal,2952012
+2026-07-01,14010,Jalisco,Atemajac de Brizuela,398469
+2026-07-01,14011,Jalisco,Atengo,82026
+2026-07-01,14012,Jalisco,Atenguillo,2286679
+2026-07-01,14013,Jalisco,Atotonilco el Alto,20389827
+2026-07-01,14014,Jalisco,Atoyac,568067
+2026-07-01,14015,Jalisco,Autlán de Navarro,17102310
+2026-07-01,14016,Jalisco,Ayotlán,11635040
+2026-07-01,14017,Jalisco,Ayutla,2632481
+2026-07-01,14018,Jalisco,La Barca,26103985
+2026-07-01,14019,Jalisco,Bolaños,375428
+2026-07-01,14020,Jalisco,Cabo Corrientes,1598749
+2026-07-01,14021,Jalisco,Casimiro Castillo,13025788
+2026-07-01,14022,Jalisco,Cihuatlán,10422691
+2026-07-01,14023,Jalisco,Zapotlán el Grande,18409744
+2026-07-01,14024,Jalisco,Cocula,16530435
+2026-07-01,14025,Jalisco,Colotlán,12211519
+2026-07-01,14026,Jalisco,Concepción de Buenos Aires,1397351
+2026-07-01,14027,Jalisco,Cuautitlán de García Barragán,393575
+2026-07-01,14028,Jalisco,Cuautla,1936670
+2026-07-01,14029,Jalisco,Cuquío,8688480
+2026-07-01,14030,Jalisco,Chapala,13524073
+2026-07-01,14031,Jalisco,Chimaltitán,1101
+2026-07-01,14032,Jalisco,Chiquilistlán,569596
+2026-07-01,14033,Jalisco,Degollado,22853533
+2026-07-01,14034,Jalisco,Ejutla,755117
+2026-07-01,14035,Jalisco,Encarnación de Díaz,22095601
+2026-07-01,14036,Jalisco,Etzatlán,3907647
+2026-07-01,14037,Jalisco,El Grullo,19400125
+2026-07-01,14038,Jalisco,Guachinango,2311464
+2026-07-01,14039,Jalisco,Guadalajara,150826655
+2026-07-01,14040,Jalisco,Hostotipaquillo,161596
+2026-07-01,14041,Jalisco,Huejúcar,4356054
+2026-07-01,14042,Jalisco,Huejuquilla el Alto,4276169
+2026-07-01,14043,Jalisco,La Huerta,8949539
+2026-07-01,14044,Jalisco,Ixtlahuacán de los Membrillos,3040087
+2026-07-01,14045,Jalisco,Ixtlahuacán del Río,8429303
+2026-07-01,14046,Jalisco,Jalostotitlán,15999778
+2026-07-01,14047,Jalisco,Jamay,5945319
+2026-07-01,14048,Jalisco,Jesús María,6361960
+2026-07-01,14049,Jalisco,Jilotlán de los Dolores,722985
+2026-07-01,14050,Jalisco,Jocotepec,13818980
+2026-07-01,14051,Jalisco,Juanacatlán,948729
+2026-07-01,14052,Jalisco,Juchitlán,1906126
+2026-07-01,14053,Jalisco,Lagos de Moreno,38207184
+2026-07-01,14054,Jalisco,El Limón,267577
+2026-07-01,14055,Jalisco,Magdalena,10146425
+2026-07-01,14056,Jalisco,Santa María del Oro,1454
+2026-07-01,14057,Jalisco,La Manzanilla de la Paz,1046110
+2026-07-01,14058,Jalisco,Mascota,7051529
+2026-07-01,14059,Jalisco,Mazamitla,5694304
+2026-07-01,14060,Jalisco,Mexticacán,1351242
+2026-07-01,14061,Jalisco,Mezquitic,1352415
+2026-07-01,14062,Jalisco,Mixtlán,1910453
+2026-07-01,14063,Jalisco,Ocotlán,18053403
+2026-07-01,14064,Jalisco,Ojuelos de Jalisco,46111925
+2026-07-01,14065,Jalisco,Pihuamo,2396400
+2026-07-01,14066,Jalisco,Poncitlán,13715486
+2026-07-01,14067,Jalisco,Puerto Vallarta,37771488
+2026-07-01,14068,Jalisco,Villa Purificación,4376582
+2026-07-01,14069,Jalisco,Quitupan,1366144
+2026-07-01,14070,Jalisco,El Salto,14715909
+2026-07-01,14071,Jalisco,San Cristóbal de la Barranca,9556
+2026-07-01,14072,Jalisco,San Diego de Alejandría,1144052
+2026-07-01,14073,Jalisco,San Juan de los Lagos,13632090
+2026-07-01,14074,Jalisco,San Julián,13574422
+2026-07-01,14075,Jalisco,San Marcos,42479
+2026-07-01,14076,Jalisco,San Martín de Bolaños,363673
+2026-07-01,14077,Jalisco,San Martín Hidalgo,6210964
+2026-07-01,14078,Jalisco,San Miguel el Alto,16461450
+2026-07-01,14079,Jalisco,Gómez Farías,4236660
+2026-07-01,14080,Jalisco,San Sebastián del Oeste,676938
+2026-07-01,14081,Jalisco,Santa María de los Ángeles,11286
+2026-07-01,14082,Jalisco,Sayula,7834648
+2026-07-01,14083,Jalisco,Tala,13513644
+2026-07-01,14084,Jalisco,Talpa de Allende,5449626
+2026-07-01,14085,Jalisco,Tamazula de Gordiano,15423654
+2026-07-01,14086,Jalisco,Tapalpa,8622112
+2026-07-01,14087,Jalisco,Tecalitlán,674600
+2026-07-01,14088,Jalisco,Tecolotlán,8193752
+2026-07-01,14089,Jalisco,Techaluta de Montenegro,61270
+2026-07-01,14090,Jalisco,Tenamaxtlán,4393299
+2026-07-01,14091,Jalisco,Teocaltiche,15931059
+2026-07-01,14092,Jalisco,Teocuitatlán de Corona,1731103
+2026-07-01,14093,Jalisco,Tepatitlán de Morelos,45066381
+2026-07-01,14094,Jalisco,Tequila,8485005
+2026-07-01,14095,Jalisco,Teuchitlán,273102
+2026-07-01,14096,Jalisco,Tizapán el Alto,21744498
+2026-07-01,14097,Jalisco,Tlajomulco de Zúñiga,25454851
+2026-07-01,14098,Jalisco,Tlaquepaque,33576185
+2026-07-01,14099,Jalisco,Tolimán,1066582
+2026-07-01,14100,Jalisco,Tomatlán,3079169
+2026-07-01,14101,Jalisco,Tonalá,36419058
+2026-07-01,14102,Jalisco,Tonaya,2053024
+2026-07-01,14103,Jalisco,Tonila,87481
+2026-07-01,14104,Jalisco,Totatiche,184753
+2026-07-01,14105,Jalisco,Tototlán,9538600
+2026-07-01,14106,Jalisco,Tuxcacuesco,297886
+2026-07-01,14107,Jalisco,Tuxcueca,110224
+2026-07-01,14108,Jalisco,Tuxpan,4625241
+2026-07-01,14109,Jalisco,Unión de San Antonio,2193969
+2026-07-01,14110,Jalisco,Unión de Tula,16322336
+2026-07-01,14111,Jalisco,Valle de Guadalupe,4162698
+2026-07-01,14112,Jalisco,Valle de Juárez,102072
+2026-07-01,14113,Jalisco,San Gabriel,2968601
+2026-07-01,14114,Jalisco,Villa Corona,1860433
+2026-07-01,14115,Jalisco,Villa Guerrero,638064
+2026-07-01,14116,Jalisco,Villa Hidalgo,14249499
+2026-07-01,14117,Jalisco,Cañadas de Obregón,15200
+2026-07-01,14118,Jalisco,Yahualica de González Gallo,5458176
+2026-07-01,14119,Jalisco,Zacoalco de Torres,18688180
+2026-07-01,14120,Jalisco,Zapopan,95697279
+2026-07-01,14121,Jalisco,Zapotiltic,7286677
+2026-07-01,14122,Jalisco,Zapotitlán de Vadillo,1839256
+2026-07-01,14123,Jalisco,Zapotlán del Rey,106045
+2026-07-01,14124,Jalisco,Zapotlanejo,30857850
+2026-07-01,14125,Jalisco,San Ignacio Cerro Gordo,2504498
+2026-07-01,14999,Jalisco,No identificado,996310
+2026-07-01,15001,Estado de México,Acambay,17452625
+2026-07-01,15002,Estado de México,Acolman,5409130
+2026-07-01,15003,Estado de México,Aculco,5492796
+2026-07-01,15004,Estado de México,Almoloya de Alquisiras,20686890
+2026-07-01,15005,Estado de México,Almoloya de Juárez,6056897
+2026-07-01,15006,Estado de México,Almoloya del Río,1295588
+2026-07-01,15007,Estado de México,Amanalco,4910871
+2026-07-01,15008,Estado de México,Amatepec,1135009
+2026-07-01,15009,Estado de México,Amecameca,7577492
+2026-07-01,15010,Estado de México,Apaxco,1552413
+2026-07-01,15011,Estado de México,Atenco,706403
+2026-07-01,15012,Estado de México,Atizapán,150389
+2026-07-01,15013,Estado de México,Atizapán de Zaragoza,20779821
+2026-07-01,15014,Estado de México,Atlacomulco,22774020
+2026-07-01,15015,Estado de México,Atlautla,92667
+2026-07-01,15016,Estado de México,Axapusco,64763
+2026-07-01,15017,Estado de México,Ayapango,19731
+2026-07-01,15018,Estado de México,Calimaya,1789384
+2026-07-01,15019,Estado de México,Capulhuac,78020
+2026-07-01,15020,Estado de México,Coacalco de Berriozábal,9567469
+2026-07-01,15021,Estado de México,Coatepec Harinas,12549385
+2026-07-01,15022,Estado de México,Cocotitlán,27154
+2026-07-01,15023,Estado de México,Coyotepec,1587328
+2026-07-01,15024,Estado de México,Cuautitlán,7198576
+2026-07-01,15025,Estado de México,Chalco,25912044
+2026-07-01,15026,Estado de México,Chapa de Mota,1168972
+2026-07-01,15027,Estado de México,Chapultepec,14155
+2026-07-01,15028,Estado de México,Chiautla,676742
+2026-07-01,15029,Estado de México,Chicoloapan,10984755
+2026-07-01,15030,Estado de México,Chiconcuac,1256176
+2026-07-01,15031,Estado de México,Chimalhuacán,30916872
+2026-07-01,15032,Estado de México,Donato Guerra,104962
+2026-07-01,15033,Estado de México,Ecatepec de Morelos,59215894
+2026-07-01,15034,Estado de México,Ecatzingo,1927381
+2026-07-01,15035,Estado de México,Huehuetoca,5036766
+2026-07-01,15036,Estado de México,Hueypoxtla,43790
+2026-07-01,15037,Estado de México,Huixquilucan,6573674
+2026-07-01,15038,Estado de México,Isidro Fabela,527272
+2026-07-01,15039,Estado de México,Ixtapaluca,21071752
+2026-07-01,15040,Estado de México,Ixtapan de la Sal,17743946
+2026-07-01,15041,Estado de México,Ixtapan del Oro,26923
+2026-07-01,15042,Estado de México,Ixtlahuaca,13346999
+2026-07-01,15043,Estado de México,Xalatlaco,485043
+2026-07-01,15044,Estado de México,Jaltenco,412001
+2026-07-01,15045,Estado de México,Jilotepec,8173565
+2026-07-01,15046,Estado de México,Jilotzingo,12194
+2026-07-01,15047,Estado de México,Jiquipilco,1371051
+2026-07-01,15048,Estado de México,Jocotitlán,2370020
+2026-07-01,15049,Estado de México,Joquicingo,710916
+2026-07-01,15050,Estado de México,Juchitepec,2097052
+2026-07-01,15051,Estado de México,Lerma,3610068
+2026-07-01,15052,Estado de México,Malinalco,9527395
+2026-07-01,15053,Estado de México,Melchor Ocampo,1292353
+2026-07-01,15054,Estado de México,Metepec,10079689
+2026-07-01,15055,Estado de México,Mexicaltzingo,1092734
+2026-07-01,15056,Estado de México,Morelos,342564
+2026-07-01,15057,Estado de México,Naucalpan de Juárez,39036985
+2026-07-01,15058,Estado de México,Nezahualcóyotl,50743592
+2026-07-01,15059,Estado de México,Nextlalpan,260413
+2026-07-01,15060,Estado de México,Nicolás Romero,13646674
+2026-07-01,15061,Estado de México,Nopaltepec,43005
+2026-07-01,15062,Estado de México,Ocoyoacac,1506568
+2026-07-01,15063,Estado de México,Ocuilan,7567110
+2026-07-01,15064,Estado de México,El Oro,5672273
+2026-07-01,15065,Estado de México,Otumba,2980907
+2026-07-01,15066,Estado de México,Otzoloapan,45326
+2026-07-01,15067,Estado de México,Otzolotepec,1040330
+2026-07-01,15068,Estado de México,Ozumba,7331893
+2026-07-01,15069,Estado de México,Papalotla,7846
+2026-07-01,15070,Estado de México,La Paz,15724034
+2026-07-01,15071,Estado de México,Polotitlán,691993
+2026-07-01,15072,Estado de México,Rayón,688942
+2026-07-01,15073,Estado de México,San Antonio la Isla,1319250
+2026-07-01,15074,Estado de México,San Felipe del Progreso,22151043
+2026-07-01,15075,Estado de México,San Martín de las Pirámides,233523
+2026-07-01,15076,Estado de México,San Mateo Atenco,2834399
+2026-07-01,15077,Estado de México,San Simón de Guerrero,19909
+2026-07-01,15078,Estado de México,Santo Tomás,72202
+2026-07-01,15079,Estado de México,Soyaniquilpan de Juárez,14059
+2026-07-01,15080,Estado de México,Sultepec,2629885
+2026-07-01,15081,Estado de México,Tecámac,20189049
+2026-07-01,15082,Estado de México,Tejupilco,37653940
+2026-07-01,15083,Estado de México,Temamatla,83976
+2026-07-01,15084,Estado de México,Temascalapa,1225053
+2026-07-01,15085,Estado de México,Temascalcingo,18392144
+2026-07-01,15086,Estado de México,Temascaltepec,8840448
+2026-07-01,15087,Estado de México,Temoaya,1600615
+2026-07-01,15088,Estado de México,Tenancingo,27742088
+2026-07-01,15089,Estado de México,Tenango del Aire,38087
+2026-07-01,15090,Estado de México,Tenango del Valle,11057067
+2026-07-01,15091,Estado de México,Teoloyucán,1964379
+2026-07-01,15092,Estado de México,Teotihuacán,4101682
+2026-07-01,15093,Estado de México,Tepetlaoxtoc,614612
+2026-07-01,15094,Estado de México,Tepetlixpa,1647587
+2026-07-01,15095,Estado de México,Tepotzotlán,2719787
+2026-07-01,15096,Estado de México,Tequixquiac,1232855
+2026-07-01,15097,Estado de México,Texcaltitlán,5370545
+2026-07-01,15098,Estado de México,Texcalyacac,27421
+2026-07-01,15099,Estado de México,Texcoco,17519259
+2026-07-01,15100,Estado de México,Tezoyuca,1082444
+2026-07-01,15101,Estado de México,Tianguistenco,8901311
+2026-07-01,15102,Estado de México,Timilpan,54378
+2026-07-01,15103,Estado de México,Tlalmanalco,1579377
+2026-07-01,15104,Estado de México,Tlalnepantla de Baz,28168573
+2026-07-01,15105,Estado de México,Tlatlaya,1183684
+2026-07-01,15106,Estado de México,Toluca,44541537
+2026-07-01,15107,Estado de México,Tonatico,1896417
+2026-07-01,15108,Estado de México,Tultepec,4608027
+2026-07-01,15109,Estado de México,Tultitlán,14140133
+2026-07-01,15110,Estado de México,Valle de Bravo,19799262
+2026-07-01,15111,Estado de México,Villa de Allende,3263076
+2026-07-01,15112,Estado de México,Villa del Carbón,2164091
+2026-07-01,15113,Estado de México,Villa Guerrero,11391678
+2026-07-01,15114,Estado de México,Villa Victoria,12333684
+2026-07-01,15115,Estado de México,Xonacatlán,2774062
+2026-07-01,15116,Estado de México,Zacazonapan,26755
+2026-07-01,15117,Estado de México,Zacualpan,87741
+2026-07-01,15118,Estado de México,Zinacantepec,7580311
+2026-07-01,15119,Estado de México,Zumpahuacán,90560
+2026-07-01,15120,Estado de México,Zumpango,10711441
+2026-07-01,15121,Estado de México,Cuautitlán Izcalli,17686292
+2026-07-01,15122,Estado de México,Valle de Chalco Solidaridad,12557968
+2026-07-01,15123,Estado de México,Luvianos,8078160
+2026-07-01,15124,Estado de México,San José del Rincón,9494332
+2026-07-01,15125,Estado de México,Tonanitla,11697
+2026-07-01,15999,Estado de México,No identificado,15065322
+2026-07-01,16001,Michoacán,Acuitzio,849905
+2026-07-01,16002,Michoacán,Aguililla,1360224
+2026-07-01,16003,Michoacán,Álvaro Obregón,12268525
+2026-07-01,16004,Michoacán,Angamacutiro,2664178
+2026-07-01,16005,Michoacán,Angangueo,327873
+2026-07-01,16006,Michoacán,Apatzingán,34255718
+2026-07-01,16007,Michoacán,Aporo,30031
+2026-07-01,16008,Michoacán,Aquila,455452
+2026-07-01,16009,Michoacán,Ario,6847377
+2026-07-01,16010,Michoacán,Arteaga,2342532
+2026-07-01,16011,Michoacán,Briseñas,36078
+2026-07-01,16012,Michoacán,Buenavista,10789754
+2026-07-01,16013,Michoacán,Carácuaro,2773094
+2026-07-01,16014,Michoacán,Coahuayana,1891764
+2026-07-01,16015,Michoacán,Coalcomán de Vázquez Pallares,9749142
+2026-07-01,16016,Michoacán,Coeneo,19356304
+2026-07-01,16017,Michoacán,Contepec,11756983
+2026-07-01,16018,Michoacán,Copándaro,414876
+2026-07-01,16019,Michoacán,Cotija,12742557
+2026-07-01,16020,Michoacán,Cuitzeo,1200659
+2026-07-01,16021,Michoacán,Charapan,418482
+2026-07-01,16022,Michoacán,Charo,136080
+2026-07-01,16023,Michoacán,Chavinda,8110078
+2026-07-01,16024,Michoacán,Cherán,3736800
+2026-07-01,16025,Michoacán,Chilchota,1327039
+2026-07-01,16026,Michoacán,Chinicuila,33194
+2026-07-01,16027,Michoacán,Chucándiro,4144
+2026-07-01,16028,Michoacán,Churintzio,3731004
+2026-07-01,16029,Michoacán,Churumuco,2968908
+2026-07-01,16030,Michoacán,Ecuandureo,2469464
+2026-07-01,16031,Michoacán,Epitacio Huerta,5213903
+2026-07-01,16032,Michoacán,Erongarícuaro,196589
+2026-07-01,16033,Michoacán,Gabriel Zamora,6037644
+2026-07-01,16034,Michoacán,Hidalgo,62968337
+2026-07-01,16035,Michoacán,La Huacana,4480019
+2026-07-01,16036,Michoacán,Huandacareo,18426027
+2026-07-01,16037,Michoacán,Huaniqueo,2552745
+2026-07-01,16038,Michoacán,Huetamo,31079716
+2026-07-01,16039,Michoacán,Huiramba,176355
+2026-07-01,16040,Michoacán,Indaparapeo,729619
+2026-07-01,16041,Michoacán,Irimbo,75163
+2026-07-01,16042,Michoacán,Ixtlán,1025339
+2026-07-01,16043,Michoacán,Jacona,11537026
+2026-07-01,16044,Michoacán,Jiménez,604902
+2026-07-01,16045,Michoacán,Jiquilpan,21183540
+2026-07-01,16046,Michoacán,Juárez,10348883
+2026-07-01,16047,Michoacán,Jungapeo,6922599
+2026-07-01,16048,Michoacán,Lagunillas,553359
+2026-07-01,16049,Michoacán,Madero,1220820
+2026-07-01,16050,Michoacán,Maravatío,39383776
+2026-07-01,16051,Michoacán,Marcos Castellanos,958779
+2026-07-01,16052,Michoacán,Lázaro Cárdenas,27943834
+2026-07-01,16053,Michoacán,Morelia,158357253
+2026-07-01,16054,Michoacán,Morelos,1018866
+2026-07-01,16055,Michoacán,Múgica,12144095
+2026-07-01,16056,Michoacán,Nahuatzen,1982777
+2026-07-01,16057,Michoacán,Nocupétaro,2110181
+2026-07-01,16058,Michoacán,Nuevo Parangaricutiro,236087
+2026-07-01,16059,Michoacán,Nuevo Urecho,243885
+2026-07-01,16060,Michoacán,Numarán,425482
+2026-07-01,16061,Michoacán,Ocampo,199209
+2026-07-01,16062,Michoacán,Pajacuarán,3921707
+2026-07-01,16063,Michoacán,Panindícuaro,17624870
+2026-07-01,16064,Michoacán,Parácuaro,5444957
+2026-07-01,16065,Michoacán,Paracho,29147003
+2026-07-01,16066,Michoacán,Pátzcuaro,48290333
+2026-07-01,16067,Michoacán,Penjamillo,6171881
+2026-07-01,16068,Michoacán,Peribán,5456791
+2026-07-01,16069,Michoacán,La Piedad,87574163
+2026-07-01,16070,Michoacán,Purépero,19205319
+2026-07-01,16071,Michoacán,Puruándiro,44291303
+2026-07-01,16072,Michoacán,Queréndaro,501186
+2026-07-01,16073,Michoacán,Quiroga,19533816
+2026-07-01,16074,Michoacán,Cojumatlán de Régules,2047200
+2026-07-01,16075,Michoacán,Los Reyes,24518814
+2026-07-01,16076,Michoacán,Sahuayo,64109911
+2026-07-01,16077,Michoacán,San Lucas,256188
+2026-07-01,16078,Michoacán,Santa Ana Maya,7295608
+2026-07-01,16079,Michoacán,Salvador Escalante,11604058
+2026-07-01,16080,Michoacán,Senguio,6964161
+2026-07-01,16081,Michoacán,Susupuato,2842
+2026-07-01,16082,Michoacán,Tacámbaro,17285004
+2026-07-01,16083,Michoacán,Tancítaro,4966398
+2026-07-01,16084,Michoacán,Tangamandapio,10154368
+2026-07-01,16085,Michoacán,Tangancícuaro,19408757
+2026-07-01,16086,Michoacán,Tanhuato,1677449
+2026-07-01,16087,Michoacán,Taretan,1991968
+2026-07-01,16088,Michoacán,Tarímbaro,17384804
+2026-07-01,16089,Michoacán,Tepalcatepec,4560424
+2026-07-01,16090,Michoacán,Tingambato,588106
+2026-07-01,16091,Michoacán,Tingüindín,1893190
+2026-07-01,16092,Michoacán,Tiquicheo de Nicolás Romero,2607692
+2026-07-01,16093,Michoacán,Tlalpujahua,7656618
+2026-07-01,16094,Michoacán,Tlazazalca,1503377
+2026-07-01,16095,Michoacán,Tocumbo,94602
+2026-07-01,16096,Michoacán,Tumbiscatío,3270
+2026-07-01,16097,Michoacán,Turicato,585642
+2026-07-01,16098,Michoacán,Tuxpan,11552205
+2026-07-01,16099,Michoacán,Tuzantla,7312015
+2026-07-01,16100,Michoacán,Tzintzuntzan,175300
+2026-07-01,16101,Michoacán,Tzitzio,7154
+2026-07-01,16102,Michoacán,Uruapan,64947512
+2026-07-01,16103,Michoacán,Venustiano Carranza,2082761
+2026-07-01,16104,Michoacán,Villamar,1067024
+2026-07-01,16105,Michoacán,Vista Hermosa,979499
+2026-07-01,16106,Michoacán,Yurécuaro,26287459
+2026-07-01,16107,Michoacán,Zacapu,34320965
+2026-07-01,16108,Michoacán,Zamora,69752549
+2026-07-01,16109,Michoacán,Zináparo,1191072
+2026-07-01,16110,Michoacán,Zinapécuaro,20768900
+2026-07-01,16111,Michoacán,Ziracuaretiro,142117
+2026-07-01,16112,Michoacán,Zitácuaro,33066755
+2026-07-01,16113,Michoacán,José Sixto Verduzco,11063192
+2026-07-01,16999,Michoacán,No identificado,8314242
+2026-07-01,17001,Morelos,Amacuzac,2053380
+2026-07-01,17002,Morelos,Atlatlahucan,3873501
+2026-07-01,17003,Morelos,Axochiapan,25635793
+2026-07-01,17004,Morelos,Ayala,7014528
+2026-07-01,17005,Morelos,Coatlán del Río,1358129
+2026-07-01,17006,Morelos,Cuautla,54036551
+2026-07-01,17007,Morelos,Cuernavaca,46426923
+2026-07-01,17008,Morelos,Emiliano Zapata,9277223
+2026-07-01,17009,Morelos,Huitzilac,578004
+2026-07-01,17010,Morelos,Jantetelco,18994822
+2026-07-01,17011,Morelos,Jiutepec,22514245
+2026-07-01,17012,Morelos,Jojutla,20427880
+2026-07-01,17013,Morelos,Jonacatepec,1030030
+2026-07-01,17014,Morelos,Mazatepec,641905
+2026-07-01,17015,Morelos,Miacatlán,13931427
+2026-07-01,17016,Morelos,Ocuituco,686704
+2026-07-01,17017,Morelos,Puente de Ixtla,10201812
+2026-07-01,17018,Morelos,Temixco,14522999
+2026-07-01,17019,Morelos,Tepalcingo,8295973
+2026-07-01,17020,Morelos,Tepoztlán,5714634
+2026-07-01,17021,Morelos,Tetecala,1348996
+2026-07-01,17022,Morelos,Tetela del Volcán,2339476
+2026-07-01,17023,Morelos,Tlalnepantla,11971
+2026-07-01,17024,Morelos,Tlaltizapán,3974256
+2026-07-01,17025,Morelos,Tlaquiltenango,3203301
+2026-07-01,17026,Morelos,Tlayacapan,2881537
+2026-07-01,17027,Morelos,Totolapan,152506
+2026-07-01,17028,Morelos,Xochitepec,4897291
+2026-07-01,17029,Morelos,Yautepec,12876913
+2026-07-01,17030,Morelos,Yecapixtla,7062265
+2026-07-01,17031,Morelos,Zacatepec,4443107
+2026-07-01,17032,Morelos,Zacualpan,345011
+2026-07-01,17033,Morelos,Temoac,69585
+2026-07-01,17999,Morelos,No identificado,681735
+2026-07-01,18001,Nayarit,Acaponeta,4928080
+2026-07-01,18002,Nayarit,Ahuacatlán,4438835
+2026-07-01,18003,Nayarit,Amatlán de Cañas,6397041
+2026-07-01,18004,Nayarit,Compostela,18804565
+2026-07-01,18005,Nayarit,Huajicori,30646
+2026-07-01,18006,Nayarit,Ixtlán del Río,18061536
+2026-07-01,18007,Nayarit,Jala,1204492
+2026-07-01,18008,Nayarit,Xalisco,8282989
+2026-07-01,18009,Nayarit,Del Nayar,1567513
+2026-07-01,18010,Nayarit,Rosamorada,1067671
+2026-07-01,18011,Nayarit,Ruíz,5428308
+2026-07-01,18012,Nayarit,San Blas,4322193
+2026-07-01,18013,Nayarit,San Pedro Lagunillas,524328
+2026-07-01,18014,Nayarit,Santa María del Oro,3286090
+2026-07-01,18015,Nayarit,Santiago Ixcuintla,23321436
+2026-07-01,18016,Nayarit,Tecuala,4575544
+2026-07-01,18017,Nayarit,Tepic,63273564
+2026-07-01,18018,Nayarit,Tuxpan,6763448
+2026-07-01,18019,Nayarit,La Yesca,992013
+2026-07-01,18020,Nayarit,Bahía de Banderas,18896992
+2026-07-01,18999,Nayarit,No identificado,3322102
+2026-07-01,19001,Nuevo León,Abasolo,3575
+2026-07-01,19002,Nuevo León,Agualeguas,1163123
+2026-07-01,19003,Nuevo León,Los Aldamas,1733
+2026-07-01,19004,Nuevo León,Allende,2364174
+2026-07-01,19005,Nuevo León,Anáhuac,2626684
+2026-07-01,19006,Nuevo León,Apodaca,11010029
+2026-07-01,19007,Nuevo León,Aramberri,75771
+2026-07-01,19008,Nuevo León,Bustamante,519769
+2026-07-01,19009,Nuevo León,Cadereyta Jiménez,4246159
+2026-07-01,19010,Nuevo León,Carmen,574222
+2026-07-01,19011,Nuevo León,Cerralvo,3424422
+2026-07-01,19012,Nuevo León,Ciénega de Flores,1000386
+2026-07-01,19013,Nuevo León,China,7199725
+2026-07-01,19014,Nuevo León,Dr. Arroyo,4581266
+2026-07-01,19015,Nuevo León,Dr. Coss,2265
+2026-07-01,19016,Nuevo León,Dr. González,7945
+2026-07-01,19017,Nuevo León,Galeana,1340210
+2026-07-01,19018,Nuevo León,García,3764910
+2026-07-01,19019,Nuevo León,San Pedro Garza García,8508769
+2026-07-01,19020,Nuevo León,Gral. Bravo,64046
+2026-07-01,19021,Nuevo León,Gral. Escobedo,6688142
+2026-07-01,19022,Nuevo León,Gral. Terán,3017361
+2026-07-01,19023,Nuevo León,Gral. Treviño,11650
+2026-07-01,19024,Nuevo León,Gral. Zaragoza,102068
+2026-07-01,19025,Nuevo León,Gral. Zuazua,601280
+2026-07-01,19026,Nuevo León,Guadalupe,16332438
+2026-07-01,19027,Nuevo León,Los Herreras,8521
+2026-07-01,19028,Nuevo León,Higueras,16
+2026-07-01,19029,Nuevo León,Hualahuises,108872
+2026-07-01,19030,Nuevo León,Iturbide,63
+2026-07-01,19031,Nuevo León,Juárez,3079573
+2026-07-01,19032,Nuevo León,Lampazos de Naranjo,190001
+2026-07-01,19033,Nuevo León,Linares,6438185
+2026-07-01,19034,Nuevo León,Marín,9788
+2026-07-01,19035,Nuevo León,Melchor Ocampo,6867
+2026-07-01,19036,Nuevo León,Mier y Noriega,470121
+2026-07-01,19037,Nuevo León,Mina,5888
+2026-07-01,19038,Nuevo León,Montemorelos,4219021
+2026-07-01,19039,Nuevo León,Monterrey,215156369
+2026-07-01,19040,Nuevo León,Parás,838
+2026-07-01,19041,Nuevo León,Pesquería,816807
+2026-07-01,19042,Nuevo León,Los Ramones,11822
+2026-07-01,19043,Nuevo León,Rayones,5047
+2026-07-01,19044,Nuevo León,Sabinas Hidalgo,3152525
+2026-07-01,19045,Nuevo León,Salinas Victoria,669535
+2026-07-01,19046,Nuevo León,San Nicolás de los Garza,8854956
+2026-07-01,19047,Nuevo León,Hidalgo,617865
+2026-07-01,19048,Nuevo León,Santa Catarina,4966674
+2026-07-01,19049,Nuevo León,Santiago,1905033
+2026-07-01,19050,Nuevo León,Vallecillo,1287
+2026-07-01,19051,Nuevo León,Villaldama,6208
+2026-07-01,19999,Nuevo León,No identificado,7022
+2026-07-01,20001,Oaxaca,Abejones,1422
+2026-07-01,20002,Oaxaca,Acatlán de Pérez Figueroa,707385
+2026-07-01,20003,Oaxaca,Asunción Cacalotepec,6194
+2026-07-01,20004,Oaxaca,Asunción Cuyotepeji,0
+2026-07-01,20005,Oaxaca,Asunción Ixtaltepec,9542
+2026-07-01,20006,Oaxaca,Asunción Nochixtlán,8366844
+2026-07-01,20007,Oaxaca,Asunción Ocotlán,11474
+2026-07-01,20008,Oaxaca,Asunción Tlacolulita,3870
+2026-07-01,20009,Oaxaca,Ayotzintepec,414520
+2026-07-01,20010,Oaxaca,El Barrio de la Soledad,894292
+2026-07-01,20011,Oaxaca,Calihualá,472156
+2026-07-01,20012,Oaxaca,Candelaria Loxicha,604492
+2026-07-01,20013,Oaxaca,Ciénega de Zimatlán,1142719
+2026-07-01,20014,Oaxaca,Ciudad Ixtepec,2756635
+2026-07-01,20015,Oaxaca,Coatecas Altas,5774
+2026-07-01,20016,Oaxaca,Coicoyán de las Flores,1187769
+2026-07-01,20017,Oaxaca,La Compañía,7405
+2026-07-01,20018,Oaxaca,Concepción Buenavista,1801
+2026-07-01,20019,Oaxaca,Concepción Pápalo,2886
+2026-07-01,20020,Oaxaca,Constancia del Rosario,7358
+2026-07-01,20021,Oaxaca,Cosolapa,32481
+2026-07-01,20022,Oaxaca,Cosoltepec,0
+2026-07-01,20023,Oaxaca,Cuilápam de Guerrero,94963
+2026-07-01,20024,Oaxaca,Cuyamecalco Villa de Zaragoza,1783
+2026-07-01,20025,Oaxaca,Chahuites,1018947
+2026-07-01,20026,Oaxaca,Chalcatongo de Hidalgo,2355285
+2026-07-01,20027,Oaxaca,Chiquihuitlán de Benito Juárez,230
+2026-07-01,20028,Oaxaca,Heroica Ciudad de Ejutla de Crespo,22686662
+2026-07-01,20029,Oaxaca,Eloxochitlán de Flores Magón,6906
+2026-07-01,20030,Oaxaca,El Espinal,35592
+2026-07-01,20031,Oaxaca,Tamazulápam del Espíritu Santo,3069042
+2026-07-01,20032,Oaxaca,Fresnillo de Trujano,425
+2026-07-01,20033,Oaxaca,Guadalupe Etla,17224
+2026-07-01,20034,Oaxaca,Guadalupe de Ramírez,619099
+2026-07-01,20035,Oaxaca,Guelatao de Juárez,351
+2026-07-01,20036,Oaxaca,Guevea de Humboldt,46218
+2026-07-01,20037,Oaxaca,Mesones Hidalgo,254942
+2026-07-01,20038,Oaxaca,Villa Hidalgo,458174
+2026-07-01,20039,Oaxaca,Heroica Ciudad de Huajuapan de León,62524012
+2026-07-01,20040,Oaxaca,Huautepec,311
+2026-07-01,20041,Oaxaca,Huautla de Jiménez,1567250
+2026-07-01,20042,Oaxaca,Ixtlán de Juárez,9923821
+2026-07-01,20043,Oaxaca,Heroica Ciudad de Juchitán de Zaragoza,5513447
+2026-07-01,20044,Oaxaca,Loma Bonita,3705463
+2026-07-01,20045,Oaxaca,Magdalena Apasco,16489
+2026-07-01,20046,Oaxaca,Magdalena Jaltepec,1031
+2026-07-01,20047,Oaxaca,Santa Magdalena Jicotlán,0
+2026-07-01,20048,Oaxaca,Magdalena Mixtepec,93
+2026-07-01,20049,Oaxaca,Magdalena Ocotlán,1873
+2026-07-01,20050,Oaxaca,Magdalena Peñasco,313513
+2026-07-01,20051,Oaxaca,Magdalena Teitipac,8078
+2026-07-01,20052,Oaxaca,Magdalena Tequisistlán,62044
+2026-07-01,20053,Oaxaca,Magdalena Tlacotepec,0
+2026-07-01,20054,Oaxaca,Magdalena Zahuatlán,0
+2026-07-01,20055,Oaxaca,Mariscala de Juárez,7372579
+2026-07-01,20056,Oaxaca,Mártires de Tacubaya,2879
+2026-07-01,20057,Oaxaca,Matías Romero Avendaño,21834325
+2026-07-01,20058,Oaxaca,Mazatlán Villa de Flores,101
+2026-07-01,20059,Oaxaca,Miahuatlán de Porfirio Díaz,44017484
+2026-07-01,20060,Oaxaca,Mixistlán de la Reforma,14221
+2026-07-01,20061,Oaxaca,Monjas,14523
+2026-07-01,20062,Oaxaca,Natividad,58025
+2026-07-01,20063,Oaxaca,Nazareno Etla,4417
+2026-07-01,20064,Oaxaca,Nejapa de Madero,1457998
+2026-07-01,20065,Oaxaca,Ixpantepec Nieves,363487
+2026-07-01,20066,Oaxaca,Santiago Niltepec,26538
+2026-07-01,20067,Oaxaca,Oaxaca de Juárez,140091999
+2026-07-01,20068,Oaxaca,Ocotlán de Morelos,22674850
+2026-07-01,20069,Oaxaca,La Pe,7404
+2026-07-01,20070,Oaxaca,Pinotepa de Don Luis,3224842
+2026-07-01,20071,Oaxaca,Pluma Hidalgo,36649
+2026-07-01,20072,Oaxaca,San José del Progreso,37652
+2026-07-01,20073,Oaxaca,Putla Villa de Guerrero,27850026
+2026-07-01,20074,Oaxaca,Santa Catarina Quioquitani,4824
+2026-07-01,20075,Oaxaca,Reforma de Pineda,150599
+2026-07-01,20076,Oaxaca,La Reforma,336264
+2026-07-01,20077,Oaxaca,Reyes Etla,11368
+2026-07-01,20078,Oaxaca,Rojas de Cuauhtémoc,920
+2026-07-01,20079,Oaxaca,Salina Cruz,4963391
+2026-07-01,20080,Oaxaca,San Agustín Amatengo,729
+2026-07-01,20081,Oaxaca,San Agustín Atenango,6893
+2026-07-01,20082,Oaxaca,San Agustín Chayuco,504908
+2026-07-01,20083,Oaxaca,San Agustín de las Juntas,2125332
+2026-07-01,20084,Oaxaca,San Agustín Etla,26595
+2026-07-01,20085,Oaxaca,San Agustín Loxicha,282601
+2026-07-01,20086,Oaxaca,San Agustín Tlacotepec,964
+2026-07-01,20087,Oaxaca,San Agustín Yatareni,2754782
+2026-07-01,20088,Oaxaca,San Andrés Cabecera Nueva,211085
+2026-07-01,20089,Oaxaca,San Andrés Dinicuiti,7247
+2026-07-01,20090,Oaxaca,San Andrés Huaxpaltepec,64683
+2026-07-01,20091,Oaxaca,San Andrés Huayápam,40970
+2026-07-01,20092,Oaxaca,San Andrés Ixtlahuaca,10209
+2026-07-01,20093,Oaxaca,San Andrés Lagunas,0
+2026-07-01,20094,Oaxaca,San Andrés Nuxiño,21
+2026-07-01,20095,Oaxaca,San Andrés Paxtlán,19364
+2026-07-01,20096,Oaxaca,San Andrés Sinaxtla,0
+2026-07-01,20097,Oaxaca,San Andrés Solaga,1088
+2026-07-01,20098,Oaxaca,San Andrés Teotilálpam,21122
+2026-07-01,20099,Oaxaca,San Andrés Tepetlapa,0
+2026-07-01,20100,Oaxaca,San Andrés Yaá,0
+2026-07-01,20101,Oaxaca,San Andrés Zabache,4775
+2026-07-01,20102,Oaxaca,San Andrés Zautla,14611
+2026-07-01,20103,Oaxaca,San Antonino Castillo Velasco,521520
+2026-07-01,20104,Oaxaca,San Antonino el Alto,28164
+2026-07-01,20105,Oaxaca,San Antonino Monte Verde,23719
+2026-07-01,20106,Oaxaca,San Antonio Acutla,0
+2026-07-01,20107,Oaxaca,San Antonio de la Cal,155305
+2026-07-01,20108,Oaxaca,San Antonio Huitepec,23034
+2026-07-01,20109,Oaxaca,San Antonio Nanahuatípam,0
+2026-07-01,20110,Oaxaca,San Antonio Sinicahua,17123
+2026-07-01,20111,Oaxaca,San Antonio Tepetlapa,158924
+2026-07-01,20112,Oaxaca,San Baltazar Chichicápam,1248
+2026-07-01,20113,Oaxaca,San Baltazar Loxicha,978948
+2026-07-01,20114,Oaxaca,San Baltazar Yatzachi el Bajo,13797
+2026-07-01,20115,Oaxaca,San Bartolo Coyotepec,4781294
+2026-07-01,20116,Oaxaca,San Bartolomé Ayautla,1312
+2026-07-01,20117,Oaxaca,San Bartolomé Loxicha,2692
+2026-07-01,20118,Oaxaca,San Bartolomé Quialana,10939
+2026-07-01,20119,Oaxaca,San Bartolomé Yucuañe,0
+2026-07-01,20120,Oaxaca,San Bartolomé Zoogocho,241842
+2026-07-01,20121,Oaxaca,San Bartolo Soyaltepec,0
+2026-07-01,20122,Oaxaca,San Bartolo Yautepec,687
+2026-07-01,20123,Oaxaca,San Bernardo Mixtepec,24066
+2026-07-01,20124,Oaxaca,San Blas Atempa,22295
+2026-07-01,20125,Oaxaca,San Carlos Yautepec,417273
+2026-07-01,20126,Oaxaca,San Cristóbal Amatlán,3330
+2026-07-01,20127,Oaxaca,San Cristóbal Amoltepec,610
+2026-07-01,20128,Oaxaca,San Cristóbal Lachirioag,29290
+2026-07-01,20129,Oaxaca,San Cristóbal Suchixtlahuaca,4431
+2026-07-01,20130,Oaxaca,San Dionisio del Mar,26992
+2026-07-01,20131,Oaxaca,San Dionisio Ocotepec,704678
+2026-07-01,20132,Oaxaca,San Dionisio Ocotlán,35077
+2026-07-01,20133,Oaxaca,San Esteban Atatlahuca,6649
+2026-07-01,20134,Oaxaca,San Felipe Jalapa de Díaz,1166150
+2026-07-01,20135,Oaxaca,San Felipe Tejalápam,16622
+2026-07-01,20136,Oaxaca,San Felipe Usila,49135
+2026-07-01,20137,Oaxaca,San Francisco Cahuacuá,7713
+2026-07-01,20138,Oaxaca,San Francisco Cajonos,8769
+2026-07-01,20139,Oaxaca,San Francisco Chapulapa,332
+2026-07-01,20140,Oaxaca,San Francisco Chindúa,0
+2026-07-01,20141,Oaxaca,San Francisco del Mar,495911
+2026-07-01,20142,Oaxaca,San Francisco Huehuetlán,0
+2026-07-01,20143,Oaxaca,San Francisco Ixhuatán,404454
+2026-07-01,20144,Oaxaca,San Francisco Jaltepetongo,11
+2026-07-01,20145,Oaxaca,San Francisco Lachigoló,26600
+2026-07-01,20146,Oaxaca,San Francisco Logueche,4238
+2026-07-01,20147,Oaxaca,San Francisco Nuxaño,0
+2026-07-01,20148,Oaxaca,San Francisco Ozolotepec,2843
+2026-07-01,20149,Oaxaca,San Francisco Sola,7490
+2026-07-01,20150,Oaxaca,San Francisco Telixtlahuaca,3288920
+2026-07-01,20151,Oaxaca,San Francisco Teopan,0
+2026-07-01,20152,Oaxaca,San Francisco Tlapancingo,689477
+2026-07-01,20153,Oaxaca,San Gabriel Mixtepec,682129
+2026-07-01,20154,Oaxaca,San Ildefonso Amatlán,296
+2026-07-01,20155,Oaxaca,San Ildefonso Sola,509
+2026-07-01,20156,Oaxaca,San Ildefonso Villa Alta,1772568
+2026-07-01,20157,Oaxaca,San Jacinto Amilpas,72076
+2026-07-01,20158,Oaxaca,San Jacinto Tlacotepec,25807
+2026-07-01,20159,Oaxaca,San Jerónimo Coatlán,5111
+2026-07-01,20160,Oaxaca,San Jerónimo Silacayoapilla,41
+2026-07-01,20161,Oaxaca,San Jerónimo Sosola,5580
+2026-07-01,20162,Oaxaca,San Jerónimo Taviche,0
+2026-07-01,20163,Oaxaca,San Jerónimo Tecóatl,0
+2026-07-01,20164,Oaxaca,San Jorge Nuchita,61348
+2026-07-01,20165,Oaxaca,San José Ayuquila,7051
+2026-07-01,20166,Oaxaca,San José Chiltepec,51880
+2026-07-01,20167,Oaxaca,San José del Peñasco,3793
+2026-07-01,20168,Oaxaca,San José Estancia Grande,4779
+2026-07-01,20169,Oaxaca,San José Independencia,0
+2026-07-01,20170,Oaxaca,San José Lachiguiri,339
+2026-07-01,20171,Oaxaca,San José Tenango,1821
+2026-07-01,20172,Oaxaca,San Juan Achiutla,580
+2026-07-01,20173,Oaxaca,San Juan Atepec,3264
+2026-07-01,20174,Oaxaca,Ánimas Trujano,53028
+2026-07-01,20175,Oaxaca,San Juan Bautista Atatlahuca,2176
+2026-07-01,20176,Oaxaca,San Juan Bautista Coixtlahuaca,43694
+2026-07-01,20177,Oaxaca,San Juan Bautista Cuicatlán,1087286
+2026-07-01,20178,Oaxaca,San Juan Bautista Guelache,10801
+2026-07-01,20179,Oaxaca,San Juan Bautista Jayacatlán,616
+2026-07-01,20180,Oaxaca,San Juan Bautista Lo de Soto,150827
+2026-07-01,20181,Oaxaca,San Juan Bautista Suchitepec,0
+2026-07-01,20182,Oaxaca,San Juan Bautista Tlacoatzintepec,2869
+2026-07-01,20183,Oaxaca,San Juan Bautista Tlachichilco,6138
+2026-07-01,20184,Oaxaca,San Juan Bautista Tuxtepec,17891674
+2026-07-01,20185,Oaxaca,San Juan Cacahuatepec,1123165
+2026-07-01,20186,Oaxaca,San Juan Cieneguilla,167
+2026-07-01,20187,Oaxaca,San Juan Coatzóspam,20390
+2026-07-01,20188,Oaxaca,San Juan Colorado,542567
+2026-07-01,20189,Oaxaca,San Juan Comaltepec,3288
+2026-07-01,20190,Oaxaca,San Juan Cotzocón,3745494
+2026-07-01,20191,Oaxaca,San Juan Chicomezúchil,0
+2026-07-01,20192,Oaxaca,San Juan Chilateca,10448
+2026-07-01,20193,Oaxaca,San Juan del Estado,58978
+2026-07-01,20194,Oaxaca,San Juan del Río,501
+2026-07-01,20195,Oaxaca,San Juan Diuxi,0
+2026-07-01,20196,Oaxaca,San Juan Evangelista Analco,0
+2026-07-01,20197,Oaxaca,San Juan Guelavía,521255
+2026-07-01,20198,Oaxaca,San Juan Guichicovi,83180
+2026-07-01,20199,Oaxaca,San Juan Ihualtepec,876
+2026-07-01,20200,Oaxaca,San Juan Juquila Mixes,12295
+2026-07-01,20201,Oaxaca,San Juan Juquila Vijanos,9214
+2026-07-01,20202,Oaxaca,San Juan Lachao,24498
+2026-07-01,20203,Oaxaca,San Juan Lachigalla,6288
+2026-07-01,20204,Oaxaca,San Juan Lajarcia,0
+2026-07-01,20205,Oaxaca,San Juan Lalana,27629
+2026-07-01,20206,Oaxaca,San Juan de los Cués,10460
+2026-07-01,20207,Oaxaca,San Juan Mazatlán,205035
+2026-07-01,20208,Oaxaca,San Juan Mixtepec - Distr. 08 -,42425
+2026-07-01,20209,Oaxaca,San Juan Mixtepec - Distr. 26 -,16530
+2026-07-01,20210,Oaxaca,San Juan Ñumí,85725
+2026-07-01,20211,Oaxaca,San Juan Ozolotepec,2050
+2026-07-01,20212,Oaxaca,San Juan Petlapa,3181
+2026-07-01,20213,Oaxaca,San Juan Quiahije,64315
+2026-07-01,20214,Oaxaca,San Juan Quiotepec,3708
+2026-07-01,20215,Oaxaca,San Juan Sayultepec,0
+2026-07-01,20216,Oaxaca,San Juan Tabaá,15233
+2026-07-01,20217,Oaxaca,San Juan Tamazola,0
+2026-07-01,20218,Oaxaca,San Juan Teita,33
+2026-07-01,20219,Oaxaca,San Juan Teitipac,577123
+2026-07-01,20220,Oaxaca,San Juan Tepeuxila,22545
+2026-07-01,20221,Oaxaca,San Juan Teposcolula,26576
+2026-07-01,20222,Oaxaca,San Juan Yaeé,1426
+2026-07-01,20223,Oaxaca,San Juan Yatzona,38339
+2026-07-01,20224,Oaxaca,San Juan Yucuita,2064
+2026-07-01,20225,Oaxaca,San Lorenzo,18120
+2026-07-01,20226,Oaxaca,San Lorenzo Albarradas,3282
+2026-07-01,20227,Oaxaca,San Lorenzo Cacaotepec,128626
+2026-07-01,20228,Oaxaca,San Lorenzo Cuaunecuiltitla,60
+2026-07-01,20229,Oaxaca,San Lorenzo Texmelucan,18383
+2026-07-01,20230,Oaxaca,San Lorenzo Victoria,0
+2026-07-01,20231,Oaxaca,San Lucas Camotlán,0
+2026-07-01,20232,Oaxaca,San Lucas Ojitlán,123961
+2026-07-01,20233,Oaxaca,San Lucas Quiaviní,25632
+2026-07-01,20234,Oaxaca,San Lucas Zoquiápam,16
+2026-07-01,20235,Oaxaca,San Luis Amatlán,13513
+2026-07-01,20236,Oaxaca,San Marcial Ozolotepec,20000
+2026-07-01,20237,Oaxaca,San Marcos Arteaga,791
+2026-07-01,20238,Oaxaca,San Martín de los Cansecos,0
+2026-07-01,20239,Oaxaca,San Martín Huamelúlpam,23100
+2026-07-01,20240,Oaxaca,San Martín Itunyoso,0
+2026-07-01,20241,Oaxaca,San Martín Lachilá,6792
+2026-07-01,20242,Oaxaca,San Martín Peras,6476311
+2026-07-01,20243,Oaxaca,San Martín Tilcajete,18376
+2026-07-01,20244,Oaxaca,San Martín Toxpalan,12523
+2026-07-01,20245,Oaxaca,San Martín Zacatepec,71103
+2026-07-01,20246,Oaxaca,San Mateo Cajonos,8594
+2026-07-01,20247,Oaxaca,Capulálpam de Méndez,0
+2026-07-01,20248,Oaxaca,San Mateo del Mar,17435
+2026-07-01,20249,Oaxaca,San Mateo Yoloxochitlán,2313
+2026-07-01,20250,Oaxaca,San Mateo Etlatongo,0
+2026-07-01,20251,Oaxaca,San Mateo Nejápam,0
+2026-07-01,20252,Oaxaca,San Mateo Peñasco,19768
+2026-07-01,20253,Oaxaca,San Mateo Piñas,2843
+2026-07-01,20254,Oaxaca,San Mateo Río Hondo,47363
+2026-07-01,20255,Oaxaca,San Mateo Sindihui,24356
+2026-07-01,20256,Oaxaca,San Mateo Tlapiltepec,3807
+2026-07-01,20257,Oaxaca,San Melchor Betaza,1052
+2026-07-01,20258,Oaxaca,San Miguel Achiutla,0
+2026-07-01,20259,Oaxaca,San Miguel Ahuehuetitlán,206
+2026-07-01,20260,Oaxaca,San Miguel Aloápam,0
+2026-07-01,20261,Oaxaca,San Miguel Amatitlán,0
+2026-07-01,20262,Oaxaca,San Miguel Amatlán,3207
+2026-07-01,20263,Oaxaca,San Miguel Coatlán,59
+2026-07-01,20264,Oaxaca,San Miguel Chicahua,1235
+2026-07-01,20265,Oaxaca,San Miguel Chimalapa,4646
+2026-07-01,20266,Oaxaca,San Miguel del Puerto,127770
+2026-07-01,20267,Oaxaca,San Miguel del Río,1108
+2026-07-01,20268,Oaxaca,San Miguel Ejutla,782
+2026-07-01,20269,Oaxaca,San Miguel el Grande,263678
+2026-07-01,20270,Oaxaca,San Miguel Huautla,0
+2026-07-01,20271,Oaxaca,San Miguel Mixtepec,372
+2026-07-01,20272,Oaxaca,San Miguel Panixtlahuaca,845096
+2026-07-01,20273,Oaxaca,San Miguel Peras,0
+2026-07-01,20274,Oaxaca,San Miguel Piedras,0
+2026-07-01,20275,Oaxaca,San Miguel Quetzaltepec,56534
+2026-07-01,20276,Oaxaca,San Miguel Santa Flor,0
+2026-07-01,20277,Oaxaca,Villa Sola de Vega,3948816
+2026-07-01,20278,Oaxaca,San Miguel Soyaltepec,1570613
+2026-07-01,20279,Oaxaca,San Miguel Suchixtepec,1071568
+2026-07-01,20280,Oaxaca,Villa Talea de Castro,410786
+2026-07-01,20281,Oaxaca,San Miguel Tecomatlán,0
+2026-07-01,20282,Oaxaca,San Miguel Tenango,67
+2026-07-01,20283,Oaxaca,San Miguel Tequixtepec,0
+2026-07-01,20284,Oaxaca,San Miguel Tilquiápam,1642
+2026-07-01,20285,Oaxaca,San Miguel Tlacamama,23896
+2026-07-01,20286,Oaxaca,San Miguel Tlacotepec,16200
+2026-07-01,20287,Oaxaca,San Miguel Tulancingo,0
+2026-07-01,20288,Oaxaca,San Miguel Yotao,0
+2026-07-01,20289,Oaxaca,San Nicolás,1471
+2026-07-01,20290,Oaxaca,San Nicolás Hidalgo,6703
+2026-07-01,20291,Oaxaca,San Pablo Coatlán,6784
+2026-07-01,20292,Oaxaca,San Pablo Cuatro Venados,1057
+2026-07-01,20293,Oaxaca,San Pablo Etla,65303
+2026-07-01,20294,Oaxaca,San Pablo Huitzo,126420
+2026-07-01,20295,Oaxaca,San Pablo Huixtepec,4383325
+2026-07-01,20296,Oaxaca,San Pablo Macuiltianguis,4583
+2026-07-01,20297,Oaxaca,San Pablo Tijaltepec,13437
+2026-07-01,20298,Oaxaca,San Pablo Villa de Mitla,171780
+2026-07-01,20299,Oaxaca,San Pablo Yaganiza,315760
+2026-07-01,20300,Oaxaca,San Pedro Amuzgos,2896832
+2026-07-01,20301,Oaxaca,San Pedro Apóstol,244141
+2026-07-01,20302,Oaxaca,San Pedro Atoyac,20345
+2026-07-01,20303,Oaxaca,San Pedro Cajonos,5019
+2026-07-01,20304,Oaxaca,San Pedro Coxcaltepec Cántaros,0
+2026-07-01,20305,Oaxaca,San Pedro Comitancillo,20168
+2026-07-01,20306,Oaxaca,San Pedro el Alto,24040
+2026-07-01,20307,Oaxaca,San Pedro Huamelula,126622
+2026-07-01,20308,Oaxaca,San Pedro Huilotepec,5901
+2026-07-01,20309,Oaxaca,San Pedro Ixcatlán,147
+2026-07-01,20310,Oaxaca,San Pedro Ixtlahuaca,64357
+2026-07-01,20311,Oaxaca,San Pedro Jaltepetongo,0
+2026-07-01,20312,Oaxaca,San Pedro Jicayán,177579
+2026-07-01,20313,Oaxaca,San Pedro Jocotipac,92
+2026-07-01,20314,Oaxaca,San Pedro Juchatengo,1441726
+2026-07-01,20315,Oaxaca,San Pedro Mártir,2403
+2026-07-01,20316,Oaxaca,San Pedro Mártir Quiechapa,24661
+2026-07-01,20317,Oaxaca,San Pedro Mártir Yucuxaco,539
+2026-07-01,20318,Oaxaca,San Pedro Mixtepec - Distr. 22 -,47017460
+2026-07-01,20319,Oaxaca,San Pedro Mixtepec - Distr. 26 -,335927
+2026-07-01,20320,Oaxaca,San Pedro Molinos,0
+2026-07-01,20321,Oaxaca,San Pedro Nopala,2022
+2026-07-01,20322,Oaxaca,San Pedro Ocopetatillo,0
+2026-07-01,20323,Oaxaca,San Pedro Ocotepec,92133
+2026-07-01,20324,Oaxaca,San Pedro Pochutla,23585819
+2026-07-01,20325,Oaxaca,San Pedro Quiatoni,228433
+2026-07-01,20326,Oaxaca,San Pedro Sochiápam,4566
+2026-07-01,20327,Oaxaca,San Pedro Tapanatepec,1641011
+2026-07-01,20328,Oaxaca,San Pedro Taviche,30
+2026-07-01,20329,Oaxaca,San Pedro Teozacoalco,177
+2026-07-01,20330,Oaxaca,San Pedro Teutila,8522
+2026-07-01,20331,Oaxaca,San Pedro Tidaá,14644
+2026-07-01,20332,Oaxaca,San Pedro Topiltepec,0
+2026-07-01,20333,Oaxaca,San Pedro Totolápam,299779
+2026-07-01,20334,Oaxaca,Villa de Tututepec de Melchor Ocampo,25686760
+2026-07-01,20335,Oaxaca,San Pedro Yaneri,0
+2026-07-01,20336,Oaxaca,San Pedro Yólox,1259
+2026-07-01,20337,Oaxaca,San Pedro y San Pablo Ayutla,739132
+2026-07-01,20338,Oaxaca,Villa de Etla,15286121
+2026-07-01,20339,Oaxaca,San Pedro y San Pablo Teposcolula,124384
+2026-07-01,20340,Oaxaca,San Pedro y San Pablo Tequixtepec,0
+2026-07-01,20341,Oaxaca,San Pedro Yucunama,0
+2026-07-01,20342,Oaxaca,San Raymundo Jalpan,21940
+2026-07-01,20343,Oaxaca,San Sebastián Abasolo,219990
+2026-07-01,20344,Oaxaca,San Sebastián Coatlán,2648
+2026-07-01,20345,Oaxaca,San Sebastián Ixcapa,176060
+2026-07-01,20346,Oaxaca,San Sebastián Nicananduta,316266
+2026-07-01,20347,Oaxaca,San Sebastián Río Hondo,102418
+2026-07-01,20348,Oaxaca,San Sebastián Tecomaxtlahuaca,271712
+2026-07-01,20349,Oaxaca,San Sebastián Teitipac,1116454
+2026-07-01,20350,Oaxaca,San Sebastián Tutla,650290
+2026-07-01,20351,Oaxaca,San Simón Almolongas,7825
+2026-07-01,20352,Oaxaca,San Simón Zahuatlán,0
+2026-07-01,20353,Oaxaca,Santa Ana,12677
+2026-07-01,20354,Oaxaca,Santa Ana Ateixtlahuaca,0
+2026-07-01,20355,Oaxaca,Santa Ana Cuauhtémoc,3465
+2026-07-01,20356,Oaxaca,Santa Ana del Valle,63346
+2026-07-01,20357,Oaxaca,Santa Ana Tavela,6400
+2026-07-01,20358,Oaxaca,Santa Ana Tlapacoyan,2011
+2026-07-01,20359,Oaxaca,Santa Ana Yareni,0
+2026-07-01,20360,Oaxaca,Santa Ana Zegache,14714
+2026-07-01,20361,Oaxaca,Santa Catalina Quierí,0
+2026-07-01,20362,Oaxaca,Santa Catarina Cuixtla,0
+2026-07-01,20363,Oaxaca,Santa Catarina Ixtepeji,300
+2026-07-01,20364,Oaxaca,Santa Catarina Juquila,5665204
+2026-07-01,20365,Oaxaca,Santa Catarina Lachatao,152
+2026-07-01,20366,Oaxaca,Santa Catarina Loxicha,17293
+2026-07-01,20367,Oaxaca,Santa Catarina Mechoacán,21552
+2026-07-01,20368,Oaxaca,Santa Catarina Minas,1251
+2026-07-01,20369,Oaxaca,Santa Catarina Quiané,11253
+2026-07-01,20370,Oaxaca,Santa Catarina Tayata,1018
+2026-07-01,20371,Oaxaca,Santa Catarina Ticuá,112209
+2026-07-01,20372,Oaxaca,Santa Catarina Yosonotú,195838
+2026-07-01,20373,Oaxaca,Santa Catarina Zapoquila,0
+2026-07-01,20374,Oaxaca,Santa Cruz Acatepec,2908
+2026-07-01,20375,Oaxaca,Santa Cruz Amilpas,271317
+2026-07-01,20376,Oaxaca,Santa Cruz de Bravo,14998
+2026-07-01,20377,Oaxaca,Santa Cruz Itundujia,924656
+2026-07-01,20378,Oaxaca,Santa Cruz Mixtepec,15928
+2026-07-01,20379,Oaxaca,Santa Cruz Nundaco,665
+2026-07-01,20380,Oaxaca,Santa Cruz Papalutla,33963
+2026-07-01,20381,Oaxaca,Santa Cruz Tacache de Mina,413409
+2026-07-01,20382,Oaxaca,Santa Cruz Tacahua,2190
+2026-07-01,20383,Oaxaca,Santa Cruz Tayata,1384
+2026-07-01,20384,Oaxaca,Santa Cruz Xitla,27876
+2026-07-01,20385,Oaxaca,Santa Cruz Xoxocotlán,18862259
+2026-07-01,20386,Oaxaca,Santa Cruz Zenzontepec,51259
+2026-07-01,20387,Oaxaca,Santa Gertrudis,16735
+2026-07-01,20388,Oaxaca,Santa Inés del Monte,6667
+2026-07-01,20389,Oaxaca,Santa Inés Yatzeche,686
+2026-07-01,20390,Oaxaca,Santa Lucía del Camino,14418719
+2026-07-01,20391,Oaxaca,Santa Lucía Miahuatlán,0
+2026-07-01,20392,Oaxaca,Santa Lucía Monteverde,14759
+2026-07-01,20393,Oaxaca,Santa Lucía Ocotlán,19544
+2026-07-01,20394,Oaxaca,Santa María Alotepec,23489
+2026-07-01,20395,Oaxaca,Santa María Apazco,112
+2026-07-01,20396,Oaxaca,Santa María la Asunción,0
+2026-07-01,20397,Oaxaca,Heroica Ciudad de Tlaxiaco,41406587
+2026-07-01,20398,Oaxaca,Ayoquezco de Aldama,324308
+2026-07-01,20399,Oaxaca,Santa María Atzompa,205041
+2026-07-01,20400,Oaxaca,Santa María Camotlán,2581
+2026-07-01,20401,Oaxaca,Santa María Colotepec,352524
+2026-07-01,20402,Oaxaca,Santa María Cortijo,1567
+2026-07-01,20403,Oaxaca,Santa María Coyotepec,27948
+2026-07-01,20404,Oaxaca,Santa María Chachoápam,7
+2026-07-01,20405,Oaxaca,Villa de Chilapa de Díaz,32589
+2026-07-01,20406,Oaxaca,Santa María Chilchotla,18677
+2026-07-01,20407,Oaxaca,Santa María Chimalapa,60687
+2026-07-01,20408,Oaxaca,Santa María del Rosario,1585
+2026-07-01,20409,Oaxaca,Santa María del Tule,24259
+2026-07-01,20410,Oaxaca,Santa María Ecatepec,8769
+2026-07-01,20411,Oaxaca,Santa María Guelacé,166
+2026-07-01,20412,Oaxaca,Santa María Guienagati,28765
+2026-07-01,20413,Oaxaca,Santa María Huatulco,13341240
+2026-07-01,20414,Oaxaca,Santa María Huazolotitlán,216726
+2026-07-01,20415,Oaxaca,Santa María Ipalapa,58421
+2026-07-01,20416,Oaxaca,Santa María Ixcatlán,0
+2026-07-01,20417,Oaxaca,Santa María Jacatepec,19868
+2026-07-01,20418,Oaxaca,Santa María Jalapa del Marqués,2693971
+2026-07-01,20419,Oaxaca,Santa María Jaltianguis,229
+2026-07-01,20420,Oaxaca,Santa María Lachixío,299
+2026-07-01,20421,Oaxaca,Santa María Mixtequilla,19053
+2026-07-01,20422,Oaxaca,Santa María Nativitas,610
+2026-07-01,20423,Oaxaca,Santa María Nduayaco,2117
+2026-07-01,20424,Oaxaca,Santa María Ozolotepec,4391
+2026-07-01,20425,Oaxaca,Santa María Pápalo,2796
+2026-07-01,20426,Oaxaca,Santa María Peñoles,14390
+2026-07-01,20427,Oaxaca,Santa María Petapa,31212
+2026-07-01,20428,Oaxaca,Santa María Quiegolani,1832
+2026-07-01,20429,Oaxaca,Santa María Sola,16921
+2026-07-01,20430,Oaxaca,Santa María Tataltepec,0
+2026-07-01,20431,Oaxaca,Santa María Tecomavaca,3335
+2026-07-01,20432,Oaxaca,Santa María Temaxcalapa,8218
+2026-07-01,20433,Oaxaca,Santa María Temaxcaltepec,14496
+2026-07-01,20434,Oaxaca,Santa María Teopoxco,1566
+2026-07-01,20435,Oaxaca,Santa María Tepantlali,12054
+2026-07-01,20436,Oaxaca,Santa María Texcatitlán,185
+2026-07-01,20437,Oaxaca,Santa María Tlahuitoltepec,187151
+2026-07-01,20438,Oaxaca,Santa María Tlalixtac,422
+2026-07-01,20439,Oaxaca,Santa María Tonameca,304814
+2026-07-01,20440,Oaxaca,Santa María Totolapilla,91
+2026-07-01,20441,Oaxaca,Santa María Xadani,579
+2026-07-01,20442,Oaxaca,Santa María Yalina,209
+2026-07-01,20443,Oaxaca,Santa María Yavesía,12030
+2026-07-01,20444,Oaxaca,Santa María Yolotepec,90
+2026-07-01,20445,Oaxaca,Santa María Yosoyúa,4123
+2026-07-01,20446,Oaxaca,Santa María Yucuhiti,16412
+2026-07-01,20447,Oaxaca,Santa María Zacatepec,16358994
+2026-07-01,20448,Oaxaca,Santa María Zaniza,0
+2026-07-01,20449,Oaxaca,Santa María Zoquitlán,1361661
+2026-07-01,20450,Oaxaca,Santiago Amoltepec,44175
+2026-07-01,20451,Oaxaca,Santiago Apoala,0
+2026-07-01,20452,Oaxaca,Santiago Apóstol,12156
+2026-07-01,20453,Oaxaca,Santiago Astata,41290
+2026-07-01,20454,Oaxaca,Santiago Atitlán,54242
+2026-07-01,20455,Oaxaca,Santiago Ayuquililla,21649
+2026-07-01,20456,Oaxaca,Santiago Cacaloxtepec,305
+2026-07-01,20457,Oaxaca,Santiago Camotlán,24914
+2026-07-01,20458,Oaxaca,Santiago Comaltepec,677
+2026-07-01,20459,Oaxaca,Santiago Chazumba,1004697
+2026-07-01,20460,Oaxaca,Santiago Choápam,24774
+2026-07-01,20461,Oaxaca,Santiago del Río,541
+2026-07-01,20462,Oaxaca,Santiago Huajolotitlán,39538
+2026-07-01,20463,Oaxaca,Santiago Huauclilla,0
+2026-07-01,20464,Oaxaca,Santiago Ihuitlán Plumas,0
+2026-07-01,20465,Oaxaca,Santiago Ixcuintepec,6990
+2026-07-01,20466,Oaxaca,Santiago Ixtayutla,138963
+2026-07-01,20467,Oaxaca,Santiago Jamiltepec,15276597
+2026-07-01,20468,Oaxaca,Santiago Jocotepec,170500
+2026-07-01,20469,Oaxaca,Santiago Juxtlahuaca,24087037
+2026-07-01,20470,Oaxaca,Santiago Lachiguiri,3519
+2026-07-01,20471,Oaxaca,Santiago Lalopa,13445
+2026-07-01,20472,Oaxaca,Santiago Laollaga,1188
+2026-07-01,20473,Oaxaca,Santiago Laxopa,2014
+2026-07-01,20474,Oaxaca,Santiago Llano Grande,109048
+2026-07-01,20475,Oaxaca,Santiago Matatlán,5328922
+2026-07-01,20476,Oaxaca,Santiago Miltepec,0
+2026-07-01,20477,Oaxaca,Santiago Minas,3586
+2026-07-01,20478,Oaxaca,Santiago Nacaltepec,587
+2026-07-01,20479,Oaxaca,Santiago Nejapilla,0
+2026-07-01,20480,Oaxaca,Santiago Nundiche,0
+2026-07-01,20481,Oaxaca,Santiago Nuyoó,30
+2026-07-01,20482,Oaxaca,Santiago Pinotepa Nacional,45640679
+2026-07-01,20483,Oaxaca,Santiago Suchilquitongo,6904
+2026-07-01,20484,Oaxaca,Santiago Tamazola,1508645
+2026-07-01,20485,Oaxaca,Santiago Tapextla,51
+2026-07-01,20486,Oaxaca,Villa Tejúpam de la Unión,5907
+2026-07-01,20487,Oaxaca,Santiago Tenango,8952
+2026-07-01,20488,Oaxaca,Santiago Tepetlapa,81
+2026-07-01,20489,Oaxaca,Santiago Tetepec,13698
+2026-07-01,20490,Oaxaca,Santiago Texcalcingo,0
+2026-07-01,20491,Oaxaca,Santiago Textitlán,3678
+2026-07-01,20492,Oaxaca,Santiago Tilantongo,910
+2026-07-01,20493,Oaxaca,Santiago Tillo,0
+2026-07-01,20494,Oaxaca,Santiago Tlazoyaltepec,17271
+2026-07-01,20495,Oaxaca,Santiago Xanica,11265
+2026-07-01,20496,Oaxaca,Santiago Xiacuí,5385
+2026-07-01,20497,Oaxaca,Santiago Yaitepec,3118163
+2026-07-01,20498,Oaxaca,Santiago Yaveo,23813
+2026-07-01,20499,Oaxaca,Santiago Yolomécatl,173641
+2026-07-01,20500,Oaxaca,Santiago Yosondúa,800721
+2026-07-01,20501,Oaxaca,Santiago Yucuyachi,5123
+2026-07-01,20502,Oaxaca,Santiago Zacatepec,346768
+2026-07-01,20503,Oaxaca,Santiago Zoochila,17870
+2026-07-01,20504,Oaxaca,Nuevo Zoquiápam,843
+2026-07-01,20505,Oaxaca,Santo Domingo Ingenio,70578
+2026-07-01,20506,Oaxaca,Santo Domingo Albarradas,859
+2026-07-01,20507,Oaxaca,Santo Domingo Armenta,6718
+2026-07-01,20508,Oaxaca,Santo Domingo Chihuitán,280
+2026-07-01,20509,Oaxaca,Santo Domingo de Morelos,141336
+2026-07-01,20510,Oaxaca,Santo Domingo Ixcatlán,6503
+2026-07-01,20511,Oaxaca,Santo Domingo Nuxaá,4609
+2026-07-01,20512,Oaxaca,Santo Domingo Ozolotepec,1107
+2026-07-01,20513,Oaxaca,Santo Domingo Petapa,151267
+2026-07-01,20514,Oaxaca,Santo Domingo Roayaga,0
+2026-07-01,20515,Oaxaca,Santo Domingo Tehuantepec,4107438
+2026-07-01,20516,Oaxaca,Santo Domingo Teojomulco,688136
+2026-07-01,20517,Oaxaca,Santo Domingo Tepuxtepec,43711
+2026-07-01,20518,Oaxaca,Santo Domingo Tlatayápam,0
+2026-07-01,20519,Oaxaca,Santo Domingo Tomaltepec,17495
+2026-07-01,20520,Oaxaca,Santo Domingo Tonalá,5571920
+2026-07-01,20521,Oaxaca,Santo Domingo Tonaltepec,0
+2026-07-01,20522,Oaxaca,Santo Domingo Xagacía,396
+2026-07-01,20523,Oaxaca,Santo Domingo Yanhuitlán,1625
+2026-07-01,20524,Oaxaca,Santo Domingo Yodohino,0
+2026-07-01,20525,Oaxaca,Santo Domingo Zanatepec,168003
+2026-07-01,20526,Oaxaca,Santos Reyes Nopala,24659614
+2026-07-01,20527,Oaxaca,Santos Reyes Pápalo,0
+2026-07-01,20528,Oaxaca,Santos Reyes Tepejillo,0
+2026-07-01,20529,Oaxaca,Santos Reyes Yucuná,0
+2026-07-01,20530,Oaxaca,Santo Tomás Jalieza,16629
+2026-07-01,20531,Oaxaca,Santo Tomás Mazaltepec,8015
+2026-07-01,20532,Oaxaca,Santo Tomás Ocotepec,4349
+2026-07-01,20533,Oaxaca,Santo Tomás Tamazulapan,2457
+2026-07-01,20534,Oaxaca,San Vicente Coatlán,111
+2026-07-01,20535,Oaxaca,San Vicente Lachixío,4193
+2026-07-01,20536,Oaxaca,San Vicente Nuñú,0
+2026-07-01,20537,Oaxaca,Silacayoápam,1483739
+2026-07-01,20538,Oaxaca,Sitio de Xitlapehua,18341
+2026-07-01,20539,Oaxaca,Soledad Etla,221205
+2026-07-01,20540,Oaxaca,Villa de Tamazulápam del Progreso,3665618
+2026-07-01,20541,Oaxaca,Tanetze de Zaragoza,33187
+2026-07-01,20542,Oaxaca,Taniche,91
+2026-07-01,20543,Oaxaca,Tataltepec de Valdés,658166
+2026-07-01,20544,Oaxaca,Teococuilco de Marcos Pérez,4400
+2026-07-01,20545,Oaxaca,Teotitlán de Flores Magón,4302380
+2026-07-01,20546,Oaxaca,Teotitlán del Valle,55601
+2026-07-01,20547,Oaxaca,Teotongo,244
+2026-07-01,20548,Oaxaca,Tepelmeme Villa de Morelos,29083
+2026-07-01,20549,Oaxaca,Tezoatlán de Segura y Luna,766279
+2026-07-01,20550,Oaxaca,San Jerónimo Tlacochahuaya,14028
+2026-07-01,20551,Oaxaca,Tlacolula de Matamoros,40960103
+2026-07-01,20552,Oaxaca,Tlacotepec Plumas,0
+2026-07-01,20553,Oaxaca,Tlalixtac de Cabrera,2880300
+2026-07-01,20554,Oaxaca,Totontepec Villa de Morelos,657171
+2026-07-01,20555,Oaxaca,Trinidad Zaachila,10324
+2026-07-01,20556,Oaxaca,La Trinidad Vista Hermosa,0
+2026-07-01,20557,Oaxaca,Unión Hidalgo,82103
+2026-07-01,20558,Oaxaca,Valerio Trujano,91
+2026-07-01,20559,Oaxaca,San Juan Bautista Valle Nacional,9707317
+2026-07-01,20560,Oaxaca,Villa Díaz Ordaz,16230
+2026-07-01,20561,Oaxaca,Yaxe,0
+2026-07-01,20562,Oaxaca,Magdalena Yodocono de Porfirio Díaz,246
+2026-07-01,20563,Oaxaca,Yogana,3269
+2026-07-01,20564,Oaxaca,Yutanduchi de Guerrero,0
+2026-07-01,20565,Oaxaca,Villa de Zaachila,882684
+2026-07-01,20566,Oaxaca,Zapotitlán del Río,45045
+2026-07-01,20567,Oaxaca,Zapotitlán Lagunas,738598
+2026-07-01,20568,Oaxaca,Zapotitlán Palmas,2765
+2026-07-01,20569,Oaxaca,Santa Inés de Zaragoza,2919
+2026-07-01,20570,Oaxaca,Zimatlán de Álvarez,33893361
+2026-07-01,20999,Oaxaca,No identificado,5507573
+2026-07-01,21001,Puebla,Acajete,3748710
+2026-07-01,21002,Puebla,Acateno,512237
+2026-07-01,21003,Puebla,Acatlán,27133866
+2026-07-01,21004,Puebla,Acatzingo,12619306
+2026-07-01,21005,Puebla,Acteopan,1318
+2026-07-01,21006,Puebla,Ahuacatlán,64879
+2026-07-01,21007,Puebla,Ahuatlán,95953
+2026-07-01,21008,Puebla,Ahuazotepec,31119
+2026-07-01,21009,Puebla,Ahuehuetitla,2143
+2026-07-01,21010,Puebla,Ajalpan,16313748
+2026-07-01,21011,Puebla,Albino Zertuche,7619
+2026-07-01,21012,Puebla,Aljojuca,10976
+2026-07-01,21013,Puebla,Altepexi,50568
+2026-07-01,21014,Puebla,Amixtlán,15537
+2026-07-01,21015,Puebla,Amozoc,5363613
+2026-07-01,21016,Puebla,Aquixtla,21207
+2026-07-01,21017,Puebla,Atempan,4319173
+2026-07-01,21018,Puebla,Atexcal,6554
+2026-07-01,21019,Puebla,Atlixco,66963768
+2026-07-01,21020,Puebla,Atoyatempan,80211
+2026-07-01,21021,Puebla,Atzala,8941
+2026-07-01,21022,Puebla,Atzitzihuacán,2100441
+2026-07-01,21023,Puebla,Atzitzintla,625189
+2026-07-01,21024,Puebla,Axutla,680
+2026-07-01,21025,Puebla,Ayotoxco de Guerrero,784193
+2026-07-01,21026,Puebla,Calpan,4257827
+2026-07-01,21027,Puebla,Caltepec,588
+2026-07-01,21028,Puebla,Camocuautla,44
+2026-07-01,21029,Puebla,Caxhuacan,1912
+2026-07-01,21030,Puebla,Coatepec,2122
+2026-07-01,21031,Puebla,Coatzingo,2632
+2026-07-01,21032,Puebla,Cohetzala,15720
+2026-07-01,21033,Puebla,Cohuecan,11487
+2026-07-01,21034,Puebla,Coronango,1667527
+2026-07-01,21035,Puebla,Coxcatlán,215734
+2026-07-01,21036,Puebla,Coyomeapan,11558
+2026-07-01,21037,Puebla,Coyotepec,3226
+2026-07-01,21038,Puebla,Cuapiaxtla de Madero,49547
+2026-07-01,21039,Puebla,Cuautempan,39140
+2026-07-01,21040,Puebla,Cuautinchán,10567
+2026-07-01,21041,Puebla,Cuautlancingo,7151151
+2026-07-01,21042,Puebla,Cuayuca de Andrade,12104
+2026-07-01,21043,Puebla,Cuetzalan del Progreso,3075059
+2026-07-01,21044,Puebla,Cuyoaco,75927
+2026-07-01,21045,Puebla,Chalchicomula de Sesma,15809783
+2026-07-01,21046,Puebla,Chapulco,35183
+2026-07-01,21047,Puebla,Chiautla,14194728
+2026-07-01,21048,Puebla,Chiautzingo,115216
+2026-07-01,21049,Puebla,Chiconcuautla,26369
+2026-07-01,21050,Puebla,Chichiquila,44318
+2026-07-01,21051,Puebla,Chietla,11159370
+2026-07-01,21052,Puebla,Chigmecatitlán,51
+2026-07-01,21053,Puebla,Chignahuapan,12404516
+2026-07-01,21054,Puebla,Chignautla,116856
+2026-07-01,21055,Puebla,Chila,38907
+2026-07-01,21056,Puebla,Chila de la Sal,2048
+2026-07-01,21057,Puebla,Honey,3006
+2026-07-01,21058,Puebla,Chilchotla,1568425
+2026-07-01,21059,Puebla,Chinantla,124105
+2026-07-01,21060,Puebla,Domingo Arenas,28416
+2026-07-01,21061,Puebla,Eloxochitlán,4827
+2026-07-01,21062,Puebla,Epatlán,124162
+2026-07-01,21063,Puebla,Esperanza,11830495
+2026-07-01,21064,Puebla,Francisco Z. Mena,673473
+2026-07-01,21065,Puebla,General Felipe Ángeles,64271
+2026-07-01,21066,Puebla,Guadalupe,4133513
+2026-07-01,21067,Puebla,Guadalupe Victoria,6238535
+2026-07-01,21068,Puebla,Hermenegildo Galeana,11590
+2026-07-01,21069,Puebla,Huaquechula,7973756
+2026-07-01,21070,Puebla,Huatlatlauca,1469
+2026-07-01,21071,Puebla,Huauchinango,14390392
+2026-07-01,21072,Puebla,Huehuetla,163114
+2026-07-01,21073,Puebla,Huehuetlán el Chico,2001142
+2026-07-01,21074,Puebla,Huejotzingo,14605971
+2026-07-01,21075,Puebla,Hueyapan,33816
+2026-07-01,21076,Puebla,Hueytamalco,6703501
+2026-07-01,21077,Puebla,Hueytlalpan,6427
+2026-07-01,21078,Puebla,Huitzilan de Serdán,77230
+2026-07-01,21079,Puebla,Huitziltepec,348568
+2026-07-01,21080,Puebla,Atlequizayan,0
+2026-07-01,21081,Puebla,Ixcamilpa de Guerrero,256444
+2026-07-01,21082,Puebla,Ixcaquixtla,181108
+2026-07-01,21083,Puebla,Ixtacamaxtitlán,80095
+2026-07-01,21084,Puebla,Ixtepec,128485
+2026-07-01,21085,Puebla,Izúcar de Matamoros,50629247
+2026-07-01,21086,Puebla,Jalpan,28215
+2026-07-01,21087,Puebla,Jolalpan,656106
+2026-07-01,21088,Puebla,Jonotla,8305
+2026-07-01,21089,Puebla,Jopala,17878
+2026-07-01,21090,Puebla,Juan C. Bonilla,150730
+2026-07-01,21091,Puebla,Juan Galindo,65150
+2026-07-01,21092,Puebla,Juan N. Méndez,12034
+2026-07-01,21093,Puebla,Lafragua,0
+2026-07-01,21094,Puebla,Libres,9915930
+2026-07-01,21095,Puebla,La Magdalena Tlatlauquitepec,33997
+2026-07-01,21096,Puebla,Mazapiltepec de Juárez,12142
+2026-07-01,21097,Puebla,Mixtla,32
+2026-07-01,21098,Puebla,Molcaxac,85648
+2026-07-01,21099,Puebla,Cañada Morelos,77293
+2026-07-01,21100,Puebla,Naupan,12237
+2026-07-01,21101,Puebla,Nauzontla,6165
+2026-07-01,21102,Puebla,Nealtican,6507795
+2026-07-01,21103,Puebla,Nicolás Bravo,6038
+2026-07-01,21104,Puebla,Nopalucan,193592
+2026-07-01,21105,Puebla,Ocotepec,13987
+2026-07-01,21106,Puebla,Ocoyucan,394393
+2026-07-01,21107,Puebla,Olintla,1954
+2026-07-01,21108,Puebla,Oriental,35041
+2026-07-01,21109,Puebla,Pahuatlán,2693209
+2026-07-01,21110,Puebla,Palmar de Bravo,2008699
+2026-07-01,21111,Puebla,Pantepec,503640
+2026-07-01,21112,Puebla,Petlalcingo,1107998
+2026-07-01,21113,Puebla,Piaxtla,5542242
+2026-07-01,21114,Puebla,Puebla,152913046
+2026-07-01,21115,Puebla,Quecholac,353120
+2026-07-01,21116,Puebla,Quimixtlán,13297
+2026-07-01,21117,Puebla,Rafael Lara Grajales,5582382
+2026-07-01,21118,Puebla,Los Reyes de Juárez,127358
+2026-07-01,21119,Puebla,San Andrés Cholula,11008217
+2026-07-01,21120,Puebla,San Antonio Cañada,15799
+2026-07-01,21121,Puebla,San Diego la Mesa Tochimiltzingo,6855
+2026-07-01,21122,Puebla,San Felipe Teotlalcingo,136479
+2026-07-01,21123,Puebla,San Felipe Tepatlán,14745
+2026-07-01,21124,Puebla,San Gabriel Chilac,7707576
+2026-07-01,21125,Puebla,San Gregorio Atzompa,62650
+2026-07-01,21126,Puebla,San Jerónimo Tecuanipan,15716
+2026-07-01,21127,Puebla,San Jerónimo Xayacatlán,6733
+2026-07-01,21128,Puebla,San José Chiapa,11743
+2026-07-01,21129,Puebla,San José Miahuatlán,45912
+2026-07-01,21130,Puebla,San Juan Atenco,5370
+2026-07-01,21131,Puebla,San Juan Atzompa,0
+2026-07-01,21132,Puebla,San Martín Texmelucan,29265638
+2026-07-01,21133,Puebla,San Martín Totoltepec,1376
+2026-07-01,21134,Puebla,San Matías Tlalancaleca,175891
+2026-07-01,21135,Puebla,San Miguel Ixitlán,0
+2026-07-01,21136,Puebla,San Miguel Xoxtla,64326
+2026-07-01,21137,Puebla,San Nicolás Buenos Aires,1774
+2026-07-01,21138,Puebla,San Nicolás de los Ranchos,1346353
+2026-07-01,21139,Puebla,San Pablo Anicano,439856
+2026-07-01,21140,Puebla,San Pedro Cholula,21604489
+2026-07-01,21141,Puebla,San Pedro Yeloixtlahuaca,906389
+2026-07-01,21142,Puebla,San Salvador el Seco,4324159
+2026-07-01,21143,Puebla,San Salvador el Verde,152535
+2026-07-01,21144,Puebla,San Salvador Huixcolotla,44110
+2026-07-01,21145,Puebla,San Sebastián Tlacotepec,11269
+2026-07-01,21146,Puebla,Santa Catarina Tlaltempan,0
+2026-07-01,21147,Puebla,Santa Inés Ahuatempan,19113
+2026-07-01,21148,Puebla,Santa Isabel Cholula,43013
+2026-07-01,21149,Puebla,Santiago Miahuatlán,173140
+2026-07-01,21150,Puebla,Huehuetlán el Grande,698241
+2026-07-01,21151,Puebla,Santo Tomás Hueyotlipan,25309
+2026-07-01,21152,Puebla,Soltepec,22706
+2026-07-01,21153,Puebla,Tecali de Herrera,173859
+2026-07-01,21154,Puebla,Tecamachalco,36838167
+2026-07-01,21155,Puebla,Tecomatlán,4662732
+2026-07-01,21156,Puebla,Tehuacán,79001097
+2026-07-01,21157,Puebla,Tehuitzingo,12574092
+2026-07-01,21158,Puebla,Tenampulco,444094
+2026-07-01,21159,Puebla,Teopantlán,13914
+2026-07-01,21160,Puebla,Teotlalco,17020
+2026-07-01,21161,Puebla,Tepanco de López,228002
+2026-07-01,21162,Puebla,Tepango de Rodríguez,132
+2026-07-01,21163,Puebla,Tepatlaxco de Hidalgo,911718
+2026-07-01,21164,Puebla,Tepeaca,17953080
+2026-07-01,21165,Puebla,Tepemaxalco,0
+2026-07-01,21166,Puebla,Tepeojuma,3782718
+2026-07-01,21167,Puebla,Tepetzintla,33922
+2026-07-01,21168,Puebla,Tepexco,1465576
+2026-07-01,21169,Puebla,Tepexi de Rodríguez,18913871
+2026-07-01,21170,Puebla,Tepeyahualco,47077
+2026-07-01,21171,Puebla,Tepeyahualco de Cuauhtémoc,273545
+2026-07-01,21172,Puebla,Tetela de Ocampo,742827
+2026-07-01,21173,Puebla,Teteles de Avila Castillo,69107
+2026-07-01,21174,Puebla,Teziutlán,27724853
+2026-07-01,21175,Puebla,Tianguismanalco,56875
+2026-07-01,21176,Puebla,Tilapa,43270
+2026-07-01,21177,Puebla,Tlacotepec de Benito Juárez,17827293
+2026-07-01,21178,Puebla,Tlacuilotepec,11205
+2026-07-01,21179,Puebla,Tlachichuca,7666314
+2026-07-01,21180,Puebla,Tlahuapan,269622
+2026-07-01,21181,Puebla,Tlaltenango,20202
+2026-07-01,21182,Puebla,Tlanepantla,892
+2026-07-01,21183,Puebla,Tlaola,25241
+2026-07-01,21184,Puebla,Tlapacoya,116124
+2026-07-01,21185,Puebla,Tlapanalá,4911230
+2026-07-01,21186,Puebla,Tlatlauquitepec,9764782
+2026-07-01,21187,Puebla,Tlaxco,8834
+2026-07-01,21188,Puebla,Tochimilco,3879997
+2026-07-01,21189,Puebla,Tochtepec,331611
+2026-07-01,21190,Puebla,Totoltepec de Guerrero,0
+2026-07-01,21191,Puebla,Tulcingo,22952651
+2026-07-01,21192,Puebla,Tuzamapan de Galeana,52530
+2026-07-01,21193,Puebla,Tzicatlacoyan,5732
+2026-07-01,21194,Puebla,Venustiano Carranza,8957362
+2026-07-01,21195,Puebla,Vicente Guerrero,177781
+2026-07-01,21196,Puebla,Xayacatlán de Bravo,0
+2026-07-01,21197,Puebla,Xicotepec,10124473
+2026-07-01,21198,Puebla,Xicotlán,2770
+2026-07-01,21199,Puebla,Xiutetelco,364104
+2026-07-01,21200,Puebla,Xochiapulco,21575
+2026-07-01,21201,Puebla,Xochiltepec,23564
+2026-07-01,21202,Puebla,Xochitlán de Vicente Suárez,49867
+2026-07-01,21203,Puebla,Xochitlán Todos Santos,542931
+2026-07-01,21204,Puebla,Yaonáhuac,12809
+2026-07-01,21205,Puebla,Yehualtepec,30398
+2026-07-01,21206,Puebla,Zacapala,25189
+2026-07-01,21207,Puebla,Zacapoaxtla,13585301
+2026-07-01,21208,Puebla,Zacatlán,10725481
+2026-07-01,21209,Puebla,Zapotitlán,110254
+2026-07-01,21210,Puebla,Zapotitlán de Méndez,43089
+2026-07-01,21211,Puebla,Zaragoza,1111468
+2026-07-01,21212,Puebla,Zautla,1043936
+2026-07-01,21213,Puebla,Zihuateutla,14374
+2026-07-01,21214,Puebla,Zinacatepec,500584
+2026-07-01,21215,Puebla,Zongozotla,5974
+2026-07-01,21216,Puebla,Zoquiapan,5197
+2026-07-01,21217,Puebla,Zoquitlán,741836
+2026-07-01,21999,Puebla,No identificado,2490419
+2026-07-01,22001,Querétaro,Amealco de Bonfil,28561489
+2026-07-01,22002,Querétaro,Pinal de Amoles,3951386
+2026-07-01,22003,Querétaro,Arroyo Seco,5315617
+2026-07-01,22004,Querétaro,Cadereyta de Montes,31052794
+2026-07-01,22005,Querétaro,Colón,408096
+2026-07-01,22006,Querétaro,Corregidora,17934714
+2026-07-01,22007,Querétaro,Ezequiel Montes,16993585
+2026-07-01,22008,Querétaro,Huimilpan,11513145
+2026-07-01,22009,Querétaro,Jalpan de Serra,18580666
+2026-07-01,22010,Querétaro,Landa de Matamoros,5358446
+2026-07-01,22011,Querétaro,El Marqués,6236286
+2026-07-01,22012,Querétaro,Pedro Escobedo,6867535
+2026-07-01,22013,Querétaro,Peñamiller,3246387
+2026-07-01,22014,Querétaro,Querétaro,106929354
+2026-07-01,22015,Querétaro,San Joaquín,2266660
+2026-07-01,22016,Querétaro,San Juan del Río,38585631
+2026-07-01,22017,Querétaro,Tequisquiapan,9393574
+2026-07-01,22018,Querétaro,Tolimán,3420718
+2026-07-01,22999,Querétaro,No identificado,2350157
+2026-07-01,23001,Quintana Roo,Cozumel,14988042
+2026-07-01,23002,Quintana Roo,Felipe Carrillo Puerto,1013957
+2026-07-01,23003,Quintana Roo,Isla Mujeres,1757155
+2026-07-01,23004,Quintana Roo,Othón P. Blanco,14390035
+2026-07-01,23005,Quintana Roo,Benito Juárez,42611917
+2026-07-01,23006,Quintana Roo,José María Morelos,2647441
+2026-07-01,23007,Quintana Roo,Lázaro Cárdenas,685229
+2026-07-01,23008,Quintana Roo,Solidaridad,20934553
+2026-07-01,23009,Quintana Roo,Tulum,6489200
+2026-07-01,23999,Quintana Roo,No identificado,29839
+2026-07-01,24001,San Luis Potosí,Ahualulco,3978928
+2026-07-01,24002,San Luis Potosí,Alaquines,416851
+2026-07-01,24003,San Luis Potosí,Aquismón,1445235
+2026-07-01,24004,San Luis Potosí,Armadillo de los Infante,1051
+2026-07-01,24005,San Luis Potosí,Cárdenas,5800258
+2026-07-01,24006,San Luis Potosí,Catorce,203823
+2026-07-01,24007,San Luis Potosí,Cedral,2488662
+2026-07-01,24008,San Luis Potosí,Cerritos,25831114
+2026-07-01,24009,San Luis Potosí,Cerro de San Pedro,4906
+2026-07-01,24010,San Luis Potosí,Ciudad del Maíz,13834335
+2026-07-01,24011,San Luis Potosí,Ciudad Fernández,1436833
+2026-07-01,24012,San Luis Potosí,Tancanhuitz,5067746
+2026-07-01,24013,San Luis Potosí,Ciudad Valles,20998387
+2026-07-01,24014,San Luis Potosí,Coxcatlán,93273
+2026-07-01,24015,San Luis Potosí,Charcas,8311609
+2026-07-01,24016,San Luis Potosí,Ebano,6882101
+2026-07-01,24017,San Luis Potosí,Guadalcázar,328054
+2026-07-01,24018,San Luis Potosí,Huehuetlán,60240
+2026-07-01,24019,San Luis Potosí,Lagunillas,969029
+2026-07-01,24020,San Luis Potosí,Matehuala,44191338
+2026-07-01,24021,San Luis Potosí,Mexquitic de Carmona,687571
+2026-07-01,24022,San Luis Potosí,Moctezuma,7470318
+2026-07-01,24023,San Luis Potosí,Rayón,8083641
+2026-07-01,24024,San Luis Potosí,Rioverde,61510554
+2026-07-01,24025,San Luis Potosí,Salinas,49622944
+2026-07-01,24026,San Luis Potosí,San Antonio,1143
+2026-07-01,24027,San Luis Potosí,San Ciro de Acosta,7668301
+2026-07-01,24028,San Luis Potosí,San Luis Potosí,122944586
+2026-07-01,24029,San Luis Potosí,San Martín Chalchicuautla,111664
+2026-07-01,24030,San Luis Potosí,San Nicolás Tolentino,43400
+2026-07-01,24031,San Luis Potosí,Santa Catarina,264626
+2026-07-01,24032,San Luis Potosí,Santa María del Río,15633735
+2026-07-01,24033,San Luis Potosí,Santo Domingo,2549748
+2026-07-01,24034,San Luis Potosí,San Vicente Tancuayalab,215021
+2026-07-01,24035,San Luis Potosí,Soledad de Graciano Sánchez,19658809
+2026-07-01,24036,San Luis Potosí,Tamasopo,4693459
+2026-07-01,24037,San Luis Potosí,Tamazunchale,23893881
+2026-07-01,24038,San Luis Potosí,Tampacán,131064
+2026-07-01,24039,San Luis Potosí,Tampamolón Corona,165807
+2026-07-01,24040,San Luis Potosí,Tamuín,6249401
+2026-07-01,24041,San Luis Potosí,Tanlajás,78628
+2026-07-01,24042,San Luis Potosí,Tanquián de Escobedo,5292255
+2026-07-01,24043,San Luis Potosí,Tierra Nueva,1845299
+2026-07-01,24044,San Luis Potosí,Vanegas,11084
+2026-07-01,24045,San Luis Potosí,Venado,3542302
+2026-07-01,24046,San Luis Potosí,Villa de Arriaga,4561953
+2026-07-01,24047,San Luis Potosí,Villa de Guadalupe,118474
+2026-07-01,24048,San Luis Potosí,Villa de la Paz,17226
+2026-07-01,24049,San Luis Potosí,Villa de Ramos,13431441
+2026-07-01,24050,San Luis Potosí,Villa de Reyes,4023068
+2026-07-01,24051,San Luis Potosí,Villa Hidalgo,1519431
+2026-07-01,24052,San Luis Potosí,Villa Juárez,734204
+2026-07-01,24053,San Luis Potosí,Axtla de Terrazas,5015113
+2026-07-01,24054,San Luis Potosí,Xilitla,16511288
+2026-07-01,24055,San Luis Potosí,Zaragoza,53295
+2026-07-01,24056,San Luis Potosí,Villa de Arista,2617876
+2026-07-01,24057,San Luis Potosí,Matlapa,212585
+2026-07-01,24058,San Luis Potosí,El Naranjo,10456905
+2026-07-01,24999,San Luis Potosí,No identificado,10765681
+2026-07-01,25001,Sinaloa,Ahome,30902174
+2026-07-01,25002,Sinaloa,Angostura,2094564
+2026-07-01,25003,Sinaloa,Badiraguato,508146
+2026-07-01,25004,Sinaloa,Concordia,123028
+2026-07-01,25005,Sinaloa,Cosalá,2376262
+2026-07-01,25006,Sinaloa,Culiacán,68444364
+2026-07-01,25007,Sinaloa,Choix,2484586
+2026-07-01,25008,Sinaloa,Elota,5429045
+2026-07-01,25009,Sinaloa,Escuinapa,3251855
+2026-07-01,25010,Sinaloa,El Fuerte,2339713
+2026-07-01,25011,Sinaloa,Guasave,24094201
+2026-07-01,25012,Sinaloa,Mazatlán,33821430
+2026-07-01,25013,Sinaloa,Mocorito,3886893
+2026-07-01,25014,Sinaloa,Rosario,2851799
+2026-07-01,25015,Sinaloa,Salvador Alvarado,11000555
+2026-07-01,25016,Sinaloa,San Ignacio,1546735
+2026-07-01,25017,Sinaloa,Sinaloa,5109474
+2026-07-01,25018,Sinaloa,Navolato,4251884
+2026-07-01,25999,Sinaloa,No identificado,52627
+2026-07-01,26001,Sonora,Aconchi,129173
+2026-07-01,26002,Sonora,Agua Prieta,9293074
+2026-07-01,26003,Sonora,Alamos,2650010
+2026-07-01,26004,Sonora,Altar,179065
+2026-07-01,26005,Sonora,Arivechi,42369
+2026-07-01,26006,Sonora,Arizpe,81853
+2026-07-01,26007,Sonora,Atil,6406
+2026-07-01,26008,Sonora,Bacadéhuachi,48415
+2026-07-01,26009,Sonora,Bacanora,56178
+2026-07-01,26010,Sonora,Bacerac,47266
+2026-07-01,26011,Sonora,Bacoachi,5681
+2026-07-01,26012,Sonora,Bácum,159878
+2026-07-01,26013,Sonora,Banámichi,74412
+2026-07-01,26014,Sonora,Baviácora,1351509
+2026-07-01,26015,Sonora,Bavispe,74813
+2026-07-01,26016,Sonora,Benjamín Hill,46380
+2026-07-01,26017,Sonora,Caborca,6890262
+2026-07-01,26018,Sonora,Cajeme,19752837
+2026-07-01,26019,Sonora,Cananea,1758685
+2026-07-01,26020,Sonora,Carbó,41165
+2026-07-01,26021,Sonora,La Colorada,1397
+2026-07-01,26022,Sonora,Cucurpe,0
+2026-07-01,26023,Sonora,Cumpas,166739
+2026-07-01,26024,Sonora,Divisaderos,0
+2026-07-01,26025,Sonora,Empalme,1943376
+2026-07-01,26026,Sonora,Etchojoa,740327
+2026-07-01,26027,Sonora,Fronteras,97246
+2026-07-01,26028,Sonora,Granados,1111
+2026-07-01,26029,Sonora,Guaymas,5297143
+2026-07-01,26030,Sonora,Hermosillo,52725527
+2026-07-01,26031,Sonora,Huachinera,33935
+2026-07-01,26032,Sonora,Huásabas,49682
+2026-07-01,26033,Sonora,Huatabampo,2198301
+2026-07-01,26034,Sonora,Huépac,4319
+2026-07-01,26035,Sonora,Imuris,1736720
+2026-07-01,26036,Sonora,Magdalena,2657914
+2026-07-01,26037,Sonora,Mazatán,4919
+2026-07-01,26038,Sonora,Moctezuma,855234
+2026-07-01,26039,Sonora,Naco,127936
+2026-07-01,26040,Sonora,Nácori Chico,35622
+2026-07-01,26041,Sonora,Nacozari de García,1040913
+2026-07-01,26042,Sonora,Navojoa,7575389
+2026-07-01,26043,Sonora,Nogales,19363489
+2026-07-01,26044,Sonora,Onavas,105
+2026-07-01,26045,Sonora,Opodepe,26188
+2026-07-01,26046,Sonora,Oquitoa,21278
+2026-07-01,26047,Sonora,Pitiquito,295633
+2026-07-01,26048,Sonora,Puerto Peñasco,12489664
+2026-07-01,26049,Sonora,Quiriego,1709
+2026-07-01,26050,Sonora,Rayón,13307
+2026-07-01,26051,Sonora,Rosario,56170
+2026-07-01,26052,Sonora,Sahuaripa,2017519
+2026-07-01,26053,Sonora,San Felipe de Jesús,561
+2026-07-01,26054,Sonora,San Javier,0
+2026-07-01,26055,Sonora,San Luis Río Colorado,21706352
+2026-07-01,26056,Sonora,San Miguel de Horcasitas,45574
+2026-07-01,26057,Sonora,San Pedro de la Cueva,74725
+2026-07-01,26058,Sonora,Santa Ana,4069473
+2026-07-01,26059,Sonora,Santa Cruz,19258
+2026-07-01,26060,Sonora,Sáric,4161
+2026-07-01,26061,Sonora,Soyopa,0
+2026-07-01,26062,Sonora,Suaqui Grande,11319
+2026-07-01,26063,Sonora,Tepache,216775
+2026-07-01,26064,Sonora,Trincheras,0
+2026-07-01,26065,Sonora,Tubutama,1282
+2026-07-01,26066,Sonora,Ures,1027059
+2026-07-01,26067,Sonora,Villa Hidalgo,96550
+2026-07-01,26068,Sonora,Villa Pesqueira,275
+2026-07-01,26069,Sonora,Yécora,172045
+2026-07-01,26070,Sonora,General Plutarco Elías Calles,281860
+2026-07-01,26071,Sonora,Benito Juárez,1033954
+2026-07-01,26072,Sonora,San Ignacio Río Muerto,73198
+2026-07-01,26999,Sonora,No identificado,9507
+2026-07-01,27001,Tabasco,Balancán,1613264
+2026-07-01,27002,Tabasco,Cárdenas,18170670
+2026-07-01,27003,Tabasco,Centla,516603
+2026-07-01,27004,Tabasco,Centro,20339930
+2026-07-01,27005,Tabasco,Comalcalco,8329143
+2026-07-01,27006,Tabasco,Cunduacán,2191265
+2026-07-01,27007,Tabasco,Emiliano Zapata,841256
+2026-07-01,27008,Tabasco,Huimanguillo,13414890
+2026-07-01,27009,Tabasco,Jalapa,841482
+2026-07-01,27010,Tabasco,Jalpa de Méndez,3679733
+2026-07-01,27011,Tabasco,Jonuta,309539
+2026-07-01,27012,Tabasco,Macuspana,2075173
+2026-07-01,27013,Tabasco,Nacajuca,600390
+2026-07-01,27014,Tabasco,Paraíso,1917742
+2026-07-01,27015,Tabasco,Tacotalpa,1353656
+2026-07-01,27016,Tabasco,Teapa,5404826
+2026-07-01,27017,Tabasco,Tenosique,4406996
+2026-07-01,27999,Tabasco,No identificado,3891
+2026-07-01,28001,Tamaulipas,Abasolo,652413
+2026-07-01,28002,Tamaulipas,Aldama,3809259
+2026-07-01,28003,Tamaulipas,Altamira,10329254
+2026-07-01,28004,Tamaulipas,Antiguo Morelos,465373
+2026-07-01,28005,Tamaulipas,Burgos,319538
+2026-07-01,28006,Tamaulipas,Bustamante,17435
+2026-07-01,28007,Tamaulipas,Camargo,1604746
+2026-07-01,28008,Tamaulipas,Casas,36460
+2026-07-01,28009,Tamaulipas,Ciudad Madero,6765938
+2026-07-01,28010,Tamaulipas,Cruillas,107
+2026-07-01,28011,Tamaulipas,Gómez Farías,18525
+2026-07-01,28012,Tamaulipas,González,4663916
+2026-07-01,28013,Tamaulipas,Güémez,82956
+2026-07-01,28014,Tamaulipas,Guerrero,80212
+2026-07-01,28015,Tamaulipas,Gustavo Díaz Ordaz,2006578
+2026-07-01,28016,Tamaulipas,Hidalgo,569504
+2026-07-01,28017,Tamaulipas,Jaumave,1267346
+2026-07-01,28018,Tamaulipas,Jiménez,77951
+2026-07-01,28019,Tamaulipas,Llera,174432
+2026-07-01,28020,Tamaulipas,Mainero,9721
+2026-07-01,28021,Tamaulipas,El Mante,18410642
+2026-07-01,28022,Tamaulipas,Matamoros,43330674
+2026-07-01,28023,Tamaulipas,Méndez,16727
+2026-07-01,28024,Tamaulipas,Mier,586858
+2026-07-01,28025,Tamaulipas,Miguel Alemán,6481626
+2026-07-01,28026,Tamaulipas,Miquihuana,65056
+2026-07-01,28027,Tamaulipas,Nuevo Laredo,30445393
+2026-07-01,28028,Tamaulipas,Nuevo Morelos,21817
+2026-07-01,28029,Tamaulipas,Ocampo,3257993
+2026-07-01,28030,Tamaulipas,Padilla,1417653
+2026-07-01,28031,Tamaulipas,Palmillas,57676
+2026-07-01,28032,Tamaulipas,Reynosa,33211419
+2026-07-01,28033,Tamaulipas,Río Bravo,9566515
+2026-07-01,28034,Tamaulipas,San Carlos,3171
+2026-07-01,28035,Tamaulipas,San Fernando,5786889
+2026-07-01,28036,Tamaulipas,San Nicolás,0
+2026-07-01,28037,Tamaulipas,Soto la Marina,3230733
+2026-07-01,28038,Tamaulipas,Tampico,23699770
+2026-07-01,28039,Tamaulipas,Tula,8025296
+2026-07-01,28040,Tamaulipas,Valle Hermoso,8057174
+2026-07-01,28041,Tamaulipas,Victoria,44738148
+2026-07-01,28042,Tamaulipas,Villagrán,83440
+2026-07-01,28043,Tamaulipas,Xicoténcatl,2350424
+2026-07-01,28999,Tamaulipas,No identificado,7976
+2026-07-01,29001,Tlaxcala,Amaxac de Guerrero,57333
+2026-07-01,29002,Tlaxcala,Apetatitlán de Antonio Carvajal,255531
+2026-07-01,29003,Tlaxcala,Atlangatepec,58242
+2026-07-01,29004,Tlaxcala,Atltzayanca,17905
+2026-07-01,29005,Tlaxcala,Apizaco,31526558
+2026-07-01,29006,Tlaxcala,Calpulalpan,6857991
+2026-07-01,29007,Tlaxcala,El Carmen Tequexquitla,1287141
+2026-07-01,29008,Tlaxcala,Cuapiaxtla,30240
+2026-07-01,29009,Tlaxcala,Cuaxomulco,22817
+2026-07-01,29010,Tlaxcala,Chiautempan,12167079
+2026-07-01,29011,Tlaxcala,Muñoz de Domingo Arenas,120457
+2026-07-01,29012,Tlaxcala,Españita,49718
+2026-07-01,29013,Tlaxcala,Huamantla,7902775
+2026-07-01,29014,Tlaxcala,Hueyotlipan,282944
+2026-07-01,29015,Tlaxcala,Ixtacuixtla de Mariano Matamoros,286003
+2026-07-01,29016,Tlaxcala,Ixtenco,11232
+2026-07-01,29017,Tlaxcala,Mazatecochco de José María Morelos,5771
+2026-07-01,29018,Tlaxcala,Contla de Juan Cuamatzi,1363289
+2026-07-01,29019,Tlaxcala,Tepetitla de Lardizábal,81907
+2026-07-01,29020,Tlaxcala,Sanctórum de Lázaro Cárdenas,103836
+2026-07-01,29021,Tlaxcala,Nanacamilpa de Mariano Arista,6485503
+2026-07-01,29022,Tlaxcala,Acuamanala de Miguel Hidalgo,11339
+2026-07-01,29023,Tlaxcala,Natívitas,1640119
+2026-07-01,29024,Tlaxcala,Panotla,124459
+2026-07-01,29025,Tlaxcala,San Pablo del Monte,3600225
+2026-07-01,29026,Tlaxcala,Santa Cruz Tlaxcala,96744
+2026-07-01,29027,Tlaxcala,Tenancingo,65947
+2026-07-01,29028,Tlaxcala,Teolocholco,4454181
+2026-07-01,29029,Tlaxcala,Tepeyanco,25805
+2026-07-01,29030,Tlaxcala,Terrenate,119010
+2026-07-01,29031,Tlaxcala,Tetla de la Solidaridad,259448
+2026-07-01,29032,Tlaxcala,Tetlatlahuca,60913
+2026-07-01,29033,Tlaxcala,Tlaxcala,14033162
+2026-07-01,29034,Tlaxcala,Tlaxco,9968998
+2026-07-01,29035,Tlaxcala,Tocatlán,65677
+2026-07-01,29036,Tlaxcala,Totolac,74288
+2026-07-01,29037,Tlaxcala,Ziltlaltépec de Trinidad Sánchez Santos,8471
+2026-07-01,29038,Tlaxcala,Tzompantepec,34646
+2026-07-01,29039,Tlaxcala,Xaloztoc,104576
+2026-07-01,29040,Tlaxcala,Xaltocan,126692
+2026-07-01,29041,Tlaxcala,Papalotla de Xicohténcatl,633483
+2026-07-01,29042,Tlaxcala,Xicohtzinco,103141
+2026-07-01,29043,Tlaxcala,Yauhquemehcan,857184
+2026-07-01,29044,Tlaxcala,Zacatelco,10377958
+2026-07-01,29045,Tlaxcala,Benito Juárez,38918
+2026-07-01,29046,Tlaxcala,Emiliano Zapata,53927
+2026-07-01,29047,Tlaxcala,Lázaro Cárdenas,82057
+2026-07-01,29048,Tlaxcala,La Magdalena Tlaltelulco,60948
+2026-07-01,29049,Tlaxcala,San Damián Texóloc,26766
+2026-07-01,29050,Tlaxcala,San Francisco Tetlanohcan,47929
+2026-07-01,29051,Tlaxcala,San Jerónimo Zacualpan,12318
+2026-07-01,29052,Tlaxcala,San José Teacalco,24945
+2026-07-01,29053,Tlaxcala,San Juan Huactzinco,10492
+2026-07-01,29054,Tlaxcala,San Lorenzo Axocomanitla,29675
+2026-07-01,29055,Tlaxcala,San Lucas Tecopilco,107153
+2026-07-01,29056,Tlaxcala,Santa Ana Nopalucan,14917
+2026-07-01,29057,Tlaxcala,Santa Apolonia Teacalco,14329
+2026-07-01,29058,Tlaxcala,Santa Catarina Ayometla,41263
+2026-07-01,29059,Tlaxcala,Santa Cruz Quilehtla,10746
+2026-07-01,29060,Tlaxcala,Santa Isabel Xiloxoxtla,4452
+2026-07-01,29999,Tlaxcala,No identificado,11196
+2026-07-01,30001,Veracruz,Acajete,5873
+2026-07-01,30002,Veracruz,Acatlán,3607
+2026-07-01,30003,Veracruz,Acayucan,14653955
+2026-07-01,30004,Veracruz,Actopan,4802939
+2026-07-01,30005,Veracruz,Acula,31182
+2026-07-01,30006,Veracruz,Acultzingo,41205
+2026-07-01,30007,Veracruz,Camarón de Tejeda,1689
+2026-07-01,30008,Veracruz,Alpatláhuac,7905
+2026-07-01,30009,Veracruz,Alto Lucero de Gutiérrez Barrios,8843418
+2026-07-01,30010,Veracruz,Altotonga,8194731
+2026-07-01,30011,Veracruz,Alvarado,1654310
+2026-07-01,30012,Veracruz,Amatitlán,5678
+2026-07-01,30013,Veracruz,Naranjos Amatlán,1022608
+2026-07-01,30014,Veracruz,Amatlán de los Reyes,1626422
+2026-07-01,30015,Veracruz,Angel R. Cabada,1279728
+2026-07-01,30016,Veracruz,La Antigua,7532378
+2026-07-01,30017,Veracruz,Apazapan,14397
+2026-07-01,30018,Veracruz,Aquila,0
+2026-07-01,30019,Veracruz,Astacinga,317498
+2026-07-01,30020,Veracruz,Atlahuilco,72985
+2026-07-01,30021,Veracruz,Atoyac,339560
+2026-07-01,30022,Veracruz,Atzacan,38268
+2026-07-01,30023,Veracruz,Atzalan,10055354
+2026-07-01,30024,Veracruz,Tlaltetela,67028
+2026-07-01,30025,Veracruz,Ayahualulco,11890
+2026-07-01,30026,Veracruz,Banderilla,483106
+2026-07-01,30027,Veracruz,Benito Juárez,323811
+2026-07-01,30028,Veracruz,Boca del Río,8863962
+2026-07-01,30029,Veracruz,Calcahualco,3120
+2026-07-01,30030,Veracruz,Camerino Z. Mendoza,771617
+2026-07-01,30031,Veracruz,Carrillo Puerto,43195
+2026-07-01,30032,Veracruz,Catemaco,5708611
+2026-07-01,30033,Veracruz,Cazones de Herrera,1954762
+2026-07-01,30034,Veracruz,Cerro Azul,610166
+2026-07-01,30035,Veracruz,Citlaltépetl,59156
+2026-07-01,30036,Veracruz,Coacoatzintla,89757
+2026-07-01,30037,Veracruz,Coahuitlán,33434
+2026-07-01,30038,Veracruz,Coatepec,6584625
+2026-07-01,30039,Veracruz,Coatzacoalcos,8599676
+2026-07-01,30040,Veracruz,Coatzintla,247630
+2026-07-01,30041,Veracruz,Coetzala,240
+2026-07-01,30042,Veracruz,Colipa,37336
+2026-07-01,30043,Veracruz,Comapa,63053
+2026-07-01,30044,Veracruz,Córdoba,28248028
+2026-07-01,30045,Veracruz,Cosamaloapan de Carpio,3948471
+2026-07-01,30046,Veracruz,Cosautlán de Carvajal,4915193
+2026-07-01,30047,Veracruz,Coscomatepec,23279327
+2026-07-01,30048,Veracruz,Cosoleacaque,1072984
+2026-07-01,30049,Veracruz,Cotaxtla,2914747
+2026-07-01,30050,Veracruz,Coxquihui,130218
+2026-07-01,30051,Veracruz,Coyutla,20158687
+2026-07-01,30052,Veracruz,Cuichapa,312108
+2026-07-01,30053,Veracruz,Cuitláhuac,11737930
+2026-07-01,30054,Veracruz,Chacaltianguis,57294
+2026-07-01,30055,Veracruz,Chalma,261
+2026-07-01,30056,Veracruz,Chiconamel,194
+2026-07-01,30057,Veracruz,Chiconquiaco,44973
+2026-07-01,30058,Veracruz,Chicontepec,4710824
+2026-07-01,30059,Veracruz,Chinameca,147647
+2026-07-01,30060,Veracruz,Chinampa de Gorostiza,4918
+2026-07-01,30061,Veracruz,Las Choapas,16101075
+2026-07-01,30062,Veracruz,Chocamán,346372
+2026-07-01,30063,Veracruz,Chontla,6729
+2026-07-01,30064,Veracruz,Chumatlán,1136
+2026-07-01,30065,Veracruz,Emiliano Zapata,528180
+2026-07-01,30066,Veracruz,Espinal,884144
+2026-07-01,30067,Veracruz,Filomeno Mata,1611705
+2026-07-01,30068,Veracruz,Fortín,3849090
+2026-07-01,30069,Veracruz,Gutiérrez Zamora,3848339
+2026-07-01,30070,Veracruz,Hidalgotitlán,2602072
+2026-07-01,30071,Veracruz,Huatusco,19346211
+2026-07-01,30072,Veracruz,Huayacocotla,3746043
+2026-07-01,30073,Veracruz,Hueyapan de Ocampo,487579
+2026-07-01,30074,Veracruz,Huiloapan de Cuauhtémoc,4011
+2026-07-01,30075,Veracruz,Ignacio de la Llave,2642750
+2026-07-01,30076,Veracruz,Ilamatlán,829203
+2026-07-01,30077,Veracruz,Isla,3216239
+2026-07-01,30078,Veracruz,Ixcatepec,3528
+2026-07-01,30079,Veracruz,Ixhuacán de los Reyes,38276
+2026-07-01,30080,Veracruz,Ixhuatlán del Café,555131
+2026-07-01,30081,Veracruz,Ixhuatlancillo,34157
+2026-07-01,30082,Veracruz,Ixhuatlán del Sureste,21707
+2026-07-01,30083,Veracruz,Ixhuatlán de Madero,720596
+2026-07-01,30084,Veracruz,Ixmatlahuacan,6024
+2026-07-01,30085,Veracruz,Ixtaczoquitlán,555303
+2026-07-01,30086,Veracruz,Jalacingo,4754758
+2026-07-01,30087,Veracruz,Xalapa,44115042
+2026-07-01,30088,Veracruz,Jalcomulco,6745
+2026-07-01,30089,Veracruz,Jáltipan,902878
+2026-07-01,30090,Veracruz,Jamapa,1958642
+2026-07-01,30091,Veracruz,Jesús Carranza,8985276
+2026-07-01,30092,Veracruz,Xico,248386
+2026-07-01,30093,Veracruz,Jilotepec,67368
+2026-07-01,30094,Veracruz,Juan Rodríguez Clara,2894672
+2026-07-01,30095,Veracruz,Juchique de Ferrer,2395673
+2026-07-01,30096,Veracruz,Landero y Coss,110
+2026-07-01,30097,Veracruz,Lerdo de Tejada,2160734
+2026-07-01,30098,Veracruz,Magdalena,190
+2026-07-01,30099,Veracruz,Maltrata,3164801
+2026-07-01,30100,Veracruz,Manlio Fabio Altamirano,29202
+2026-07-01,30101,Veracruz,Mariano Escobedo,522532
+2026-07-01,30102,Veracruz,Martínez de la Torre,26831039
+2026-07-01,30103,Veracruz,Mecatlán,36464
+2026-07-01,30104,Veracruz,Mecayapan,239125
+2026-07-01,30105,Veracruz,Medellín,1948258
+2026-07-01,30106,Veracruz,Miahuatlán,11536
+2026-07-01,30107,Veracruz,Las Minas,19842
+2026-07-01,30108,Veracruz,Minatitlán,11317690
+2026-07-01,30109,Veracruz,Misantla,11602143
+2026-07-01,30110,Veracruz,Mixtla de Altamirano,14568
+2026-07-01,30111,Veracruz,Moloacán,1377315
+2026-07-01,30112,Veracruz,Naolinco,5730444
+2026-07-01,30113,Veracruz,Naranjal,408
+2026-07-01,30114,Veracruz,Nautla,75406
+2026-07-01,30115,Veracruz,Nogales,7855863
+2026-07-01,30116,Veracruz,Oluta,1813673
+2026-07-01,30117,Veracruz,Omealca,2237467
+2026-07-01,30118,Veracruz,Orizaba,51425298
+2026-07-01,30119,Veracruz,Otatitlán,79552
+2026-07-01,30120,Veracruz,Oteapan,15327
+2026-07-01,30121,Veracruz,Ozuluama de Mascareñas,430843
+2026-07-01,30122,Veracruz,Pajapan,27694
+2026-07-01,30123,Veracruz,Pánuco,4091224
+2026-07-01,30124,Veracruz,Papantla,9421181
+2026-07-01,30125,Veracruz,Paso del Macho,6411402
+2026-07-01,30126,Veracruz,Paso de Ovejas,2230095
+2026-07-01,30127,Veracruz,La Perla,17386
+2026-07-01,30128,Veracruz,Perote,7622689
+2026-07-01,30129,Veracruz,Platón Sánchez,213631
+2026-07-01,30130,Veracruz,Playa Vicente,19092595
+2026-07-01,30131,Veracruz,Poza Rica de Hidalgo,12678038
+2026-07-01,30132,Veracruz,Las Vigas de Ramírez,2324794
+2026-07-01,30133,Veracruz,Pueblo Viejo,288058
+2026-07-01,30134,Veracruz,Puente Nacional,107496
+2026-07-01,30135,Veracruz,Rafael Delgado,34088
+2026-07-01,30136,Veracruz,Rafael Lucio,11119
+2026-07-01,30137,Veracruz,Los Reyes,19934
+2026-07-01,30138,Veracruz,Río Blanco,1313296
+2026-07-01,30139,Veracruz,Saltabarranca,50613
+2026-07-01,30140,Veracruz,San Andrés Tenejapan,409
+2026-07-01,30141,Veracruz,San Andrés Tuxtla,43432489
+2026-07-01,30142,Veracruz,San Juan Evangelista,470949
+2026-07-01,30143,Veracruz,Santiago Tuxtla,2770567
+2026-07-01,30144,Veracruz,Sayula de Alemán,145929
+2026-07-01,30145,Veracruz,Soconusco,51646
+2026-07-01,30146,Veracruz,Sochiapa,16008
+2026-07-01,30147,Veracruz,Soledad Atzompa,13082
+2026-07-01,30148,Veracruz,Soledad de Doblado,4015741
+2026-07-01,30149,Veracruz,Soteapan,259126
+2026-07-01,30150,Veracruz,Tamalín,16870
+2026-07-01,30151,Veracruz,Tamiahua,487110
+2026-07-01,30152,Veracruz,Tampico Alto,12840
+2026-07-01,30153,Veracruz,Tancoco,197
+2026-07-01,30154,Veracruz,Tantima,7349
+2026-07-01,30155,Veracruz,Tantoyuca,1713007
+2026-07-01,30156,Veracruz,Tatatila,30059
+2026-07-01,30157,Veracruz,Castillo de Teayo,182110
+2026-07-01,30158,Veracruz,Tecolutla,193634
+2026-07-01,30159,Veracruz,Tehuipango,134442
+2026-07-01,30160,Veracruz,Álamo Temapache,9400923
+2026-07-01,30161,Veracruz,Tempoal,2091292
+2026-07-01,30162,Veracruz,Tenampa,22983
+2026-07-01,30163,Veracruz,Tenochtitlán,13717
+2026-07-01,30164,Veracruz,Teocelo,166623
+2026-07-01,30165,Veracruz,Tepatlaxco,43290
+2026-07-01,30166,Veracruz,Tepetlán,16756
+2026-07-01,30167,Veracruz,Tepetzintla,16101
+2026-07-01,30168,Veracruz,Tequila,30062
+2026-07-01,30169,Veracruz,José Azueta,1906338
+2026-07-01,30170,Veracruz,Texcatepec,903223
+2026-07-01,30171,Veracruz,Texhuacán,23292
+2026-07-01,30172,Veracruz,Texistepec,1031141
+2026-07-01,30173,Veracruz,Tezonapa,6014038
+2026-07-01,30174,Veracruz,Tierra Blanca,12357928
+2026-07-01,30175,Veracruz,Tihuatlán,2779877
+2026-07-01,30176,Veracruz,Tlacojalpan,34768
+2026-07-01,30177,Veracruz,Tlacolulan,33247
+2026-07-01,30178,Veracruz,Tlacotalpan,389093
+2026-07-01,30179,Veracruz,Tlacotepec de Mejía,17979
+2026-07-01,30180,Veracruz,Tlachichilco,873365
+2026-07-01,30181,Veracruz,Tlalixcoyan,2655849
+2026-07-01,30182,Veracruz,Tlalnelhuayocan,23340
+2026-07-01,30183,Veracruz,Tlapacoyan,18835488
+2026-07-01,30184,Veracruz,Tlaquilpa,29367
+2026-07-01,30185,Veracruz,Tlilapan,17110
+2026-07-01,30186,Veracruz,Tomatlán,46353
+2026-07-01,30187,Veracruz,Tonayán,29714
+2026-07-01,30188,Veracruz,Totutla,206821
+2026-07-01,30189,Veracruz,Tuxpan,6804824
+2026-07-01,30190,Veracruz,Tuxtilla,233
+2026-07-01,30191,Veracruz,Ursulo Galván,224331
+2026-07-01,30192,Veracruz,Vega de Alatorre,5703000
+2026-07-01,30193,Veracruz,Veracruz,28008605
+2026-07-01,30194,Veracruz,Villa Aldama,39957
+2026-07-01,30195,Veracruz,Xoxocotla,70879
+2026-07-01,30196,Veracruz,Yanga,5268056
+2026-07-01,30197,Veracruz,Yecuatla,68739
+2026-07-01,30198,Veracruz,Zacualpan,3367
+2026-07-01,30199,Veracruz,Zaragoza,6569
+2026-07-01,30200,Veracruz,Zentla,88860
+2026-07-01,30201,Veracruz,Zongolica,19079789
+2026-07-01,30202,Veracruz,Zontecomatlán de López y Fuentes,799449
+2026-07-01,30203,Veracruz,Zozocolco de Hidalgo,134466
+2026-07-01,30204,Veracruz,Agua Dulce,820647
+2026-07-01,30205,Veracruz,El Higo,1589776
+2026-07-01,30206,Veracruz,Nanchital de Lázaro Cárdenas del Río,816824
+2026-07-01,30207,Veracruz,Tres Valles,2694478
+2026-07-01,30208,Veracruz,Carlos A. Carrillo,124143
+2026-07-01,30209,Veracruz,Tatahuicapan de Juárez,111364
+2026-07-01,30210,Veracruz,Uxpanapa,1262968
+2026-07-01,30211,Veracruz,San Rafael,3397230
+2026-07-01,30212,Veracruz,Santiago Sochiapan,45314
+2026-07-01,30999,Veracruz,No identificado,3132833
+2026-07-01,31001,Yucatán,Abalá,997
+2026-07-01,31002,Yucatán,Acanceh,410452
+2026-07-01,31003,Yucatán,Akil,207613
+2026-07-01,31004,Yucatán,Baca,102
+2026-07-01,31005,Yucatán,Bokobá,1734
+2026-07-01,31006,Yucatán,Buctzotz,1891467
+2026-07-01,31007,Yucatán,Cacalchén,345
+2026-07-01,31008,Yucatán,Calotmul,4819
+2026-07-01,31009,Yucatán,Cansahcab,5816
+2026-07-01,31010,Yucatán,Cantamayec,3094
+2026-07-01,31011,Yucatán,Celestún,18557
+2026-07-01,31012,Yucatán,Cenotillo,2368727
+2026-07-01,31013,Yucatán,Conkal,565439
+2026-07-01,31014,Yucatán,Cuncunul,39
+2026-07-01,31015,Yucatán,Cuzamá,10361
+2026-07-01,31016,Yucatán,Chacsinkín,4358
+2026-07-01,31017,Yucatán,Chankom,3675
+2026-07-01,31018,Yucatán,Chapab,12788
+2026-07-01,31019,Yucatán,Chemax,196864
+2026-07-01,31020,Yucatán,Chicxulub Pueblo,41089
+2026-07-01,31021,Yucatán,Chichimilá,7789
+2026-07-01,31022,Yucatán,Chikindzonot,80
+2026-07-01,31023,Yucatán,Chocholá,4964
+2026-07-01,31024,Yucatán,Chumayel,25165
+2026-07-01,31025,Yucatán,Dzán,12161
+2026-07-01,31026,Yucatán,Dzemul,1639
+2026-07-01,31027,Yucatán,Dzidzantún,534477
+2026-07-01,31028,Yucatán,Dzilam de Bravo,10465
+2026-07-01,31029,Yucatán,Dzilam González,12990
+2026-07-01,31030,Yucatán,Dzitás,1863
+2026-07-01,31031,Yucatán,Dzoncauich,2155
+2026-07-01,31032,Yucatán,Espita,88315
+2026-07-01,31033,Yucatán,Halachó,83029
+2026-07-01,31034,Yucatán,Hocabá,0
+2026-07-01,31035,Yucatán,Hoctún,123977
+2026-07-01,31036,Yucatán,Homún,12258
+2026-07-01,31037,Yucatán,Huhí,11051
+2026-07-01,31038,Yucatán,Hunucmá,2445508
+2026-07-01,31039,Yucatán,Ixil,43
+2026-07-01,31040,Yucatán,Izamal,967678
+2026-07-01,31041,Yucatán,Kanasín,866686
+2026-07-01,31042,Yucatán,Kantunil,7979
+2026-07-01,31043,Yucatán,Kaua,55
+2026-07-01,31044,Yucatán,Kinchil,8818
+2026-07-01,31045,Yucatán,Kopomá,817
+2026-07-01,31046,Yucatán,Mama,13199
+2026-07-01,31047,Yucatán,Maní,7853
+2026-07-01,31048,Yucatán,Maxcanú,296561
+2026-07-01,31049,Yucatán,Mayapán,186
+2026-07-01,31050,Yucatán,Mérida,40358077
+2026-07-01,31051,Yucatán,Mocochá,3850
+2026-07-01,31052,Yucatán,Motul,1903728
+2026-07-01,31053,Yucatán,Muna,1743770
+2026-07-01,31054,Yucatán,Muxupip,894
+2026-07-01,31055,Yucatán,Opichén,302
+2026-07-01,31056,Yucatán,Oxkutzcab,23330940
+2026-07-01,31057,Yucatán,Panabá,17793
+2026-07-01,31058,Yucatán,Peto,5863712
+2026-07-01,31059,Yucatán,Progreso,2278663
+2026-07-01,31060,Yucatán,Quintana Roo,500
+2026-07-01,31061,Yucatán,Río Lagartos,5306
+2026-07-01,31062,Yucatán,Sacalum,5406
+2026-07-01,31063,Yucatán,Samahil,35
+2026-07-01,31064,Yucatán,Sanahcat,0
+2026-07-01,31065,Yucatán,San Felipe,27
+2026-07-01,31066,Yucatán,Santa Elena,11194
+2026-07-01,31067,Yucatán,Seyé,5708
+2026-07-01,31068,Yucatán,Sinanché,6616
+2026-07-01,31069,Yucatán,Sotuta,28906
+2026-07-01,31070,Yucatán,Sucilá,8972
+2026-07-01,31071,Yucatán,Sudzal,0
+2026-07-01,31072,Yucatán,Suma,0
+2026-07-01,31073,Yucatán,Tahdziú,17069
+2026-07-01,31074,Yucatán,Tahmek,1015
+2026-07-01,31075,Yucatán,Teabo,2399992
+2026-07-01,31076,Yucatán,Tecoh,341610
+2026-07-01,31077,Yucatán,Tekal de Venegas,0
+2026-07-01,31078,Yucatán,Tekantó,1454
+2026-07-01,31079,Yucatán,Tekax,16448321
+2026-07-01,31080,Yucatán,Tekit,681504
+2026-07-01,31081,Yucatán,Tekom,76
+2026-07-01,31082,Yucatán,Telchac Pueblo,6978
+2026-07-01,31083,Yucatán,Telchac Puerto,1105
+2026-07-01,31084,Yucatán,Temax,3679
+2026-07-01,31085,Yucatán,Temozón,4724
+2026-07-01,31086,Yucatán,Tepakán,396
+2026-07-01,31087,Yucatán,Tetiz,19223
+2026-07-01,31088,Yucatán,Teya,0
+2026-07-01,31089,Yucatán,Ticul,9301990
+2026-07-01,31090,Yucatán,Timucuy,3914
+2026-07-01,31091,Yucatán,Tinum,228223
+2026-07-01,31092,Yucatán,Tixcacalcupul,80
+2026-07-01,31093,Yucatán,Tixkokob,217994
+2026-07-01,31094,Yucatán,Tixmehuac,9001
+2026-07-01,31095,Yucatán,Tixpéhual,11
+2026-07-01,31096,Yucatán,Tizimín,1302747
+2026-07-01,31097,Yucatán,Tunkás,89137
+2026-07-01,31098,Yucatán,Tzucacab,1381046
+2026-07-01,31099,Yucatán,Uayma,84
+2026-07-01,31100,Yucatán,Ucú,72217
+2026-07-01,31101,Yucatán,Umán,544192
+2026-07-01,31102,Yucatán,Valladolid,1916793
+2026-07-01,31103,Yucatán,Xocchel,44
+2026-07-01,31104,Yucatán,Yaxcabá,14861
+2026-07-01,31105,Yucatán,Yaxkukul,240
+2026-07-01,31106,Yucatán,Yobaín,0
+2026-07-01,31999,Yucatán,No identificado,91202
+2026-07-01,32001,Zacatecas,Apozol,50120
+2026-07-01,32002,Zacatecas,Apulco,45128
+2026-07-01,32003,Zacatecas,Atolinga,129657
+2026-07-01,32004,Zacatecas,Benito Juárez,20324
+2026-07-01,32005,Zacatecas,Calera,8950221
+2026-07-01,32006,Zacatecas,Cañitas de Felipe Pescador,807260
+2026-07-01,32007,Zacatecas,Concepción del Oro,650383
+2026-07-01,32008,Zacatecas,Cuauhtémoc,1062734
+2026-07-01,32009,Zacatecas,Chalchihuites,4230139
+2026-07-01,32010,Zacatecas,Fresnillo,58654306
+2026-07-01,32011,Zacatecas,Trinidad García de la Cadena,2816840
+2026-07-01,32012,Zacatecas,Genaro Codina,14093
+2026-07-01,32013,Zacatecas,General Enrique Estrada,30305
+2026-07-01,32014,Zacatecas,General Francisco R. Murguía,7071652
+2026-07-01,32015,Zacatecas,El Plateado de Joaquín Amaro,174274
+2026-07-01,32016,Zacatecas,General Pánfilo Natera,2003750
+2026-07-01,32017,Zacatecas,Guadalupe,29869856
+2026-07-01,32018,Zacatecas,Huanusco,25747
+2026-07-01,32019,Zacatecas,Jalpa,15285375
+2026-07-01,32020,Zacatecas,Jerez,39862231
+2026-07-01,32021,Zacatecas,Jiménez del Teul,20446
+2026-07-01,32022,Zacatecas,Juan Aldama,25880980
+2026-07-01,32023,Zacatecas,Juchipila,26978683
+2026-07-01,32024,Zacatecas,Loreto,31462204
+2026-07-01,32025,Zacatecas,Luis Moya,1679709
+2026-07-01,32026,Zacatecas,Mazapil,24821
+2026-07-01,32027,Zacatecas,Melchor Ocampo,105
+2026-07-01,32028,Zacatecas,Mezquital del Oro,446053
+2026-07-01,32029,Zacatecas,Miguel Auza,1499696
+2026-07-01,32030,Zacatecas,Momax,39086
+2026-07-01,32031,Zacatecas,Monte Escobedo,3754388
+2026-07-01,32032,Zacatecas,Morelos,49458
+2026-07-01,32033,Zacatecas,Moyahua de Estrada,57388
+2026-07-01,32034,Zacatecas,Nochistlán de Mejía,26840455
+2026-07-01,32035,Zacatecas,Noria de Ángeles,31605
+2026-07-01,32036,Zacatecas,Ojocaliente,30219283
+2026-07-01,32037,Zacatecas,Pánuco,70841
+2026-07-01,32038,Zacatecas,Pinos,10234992
+2026-07-01,32039,Zacatecas,Río Grande,38929489
+2026-07-01,32040,Zacatecas,Sain Alto,7056821
+2026-07-01,32041,Zacatecas,El Salvador,3020
+2026-07-01,32042,Zacatecas,Sombrerete,15700430
+2026-07-01,32043,Zacatecas,Susticacán,16943
+2026-07-01,32044,Zacatecas,Tabasco,7179681
+2026-07-01,32045,Zacatecas,Tepechitlán,184533
+2026-07-01,32046,Zacatecas,Tepetongo,1347119
+2026-07-01,32047,Zacatecas,Teúl de González Ortega,4315427
+2026-07-01,32048,Zacatecas,Tlaltenango de Sánchez Román,35298987
+2026-07-01,32049,Zacatecas,Valparaíso,20384590
+2026-07-01,32050,Zacatecas,Vetagrande,48581
+2026-07-01,32051,Zacatecas,Villa de Cos,5353164
+2026-07-01,32052,Zacatecas,Villa García,2237745
+2026-07-01,32053,Zacatecas,Villa González Ortega,1137681
+2026-07-01,32054,Zacatecas,Villa Hidalgo,1856998
+2026-07-01,32055,Zacatecas,Villanueva,16125104
+2026-07-01,32056,Zacatecas,Zacatecas,44622480
+2026-07-01,32057,Zacatecas,Trancoso,392507
+2026-07-01,32058,Zacatecas,Santa María de la Paz,1479
+2026-07-01,32999,Zacatecas,No identificado,3215003

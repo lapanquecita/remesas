@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "septiembre 2026"
+FECHA_FUENTE = "noviembre 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -58,7 +58,7 @@ def plot_top(año, flujo):
     df = df.groupby("PAIS").sum(numeric_only=True)
 
     # Ordenamos por monto total y tomamos el top 30.
-    df.sort_values("VALOR_USD", ascending=True, inplace=True)
+    df = df.sort_values("VALOR_USD", ascending=True)
     df = df.tail(30)
 
     # Calculamos el porcentaje relativo al total de remesas.
@@ -233,7 +233,7 @@ def plot_bottom(año, flujo):
     df["text"] = df.apply(lambda x: f" {x['VALOR_USD']:,.0f} ", axis=1)
 
     # Ordenamos por monto total, quitamos valores en cero y tomamos el bottom 30.
-    df.sort_values("VALOR_USD", ascending=False, inplace=True)
+    df = df.sort_values("VALOR_USD", ascending=False)
     df = df[df["VALOR_USD"] != 0]
     df = df.tail(30)
 
@@ -576,7 +576,7 @@ def plot_tendencias(primer_año, ultimo_año, flujo):
     df = df[df[ultimo_año] >= 5]
 
     # Ordenamos los valores usando el cambio porcentual de mayor a menor.
-    df.sort_values("change", ascending=False, inplace=True)
+    df = df.sort_values("change", ascending=False)
 
     # El título y subtítulo cambian dependiendo el flujo.
     if flujo == "Ingresos":

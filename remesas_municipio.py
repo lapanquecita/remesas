@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # Mes y año en que se recopilaron los datos.
-FECHA_FUENTE = "octubre 2026"
+FECHA_FUENTE = "noviembre 2026"
 
 # Periodo de tiempo del análisis.
 PERIODO_TIEMPO = "enero-diciembre"
@@ -326,13 +326,13 @@ def plot_tasa(año, tipo):
     )
 
     # Ordenamos per cápita de mayor a menor.
-    df.sort_values("capita", ascending=False, inplace=True)
+    df = df.sort_values("capita", ascending=False)
 
     # Seleccionamos las primeras 30 filas.
     df = df.head(30)
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
-    df.reset_index(inplace=True)
+    df = df.reset_index()
     df.index += 1
 
     # Acortamos el nombre del municipio más largo de México.
@@ -493,7 +493,7 @@ def plot_absolutos(año, tipo):
     df = df.head(30)
 
     # Para el rank resetearemos el índice y le sumaremos 1, para que sea del 1 al 30 en vez del 0 al 29.
-    df.reset_index(inplace=True)
+    df = df.reset_index()
     df.index += 1
 
     # Acortamos el nombre del municipio más largo de México.
@@ -633,7 +633,7 @@ def plot_tendencias(primer_año, ultimo_año):
     df = df[df[ultimo_año] >= 100]
 
     # Ordenamos los valores usando el cambio porcentual de mayor a menor.
-    df.sort_values("change", ascending=False, inplace=True)
+    df = df.sort_values("change", ascending=False)
 
     # Esta lista contendrá los textos de cada anotación.
     texto_anotaciones = list()
